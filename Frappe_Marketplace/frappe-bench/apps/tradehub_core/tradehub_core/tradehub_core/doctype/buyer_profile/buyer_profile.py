@@ -20,6 +20,7 @@ class BuyerProfile(Document):
         """Validate buyer profile data."""
         self._validate_user()
         self._set_display_name()
+        self._validate_interest_categories()
 
     def before_insert(self):
         """Set defaults before first save."""
@@ -58,6 +59,28 @@ class BuyerProfile(Document):
         """Set display name if not provided."""
         if not self.display_name:
             self.display_name = self.buyer_name
+
+    def _validate_interest_categories(self):
+        """Validate interest categories to prevent duplicates.
+
+        Ensures that the same category is not selected multiple times
+        in the interest_categories child table.
+        """
+        if not self.interest_categories:
+            return
+
+        seen_categories = set()
+        for row in self.interest_categories:
+            if not row.category:
+                continue
+
+            if row.category in seen_categories:
+                frappe.throw(
+                    _("Duplicate category '{0}' found in interest categories. Each category can only be selected once.").format(
+                        row.category_name or row.category
+                    )
+                )
+            seen_categories.add(row.category)
 
     def update_group_buy_stats(self):
         """Update group buy participation statistics."""
@@ -126,3 +149,49 @@ class BuyerProfile(Document):
             return False, _("Group buy is not active")
 
         return True, _("Can participate")
+
+
+@frappe.whitelist()
+def get_buyer_interest_categories(buyer):
+    """
+    Get buyer's interest categories.
+
+    API endpoint to retrieve interest categories for a buyer profile.
+    Returns list of categories with their details.
+
+    Args:
+        buyer: The buyer profile name/ID
+
+    Returns:
+        list: List of dictionaries containing category details
+
+    Example:
+        frappe.call({
+            method: "tradehub_core.tradehub_core.doctype.buyer_profile.buyer_profile.get_buyer_interest_categories",
+            args: { buyer: "BUYER-00001" }
+        })
+    """
+    if not buyer:
+        frappe.throw(_("Buyer is required"))
+
+    # Verify buyer exists
+    if not frappe.db.exists("Buyer Profile", buyer):
+        frappe.throw(_("Buyer Profile {0} not found").format(buyer))
+
+    # Get interest categories from child table
+    categories = frappe.get_all(
+        "Buyer Interest Category",
+        filters={"parent": buyer, "parenttype": "Buyer Profile"},
+        fields=[
+            "name",
+            "category",
+            "category_name",
+            "interest_level",
+            "is_primary",
+            "source",
+            "notes"
+        ],
+        order_by="is_primary desc, interest_level desc"
+    )
+
+    return categories
