@@ -17,6 +17,10 @@ required_apps = []
 # app_include_css = "/assets/tradehub_core/css/tradehub_core.css"
 # app_include_js = "/assets/tradehub_core/js/tradehub_core.js"
 
+# Tenant-Seller bidirectional filtering JS module
+# Loaded on all desk pages to handle tenant-seller field interactions
+app_include_js = ["/assets/tradehub_core/js/tenant_seller_filter.js"]
+
 # include js, css files in header of web template
 # web_include_css = "/assets/tradehub_core/css/tradehub_core.css"
 # web_include_js = "/assets/tradehub_core/js/tradehub_core.js"
@@ -112,7 +116,12 @@ doc_events = {
 	"*": {
 		# Tenant isolation - validate tenant field before document operations
 		"before_insert": "tradehub_core.utils.tenant.validate_tenant",
-		"validate": "tradehub_core.utils.tenant.validate_tenant",
+		# Tenant validation and tenant-seller consistency check
+		# Multiple handlers: tenant isolation + tenant-seller match validation
+		"validate": [
+			"tradehub_core.utils.tenant.validate_tenant",
+			"tradehub_core.utils.tenant_seller_validation.validate_tenant_seller_match"
+		],
 		# ECA rule dispatch - evaluate rules on document events
 		"on_update": "tradehub_core.eca.dispatcher.evaluate_rules",
 		"on_submit": "tradehub_core.eca.dispatcher.evaluate_rules",
