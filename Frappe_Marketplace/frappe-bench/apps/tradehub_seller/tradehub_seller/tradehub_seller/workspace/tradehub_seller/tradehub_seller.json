@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\": \"card-tradehub_seller\", \"type\": \"card\", \"data\": {\"card_name\": \"TradeHub Seller\", \"col\": 12}}]",
+ "content": "[{\"id\": \"card-seller-mgmt\", \"type\": \"card\", \"data\": {\"card_name\": \"Seller Management\", \"col\": 4}}, {\"id\": \"card-performance\", \"type\": \"card\", \"data\": {\"card_name\": \"Performance & KPI\", \"col\": 4}}, {\"id\": \"card-listings\", \"type\": \"card\", \"data\": {\"card_name\": \"Listings & Products\", \"col\": 4}}, {\"id\": \"card-tags\", \"type\": \"card\", \"data\": {\"card_name\": \"Seller Tags\", \"col\": 4}}]",
  "creation": "2026-02-16 16:18:57.316929",
  "custom_blocks": [],
  "docstatus": 0,
@@ -16,7 +16,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "TradeHub Seller",
+   "label": "Seller Management",
    "link_count": 0,
    "link_type": "",
    "onboard": 0,
@@ -25,129 +25,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Buy Box Entry",
-   "link_count": 0,
-   "link_to": "Buy Box Entry",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "KPI Template",
-   "link_count": 0,
-   "link_to": "KPI Template",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "KPI Template Item",
-   "link_count": 0,
-   "link_to": "KPI Template Item",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Listing",
-   "link_count": 0,
-   "link_to": "Listing",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Listing Attribute Value",
-   "link_count": 0,
-   "link_to": "Listing Attribute Value",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Listing Bulk Pricing Tier",
-   "link_count": 0,
-   "link_to": "Listing Bulk Pricing Tier",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Listing Image",
-   "link_count": 0,
-   "link_to": "Listing Image",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Listing Variant",
-   "link_count": 0,
-   "link_to": "Listing Variant",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Listing Variant Attribute",
-   "link_count": 0,
-   "link_to": "Listing Variant Attribute",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Premium Seller",
    "link_count": 0,
    "link_to": "Premium Seller",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Related Listing Product",
-   "link_count": 0,
-   "link_to": "Related Listing Product",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "SKU",
-   "link_count": 0,
-   "link_to": "SKU",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "SKU Product",
-   "link_count": 0,
-   "link_to": "SKU Product",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -165,46 +45,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Seller Application Category",
-   "link_count": 0,
-   "link_to": "Seller Application Category",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Seller Application Document",
-   "link_count": 0,
-   "link_to": "Seller Application Document",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Seller Application History",
-   "link_count": 0,
-   "link_to": "Seller Application History",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Seller Badge",
-   "link_count": 0,
-   "link_to": "Seller Badge",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Seller Balance",
    "link_count": 0,
    "link_to": "Seller Balance",
@@ -215,9 +55,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Seller Bank Account",
+   "label": "Seller Profile",
    "link_count": 0,
-   "link_to": "Seller Bank Account",
+   "link_to": "Seller Profile",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -225,9 +65,28 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Seller Certification",
+   "label": "Seller Store",
    "link_count": 0,
-   "link_to": "Seller Certification",
+   "link_to": "Seller Store",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Performance & KPI",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "KPI Template",
+   "link_count": 0,
+   "link_to": "KPI Template",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -255,29 +114,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Seller Level Benefit",
-   "link_count": 0,
-   "link_to": "Seller Level Benefit",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Seller Metrics",
    "link_count": 0,
    "link_to": "Seller Metrics",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Seller Profile",
-   "link_count": 0,
-   "link_to": "Seller Profile",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -295,12 +134,80 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Seller Store",
+   "label": "Seller Tier",
    "link_count": 0,
-   "link_to": "Seller Store",
+   "link_to": "Seller Tier",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listings & Products",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Buy Box Entry",
+   "link_count": 0,
+   "link_to": "Buy Box Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listing",
+   "link_count": 0,
+   "link_to": "Listing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Listing Variant",
+   "link_count": 0,
+   "link_to": "Listing Variant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SKU",
+   "link_count": 0,
+   "link_to": "SKU",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "SKU Product",
+   "link_count": 0,
+   "link_to": "SKU Product",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Seller Tags",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -328,26 +235,6 @@
    "label": "Seller Tag Rule",
    "link_count": 0,
    "link_to": "Seller Tag Rule",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Seller Tag Rule Condition",
-   "link_count": 0,
-   "link_to": "Seller Tag Rule Condition",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Seller Tier",
-   "link_count": 0,
-   "link_to": "Seller Tier",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"

@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\": \"card-tradehub_marketing\", \"type\": \"card\", \"data\": {\"card_name\": \"TradeHub Marketing\", \"col\": 12}}]",
+ "content": "[{\"id\": \"card-campaigns\", \"type\": \"card\", \"data\": {\"card_name\": \"Campaigns & Coupons\", \"col\": 4}}, {\"id\": \"card-group-buy\", \"type\": \"card\", \"data\": {\"card_name\": \"Group Buy\", \"col\": 4}}, {\"id\": \"card-subscriptions\", \"type\": \"card\", \"data\": {\"card_name\": \"Subscriptions & Storefront\", \"col\": 4}}]",
  "creation": "2026-02-16 16:18:57.940816",
  "custom_blocks": [],
  "docstatus": 0,
@@ -16,7 +16,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "TradeHub Marketing",
+   "label": "Campaigns & Coupons",
    "link_count": 0,
    "link_type": "",
    "onboard": 0,
@@ -45,9 +45,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Coupon Category Item",
+   "label": "Wholesale Offer",
    "link_count": 0,
-   "link_to": "Coupon Category Item",
+   "link_to": "Wholesale Offer",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -55,12 +55,11 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Coupon Product Item",
+   "label": "Group Buy",
    "link_count": 0,
-   "link_to": "Coupon Product Item",
-   "link_type": "DocType",
+   "link_type": "",
    "onboard": 0,
-   "type": "Link"
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -95,12 +94,11 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Group Buy Tier",
+   "label": "Subscriptions & Storefront",
    "link_count": 0,
-   "link_to": "Group Buy Tier",
-   "link_type": "DocType",
+   "link_type": "",
    "onboard": 0,
-   "type": "Link"
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -128,26 +126,6 @@
    "label": "Subscription Package",
    "link_count": 0,
    "link_to": "Subscription Package",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Wholesale Offer",
-   "link_count": 0,
-   "link_to": "Wholesale Offer",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Wholesale Offer Product",
-   "link_count": 0,
-   "link_to": "Wholesale Offer Product",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"

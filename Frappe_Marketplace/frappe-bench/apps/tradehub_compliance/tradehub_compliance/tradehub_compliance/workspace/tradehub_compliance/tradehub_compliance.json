@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\": \"card-tradehub_compliance\", \"type\": \"card\", \"data\": {\"card_name\": \"TradeHub Compliance\", \"col\": 12}}]",
+ "content": "[{\"id\": \"card-certificates\", \"type\": \"card\", \"data\": {\"card_name\": \"Certificates\", \"col\": 4}}, {\"id\": \"card-consent\", \"type\": \"card\", \"data\": {\"card_name\": \"Consent Management\", \"col\": 4}}, {\"id\": \"card-contracts\", \"type\": \"card\", \"data\": {\"card_name\": \"Contracts\", \"col\": 4}}, {\"id\": \"card-esign\", \"type\": \"card\", \"data\": {\"card_name\": \"E-Signature\", \"col\": 4}}, {\"id\": \"card-moderation\", \"type\": \"card\", \"data\": {\"card_name\": \"Moderation & Review\", \"col\": 4}}]",
  "creation": "2026-02-16 16:18:57.412035",
  "custom_blocks": [],
  "docstatus": 0,
@@ -16,7 +16,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "TradeHub Compliance",
+   "label": "Certificates",
    "link_count": 0,
    "link_type": "",
    "onboard": 0,
@@ -41,6 +41,15 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Consent Management",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -105,6 +114,25 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Marketplace Consent Record",
+   "link_count": 0,
+   "link_to": "Marketplace Consent Record",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contracts",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Contract Instance",
    "link_count": 0,
    "link_to": "Contract Instance",
@@ -135,9 +163,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Contract Rule Condition",
+   "label": "Contract Template",
    "link_count": 0,
-   "link_to": "Contract Rule Condition",
+   "link_to": "Contract Template",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -145,12 +173,31 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Contract Template",
+   "label": "Marketplace Contract Instance",
    "link_count": 0,
-   "link_to": "Contract Template",
+   "link_to": "Marketplace Contract Instance",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marketplace Contract Template",
+   "link_count": 0,
+   "link_to": "Marketplace Contract Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "E-Signature",
+   "link_count": 0,
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -175,32 +222,11 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Marketplace Consent Record",
+   "label": "Moderation & Review",
    "link_count": 0,
-   "link_to": "Marketplace Consent Record",
-   "link_type": "DocType",
+   "link_type": "",
    "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Marketplace Contract Instance",
-   "link_count": 0,
-   "link_to": "Marketplace Contract Instance",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Marketplace Contract Template",
-   "link_count": 0,
-   "link_to": "Marketplace Contract Template",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
+   "type": "Card Break"
   },
   {
    "hidden": 0,
@@ -248,16 +274,6 @@
    "label": "Risk Score",
    "link_count": 0,
    "link_to": "Risk Score",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Risk Score Factor",
-   "link_count": 0,
-   "link_to": "Risk Score Factor",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"

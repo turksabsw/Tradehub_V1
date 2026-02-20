@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\": \"card-tradehub_logistics\", \"type\": \"card\", \"data\": {\"card_name\": \"TradeHub Logistics\", \"col\": 12}}]",
+ "content": "[{\"id\": \"card-providers\", \"type\": \"card\", \"data\": {\"card_name\": \"Providers & Carriers\", \"col\": 4}}, {\"id\": \"card-shipping\", \"type\": \"card\", \"data\": {\"card_name\": \"Shipping & Rules\", \"col\": 4}}, {\"id\": \"card-shipments\", \"type\": \"card\", \"data\": {\"card_name\": \"Shipments & Tracking\", \"col\": 4}}]",
  "creation": "2026-02-16 16:18:57.761924",
  "custom_blocks": [],
  "docstatus": 0,
@@ -16,7 +16,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "TradeHub Logistics",
+   "label": "Providers & Carriers",
    "link_count": 0,
    "link_type": "",
    "onboard": 0,
@@ -35,16 +35,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Lead Time",
-   "link_count": 0,
-   "link_to": "Lead Time",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Logistics Provider",
    "link_count": 0,
    "link_to": "Logistics Provider",
@@ -55,29 +45,18 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Marketplace Shipment",
+   "label": "Shipping & Rules",
    "link_count": 0,
-   "link_to": "Marketplace Shipment",
-   "link_type": "DocType",
+   "link_type": "",
    "onboard": 0,
-   "type": "Link"
+   "type": "Card Break"
   },
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Shipment",
+   "label": "Lead Time",
    "link_count": 0,
-   "link_to": "Shipment",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Shipping Rate Tier",
-   "link_count": 0,
-   "link_to": "Shipping Rate Tier",
+   "link_to": "Lead Time",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -95,9 +74,18 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Shipping Zone",
+   "label": "Shipments & Tracking",
    "link_count": 0,
-   "link_to": "Shipping Zone",
+   "link_type": "",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Marketplace Shipment",
+   "link_count": 0,
+   "link_to": "Marketplace Shipment",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -105,9 +93,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Shipping Zone Rate",
+   "label": "Shipment",
    "link_count": 0,
-   "link_to": "Shipping Zone Rate",
+   "link_to": "Shipment",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
