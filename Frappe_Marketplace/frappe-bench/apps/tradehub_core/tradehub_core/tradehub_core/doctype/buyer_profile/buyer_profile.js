@@ -214,6 +214,22 @@ frappe.ui.form.on('Buyer Profile', {
                 };
             });
         }
+
+        // Filter interest_categories category field to exclude already selected categories
+        // and show only active categories
+        frm.set_query('category', 'interest_categories', function(doc, cdt, cdn) {
+            // Get already selected categories from the child table
+            var selected_categories = (doc.interest_categories || [])
+                .map(function(row) { return row.category; })
+                .filter(function(cat) { return cat; });
+
+            return {
+                filters: {
+                    name: ['not in', selected_categories],
+                    enabled: 1
+                }
+            };
+        });
     },
 
     refresh_fetch_from_fields: function(frm) {

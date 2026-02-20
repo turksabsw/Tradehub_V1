@@ -20,6 +20,8 @@ class BuyerProfile(Document):
         """Validate buyer profile data."""
         self._validate_user()
         self._set_display_name()
+        self._validate_interest_categories()
+        self._validate_addresses()
 
     def before_insert(self):
         """Set defaults before first save."""
@@ -58,6 +60,67 @@ class BuyerProfile(Document):
         """Set display name if not provided."""
         if not self.display_name:
             self.display_name = self.buyer_name
+
+    def _validate_interest_categories(self):
+        """Validate interest categories to prevent duplicates.
+
+        Ensures that the same category is not selected multiple times
+        in the interest_categories child table.
+        """
+        if not self.interest_categories:
+            return
+
+        seen_categories = set()
+        for row in self.interest_categories:
+            if not row.category:
+                continue
+
+            if row.category in seen_categories:
+                frappe.throw(
+                    _("Duplicate category '{0}' found in interest categories. Each category can only be selected once.").format(
+                        row.category_name or row.category
+                    )
+                )
+            seen_categories.add(row.category)
+
+    def _validate_addresses(self):
+        """Validate addresses in the addresses child table.
+
+        Ensures:
+        1. Only one address can be marked as is_default per address_type
+        2. Required fields (street_address) are populated
+
+        When multiple defaults are found for the same address_type, an error is thrown
+        requiring the user to correct the configuration.
+        """
+        if not self.addresses:
+            return
+
+        # Track defaults per address_type
+        defaults_by_type = {}
+
+        for idx, row in enumerate(self.addresses, start=1):
+            # Validate street_address is provided (defensive check - also enforced at DocType level)
+            if not row.street_address:
+                frappe.throw(
+                    _("Row {0}: Street Address is required for all addresses").format(idx)
+                )
+
+            # Track is_default by address_type
+            if row.is_default:
+                address_type = row.address_type or "Billing"
+
+                if address_type in defaults_by_type:
+                    # Multiple defaults found for same type
+                    existing_row = defaults_by_type[address_type]
+                    frappe.throw(
+                        _("Multiple default addresses found for type '{0}'. "
+                          "Row {1} and Row {2} are both marked as default. "
+                          "Only one default address is allowed per address type.").format(
+                            address_type, existing_row, idx
+                        )
+                    )
+                defaults_by_type[address_type] = idx
 
     def update_group_buy_stats(self):
         """Update group buy participation statistics."""
@@ -126,3 +189,118 @@ class BuyerProfile(Document):
             return False, _("Group buy is not active")
 
         return True, _("Can participate")
+
+
+@frappe.whitelist()
+def get_buyer_interest_categories(buyer):
+    """
+    Get buyer's interest categories.
+
+    API endpoint to retrieve interest categories for a buyer profile.
+    Returns list of categories with their details.
+
+    Args:
+        buyer: The buyer profile name/ID
+
+    Returns:
+        list: List of dictionaries containing category details
+
+    Example:
+        frappe.call({
+            method: "tradehub_core.tradehub_core.doctype.buyer_profile.buyer_profile.get_buyer_interest_categories",
+            args: { buyer: "BUYER-00001" }
+        })
+    """
+    if not buyer:
+        frappe.throw(_("Buyer is required"))
+
+    # Verify buyer exists
+    if not frappe.db.exists("Buyer Profile", buyer):
+        frappe.throw(_("Buyer Profile {0} not found").format(buyer))
+
+    # Get interest categories from child table
+    categories = frappe.get_all(
+        "Buyer Interest Category",
+        filters={"parent": buyer, "parenttype": "Buyer Profile"},
+        fields=[
+            "name",
+            "category",
+            "category_name",
+            "interest_level",
+            "is_primary",
+            "source",
+            "notes"
+        ],
+        order_by="is_primary desc, interest_level desc"
+    )
+
+    return categories
+
+
+@frappe.whitelist()
+def get_buyer_addresses(buyer, address_type=None):
+    """
+    Get buyer's addresses from the addresses child table.
+
+    API endpoint to retrieve addresses for a buyer profile.
+    Optionally filtered by address type.
+
+    Args:
+        buyer: The buyer profile name/ID
+        address_type: Optional filter for address type (e.g., 'Billing', 'Shipping', 'Warehouse')
+
+    Returns:
+        list: List of dictionaries containing address details
+
+    Example:
+        // Get all addresses
+        frappe.call({
+            method: "tradehub_core.tradehub_core.doctype.buyer_profile.buyer_profile.get_buyer_addresses",
+            args: { buyer: "BUYER-00001" }
+        })
+
+        // Get only shipping addresses
+        frappe.call({
+            method: "tradehub_core.tradehub_core.doctype.buyer_profile.buyer_profile.get_buyer_addresses",
+            args: { buyer: "BUYER-00001", address_type: "Shipping" }
+        })
+    """
+    if not buyer:
+        frappe.throw(_("Buyer is required"))
+
+    # Verify buyer exists
+    if not frappe.db.exists("Buyer Profile", buyer):
+        frappe.throw(_("Buyer Profile {0} not found").format(buyer))
+
+    # Build filters
+    filters = {"parent": buyer, "parenttype": "Buyer Profile"}
+    if address_type:
+        filters["address_type"] = address_type
+
+    # Get addresses from child table
+    addresses = frappe.get_all(
+        "Address Item",
+        filters=filters,
+        fields=[
+            "name",
+            "address_type",
+            "address_title",
+            "is_default",
+            "city",
+            "city_name",
+            "district",
+            "district_name",
+            "neighborhood",
+            "neighborhood_name",
+            "street_address",
+            "building_info",
+            "postal_code",
+            "contact_person",
+            "phone",
+            "email",
+            "notes"
+        ],
+        order_by="is_default desc, address_type asc"
+    )
+
+    return addresses
