@@ -25,9 +25,9 @@
           "verification": {
             "type": "none"
           },
-          "status": "in_progress",
-          "notes": "Starting scan of all child DocTypes across 7 tradehub apps for numeric fields",
-          "updated_at": "2026-03-02T11:16:36.824793+00:00"
+          "status": "completed",
+          "notes": "Completed comprehensive scan of 79 child DocTypes across 7 tradehub apps. Identified 22 child tables with 136 total numeric calculation fields (68 Currency, 42 Float, 14 Percent, 12 Int). Full catalog with fieldname, fieldtype, options, reqd, read_only, default, precision, non_negative documented in build-progress.txt. All parent-child relationships mapped. Committed as 345ca17.",
+          "updated_at": "2026-03-02T11:23:24.876156+00:00"
         },
         {
           "id": "subtask-1-2",
@@ -47,8 +47,9 @@
             "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/108.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/108.md | awk '{print ($1 > 100) ? \"OK\" : \"TOO_SHORT\"}'",
             "expected": "OK"
           },
-          "status": "pending",
-          "notes": "Must include: all calculation-bearing child tables identified, per-table formula doc, JS event handlers plan, Python validate plan, row lifecycle strategy, DocType→ChildTable→Formula matrix, acceptance criteria checklist."
+          "status": "completed",
+          "notes": "108.md written with 1014 lines. Covers 22 child tables across 8 apps. Includes: (1) Executive Summary, (2) Complete Child Table Registry with numeric fields, (3) Per-child-table formula documentation (16 detailed tables), (4) JS client-side implementation plan with code samples for Sub Order and Quotation, (5) Python server-side validate() plan, (6) Row lifecycle handling with edge cases, (7) Full DocType→Child Table→Formula matrix, (8) Acceptance criteria checklist. Committed as bf58940.",
+          "updated_at": "2026-03-02T11:30:45.891520+00:00"
         }
       ]
     },
@@ -73,8 +74,9 @@
           "verification": {
             "type": "none"
           },
-          "status": "pending",
-          "notes": "Read-only scan. Must read every parent DocType JSON to build comprehensive field categorization. Focus on the 118 parent DocTypes across all 7 apps."
+          "status": "completed",
+          "notes": "Comprehensive field categorization scan completed for all 39 DocTypes across tradehub_compliance (23), tradehub_logistics (7), tradehub_marketing (9). Output written to memory/subtask-2-1-scan-compliance-logistics-marketing.md with ~1555 fields categorized into (a) system-generated, (b) admin-editable, (c) user-editable.",
+          "updated_at": "2026-03-02T11:47:56.808811+00:00"
         },
         {
           "id": "subtask-2-2",
@@ -93,8 +95,9 @@
             "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/112.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/112.md | awk '{print ($1 > 100) ? \"OK\" : \"TOO_SHORT\"}'",
             "expected": "OK"
           },
-          "status": "pending",
-          "notes": "Must include: per-DocType field categorization tables, Frappe permission mechanism mapping, system-generated field list, admin-only field list, implementation plan, acceptance criteria."
+          "status": "completed",
+          "notes": "112.md written with 1383 lines, 73KB. Contains all 9 required sections: (1) Executive Summary with coverage of 124 parent DocTypes across 7 apps and ~4,975 fields, (2) Field Categories definition with identification rules, (3) Frappe Permission Mechanisms overview (permlevel 0-9, read_only, set_only_once, hidden, allow_on_submit, depends_on), (4) Per-DocType authorization matrix tables organized by app (commerce first, then seller, catalog, core, compliance, logistics, marketing), (5) System-generated fields master list (200+ fetch_from, computed values, timestamps, identifiers, ERPNext links), (6) Admin-only fields master list (status, financial config, toggles, credentials, tenant, admin notes), (7) Implementation plan with 5 phases (JSON hardening, permlevel, custom JS, Python validation, set_only_once), (8) Multi-tenant awareness section, (9) Acceptance criteria checklist with 22 items.",
+          "updated_at": "2026-03-02T11:57:21.200640+00:00"
         }
       ]
     },
@@ -400,12 +403,12 @@
   "planStatus": "in_progress",
   "xstateState": "coding",
   "executionPhase": "coding",
-  "updated_at": "2026-03-02T11:16:18.670Z",
+  "updated_at": "2026-03-02T11:31:27.543Z",
   "lastEvent": {
     "eventId": "59779854-085b-4328-b584-335d667acae0",
     "sequence": 0,
     "type": "PLANNING_COMPLETE",
     "timestamp": "2026-03-02T11:16:15.411360+00:00"
   },
-  "last_updated": "2026-03-02T11:16:36.824801+00:00"
+  "last_updated": "2026-03-02T11:57:21.200651+00:00"
 }
