@@ -144,9 +144,9 @@
             "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/124.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/124.md | awk '{print ($1 > 80) ? \"OK\" : \"TOO_SHORT\"}'",
             "expected": "OK"
           },
-          "status": "in_progress",
-          "notes": "Writing 124.md with complete Cascading Discount System plan based on comprehensive codebase scan results.",
-          "updated_at": "2026-03-02T12:03:46.826610+00:00"
+          "status": "completed",
+          "notes": "124.md written with 1116 lines, 50KB. Contains all 11 required sections: (1) Executive Summary with scope of 11 DocTypes across 4 apps, (2) Current discount landscape with 15 DocTypes mapped including field definitions and Python calculation methods, (3) Cascading formula with 3 worked examples, (4) Cascading vs additive comparison with mathematical proof and 5-row numerical comparison table, (5) New fields required: 9 fields for parent-level, 8 for line-item level per affected DocType, (6) UI layout with progressive disclosure using show_discount_tiers toggle and collapsible sections, (7) JS real-time calculation with calculate_totals() for parent-level and calculate_line_cascading_discount() for line-items, (8) Python server-side validation with validate_discount_percentages() covering all edge cases (0%, 100%, negative, >100%), (9) Affected DocTypes matrix: 9 primary (schema changes) + 2 secondary (formula updates) + 6 no-change, (10) Integration with order.js, order.py, cart_line.py, sub_order.py with before/after code diffs and coupon integration, (11) Acceptance criteria checklist with 30+ items. Committed as db23ab6.",
+          "updated_at": "2026-03-02T12:08:40.489812+00:00"
         }
       ]
     },
@@ -173,8 +173,9 @@
           "verification": {
             "type": "none"
           },
-          "status": "pending",
-          "notes": "Must read all JSON fields and their Python usage to determine migrate vs keep. Sample JSON data structures should be documented where possible from the controller code."
+          "status": "completed",
+          "notes": "Completed comprehensive scan of 73 JSON/Code+JSON fields across 7 active tradehub apps. Categorized as 25 MIGRATE (structured/repeated data suitable for child tables) + 48 KEEP (dynamic/polymorphic/external API responses). 50 fieldtype=JSON + 23 fieldtype=Code with options=JSON. 19 new Child DocType designs created with complete field definitions. 4 deprecated fields identified with existing child tables for cleanup (Listing attributes/images/bulk_pricing_tiers, Seller Profile badges). Migration script strategy documented with 4-phase execution order, Frappe patches.txt registration, rollback plan, and code update plan. Python JSON usage patterns documented: 85+ json.loads(), 30+ json.dumps(), 0 frappe.parse_json/frappe.as_json. Key MIGRATE candidates: Commission Rule (6 fields), Payment Intent partial_refunds/fraud_flags, Escrow Account partial_releases, Seller Balance recent_transactions, Review images/flags, Moderation Case detection_flags/moderation_history, Listing Variant/SKU Product/Product Variant images. Committed as 42c6c6b.",
+          "updated_at": "2026-03-02T12:19:04.419318+00:00"
         },
         {
           "id": "subtask-4-2",
@@ -193,8 +194,9 @@
             "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/128.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/128.md | awk '{print ($1 > 100) ? \"OK\" : \"TOO_SHORT\"}'",
             "expected": "OK"
           },
-          "status": "pending",
-          "notes": "Must include: complete inventory of all 73 JSON fields, migrate/keep categorization, Child DocType designs for all MIGRATE fields, migration script outline, rollback strategy, code update plan."
+          "status": "in_progress",
+          "notes": "128.md already exists with 1284 lines from subtask-4-1 session. Reviewing for completeness and adding bench migrate execution details.",
+          "updated_at": "2026-03-02T12:21:36.614465+00:00"
         }
       ]
     },
@@ -405,12 +407,12 @@
   "planStatus": "in_progress",
   "xstateState": "coding",
   "executionPhase": "coding",
-  "updated_at": "2026-03-02T12:00:00.402Z",
+  "updated_at": "2026-03-02T12:20:06.348Z",
   "lastEvent": {
     "eventId": "59779854-085b-4328-b584-335d667acae0",
     "sequence": 0,
     "type": "PLANNING_COMPLETE",
     "timestamp": "2026-03-02T11:16:15.411360+00:00"
   },
-  "last_updated": "2026-03-02T12:03:46.826619+00:00"
+  "last_updated": "2026-03-02T12:21:36.614473+00:00"
 }
