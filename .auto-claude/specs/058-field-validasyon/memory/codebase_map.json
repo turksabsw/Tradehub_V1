@@ -34,7 +34,17 @@
       "description": "Complete field authorization scan across 120+ parent DocTypes, 7 apps, ~4572 total fields. Distribution: ~639 system-generated (14%), ~2280 admin-editable (50%), ~1653 user-editable (36%). Key patterns: (1) fetch_from+read_only:1 is universal for denormalized fields (120+ instances), (2) permlevel:1 used in Organization/Tenant/Seller Profile for admin-only fields, (3) set_only_once:1 is NOT USED ANYWHERE \u2014 critical gap, (4) Most status fields lack read_only:1 despite being workflow-controlled \u2014 another gap, (5) naming_series always hidden:1+reqd:1, (6) Deprecated fields use hidden:1+read_only:1 simultaneously. Turkish roles: Satici=Seller, Satici Admin=Seller Admin, Alici Admin=Buyer Admin, Alici Editor=Buyer Editor, Marka Sahibi=Brand Owner.",
       "category": "field-authorization",
       "discovered_at": "2026-03-02T11:58:29.098939+00:00"
+    },
+    ".auto-claude/specs/058-field-validasyon/outputs/124.md": {
+      "description": "124.md Cascading Discount System plan completed. Key design decisions: (1) Cascading formula final = base * (1-d1/100) * (1-d2/100) * (1-d3/100) always yields higher price than additive, protecting seller revenue, (2) 9 primary DocTypes need schema changes: Order, Quotation, Sub Order, Marketplace Order, Cart, Sub Order Item, Cart Line, Marketplace Order Item, Order Item, (3) Each gets 9 new fields: discount_1/2/3 (Percent, editable), discount_1/2/3_amount (Currency, read_only), total_discount_amount, effective_discount_pct, show_discount_tiers, (4) Existing discount_type + discount_value pattern in Cart Line/Sub Order Item is replaced with percentage-only cascading, (5) Coupon/promotion discounts apply as separate layer AFTER cascading, (6) UI uses progressive disclosure: only D1 visible by default, checkbox reveals D2/D3.",
+      "category": "architecture",
+      "discovered_at": "2026-03-02T12:08:55.349514+00:00"
+    },
+    ".auto-claude/specs/058-field-validasyon/outputs/128.md": {
+      "description": "Complete JSON field inventory: 73 fields across 7 apps (50 JSON + 23 Code+JSON). 25 MIGRATE candidates: Commission Rule 6 fields (restricted_sellers, excluded_sellers, restricted_categories, excluded_categories, day_of_week_restrictions, override_by), Payment Intent 2 (partial_refunds, fraud_flags), Escrow Account 1 (partial_releases), Listing Variant/SKU Product/Product Variant images (3), Review images+flags (2), Message attachments (1), Moderation Case 3 (detection_flags, moderation_history, related_cases), Seller Balance recent_transactions (1), Seller Tier custom_benefits (1), Seller Score special_achievements (1), Listing 3 DEPRECATED (attributes, images, bulk_pricing_tiers), Seller Profile 1 DEPRECATED (badges). 48 KEEP fields: external API responses (8), configuration/templates (17), computed/read-only (7), polymorphic/debug (7), platform-specific/web standard (5), log/diagnostic (4). All apps use standard json.loads/json.dumps exclusively, zero frappe.parse_json/frappe.as_json usage.",
+      "category": "json_field_inventory",
+      "discovered_at": "2026-03-02T12:19:11.816567+00:00"
     }
   },
-  "last_updated": "2026-03-02T11:58:29.098947+00:00"
+  "last_updated": "2026-03-02T12:19:11.816577+00:00"
 }
