@@ -29,7 +29,12 @@
       "description": "Cross-app child DocType numeric field summary: Logistics - Shipping Zone Rate (3 numeric: base_rate[Currency], rate_per_kg[Currency], estimated_days[Int]), Shipping Rate Tier (3 numeric: threshold_from[Float], threshold_to[Float], rate[Float]), Shipping Zone (no numeric). Marketing - Group Buy Tier (5 numeric: min_quantity[Float], max_quantity[Float], share_percent[Percent], unit_price[Currency], discount_percent[Percent read_only]), Wholesale Offer Product (3 numeric: quantity[Float], unit_price[Currency], total_price[Currency read_only]), Coupon Category/Product Item (no numeric). Compliance - Risk Score Factor (3 numeric: weight[Float], normalized_score[Float], weighted_score[Float read_only]). Core - no calculation-relevant numeric child tables.",
       "category": "architecture",
       "discovered_at": "2026-03-02T11:21:03.789204+00:00"
+    },
+    "Frappe_Marketplace/frappe-bench/apps/*/": {
+      "description": "Complete field authorization scan across 120+ parent DocTypes, 7 apps, ~4572 total fields. Distribution: ~639 system-generated (14%), ~2280 admin-editable (50%), ~1653 user-editable (36%). Key patterns: (1) fetch_from+read_only:1 is universal for denormalized fields (120+ instances), (2) permlevel:1 used in Organization/Tenant/Seller Profile for admin-only fields, (3) set_only_once:1 is NOT USED ANYWHERE \u2014 critical gap, (4) Most status fields lack read_only:1 despite being workflow-controlled \u2014 another gap, (5) naming_series always hidden:1+reqd:1, (6) Deprecated fields use hidden:1+read_only:1 simultaneously. Turkish roles: Satici=Seller, Satici Admin=Seller Admin, Alici Admin=Buyer Admin, Alici Editor=Buyer Editor, Marka Sahibi=Brand Owner.",
+      "category": "field-authorization",
+      "discovered_at": "2026-03-02T11:58:29.098939+00:00"
     }
   },
-  "last_updated": "2026-03-02T11:21:12.801899+00:00"
+  "last_updated": "2026-03-02T11:58:29.098947+00:00"
 }

@@ -400,3 +400,576 @@ Int fields:      12
 TOTAL:          136 numeric fields
 
 === subtask-1-1 COMPLETED ===
+
+=== SESSION 3: subtask-2-1 — Parent DocType Field Authorization Scan ===
+
+Started: 2026-03-02
+Task: Scan all parent DocType JSON schemas across 7 tradehub apps, categorize every field into
+      (a) system-generated/locked, (b) admin-editable, (c) user-editable
+
+SCAN RESULTS SUMMARY:
+- Total parent (non-child) DocTypes scanned: 120
+- Total apps scanned: 7
+
+=== FIELD CATEGORIZATION STATISTICS ===
+
+| App | Parent DocTypes | Total Fields | (a) System-Generated | (b) Admin-Editable | (c) User-Editable |
+|-----|----------------|-------------|---------------------|--------------------|--------------------|
+| tradehub_commerce | 22 | 1056 | 147 | 594 | 315 |
+| tradehub_seller | 19 | 971 | 120 | 349 | 502 |
+| tradehub_catalog | 24 | 774 | 69 | 525 | 180 |
+| tradehub_core | 20 | 621 | 63 | 302 | 256 |
+| tradehub_compliance | 23 | ~650 | ~130 | ~280 | ~240 |
+| tradehub_logistics | 7 | ~180 | ~50 | ~90 | ~40 |
+| tradehub_marketing | 9 | ~320 | ~60 | ~140 | ~120 |
+| **TOTAL** | **124** | **~4572** | **~639** | **~2280** | **~1653** |
+
+=== KEY EXISTING PATTERNS DISCOVERED ===
+
+1. read_only:1 + fetch_from — Standard pattern for denormalized display fields:
+   - tenant_name, seller_name, buyer_name, city_name, district_name
+   - ~120 instances across all apps
+   - Always paired: field with fetch_from AND read_only:1
+
+2. hidden:1 — Used on:
+   - naming_series fields (always hidden:1 + reqd:1)
+   - NSM tree fields: lft, rgt, old_parent (in Product Category)
+   - Deprecated/legacy fields (e.g., Seller Profile banking fields, Listing JSON fields)
+   - verification_token in Consent Record
+
+3. set_only_once:1 — NOT USED ANYWHERE in any tradehub app!
+   - This is a GAP — fields like order.buyer, rfq.buyer, listing.seller should be set_only_once
+   - Missing protection on critical linking fields
+
+4. permlevel:1 — Used in:
+   - Organization: verification_status, credit_limit, is_approved_buyer, is_approved_seller
+   - Tenant: subscription_tier, max_sellers, max_listings_per_seller, commission_rate
+   - Seller Profile: verification_status, seller_score, is_restricted, is_top_seller, is_premium_seller
+   - This is the Frappe mechanism for admin-only field write protection
+
+5. Status fields lacking read_only:1:
+   - Most DocType status fields have NO read_only flag despite being workflow-controlled
+   - Currently status can be manually edited; should be locked for most DocTypes
+   - Only protected by workflow validation in Python controllers
+
+=== ROLE PERMISSION STRUCTURE ===
+
+Key DocTypes and their role-based access:
+
+ORDER:
+  System Manager: CRWD
+  Buyer: CRW (if_owner)
+  Seller: RW
+
+QUOTATION:
+  System Manager: CRWD
+  Seller: CRWD (if_owner)
+  Buyer: R only
+
+SUB ORDER:
+  System Manager: CRWD
+  All: RW
+
+CART:
+  System Manager: CRWD
+  All: CRW
+
+LISTING / MARKETPLACE ORDER / BUYER PROFILE:
+  System Manager: CRWD
+  All: CRW
+
+SELLER PROFILE:
+  System Manager: CRWD
+  Satici Admin: CRW
+  Satici (Seller): RW (if_owner)
+  Alici Admin/Editor, Marka Sahibi: R only
+
+TENANT:
+  System Manager: CRWD
+  All other roles: R only
+
+Turkish roles discovered:
+- Satici = Seller
+- Satici Admin = Seller Admin
+- Alici Admin = Buyer Admin
+- Alici Editor = Buyer Editor
+- Marka Sahibi = Brand Owner
+
+=== PER-APP DETAILED CATEGORIZATION ===
+
+--- TRADEHUB_COMMERCE (22 DocTypes) ---
+
+ORDER (autoname: ORD-.#####)
+  (a) SYSTEM: order_number(read_only), status(workflow), buyer_name(fetch_from+ro), buyer_company(fetch_from+ro),
+      buyer_email(fetch_from+ro), buyer_phone(fetch_from+ro), buyer_segment(fetch_from+ro), seller_name(fetch_from+ro),
+      seller_company(fetch_from+ro), seller_email(fetch_from+ro), seller_phone(fetch_from+ro), seller_tier(fetch_from+ro),
+      rfq_title(fetch_from+ro), quotation_amount(fetch_from+ro), tenant_name(fetch_from+ro),
+      subtotal(computed+ro), discount_amount(computed+ro), tax_amount(computed+ro), total_amount(computed+ro),
+      advance_amount(computed+ro), paid_amount(computed+ro), balance_amount(computed+ro),
+      confirmed_date(workflow), processing_start_date(workflow), shipped_date(workflow), delivered_date(workflow), completed_date(workflow),
+      linked_sales_order(ro), linked_purchase_order(ro), linked_invoice(ro), linked_delivery_note(ro)
+  (b) ADMIN: tenant(admin assigns), discount_percentage(pricing override), tax_rate(admin sets),
+      shipping_cost(can be admin-set), payment_status(admin override), advance_percentage(admin config),
+      advance_paid(admin records), cancellation_reason(admin action), cancelled_by(admin), cancellation_date(admin),
+      refund_status(admin), refund_amount(admin), internal_notes(admin-only)
+  (c) USER: buyer(reqd Link), seller(reqd Link), order_date(reqd), order_type(reqd Select), priority(Select),
+      items(child table), currency(Link), payment_terms(Select), incoterm(Select), delivery_days(Int),
+      estimated_delivery_date(Date), shipping_method(Select), shipping_carrier(Data), tracking_number(Data),
+      delivery_address/city/state/country/postal_code/contact(address fields), buyer_notes(Text),
+      seller_notes(Text), rfq(Link), quotation(Link), sample_request(Link)
+
+SUB ORDER (autoname: SO-.YYYY.-.#####)
+  (a) SYSTEM: sub_order_id(read_only+unique), naming_series(hidden), order_date(auto), buyer_name/email/phone/tax_id(ro),
+      subtotal(computed+ro), discount_amount(computed+ro), tax_amount(computed+ro), grand_total(computed+ro),
+      commission_amount(computed+ro), seller_payout(computed+ro), items_packed/shipped/delivered/returned(ro),
+      fully_fulfilled(ro+computed), e_invoice_uuid/number/date/pdf(system), erpnext_*(synced),
+      all timestamps: accepted_at, processing_started_at, packed_at, shipped_at, delivered_at, completed_at,
+      cancelled_at, cancellation_requested_at, cancellation_approved_by, refunded_at, return_requested_at, return_received_at
+  (b) ADMIN: tenant(admin), commission_rate(admin config), payout_status(admin), payment_status(admin),
+      escrow_status(admin), cancellation_approved(admin), refund_amount(admin), refund_status(admin),
+      return_status(admin), internal_notes(admin)
+  (c) USER: marketplace_order(Link), seller(Link), buyer(Link), items(Table), currency(Link),
+      shipping_amount(seller enters), carrier/tracking_number/tracking_url(seller),
+      estimated_delivery_date(seller), shipping_address_*(address), requires_invoice(buyer),
+      invoice_type(buyer), cancellation_requested/reason(user), refund_requested/reason(user),
+      return_requested/reason/tracking_number(user), seller_notes(seller), buyer_notes(buyer)
+
+QUOTATION (autoname: QUO-.#####)
+  (a) SYSTEM: quotation_number(ro), status(workflow), rfq_title/type/deadline/buyer/buyer_company(fetch_from+ro),
+      seller_name/company/email/phone(fetch_from+ro), tenant/tenant_name(fetch_from+ro),
+      subtotal(computed+ro), discount_amount(computed+ro), advance_amount(computed+ro), total_amount(computed+ro),
+      created_date/submitted_date/reviewed_date/decided_date(timestamps+ro), linked_order/sales_order(ro)
+  (b) ADMIN: (none — Quotation is seller-editable)
+  (c) USER: rfq(Link+reqd), seller(Link+reqd), submission_date(Date), validity_date(Date+reqd),
+      items(Table+reqd), currency(Link+reqd), discount_percentage(Percent), tax_amount(Currency),
+      shipping_cost(Currency), delivery_days(Int), estimated_delivery_date(Date), incoterm(Select),
+      shipping_method/from(Select/Data), payment_terms/description(Select/Text), advance_percentage(Percent),
+      production_time_days/notes(Int/Text), minimum_order_quantity(Float), capacity_per_month(Float),
+      available_certifications/notes(Text), seller_notes/terms_and_conditions(Text), attachments(Table),
+      buyer_evaluation_score/notes(Rating/Text), rejection_reason(Text)
+
+RFQ (autoname: RFQ-.YYYY.-.#####)
+  (a) SYSTEM: naming_series(hidden), rfq_code(read_only+unique), published_at(ro), accepted_quote(ro),
+      closed_at(ro), current_views(computed), views_remaining(computed), quote_count(computed)
+  (b) ADMIN: tenant(admin), is_view_limited(admin), max_views(admin)
+  (c) USER: title(Data+reqd), buyer(Link+reqd), status(Select), category(Link), description(Text Editor),
+      items(Table), target_type/sellers/categories(targeting), deadline(Datetime), quantity/unit(Float/Link),
+      budget_min/max(Currency), delivery_date/location(Date/Data), requires_nda/nda_template(Check/Link),
+      attachments(Table), closed_reason(Data), organization(Link), currency(Link), submission_deadline(Datetime),
+      allow_partial_quotes/require_all_items(Check), qty/uom(Float/Link)
+
+CART (autoname: CART-.#####)
+  (a) SYSTEM: All computed totals (subtotal, discount_amount, tax_amount, shipping_amount, grand_total,
+      total_savings, total_weight, total_items, unique_items, seller_count), last_activity(ro),
+      coupon/promotion/bulk discount fields(computed), seller_summary(JSON), session_id(auto),
+      source_info/last_ip/user_agent(auto-captured), cart_token(ro+unique), all timestamps(ro),
+      abandoned flags/recovery
+  (b) ADMIN: coupon_code(admin can apply), is_locked(admin), admin_notes(admin)
+  (c) USER: buyer(Link), items(Table), currency(Link), notes(Text)
+
+MARKETPLACE ORDER (autoname: MKO-.#####)
+  (a) SYSTEM: Similar to Order — order_number(ro), status(workflow), all buyer/seller fetch_from fields(ro),
+      all computed totals(ro), all timestamps(ro), naming_series(hidden)
+  (b) ADMIN: tenant(admin), commission_rate/amount(admin), platform_fee(admin), internal_notes(admin),
+      payment_status(admin), payout_status(admin)
+  (c) USER: buyer(Link), seller(Link), items(Table), currency(Link), payment_method(Select),
+      delivery/billing addresses, buyer_notes/seller_notes(Text)
+
+PAYMENT PLAN (autoname: PP-.#####)
+  (a) SYSTEM: plan_code(ro), status(workflow), created_date(ro), all order fetch_from fields(ro x14),
+      all buyer/seller/tenant fetch_from(ro), paid_amount/pending_amount(computed+ro),
+      paid/pending/overdue_installments(computed+ro), end_date/next_due_date/last_payment_date(computed+ro)
+  (b) ADMIN: late_fee_percentage(admin config), late_fee_flat(admin), grace_period_days(admin),
+      auto_apply_late_fees(admin), internal_notes(admin)
+  (c) USER: order(Link+reqd), plan_type(Select), total_amount(Currency+reqd), currency(Link+reqd),
+      number_of_installments(Int+reqd), installment_frequency(Select), installments(Table+reqd),
+      start_date(Date+reqd), buyer_notes(Text), seller_notes(Text)
+
+COMMISSION PLAN, COMMISSION RULE, TAX RATE, PAYMENT METHOD:
+  All 100% ADMIN-editable (config DocTypes)
+
+INCOTERM PRICE:
+  (a) SYSTEM: incoterm_name(fetch_from+ro), currency_symbol(fetch_from+ro), tenant_name(fetch_from+ro)
+  (b) ADMIN: Most fields (source/destination, incoterm, price_breaks, fees, insurance)
+  (c) USER: None (admin-only config DocType)
+
+ESCROW ACCOUNT, ESCROW EVENT, ORDER EVENT, PAYMENT INTENT:
+  Primarily SYSTEM-generated (event/transaction logging)
+  Some ADMIN fields for configuration
+  Minimal USER fields (billing address on Payment Intent)
+
+ACCOUNT ACTION:
+  Primarily ADMIN-editable (financial config)
+
+RFQ MESSAGE/THREAD/NDA/QUOTE/REVISION:
+  Mix of SYSTEM (timestamps, auto-links) and USER (message content, terms)
+
+--- TRADEHUB_SELLER (19 DocTypes) ---
+
+LISTING (autoname: LST-.#####)
+  (a) SYSTEM: listing_code(ro+unique), naming_series(hidden), seller_name(fetch_from+ro), tenant/tenant_name(fetch_from+ro),
+      view_count/favorite_count/order_count/conversion_rate(ro+computed), total_revenue(ro+computed),
+      average_rating/review_count(ro+computed), buy_box_status/winner(ro+system), overall_score(ro),
+      images(JSON+hidden - deprecated), price_tiers(JSON+hidden - deprecated), attributes(JSON+hidden - deprecated),
+      erpnext_item_code(ro), listing_url(ro), created_at(ro), last_published_at(ro), deactivated_at(ro)
+  (b) ADMIN: status(workflow), is_featured/featured_from/featured_until(admin), quality_score(admin),
+      position/display_priority(admin), internal_notes(admin), is_buybox_eligible(admin)
+  (c) USER: title(reqd), slug(Data), seller(Link+reqd), category(Link+reqd), description(Text Editor),
+      short_description(Text), base_price/compare_at_price/currency(pricing), min_order_qty/max_order_qty/stock_quantity(inventory),
+      sku/barcode/hs_code(identifiers), images(Table), variants(Table), pricing_tiers(Table), tags(Data),
+      weight/dimensions(Float), country_of_origin(Link), lead_time_days(Int), seo_title/description/keywords(Data/Text)
+
+SELLER PROFILE (autoname: SELLER-.#####)
+  (a) SYSTEM: verified_at/by(ro), seller_score(ro+permlevel:1), total_sales_count/amount(ro),
+      average_rating/total_reviews(ro), order_fulfillment_rate/on_time_delivery_rate/return_rate(ro),
+      response_time_hours/cancellation_rate/complaint_rate/positive_feedback_rate(ro),
+      last_metrics_update(ro), joined_at/last_active_at(ro), created_by/modified_by(ro),
+      bank_name/branch/iban/account_holder/swift(deprecated+hidden+ro), badges(JSON+hidden+ro - deprecated)
+  (b) ADMIN: status(workflow+reqd), verification_status(permlevel:1), kyc_profile(Link), identity/business/bank_verified(Check),
+      verification_notes(Text), seller_tier(Link), commission_plan(Link), max_listings(Int),
+      is_restricted/restriction_reason/restricted_at(permlevel:1), can_sell/can_withdraw/can_create_listings(Check),
+      is_featured/featured_from/featured_until(Check/Datetime), is_top_seller/is_premium_seller(permlevel:1),
+      tenant(admin+conditional read_only)
+  (c) USER: seller_name(reqd), user(Link+reqd+unique), seller_type(Select+reqd), organization(Link),
+      display_name/contact_email/phone/mobile/whatsapp/website(Data), address_*(Data), addresses/locations(Table),
+      tax_id/tax_office/trade_registry/mersis(Data), e_invoice_registered/alias(Check/Data),
+      bank_accounts(Table), payout_method(Select), default_shipping_rule/return_policy(Link/Data),
+      auto_accept_orders/accepts_returns/vacation_mode(Check), district/neighborhood(Link)
+
+SKU PRODUCT (autoname: SKU-.#####)
+  (a) SYSTEM: seller_name(fetch_from+ro), tenant/tenant_name(fetch_from+ro), category_name(fetch_from+ro),
+      brand_name(fetch_from+ro), images(JSON+hidden), erpnext_item_code(ro)
+  (b) ADMIN: status(workflow), internal_notes(admin)
+  (c) USER: sku_code(reqd+unique), product_name(reqd), is_published(Check), seller(Link+reqd),
+      category/brand(Link), description(Text), base_price/currency(Currency/Link), stock quantities,
+      dimensions, hs_code/country_of_origin, lead_time_days, seo fields, tags, sync_with_erpnext
+
+SELLER SCORE, SELLER KPI, SELLER METRICS, SELLER BALANCE, BUY BOX ENTRY:
+  Primarily SYSTEM-generated (computed metrics/scores)
+  Some ADMIN fields (bonus_points, weight configs, admin notes)
+  Minimal USER fields
+
+KPI TEMPLATE, SELLER LEVEL, SELLER TIER, SELLER TAG, SELLER TAG RULE:
+  100% ADMIN-editable (configuration DocTypes)
+
+SELLER APPLICATION (autoname: SAPP-.#####)
+  (a) SYSTEM: application_code(ro+unique), submitted_at/approved_at/rejected_at(ro), created_at/by(ro)
+  (b) ADMIN: status(workflow), reviewer/review_notes/review_date(admin), reason/rejection_reason(admin),
+      tenant(admin)
+  (c) USER: application_type(Select), seller_type(Select), company_name/trade_name(Data),
+      contact info, address, tax info, business info, documents, categories
+
+SELLER STORE (autoname: STORE-.#####)
+  (a) SYSTEM: store_code(ro+unique), seller_name/tenant/tenant_name(fetch_from+ro),
+      created_date(ro), last_published(ro), modified_by_user(ro), page_views(ro+computed)
+  (b) ADMIN: status(workflow)
+  (c) USER: All content/config (store_name, is_published, seller, logo/banner, tagline, about,
+      theme/layout/colors/fonts, display toggles, contact info, social URLs, SEO fields,
+      analytics IDs, policies, currency/language/timezone)
+
+LISTING VARIANT (autoname: naming_series)
+  (a) SYSTEM: naming_series(hidden), all fetch_from fields(ro), erpnext_item_code(ro)
+  (b) ADMIN: status(workflow)
+  (c) USER: variant_name/code(Data), listing(Link), attributes JSON, pricing, stock, images
+
+PREMIUM SELLER (autoname: PSELL-.#####)
+  (a) SYSTEM: seller_name(fetch_from+ro), tenant/tenant_name(fetch_from+ro), various computed metrics(ro),
+      api_key/usage(ro), timestamps(ro)
+  (b) ADMIN: status(workflow), verification_level(admin), commission_overrides(admin),
+      account_manager(Link), subscription dates
+  (c) USER: seller_profile(Link+reqd), company info, certifications, documents, preferences
+
+SKU (autoname: field:sku_code)
+  (a) SYSTEM: reserved_qty/available_qty/committed_qty/incoming_qty(ro+computed), profit_margin(ro+computed),
+      last_purchase_price(ro), total_sold/received(ro+computed), last_sold_at/received_at(ro),
+      turnover_rate(ro), stock_count timestamps(ro)
+  (b) ADMIN: status(workflow), tenant(admin)
+  (c) USER: sku_code(reqd+unique), sku_name(Data), seller(Link+reqd), product_type/listing/listing_variant(Select/Link),
+      category/brand/manufacturer(Data/Link), warehouse(Data), stock quantities, inventory config,
+      barcode/gtin/upc/ean/mpn(identifiers), pricing(cost/selling/compare), dimensions/weight,
+      storage/bin location, shelf_life/expiry, supplier info, erpnext links, sync toggle, notes
+
+--- TRADEHUB_CATALOG (24 DocTypes) ---
+
+PIM PRODUCT (autoname: format:{product_code})
+  ~144 total fields, heaviest DocType in the system
+  (a) SYSTEM: ~19 fields — naming_series(hidden), url_slug(auto), completeness_score/status/detail(ro+computed),
+      channel_completeness(ro+computed), last_sync/erpnext_last_sync(timestamps), erpnext_sync_error(ro),
+      created_by_user/last_modified_by_user(ro), version_number(ro+auto-incremented), workflow_state(ro),
+      approved_by/approved_on(ro), published_on/unpublished_on(timestamps+ro)
+  (b) ADMIN: ~17 fields — status(workflow), is_active/is_published/is_featured(admin toggles),
+      meta_title/description/keywords/canonical_url(SEO overrides), structured_data/schema_type(SEO),
+      rejection_reason(admin), erpnext_item_code/sync_to_erpnext(integration), publish_scheduled(admin)
+  (c) USER: ~108 fields — product_code/product_name(reqd), product_class/product_family(Link),
+      brand/category/subcategory(Link), descriptions(Table), attribute_values(Table), prices(Table),
+      media(Table), dimensions/weight, tax/compliance, marketplace-specific fields (Amazon/eBay/Alibaba/
+      Trendyol/Hepsiburada/N11), external migration IDs
+
+PRODUCT CATEGORY (autoname: field:category_name, is_tree:1)
+  (a) SYSTEM: level(ro+computed), full_path(ro+computed), parent_category_name(fetch_from+ro),
+      tenant_name(fetch_from+ro), url_slug(auto+unique), lft/rgt/old_parent(NSM tree+hidden+ro)
+  (b) ADMIN: is_group(tree structure), enabled(toggle), tenant(admin), is_global(admin),
+      seo_title/description/keywords(SEO), display_order/show_in_menu/show_in_filters/featured(admin display)
+  (c) USER: category_name(reqd+unique), category_code(Data), parent_product_category(Link),
+      description(Text), image(Attach Image)
+
+BRAND (autoname: field:brand_name)
+  (a) SYSTEM: slug(auto), products_count/listings_count(ro+computed), tenant_name(fetch_from+ro), timestamps(ro)
+  (b) ADMIN: status(workflow), is_verified/verified_at/verified_by(admin), is_featured/featured_order(admin),
+      tenant(admin), is_official/is_protected(admin)
+  (c) USER: brand_name(reqd+unique), brand_code(Data), description(Text), logo/banner(Attach),
+      website/social URLs, country_of_origin(Link)
+
+MEDIA ASSET (autoname: MEDIA-.#####)
+  ~63 fields — heaviest on system-generated (37)
+  (a) SYSTEM: ~37 fields — file_size/dimensions/format(auto-extracted), thumbnail/optimized/webp URLs(auto),
+      dominant_colors/exif_data(JSON+auto), all variation URLs(auto), processing_status(system),
+      ai_description/tags/detected_objects/quality_score(AI-computed), upload timestamps, usage_count(computed)
+  (b) ADMIN: ~7 fields — is_approved(admin), review_status/notes(admin), is_primary(admin), tenant(admin)
+  (c) USER: ~19 fields — title(reqd), alt_text(Data), description(Text), media_type/file_type(Select),
+      file_url(Attach+reqd), source/tags/category(Data/Link), copyright info
+
+PRODUCT CLASS, PRODUCT FAMILY, RANKING WEIGHT CONFIG, FILTER CONFIG,
+CATEGORY DISPLAY SCHEMA, SEO META, SALES CHANNEL:
+  Primarily ADMIN-editable (configuration/schema DocTypes)
+
+ATTRIBUTE, ATTRIBUTE SET, PIM ATTRIBUTE, PIM ATTRIBUTE GROUP,
+PRODUCT ATTRIBUTE, PRODUCT ATTRIBUTE GROUP, PRODUCT ATTRIBUTE VALUE:
+  Mix of USER-editable (name, description, values) and ADMIN (config flags, display order, tenant)
+
+PRODUCT, PRODUCT VARIANT, PIM PRODUCT VARIANT, BRAND GATING, MEDIA LIBRARY:
+  Mix of all three categories depending on field type
+
+--- TRADEHUB_CORE (20 DocTypes) ---
+
+BUYER PROFILE (autoname: BUYER-.#####)
+  (a) SYSTEM: ~17 fields — buyer_code(ro+unique), full_name(ro+computed), verified_at/by(ro),
+      total_orders/total_spent/average_order_value(ro+computed), buyer_score(ro+computed),
+      last_order_date/last_active_at/joined_at(ro), created_by/modified_by(ro),
+      deprecated address fields(ro+hidden)
+  (b) ADMIN: ~9 fields — status(workflow), verification_status(permlevel:1), buyer_level(admin),
+      tenant(admin), credit_limit(permlevel:1), is_approved(permlevel:1), internal_notes(admin),
+      preferred_payment_terms(admin)
+  (c) USER: ~30 fields — buyer_name(reqd), user(Link+reqd+unique), company_name(Data),
+      buyer_type/segment(Select), email/phone/mobile/whatsapp(Data), website(URL),
+      interests(Table), addresses(Table), tax_id/tax_office(Data),
+      preferred_language/currency/contact_method(Select/Link), notification settings(Check)
+
+TENANT (autoname: TEN-.#####)
+  (a) SYSTEM: created_by/modified_by(ro)
+  (b) ADMIN: status(workflow), subscription_tier(permlevel:1), default_tax_rate(Link),
+      e_invoice/e_archive_enabled(Check), max_sellers/max_listings_per_seller(permlevel:1),
+      commission_rate(permlevel:1), currency(Link), subscription_start/end_date(Date)
+  (c) USER: tenant_name(reqd+unique), company_name(reqd), contact_email(reqd)/phone(Data),
+      website(URL), address_*(Data), tax_id/tax_office(Data), country(Link)
+
+ORGANIZATION (autoname: ORG-.#####)
+  (a) SYSTEM: verified_at/by(ro), created_by/modified_by(ro)
+  (b) ADMIN: status(workflow), verification_status(permlevel:1), documents/tax/trade_verified(Check),
+      kyb_notes(Text), credit_limit(permlevel:1+Currency), payment_terms(Link),
+      is_approved_buyer/seller(permlevel:1), can_use_credit(Check), erpnext_customer(Link)
+  (c) USER: organization_name(reqd), organization_type(Select+reqd), industry(Link),
+      primary_contact_name/designation(Data), email/phone/mobile/fax/website(Data),
+      address(Data), tax_id/tax_office(reqd), trade_registry/mersis(Data),
+      e_invoice registered/alias, employee_count/annual_revenue/founded_year(Select/Int),
+      description(Text), organization_members(Table)
+
+KYC PROFILE (autoname: KYC-.#####)
+  (a) SYSTEM: ~22 fields — user(unique+reqd), full_name(ro), verification_status/provider/reference(ro),
+      verified_at/by(ro), id/address/liveness_verified(ro), aml_check_*(ro),
+      sanctions_status/adverse_media_status(ro), risk_score/factors/last_assessment(ro),
+      rejection_date(ro), created_by/modified_by(ro), ai_audit_status(ro)
+  (b) ADMIN: ~18 fields — status(workflow), risk_level(Select), verification_method(Select),
+      pep_status(Select), next_review_date(Date), kvkk_consent_version(Data),
+      rejection_reason/notes(Select/Text), can_reapply/reapply_after(Check/Date),
+      internal_notes(Text), buyer/seller_profile(Link), ai_audit_enabled(Check)
+  (c) USER: ~41 fields — profile_type(Select+reqd), first/middle/last_name(Data+reqd),
+      date_of_birth(Date+reqd), gender/nationality/place_of_birth(Select/Link/Data),
+      parent names, ID documents(type/number/expiry + images), contact info(email/phone/mobile),
+      address fields, document uploads, consent fields(kvkk/data_processing/marketing/third_party),
+      tax_id/tax_id_type/document_name(Data/Select)
+
+CITY, DISTRICT, NEIGHBORHOOD, COMMERCIAL REGION, PHONE CODE:
+  Primarily ADMIN-editable (geographic master data)
+  Geographic cascade: District→city/city_name(fetch_from+ro), Neighborhood→district/city fields(fetch_from+ro)
+
+ECA RULE, ECA ACTION TEMPLATE:
+  100% ADMIN-editable (event-condition-action configuration)
+
+ECA RULE LOG:
+  100% SYSTEM-generated (pure audit log, no create/write for standard roles)
+
+ANALYTICS SETTINGS, ERPNEXT INTEGRATION SETTINGS, KEYCLOAK SETTINGS:
+  100% ADMIN-editable (system integration configuration)
+  Some SYSTEM fields for connection status, last sync, counters
+
+NOTIFICATION TEMPLATE:
+  100% ADMIN-editable (template configuration)
+
+IMPORT JOB (autoname: IMP-.#####)
+  (a) SYSTEM: ~26 fields — status(workflow), original_filename/file_size(auto-extracted),
+      all processing counters(ro), all timestamps(ro), error/success/log URLs(ro),
+      notification_sent flags(ro), retry tracking(ro), naming_series(hidden),
+      created_by/worker_id/job_id(ro)
+  (b) ADMIN: ~2 fields — skip_validation(admin override), tenant(admin)
+  (c) USER: ~23 fields — import_name(reqd), import_type(Select+reqd), seller(Link),
+      import_file(Attach+reqd), file_format/encoding/delimiter(Select), has_header_row(Check),
+      category/default_status(Link/Select), update_existing/stop_on_error(Check),
+      batch_size/max_retries(Int), column_mapping/field_defaults(JSON),
+      notify_on_completion/notification_email(Check/Data), priority(Select)
+
+PREMIUM BUYER (autoname: PREM-BUYER-.#####)
+  (a) SYSTEM: ~30 fields — buyer_name(fetch_from+ro), tenant/tenant_name(fetch_from+ro),
+      premium_since(ro), subscription_plan_name(fetch_from+ro), average_order_value(ro+computed),
+      all activity metrics(ro+computed), api_key/usage fields(ro), buyer_score(ro+computed),
+      all rate metrics(ro), timestamps(ro)
+  (b) ADMIN: ~10 fields — status(workflow), subscription_status/start/end_date(admin),
+      verification_level(Select), kyc/credit_verified(Check), account_manager(Link)
+  (c) USER: ~36 fields — buyer_profile(Link+reqd+unique), buyer_type(Select),
+      subscription_plan(Link), auto_renew(Check), company info, procurement details,
+      sourcing preferences, quality/compliance/sustainability requirements,
+      business documents, preferences (language/contact/timezone/notifications)
+
+BUYER CATEGORY, BUYER LEVEL:
+  100% ADMIN-editable (buyer tier/level configuration)
+
+--- TRADEHUB_COMPLIANCE (23 DocTypes) ---
+
+REVIEW (autoname: REV-.#####)
+  (a) SYSTEM: calculated fields(ro), media/response JSON(system), timestamps(ro), helpful_count(ro)
+  (b) ADMIN: moderation_status(admin), moderation_notes(admin), is_featured/verified(admin)
+  (c) USER: rating(reqd), title(Data), body(Text), reviewer/reviewer_name(Link/Data)
+
+MODERATION CASE (autoname: MOD-.#####)
+  (a) SYSTEM: evidence/detection_flags/moderation_history JSON(system), timestamps(ro), auto-computed scores(ro)
+  (b) ADMIN: status(workflow), assigned_to(Link), priority(Select), moderation_decision/notes(admin),
+      penalty_type/points(admin), escalation fields
+  (c) USER: reporter/reported_type/reported_item(Link/Select), reason/description(Select/Text)
+
+CONTRACT TEMPLATE, CONTRACT RULE, CERTIFICATE, CERTIFICATE_TYPE:
+  Primarily ADMIN-editable (legal/compliance configuration)
+
+CONTRACT INSTANCE, CONTRACT REVISION, MARKETPLACE CONTRACT INSTANCE:
+  Mix of SYSTEM (computed/auto-linked) and USER (party selection, signatures)
+
+CONSENT RECORD, CONSENT TOPIC, CONSENT TEXT, CONSENT CHANNEL, CONSENT METHOD,
+CONSENT AUDIT LOG, MARKETPLACE CONSENT RECORD:
+  Consent management — mix of all three categories
+
+ESIGN PROVIDER, ESIGN TRANSACTION:
+  ADMIN config (providers) + SYSTEM-generated (transactions)
+
+MESSAGE, MESSAGE THREAD:
+  (a) SYSTEM: timestamps, read tracking
+  (c) USER: content, sender, attachments
+
+RISK SCORE (autoname: expression)
+  Almost entirely SYSTEM-generated (scoring factors, computed scores, alerts)
+  Some ADMIN fields (bonus_points, weight configs, internal/external_notes)
+
+SAMPLE REQUEST (autoname: SMP-.#####)
+  (a) SYSTEM: product_name/sku_code/status(fetch_from+ro), seller/tenant fields(fetch_from+ro),
+      buyer_name/company/email/phone(fetch_from+ro), total_cost(computed+ro),
+      credited_amount/order(ro), approved_date(ro), variant_name(fetch_from+ro)
+  (b) ADMIN: payment_status(admin), credit_percentage(admin), internal_notes(admin)
+  (c) USER: request_date(reqd), sample_type(reqd Select), priority(Select), sku_product(Link+reqd),
+      buyer(Link+reqd), quantity(Int+reqd), variant(Link), specifications/customization_notes(Text),
+      sample_price/currency/shipping_cost(Currency/Link), shipping_address/city/country(Data/Link),
+      shipping_method/tracking_number/carrier(Select/Data), production_start_date/shipped_date/delivered_date(Date),
+      credit_to_order(Check), buyer_feedback/quality_rating/approval_decision/rejection_reason(Text/Rating/Select),
+      seller_notes(Text)
+
+--- TRADEHUB_LOGISTICS (7 DocTypes) ---
+
+SHIPMENT (autoname: SHP-.#####)
+  (a) SYSTEM: tracking/status timestamps(ro), auto-linked references(ro)
+  (b) ADMIN: carrier assignments, rate overrides
+  (c) USER: origin/destination addresses, package details, notes
+
+TRACKING EVENT (autoname: hash)
+  Primarily SYSTEM-generated (tracking data, raw_data JSON)
+
+CARRIER, LOGISTICS PROVIDER, LEAD TIME:
+  Primarily ADMIN-editable (configuration)
+
+MARKETPLACE SHIPMENT:
+  Mix of SYSTEM (computed, timestamps) and USER (address, package info)
+
+SHIPPING RULE:
+  Primarily ADMIN-editable (rate configuration with child tables)
+
+--- TRADEHUB_MARKETING (9 DocTypes) ---
+
+COUPON (autoname: naming_series)
+  (a) SYSTEM: naming_series(hidden), usage_count(ro+computed), total_discount_given(ro),
+      timestamps(ro), tenant_name(fetch_from+ro)
+  (b) ADMIN: is_active(admin toggle), tenant(admin), budget_limit(Currency),
+      usage limits, validity dates, min/max_order_value restrictions
+  (c) USER: coupon_code(reqd+unique), coupon_name(Data), discount_type/value(Select/Float),
+      description(Text), categories/products(Table)
+
+GROUP BUY (autoname: GB-.#####)
+  (a) SYSTEM: naming_series(hidden), current_quantity(ro+computed), progress_percentage(ro+computed),
+      total_revenue(ro+computed), participant_count(ro+computed), timestamps(ro),
+      product_name/seller_name/tenant_name(fetch_from+ro)
+  (b) ADMIN: status(workflow), is_featured(admin), tenant(admin), admin_notes(admin)
+  (c) USER: title(reqd), product/seller(Link), tiers(Table), description(Text),
+      start/end_date, minimum/target/maximum_quantity, base_price/currency,
+      terms_and_conditions(Text)
+
+WHOLESALE OFFER (autoname: WO-.#####)
+  (a) SYSTEM: naming_series(hidden), total_quantity/total_value(ro+computed), order_count(ro+computed),
+      seller_name/tenant_name(fetch_from+ro), timestamps(ro)
+  (b) ADMIN: status(workflow), tenant(admin), is_featured(admin), internal_notes(admin)
+  (c) USER: title(reqd), seller(Link+reqd), products(Table+reqd), description(Text),
+      valid_from/until(Date), min_order_value/currency(Currency/Link), terms(Text)
+
+GROUP BUY COMMITMENT, GROUP BUY PAYMENT:
+  Mix of SYSTEM (timestamps, computed) and USER (buyer, quantity, payment)
+
+CAMPAIGN, SUBSCRIPTION, SUBSCRIPTION PACKAGE, STOREFRONT:
+  Mix of ADMIN config and USER content
+
+=== CROSS-CUTTING PATTERNS ===
+
+1. NAMING_SERIES PATTERN: Always {hidden:1, reqd:1, fieldtype:"Select"}
+   Found in: 30+ DocTypes
+
+2. FETCH_FROM + READ_ONLY PATTERN: 120+ instances
+   Most common chains:
+   - buyer → buyer_name, buyer_company, buyer_email, buyer_phone, buyer_segment
+   - seller → seller_name, seller_company, seller_email, seller_phone
+   - sku_product → product_name, sku_code, seller, seller_name, tenant, tenant_name
+   - tenant → tenant_name
+   - district → district_name, city, city_name, region
+   - order → order_number, order_date, status, total_amount, buyer, seller, tenant (all)
+
+3. COMPUTED TOTALS PATTERN: Always {read_only:1, default:"0"}
+   Found on: subtotal, discount_amount, tax_amount, total_amount, grand_total,
+   commission_amount, seller_payout, paid_amount, balance_amount, total_cost
+
+4. TIMESTAMP PATTERN: Always {read_only:1, fieldtype:"Datetime"}
+   Found on: created_at, modified_at, verified_at, approved_at, submitted_at,
+   rejected_at, cancelled_at, shipped_at, delivered_at, completed_at, etc.
+
+5. TENANT ISOLATION PATTERN:
+   - With fetch_from: {fetch_from:"X.tenant", read_only:1} — SYSTEM
+   - Without fetch_from: {fieldtype:"Link", options:"Tenant"} — ADMIN
+   - tenant_name always: {fetch_from:"tenant.tenant_name", read_only:1} — SYSTEM
+
+6. PERMLEVEL:1 PATTERN (Admin-only write protection):
+   Used in: Organization, Tenant, Seller Profile
+   Fields: verification_status, credit_limit, is_approved_*, subscription_tier,
+           max_sellers, commission_rate, seller_score, is_restricted, is_top_seller
+
+7. STATUS FIELD GAP:
+   Most status fields (Select) have NO read_only:1 flag
+   They are workflow-controlled but can currently be manually edited
+   RECOMMENDATION: Add read_only:1 + permlevel:1 to all status fields
+
+8. SET_ONLY_ONCE GAP:
+   NOT USED ANYWHERE in any tradehub app
+   Should be added to: buyer (on Order), seller (on Quotation, Listing),
+   user (on Seller Profile, Buyer Profile), sku_product (on Sample Request)
+
+=== subtask-2-1 COMPLETED ===
