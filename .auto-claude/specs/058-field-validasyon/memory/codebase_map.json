@@ -44,7 +44,12 @@
       "description": "Complete JSON field inventory: 73 fields across 7 apps (50 JSON + 23 Code+JSON). 25 MIGRATE candidates: Commission Rule 6 fields (restricted_sellers, excluded_sellers, restricted_categories, excluded_categories, day_of_week_restrictions, override_by), Payment Intent 2 (partial_refunds, fraud_flags), Escrow Account 1 (partial_releases), Listing Variant/SKU Product/Product Variant images (3), Review images+flags (2), Message attachments (1), Moderation Case 3 (detection_flags, moderation_history, related_cases), Seller Balance recent_transactions (1), Seller Tier custom_benefits (1), Seller Score special_achievements (1), Listing 3 DEPRECATED (attributes, images, bulk_pricing_tiers), Seller Profile 1 DEPRECATED (badges). 48 KEEP fields: external API responses (8), configuration/templates (17), computed/read-only (7), polymorphic/debug (7), platform-specific/web standard (5), log/diagnostic (4). All apps use standard json.loads/json.dumps exclusively, zero frappe.parse_json/frappe.as_json usage.",
       "category": "json_field_inventory",
       "discovered_at": "2026-03-02T12:19:11.816567+00:00"
+    },
+    ".auto-claude/specs/058-field-validasyon/outputs/134.md": {
+      "description": "Complete auto-fill gap analysis: 309 existing fetch_from across 7 apps, 715 total Link fields, ~185 recommended new fetch_from fields. Biggest gaps: tenant_name missing in 55+ DocTypes, seller_name in 35+, Cart Line/Sub Order/Sub Order Item/Marketplace Order Item have ZERO fetch_from. 19 DocTypes identified as 'critical zero-fetch_from' (have Link fields but no fetch_from at all). 4-phase implementation: Phase A (Core entities, 60 fields), Phase B (Commerce flow, 40 fields), Phase C (Universal tenant_name, 55 fields), Phase D (Auxiliary, 30 fields). JS change handlers needed for geographic cascade on Seller Profile, category->subcategory on Listing, tenant isolation filters universally.",
+      "category": "fetch_from_gap_analysis",
+      "discovered_at": "2026-03-02T12:31:12.284999+00:00"
     }
   },
-  "last_updated": "2026-03-02T12:19:11.816577+00:00"
+  "last_updated": "2026-03-02T12:31:12.285012+00:00"
 }
