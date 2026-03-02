@@ -1,0 +1,35 @@
+{
+  "discovered_files": {
+    ".auto-claude/specs/058-field-validasyon/implementation_plan.json": {
+      "description": "Complete parent\u2192child table mapping for calculation-bearing child tables (22 total): COMMERCE: Order\u2192items\u2192Order Item, Sub Order\u2192items\u2192Sub Order Item, Quotation\u2192items\u2192Quotation Item, RFQ\u2192items\u2192RFQ Item, Cart\u2192items\u2192Cart Line, Marketplace Order\u2192items\u2192Marketplace Order Item, Commission Plan\u2192category_rates\u2192Commission Plan Rate, Payment Plan\u2192installments\u2192Payment Installment, Incoterm Price\u2192price_breaks\u2192Price Break, RFQ Quote\u2192items\u2192RFQ Quote Item. SELLER: KPI Template\u2192items\u2192KPI Template Item, Listing\u2192pricing_tiers\u2192Listing Bulk Pricing Tier, Seller Level\u2192benefits\u2192Seller Level Benefit. CATALOG: Product\u2192pricing_tiers\u2192Product Pricing Tier, PIM Product\u2192prices\u2192PIM Product Price, Product Class\u2192completeness_rules\u2192Completeness Rule. LOGISTICS: Shipping Rule\u2192zones\u2192Shipping Zone Rate (via Shipping Zone Rate child), Shipping Rule\u2192rate_tiers\u2192Shipping Rate Tier. MARKETING: Group Buy\u2192tiers\u2192Group Buy Tier, Wholesale Offer\u2192products\u2192Wholesale Offer Product. COMPLIANCE: Risk Score\u2192scoring_factors\u2192Risk Score Factor. Also Cart\u2192items\u2192Cart Item exists as alternative/separate child table.",
+      "category": "architecture",
+      "discovered_at": "2026-03-02T11:21:12.801893+00:00"
+    },
+    "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.py": {
+      "description": "Canonical dual-layer calculation pattern: order.py calculate_totals() implements subtotal=sum(items.amount), discount_amount=subtotal*discount_percentage/100, tax_amount=(subtotal-discount_amount)*tax_rate/100, total_amount=subtotal-discount+tax+shipping. Uses flt() for all numeric ops. Mirrored identically in order.js for client-side UX.",
+      "category": "pattern",
+      "discovered_at": "2026-03-02T11:15:14.863029+00:00"
+    },
+    "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/": {
+      "description": "Commerce app has 18 child DocTypes. 11 have numeric calculation fields: Order Item (10 numeric: quantity, unit_price, discount_percentage, discount_amount, tax_rate, tax_amount, amount, lead_time_days, available_stock, weight), Sub Order Item (16 numeric: qty, delivered_qty, returned_qty, unit_price, compare_at_price, discount_value, discount_amount, line_subtotal, tax_rate, tax_amount, line_total, commission_rate, commission_amount, weight, shipping_amount, handling_days), Quotation Item (7 numeric: quantity, unit_price, amount, lead_time_days, available_stock, moq, max_quantity), RFQ Item (2 numeric: quantity, target_price), Cart Line (13 numeric: qty, unit_price, compare_at_price, line_total, discount_value, discount_amount, discounted_price, tax_rate, tax_amount, taxable_amount, weight, shipping_estimate, available_at_add), Marketplace Order Item (16 numeric), Cart Item (9 numeric: qty, available_qty, unit_price, original_price, price_change_amount, line_subtotal, discount_amount, tax_amount, line_total), Commission Plan Rate (4 numeric: commission_rate, minimum_commission, maximum_commission, fixed_amount), Payment Installment (6 numeric: installment_number, amount, paid_amount, days_overdue, late_fee_amount, total_due), Price Break (4 numeric: min_qty, max_qty, unit_price, discount_percent), RFQ Quote Item (4 numeric: qty, unit_price, total_price, lead_time_days).",
+      "category": "architecture",
+      "discovered_at": "2026-03-02T11:20:51.931982+00:00"
+    },
+    "Frappe_Marketplace/frappe-bench/apps/tradehub_seller/": {
+      "description": "Seller app has 14 child DocTypes. 3 have significant numeric fields: KPI Template Item (8 numeric: weight, display_order, target_value, warning_threshold, critical_threshold, max_score, bonus_multiplier, decimal_places), Listing Bulk Pricing Tier (4 numeric: min_qty[Int], max_qty[Int], price[Currency], discount_percentage[Percent]), Seller Level Benefit (1 numeric: display_order[Int]). Non-numeric child DocTypes: Listing Image, Listing Attribute Value, Listing Variant Attribute, Related Listing Product, Seller Application Category/Document/History, Seller Badge, Seller Bank Account, Seller Certification, Seller Tag Rule Condition.",
+      "category": "architecture",
+      "discovered_at": "2026-03-02T11:20:54.106426+00:00"
+    },
+    "Frappe_Marketplace/frappe-bench/apps/tradehub_catalog/": {
+      "description": "Catalog app has 28 child DocTypes. 3 have significant numeric fields: Product Pricing Tier (5 numeric: min_qty[Float], max_qty[Float], unit_price[Currency], discount_percentage[Percent read_only], discount_amount[Currency read_only]), PIM Product Price (3 numeric: price[Currency], min_qty[Float], max_qty[Float]), Completeness Rule (7 numeric: weight[Float], min_value[Float], max_value[Float], min_length[Int], max_length[Int], min_media_count[Int], max_media_count[Int]). Most catalog child DocTypes are non-numeric (attribute sets, labels, descriptions, media, categories, etc.).",
+      "category": "architecture",
+      "discovered_at": "2026-03-02T11:20:57.624240+00:00"
+    },
+    "Frappe_Marketplace/frappe-bench/apps/": {
+      "description": "Cross-app child DocType numeric field summary: Logistics - Shipping Zone Rate (3 numeric: base_rate[Currency], rate_per_kg[Currency], estimated_days[Int]), Shipping Rate Tier (3 numeric: threshold_from[Float], threshold_to[Float], rate[Float]), Shipping Zone (no numeric). Marketing - Group Buy Tier (5 numeric: min_quantity[Float], max_quantity[Float], share_percent[Percent], unit_price[Currency], discount_percent[Percent read_only]), Wholesale Offer Product (3 numeric: quantity[Float], unit_price[Currency], total_price[Currency read_only]), Coupon Category/Product Item (no numeric). Compliance - Risk Score Factor (3 numeric: weight[Float], normalized_score[Float], weighted_score[Float read_only]). Core - no calculation-relevant numeric child tables.",
+      "category": "architecture",
+      "discovered_at": "2026-03-02T11:21:03.789204+00:00"
+    }
+  },
+  "last_updated": "2026-03-02T11:21:12.801899+00:00"
+}

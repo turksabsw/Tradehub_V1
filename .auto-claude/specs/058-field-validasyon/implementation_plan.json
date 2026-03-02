@@ -1,0 +1,411 @@
+{
+  "feature": "TradeHub Field Validation & Calculation Planning Documents",
+  "workflow_type": "feature",
+  "workflow_rationale": "Five independent planning deliverables that define new functionality across the TradeHub platform. Each document plans a distinct feature subsystem (calculations, authorization, discounts, migrations, auto-fill) for future implementation. Although output is .md only, the workflow follows feature structure with parallel independent phases.",
+  "phases": [
+    {
+      "id": "phase-1-108",
+      "name": "108.md — Child Table Calculation Functions Plan",
+      "type": "implementation",
+      "description": "Scan all TradeHub DocTypes for child tables with numeric calculation needs. Document every child table row formula (e.g., amount = qty * rate) and parent summary aggregation (e.g., grand_total = sum(items.amount)). Plan dual JS+Python implementation. Produce 108.md.",
+      "depends_on": [],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-1-1",
+          "description": "Scan all 88 child DocTypes across 7 tradehub apps. Identify every child table that has numeric fields requiring calculation (Currency, Float, Int, Percent types). Read each child DocType JSON schema to catalog: fieldname, fieldtype, options. Map parent-child relationships. Focus on: Order Item, Sub Order Item, Quotation Item, RFQ Item, Cart Line, Marketplace Order Item, Commission Plan Rate, Payment Installment, Price Break, Incoterm Price, Shipping Zone Rate, Shipping Rate Tier, Group Buy Tier, Wholesale Offer Product, KPI Template Item, Listing Bulk Pricing Tier, Product Pricing Tier.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order_item/order_item.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/sub_order_item/sub_order_item.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/quotation_item/quotation_item.json"
+          ],
+          "verification": {
+            "type": "none"
+          },
+          "status": "in_progress",
+          "notes": "Starting scan of all child DocTypes across 7 tradehub apps for numeric fields",
+          "updated_at": "2026-03-02T11:16:36.824793+00:00"
+        },
+        {
+          "id": "subtask-1-2",
+          "description": "Write 108.md with the complete Child Table Calculation Functions plan. Structure: (1) Executive Summary, (2) Complete Child Table Registry with numeric fields per app, (3) Per-child-table formula documentation (row-level: amount=qty*unit_price, line_subtotal, tax_amount, commission_amount; parent-level: subtotal=sum(items.amount), discount_amount, tax_amount, total_amount), (4) JS client-side implementation plan with frappe.ui.form.on() event handlers for quantity/unit_price/discount changes + items_add/items_remove, (5) Python server-side validate() plan mirroring JS formulas using flt(), (6) Row lifecycle handling (add/delete/modify recalculation strategy), (7) DocType→Child Table→Formula matrix table, (8) Acceptance criteria checklist. Reference existing order.js calculate_totals() and order.py calculate_totals() as the canonical pattern.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [
+            ".auto-claude/specs/058-field-validasyon/outputs/108.md"
+          ],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.js",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.py",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/cart_line/cart_line.py"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/108.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/108.md | awk '{print ($1 > 100) ? \"OK\" : \"TOO_SHORT\"}'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Must include: all calculation-bearing child tables identified, per-table formula doc, JS event handlers plan, Python validate plan, row lifecycle strategy, DocType→ChildTable→Formula matrix, acceptance criteria checklist."
+        }
+      ]
+    },
+    {
+      "id": "phase-2-112",
+      "name": "112.md — Role-Based Field Authorization Plan",
+      "type": "implementation",
+      "description": "Categorize every field across all DocTypes into admin-editable, user-editable, or system-generated (fully locked). Define per-field permission rules using Frappe native mechanisms. Produce 112.md.",
+      "depends_on": [],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-2-1",
+          "description": "Scan all parent DocType JSON schemas across 7 tradehub apps. For each DocType, categorize every field into: (a) system-generated/locked — order IDs, timestamps (creation, modified), auto-incremented numbers, computed totals (subtotal, tax_amount, total_amount), status fields set by workflow, naming_series fields; (b) admin-editable — pricing overrides, commission rates, status corrections, tenant assignments, tier classifications, system config fields; (c) user-editable — content fields (name, description, title), quantity inputs, selections, comments. Note existing read_only:1, set_only_once:1, hidden:1 patterns in each JSON.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_core/tradehub_core/permissions.py"
+          ],
+          "verification": {
+            "type": "none"
+          },
+          "status": "pending",
+          "notes": "Read-only scan. Must read every parent DocType JSON to build comprehensive field categorization. Focus on the 118 parent DocTypes across all 7 apps."
+        },
+        {
+          "id": "subtask-2-2",
+          "description": "Write 112.md with the complete Role-Based Field Authorization plan. Structure: (1) Executive Summary, (2) Field Categories definition (admin-editable, user-editable, system-generated), (3) Frappe Permission Mechanisms overview (permlevel 0-9, read_only, set_only_once, hidden, allow_on_submit, depends_on role), (4) Per-DocType authorization matrix tables organized by app (tradehub_commerce DocTypes first as they have the most complex authorization needs, then seller, catalog, core, etc.), (5) System-generated fields master list (all auto-computed, auto-timestamped, auto-numbered fields), (6) Admin-only fields master list (pricing, commission, tenant, status override fields), (7) Implementation plan using Frappe permlevel + custom JS set_df_property(), (8) Multi-tenant awareness section, (9) Acceptance criteria checklist.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [
+            ".auto-claude/specs/058-field-validasyon/outputs/112.md"
+          ],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_core/tradehub_core/permissions.py",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_core/tradehub_core/hooks.py"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/112.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/112.md | awk '{print ($1 > 100) ? \"OK\" : \"TOO_SHORT\"}'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Must include: per-DocType field categorization tables, Frappe permission mechanism mapping, system-generated field list, admin-only field list, implementation plan, acceptance criteria."
+        }
+      ]
+    },
+    {
+      "id": "phase-3-124",
+      "name": "124.md — Cascading Discount System Plan",
+      "type": "implementation",
+      "description": "Design a 3-tier sequential discount system with cascading formula final_price = base_price * (1-d1/100) * (1-d2/100) * (1-d3/100). Identify affected DocTypes, plan UI layout, and JS+Python implementation. Produce 124.md.",
+      "depends_on": [],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-3-1",
+          "description": "Analyze existing discount patterns in the codebase. Read: (a) order.py discount_percentage calculation, (b) cart_line.py calculate_discount() with Percentage/Fixed Amount types, (c) order.json discount fields, (d) sub_order_item.json discount_value/discount_amount fields, (e) cart.json coupon_discount/promotion_discount. Identify all DocTypes that currently have or need discount fields: Order, Order Item, Sub Order Item, Quotation Item, Cart Line, Listing, Listing Bulk Pricing Tier, Commission Plan Rate, Coupon, Group Buy Tier, Wholesale Offer Product.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.py",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/cart_line/cart_line.py",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/sub_order_item/sub_order_item.json"
+          ],
+          "verification": {
+            "type": "none"
+          },
+          "status": "pending",
+          "notes": "Read-only scan. Map all existing discount fields and calculation logic before planning the 3-tier cascading system."
+        },
+        {
+          "id": "subtask-3-2",
+          "description": "Write 124.md with the complete Cascading Discount System plan. Structure: (1) Executive Summary, (2) Current discount landscape (existing patterns mapped from codebase), (3) Cascading formula definition: final_price = base_price * (1 - discount_1/100) * (1 - discount_2/100) * (1 - discount_3/100) with worked examples, (4) Comparison: cascading vs additive discounts with numerical proof, (5) New fields required per DocType (discount_1, discount_2, discount_3, each as Percent with read_only computed discount amounts), (6) UI layout plan with collapsible discount tiers — button to show/hide 2nd and 3rd discount tiers, (7) JS real-time calculation with event handlers for each discount field, (8) Python server-side validation with flt() and edge case handling (0%, 100%, negative), (9) Affected DocTypes matrix with required schema changes, (10) Integration with existing order.js calculate_totals() and cart_line.py calculate_discount(), (11) Acceptance criteria checklist.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [
+            ".auto-claude/specs/058-field-validasyon/outputs/124.md"
+          ],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.js",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.py"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/124.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/124.md | awk '{print ($1 > 80) ? \"OK\" : \"TOO_SHORT\"}'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Must include: cascading formula with examples, affected DocType list, UI layout with toggle tiers, JS+Python dual-layer plan, edge case handling, integration with existing calculate_totals()."
+        }
+      ]
+    },
+    {
+      "id": "phase-4-128",
+      "name": "128.md — JSON Fields → Child Table Migration Plan",
+      "type": "implementation",
+      "description": "Inventory all JSON-type fields in the system (73 total), design replacement Child DocTypes with proper field definitions, and plan data migration from JSON blobs to structured child tables. Produce 128.md.",
+      "depends_on": [],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-4-1",
+          "description": "Complete inventory of all JSON fields across all 7 tradehub apps. For each JSON field: (a) read the DocType JSON schema to confirm fieldtype=JSON or fieldtype=Code with options=JSON, (b) read the Python controller (.py) to find where JSON is parsed/written (json.loads, json.dumps, frappe.parse_json patterns), (c) categorize as MIGRATE (structured, repeated data suitable for child table) or KEEP (dynamic/polymorphic/external API responses). Key MIGRATE candidates: Commission Rule restricted_sellers/excluded_sellers/day_of_week_restrictions, Escrow Account partial_releases, Listing attributes/images/bulk_pricing_tiers, Listing Variant images/attributes, Seller Balance recent_transactions, Review images/flags, Moderation Case detection_flags/moderation_history. Key KEEP candidates: Import Job column_mapping/field_defaults, Cart seller_summary, Payment Intent gateway_response/fraud_check_response, Media Asset exif_data, Seller Tag Rule rule_json, Tracking Event raw_event_data.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_seller/tradehub_seller/tradehub_seller/doctype/listing_variant/listing_variant.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_seller/tradehub_seller/tradehub_seller/doctype/seller_balance/seller_balance.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/cart/cart.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_compliance/tradehub_compliance/tradehub_compliance/doctype/review/review.json"
+          ],
+          "verification": {
+            "type": "none"
+          },
+          "status": "pending",
+          "notes": "Must read all JSON fields and their Python usage to determine migrate vs keep. Sample JSON data structures should be documented where possible from the controller code."
+        },
+        {
+          "id": "subtask-4-2",
+          "description": "Write 128.md with the complete JSON → Child Table Migration plan. Structure: (1) Executive Summary with total JSON field count and migrate/keep breakdown, (2) Complete JSON field inventory table (DocType, App, Field Name, Field Type, Current Usage, Category: MIGRATE/KEEP, Rationale), (3) For each MIGRATE field: proposed Child DocType name, field list with fieldtypes, sample data mapping from JSON keys to child fields, (4) Migration script strategy per field: read JSON → create child table rows → verify data integrity → deprecate JSON field, (5) Code update plan: identify all .py files that parse JSON fields → update to read child table instead, (6) Frappe patch system integration (patches.txt registration, bench migrate execution), (7) Rollback strategy: keep original JSON field as backup during migration, (8) For KEEP fields: justification for keeping as JSON (dynamic schema, external API responses, etc.), (9) Acceptance criteria checklist.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [
+            ".auto-claude/specs/058-field-validasyon/outputs/128.md"
+          ],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_seller/tradehub_seller/tradehub_seller/doctype/listing/listing.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_seller/tradehub_seller/tradehub_seller/doctype/seller_kpi/seller_kpi.json"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/128.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/128.md | awk '{print ($1 > 100) ? \"OK\" : \"TOO_SHORT\"}'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Must include: complete inventory of all 73 JSON fields, migrate/keep categorization, Child DocType designs for all MIGRATE fields, migration script outline, rollback strategy, code update plan."
+        }
+      ]
+    },
+    {
+      "id": "phase-5-134",
+      "name": "134.md — Auto-fill & Read-Only Fields Plan",
+      "type": "implementation",
+      "description": "Map all Link/Select field → dependent field relationships. Plan fetch_from configurations and JS change event handlers for auto-population with read_only enforcement. Produce 134.md.",
+      "depends_on": [],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-5-1",
+          "description": "Scan all DocType JSON schemas for existing fetch_from fields and identify MISSING auto-fill relationships. Existing fetch_from: 50+ instances already documented in context.json (Order→buyer fields, Quotation→rfq/seller fields, Cart Line→listing fields, geographic cascade City→District→Neighborhood, Organization Member→user fields, Premium Buyer/Seller→profile fields). Missing relationships to plan: (a) Product→category, unit_of_measure, tax_category, (b) Seller Profile→address, tax_id, bank_account, (c) Contract Instance→parties, dates from template, (d) Customer/Buyer→address, segment, credit_limit, (e) Listing→seller_name, seller_tier, category_name, (f) SKU Product→product_name, brand, category, (g) Coupon→applicable categories/products details. Read all parent DocType JSONs with Link fields to find gaps.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_core/tradehub_core/tradehub_core/doctype/address_item/address_item.json",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_core/tradehub_core/tradehub_core/doctype/district/district.json"
+          ],
+          "verification": {
+            "type": "none"
+          },
+          "status": "pending",
+          "notes": "Must find all existing fetch_from instances AND identify missing ones. Compare Link field targets against what auto-fill fields exist."
+        },
+        {
+          "id": "subtask-5-2",
+          "description": "Write 134.md with the complete Auto-fill & Read-Only Fields plan. Structure: (1) Executive Summary, (2) Existing fetch_from registry table (DocType, Source Link Field, Target Field, fetch_from Expression, read_only status, fetch_if_empty status), (3) Missing auto-fill relationships to add (organized by: Product relationships, Seller relationships, Buyer/Customer relationships, Contract relationships, Geographic relationships), (4) Per-relationship fetch_from JSON config plan (exact field definition with fieldname, fieldtype, fetch_from, fetch_if_empty, read_only), (5) JS change event handler plan for clearing dependent fields when source Link changes (following order.js buyer change handler pattern), (6) read_only enforcement plan — which fields MUST be read_only vs allow manual override, (7) Edge cases: fetch_from on unsaved documents, fetch_if_empty behavior, circular dependency prevention, (8) Implementation priority matrix (high: commerce/order-related, medium: seller/listing, low: compliance/marketing), (9) Acceptance criteria checklist.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [
+            ".auto-claude/specs/058-field-validasyon/outputs/134.md"
+          ],
+          "patterns_from": [
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.js",
+            "Frappe_Marketplace/frappe-bench/apps/tradehub_commerce/tradehub_commerce/tradehub_commerce/doctype/order/order.json"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/134.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/134.md | awk '{print ($1 > 100) ? \"OK\" : \"TOO_SHORT\"}'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Must include: existing fetch_from registry, missing relationships, JSON config plan, JS event handlers, read_only enforcement, edge cases, priority matrix, acceptance criteria."
+        }
+      ]
+    },
+    {
+      "id": "phase-6-qa",
+      "name": "Cross-Document QA Verification",
+      "type": "integration",
+      "description": "Verify consistency and completeness across all 5 planning documents. Ensure DocType names, field names, and terminology are consistent. Verify each document meets its acceptance criteria.",
+      "depends_on": [
+        "phase-1-108",
+        "phase-2-112",
+        "phase-3-124",
+        "phase-4-128",
+        "phase-5-134"
+      ],
+      "parallel_safe": false,
+      "subtasks": [
+        {
+          "id": "subtask-6-1",
+          "description": "Cross-document QA verification: (1) Read all 5 .md files, (2) Verify DocType names are consistent across all documents (same spelling, same casing), (3) Verify field names match actual codebase (qty vs quantity, rate vs unit_price — must match DocType JSON), (4) Verify each document has its acceptance criteria checklist, (5) Verify no code files (.py, .js, .json) were created or modified, (6) Verify formulas are mathematically correct (108 calculation formulas, 124 cascading discount formula), (7) Verify dual-layer (JS+Python) approach is documented in 108 and 124, (8) Verify multi-tenant awareness is maintained, (9) Verify edge cases are documented per spec requirements.",
+          "service": "documentation",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "command",
+            "command": "ls -la .auto-claude/specs/058-field-validasyon/outputs/ && echo '---' && for f in 108 112 124 128 134; do test -f .auto-claude/specs/058-field-validasyon/outputs/${f}.md && echo \"${f}.md: EXISTS ($(wc -l < .auto-claude/specs/058-field-validasyon/outputs/${f}.md) lines)\" || echo \"${f}.md: MISSING\"; done",
+            "expected": "All 5 files exist with substantial content"
+          },
+          "status": "pending",
+          "notes": "This is the final QA gate. All 5 documents must exist, be non-empty, contain acceptance criteria, and be consistent with each other."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_phases": 6,
+    "total_subtasks": 11,
+    "services_involved": [
+      "documentation"
+    ],
+    "output_files": [
+      ".auto-claude/specs/058-field-validasyon/outputs/108.md",
+      ".auto-claude/specs/058-field-validasyon/outputs/112.md",
+      ".auto-claude/specs/058-field-validasyon/outputs/124.md",
+      ".auto-claude/specs/058-field-validasyon/outputs/128.md",
+      ".auto-claude/specs/058-field-validasyon/outputs/134.md"
+    ],
+    "parallelism": {
+      "max_parallel_phases": 5,
+      "parallel_groups": [
+        {
+          "phases": [
+            "phase-1-108",
+            "phase-2-112",
+            "phase-3-124",
+            "phase-4-128",
+            "phase-5-134"
+          ],
+          "reason": "All 5 document creation phases are completely independent — different output files, different codebase scanning focus, no shared state. They all depend_on: [] and have parallel_safe: true."
+        }
+      ],
+      "recommended_workers": 3,
+      "speedup_estimate": "2.5x faster than sequential (5 independent phases, 3 workers recommended for resource balance)"
+    },
+    "startup_command": "source auto-claude/.venv/bin/activate && python auto-claude/run.py --spec 058 --parallel 3"
+  },
+  "verification_strategy": {
+    "risk_level": "trivial",
+    "skip_validation": true,
+    "test_creation_phase": "not_applicable",
+    "test_types_required": [],
+    "security_scanning_required": false,
+    "staging_deployment_required": false,
+    "acceptance_criteria": [
+      "All 5 .md files exist and are non-empty",
+      "Each document contains its specified acceptance criteria checklist",
+      "DocType names match actual codebase structure",
+      "Field names in plans match actual field names in DocType JSONs",
+      "No code files (.py, .js, .json) were created or modified",
+      "Formulas are mathematically correct and consistent across documents",
+      "Dual-layer (JS + Python) approach documented where applicable",
+      "Multi-tenant awareness maintained in all plans",
+      "Edge cases documented for each plan"
+    ],
+    "verification_steps": [
+      {
+        "name": "File Existence Check",
+        "command": "for f in 108 112 124 128 134; do test -f .auto-claude/specs/058-field-validasyon/outputs/${f}.md && echo \"${f}.md OK\" || echo \"${f}.md MISSING\"; done",
+        "expected_outcome": "All 5 files report OK",
+        "type": "test",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "Minimum Content Length",
+        "command": "for f in 108 112 124 128 134; do lines=$(wc -l < .auto-claude/specs/058-field-validasyon/outputs/${f}.md 2>/dev/null || echo 0); echo \"${f}.md: ${lines} lines\"; done",
+        "expected_outcome": "Each file has at least 80 lines",
+        "type": "test",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "No Code Files Created",
+        "command": "find .auto-claude/specs/058-field-validasyon/outputs/ -type f ! -name '*.md' 2>/dev/null | wc -l",
+        "expected_outcome": "0 (no non-.md files in output directory)",
+        "type": "test",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "Acceptance Criteria Present",
+        "command": "for f in 108 112 124 128 134; do grep -c '\\[ \\]' .auto-claude/specs/058-field-validasyon/outputs/${f}.md 2>/dev/null || echo 0; done",
+        "expected_outcome": "Each file contains at least 2 checkbox items",
+        "type": "test",
+        "required": true,
+        "blocking": false
+      }
+    ],
+    "reasoning": "Trivial risk — output is exclusively markdown planning documents. No functional code is created, modified, or executed. Verification focuses on document completeness, accuracy of codebase references, and cross-document consistency."
+  },
+  "qa_acceptance": {
+    "unit_tests": {
+      "required": false,
+      "commands": [],
+      "minimum_coverage": null
+    },
+    "integration_tests": {
+      "required": false,
+      "commands": [],
+      "services_to_test": []
+    },
+    "e2e_tests": {
+      "required": false,
+      "commands": [],
+      "flows": []
+    },
+    "browser_verification": {
+      "required": false,
+      "pages": []
+    },
+    "database_verification": {
+      "required": false,
+      "checks": []
+    },
+    "document_verification": {
+      "required": true,
+      "checks": [
+        "all-5-md-files-exist",
+        "acceptance-criteria-present",
+        "doctype-names-match-codebase",
+        "field-names-match-codebase",
+        "no-code-files-modified",
+        "formulas-mathematically-correct",
+        "cross-document-consistency"
+      ]
+    }
+  },
+  "qa_signoff": null,
+  "status": "in_progress",
+  "planStatus": "in_progress",
+  "xstateState": "coding",
+  "executionPhase": "coding",
+  "updated_at": "2026-03-02T11:16:18.670Z",
+  "lastEvent": {
+    "eventId": "59779854-085b-4328-b584-335d667acae0",
+    "sequence": 0,
+    "type": "PLANNING_COMPLETE",
+    "timestamp": "2026-03-02T11:16:15.411360+00:00"
+  },
+  "last_updated": "2026-03-02T11:16:36.824801+00:00"
+}
