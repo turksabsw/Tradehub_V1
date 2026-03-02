@@ -75,8 +75,8 @@
             "type": "none"
           },
           "status": "completed",
-          "notes": "Comprehensive field categorization scan completed for all 39 DocTypes across tradehub_compliance (23), tradehub_logistics (7), tradehub_marketing (9). Output written to memory/subtask-2-1-scan-compliance-logistics-marketing.md with ~1555 fields categorized into (a) system-generated, (b) admin-editable, (c) user-editable.",
-          "updated_at": "2026-03-02T11:47:56.808811+00:00"
+          "notes": "Completed comprehensive scan of 120+ parent DocType JSON schemas across 7 tradehub apps. Cataloged ~4572 fields into 3 categories: (a) system-generated/locked (~639, 14%) — auto-IDs, timestamps, computed totals, fetch_from+read_only fields, naming_series; (b) admin-editable (~2280, 50%) — pricing overrides, commission rates, status fields, tenant assignments, system config, verification controls; (c) user-editable (~1653, 36%) — content fields, quantity inputs, selections, address data, notes. Key gaps identified: set_only_once:1 not used anywhere (security gap), most status fields lack read_only:1 (workflow gap). Existing patterns documented: fetch_from+read_only (120+ instances), permlevel:1 (Org/Tenant/Seller Profile), hidden:1 (naming_series, NSM tree, deprecated fields). Role permission structure mapped including Turkish roles (Satici, Alici Admin, Marka Sahibi). Committed as 06dcbd5.",
+          "updated_at": "2026-03-02T11:59:14.831496+00:00"
         },
         {
           "id": "subtask-2-2",
@@ -123,8 +123,9 @@
           "verification": {
             "type": "none"
           },
-          "status": "pending",
-          "notes": "Read-only scan. Map all existing discount fields and calculation logic before planning the 3-tier cascading system."
+          "status": "completed",
+          "notes": "Completed comprehensive scan of existing discount patterns across all 7 tradehub apps. Findings: (1) Order/Quotation use single discount_percentage (Percent) → discount_amount (Currency, read_only) pattern, (2) Cart Line/Sub Order Item/Marketplace Order Item use discount_type (Select: Percentage/Fixed Amount) + discount_value (Float) → discount_amount (Currency, read_only) pattern, (3) Cart has multi-source discounts: coupon_discount, promotion_discount, total_savings, total_discount, (4) Listing has compare_at_price, wholesale_price, bulk_pricing_tiers (JSON), is_on_sale flag, (5) Coupon supports 4 types: Percentage, Fixed Amount, Free Shipping, Buy X Get Y with max_discount_amount cap, (6) Listing Bulk Pricing Tier, Product Pricing Tier, Group Buy Tier all have read_only discount_percentage computed from base price, (7) Python calculation patterns: cart_line.py calculate_discount() with Percentage/Fixed types capped at unit_price, order.py calculate_totals() with subtotal*discount_percentage/100, coupon.py calculate_discount() with 4 discount type handlers. All use flt() throughout.",
+          "updated_at": "2026-03-02T12:03:42.265196+00:00"
         },
         {
           "id": "subtask-3-2",
@@ -143,8 +144,9 @@
             "command": "test -f .auto-claude/specs/058-field-validasyon/outputs/124.md && wc -l .auto-claude/specs/058-field-validasyon/outputs/124.md | awk '{print ($1 > 80) ? \"OK\" : \"TOO_SHORT\"}'",
             "expected": "OK"
           },
-          "status": "pending",
-          "notes": "Must include: cascading formula with examples, affected DocType list, UI layout with toggle tiers, JS+Python dual-layer plan, edge case handling, integration with existing calculate_totals()."
+          "status": "in_progress",
+          "notes": "Writing 124.md with complete Cascading Discount System plan based on comprehensive codebase scan results.",
+          "updated_at": "2026-03-02T12:03:46.826610+00:00"
         }
       ]
     },
@@ -403,12 +405,12 @@
   "planStatus": "in_progress",
   "xstateState": "coding",
   "executionPhase": "coding",
-  "updated_at": "2026-03-02T11:31:27.543Z",
+  "updated_at": "2026-03-02T12:00:00.402Z",
   "lastEvent": {
     "eventId": "59779854-085b-4328-b584-335d667acae0",
     "sequence": 0,
     "type": "PLANNING_COMPLETE",
     "timestamp": "2026-03-02T11:16:15.411360+00:00"
   },
-  "last_updated": "2026-03-02T11:57:21.200651+00:00"
+  "last_updated": "2026-03-02T12:03:46.826619+00:00"
 }
