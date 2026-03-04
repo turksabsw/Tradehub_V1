@@ -58,14 +58,19 @@
   "time_start",
   "time_end",
   "restrictions_section",
+  "restricted_sellers_table",
   "restricted_sellers",
+  "excluded_sellers_table",
   "excluded_sellers",
   "column_break_restrictions",
+  "restricted_categories_table",
   "restricted_categories",
+  "excluded_categories_table",
   "excluded_categories",
   "override_section",
   "can_be_overridden",
   "override_priority",
+  "override_by_table",
   "override_by",
   "column_break_override",
   "stacking_allowed",
@@ -436,32 +441,68 @@
    "label": "Seller Restrictions"
   },
   {
-   "description": "JSON list of seller profile names this rule is restricted to",
-   "fieldname": "restricted_sellers",
-   "fieldtype": "JSON",
-   "label": "Restricted to Sellers"
+   "fieldname": "restricted_sellers_table",
+   "fieldtype": "Table",
+   "label": "Restricted to Sellers",
+   "options": "Commission Rule Seller",
+   "description": "Seller profiles this rule is restricted to"
   },
   {
-   "description": "JSON list of seller profile names excluded from this rule",
+   "description": "[DEPRECATED] Restricted sellers (JSON) - use Restricted to Sellers table instead",
+   "fieldname": "restricted_sellers",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Restricted to Sellers (Legacy)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "excluded_sellers_table",
+   "fieldtype": "Table",
+   "label": "Excluded Sellers",
+   "options": "Commission Rule Seller",
+   "description": "Seller profiles excluded from this rule"
+  },
+  {
+   "description": "[DEPRECATED] Excluded sellers (JSON) - use Excluded Sellers table instead",
    "fieldname": "excluded_sellers",
    "fieldtype": "JSON",
-   "label": "Excluded Sellers"
+   "hidden": 1,
+   "label": "Excluded Sellers (Legacy)",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_restrictions",
    "fieldtype": "Column Break"
   },
   {
-   "description": "JSON list of category names this rule is restricted to",
-   "fieldname": "restricted_categories",
-   "fieldtype": "JSON",
-   "label": "Restricted to Categories"
+   "fieldname": "restricted_categories_table",
+   "fieldtype": "Table",
+   "label": "Restricted to Categories",
+   "options": "Commission Rule Category",
+   "description": "Product categories this rule is restricted to"
   },
   {
-   "description": "JSON list of category names excluded from this rule",
+   "description": "[DEPRECATED] Restricted categories (JSON) - use Restricted to Categories table instead",
+   "fieldname": "restricted_categories",
+   "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Restricted to Categories (Legacy)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "excluded_categories_table",
+   "fieldtype": "Table",
+   "label": "Excluded Categories",
+   "options": "Commission Rule Category",
+   "description": "Product categories excluded from this rule"
+  },
+  {
+   "description": "[DEPRECATED] Excluded categories (JSON) - use Excluded Categories table instead",
    "fieldname": "excluded_categories",
    "fieldtype": "JSON",
-   "label": "Excluded Categories"
+   "hidden": 1,
+   "label": "Excluded Categories (Legacy)",
+   "read_only": 1
   },
   {
    "collapsible": 1,
@@ -483,10 +524,19 @@
    "label": "Override Priority Threshold"
   },
   {
-   "description": "Roles that can override this rule",
+   "fieldname": "override_by_table",
+   "fieldtype": "Table",
+   "label": "Override Roles",
+   "options": "Commission Rule Override Role",
+   "description": "Roles that can override this commission rule"
+  },
+  {
+   "description": "[DEPRECATED] Override roles (JSON) - use Override Roles table instead",
    "fieldname": "override_by",
    "fieldtype": "JSON",
-   "label": "Override Roles"
+   "hidden": 1,
+   "label": "Override Roles (Legacy)",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_override",

@@ -17,6 +17,7 @@
   "items_section",
   "items",
   "seller_summary_section",
+  "seller_summary_table",
   "seller_summary",
   "totals_section",
   "currency",
@@ -141,10 +142,19 @@
    "label": "Seller Summary"
   },
   {
-   "description": "JSON object with seller-wise item groupings and subtotals",
+   "fieldname": "seller_summary_table",
+   "fieldtype": "Table",
+   "label": "Seller Summary",
+   "options": "Cart Seller Summary",
+   "description": "Seller-wise item groupings and subtotals"
+  },
+  {
+   "description": "[DEPRECATED] Seller-wise item groupings and subtotals (JSON) - use Seller Summary table instead",
    "fieldname": "seller_summary",
    "fieldtype": "JSON",
-   "label": "Seller Summary"
+   "hidden": 1,
+   "label": "Seller Summary (Legacy)",
+   "read_only": 1
   },
   {
    "fieldname": "totals_section",
