@@ -43,6 +43,7 @@
   "cons",
   "media_section",
   "images",
+  "images_table",
   "video_url",
   "rating_details_section",
   "product_quality_rating",
@@ -74,6 +75,7 @@
   "rejection_reason",
   "moderation_notes",
   "flags",
+  "flags_table",
   "system_section",
   "submitted_at",
   "published_at",
@@ -327,10 +329,19 @@
    "label": "Media"
   },
   {
-   "description": "Upload review photos (max 5 images)",
+   "description": "Deprecated — use Images table below. Upload review photos (max 5 images)",
    "fieldname": "images",
    "fieldtype": "JSON",
-   "label": "Images"
+   "hidden": 1,
+   "label": "Images (Deprecated)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "images_table",
+   "fieldtype": "Table",
+   "label": "Images",
+   "options": "Review Image",
+   "description": "Review photos"
   },
   {
    "description": "Link to video review",
@@ -531,10 +542,19 @@
    "label": "Moderation Notes"
   },
   {
-   "description": "JSON array of flagged issues",
+   "description": "Deprecated — use Flags table below. JSON array of flagged issues",
    "fieldname": "flags",
    "fieldtype": "JSON",
-   "label": "Flags"
+   "hidden": 1,
+   "label": "Flags (Deprecated)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "flags_table",
+   "fieldtype": "Table",
+   "label": "Flags",
+   "options": "Review Flag",
+   "description": "Flagged issues for this review"
   },
   {
    "collapsible": 1,

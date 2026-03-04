@@ -42,6 +42,7 @@
   "is_repeat_offense",
   "previous_violations_count",
   "related_cases",
+  "related_cases_table",
   "auto_detection_section",
   "is_auto_detected",
   "detection_method",
@@ -101,7 +102,8 @@
   "sla_status",
   "audit_section",
   "internal_notes",
-  "moderation_history"
+  "moderation_history",
+  "moderation_history_table"
  ],
  "fields": [
   {
@@ -355,8 +357,17 @@
   {
    "fieldname": "related_cases",
    "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Related Cases (Deprecated)",
+   "read_only": 1,
+   "description": "Deprecated — use Related Cases table below. List of related moderation case IDs"
+  },
+  {
+   "fieldname": "related_cases_table",
+   "fieldtype": "Table",
    "label": "Related Cases",
-   "description": "List of related moderation case IDs"
+   "options": "Moderation Case Link",
+   "description": "Related moderation cases"
   },
   {
    "collapsible": 1,
@@ -763,8 +774,16 @@
   {
    "fieldname": "moderation_history",
    "fieldtype": "JSON",
-   "label": "Moderation History",
+   "hidden": 1,
+   "label": "Moderation History (Deprecated)",
    "read_only": 1,
+   "description": "Deprecated — use Moderation History table below. Full history of actions taken on this case"
+  },
+  {
+   "fieldname": "moderation_history_table",
+   "fieldtype": "Table",
+   "label": "Moderation History",
+   "options": "Moderation Action Log",
    "description": "Full history of actions taken on this case"
   }
  ],

@@ -27,6 +27,7 @@
   "attachments_section",
   "has_attachments",
   "attachments",
+  "attachments_table",
   "tenant_section",
   "tenant",
   "tenant_name",
@@ -206,8 +207,17 @@
   {
    "fieldname": "attachments",
    "fieldtype": "JSON",
+   "hidden": 1,
+   "label": "Attachments (Deprecated)",
+   "read_only": 1,
+   "description": "Deprecated — use Attachments table below. JSON array of attachment objects (file_url, file_name, file_type, file_size)"
+  },
+  {
+   "fieldname": "attachments_table",
+   "fieldtype": "Table",
    "label": "Attachments",
-   "description": "JSON array of attachment objects (file_url, file_name, file_type, file_size)"
+   "options": "Message Attachment",
+   "description": "File attachments for this message"
   },
   {
    "fieldname": "tenant_section",

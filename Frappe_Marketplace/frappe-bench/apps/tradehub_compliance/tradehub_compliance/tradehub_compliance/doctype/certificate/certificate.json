@@ -54,6 +54,7 @@
   "column_break_document",
   "verification_url",
   "additional_documents",
+  "additional_documents_table",
   "renewal_section",
   "previous_certificate",
   "previous_certificate_number",
@@ -389,8 +390,17 @@
   {
    "fieldname": "additional_documents",
    "fieldtype": "Text",
+   "hidden": 1,
+   "label": "Additional Documents (Deprecated)",
+   "read_only": 1,
+   "description": "Deprecated — use Additional Documents table below. JSON array of additional supporting documents"
+  },
+  {
+   "fieldname": "additional_documents_table",
+   "fieldtype": "Table",
    "label": "Additional Documents",
-   "description": "JSON array of additional supporting documents (managed via UI component)"
+   "options": "Certificate Document",
+   "description": "Additional supporting documents for this certificate"
   },
   {
    "fieldname": "renewal_section",
