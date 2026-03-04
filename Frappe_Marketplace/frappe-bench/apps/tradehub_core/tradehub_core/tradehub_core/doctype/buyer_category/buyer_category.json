@@ -10,6 +10,7 @@
   "category_name",
   "category_code",
   "parent_buyer_category",
+  "parent_category_name",
   "column_break_basic",
   "status",
   "is_default",
@@ -84,6 +85,13 @@
    "label": "Parent Category",
    "options": "Buyer Category",
    "description": "Parent category for hierarchical organization"
+  },
+  {
+   "fieldname": "parent_category_name",
+   "fieldtype": "Data",
+   "label": "Parent Category Name",
+   "fetch_from": "parent_buyer_category.category_name",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_basic",
@@ -385,7 +393,7 @@
    "link_fieldname": "buyer_category"
   }
  ],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Core",
  "name": "Buyer Category",

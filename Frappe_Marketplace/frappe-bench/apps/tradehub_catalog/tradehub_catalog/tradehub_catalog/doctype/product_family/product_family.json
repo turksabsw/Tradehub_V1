@@ -13,6 +13,7 @@
   "family_code",
   "column_break_basic_1",
   "product_class",
+  "class_name",
   "is_active",
   "description_section",
   "description",
@@ -77,6 +78,13 @@
    "options": "Product Class",
    "reqd": 1,
    "description": "The product class this family belongs to"
+  },
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Data",
+   "label": "Product Class Name",
+   "fetch_from": "product_class.class_name",
+   "read_only": 1
   },
   {
    "default": "1",
@@ -238,7 +246,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-09 18:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Catalog",
  "name": "Product Family",

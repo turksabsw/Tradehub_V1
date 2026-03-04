@@ -6,7 +6,9 @@
  "engine": "InnoDB",
  "field_order": [
   "pim_attribute",
+  "attribute_name",
   "channel",
+  "channel_name",
   "column_break_1",
   "target_field_name",
   "target_field_code",
@@ -31,6 +33,13 @@
    "description": "The source PIM attribute to map"
   },
   {
+   "fieldname": "attribute_name",
+   "fieldtype": "Data",
+   "label": "Attribute Name",
+   "fetch_from": "pim_attribute.attribute_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "channel",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -39,6 +48,13 @@
    "options": "Sales Channel",
    "reqd": 1,
    "description": "The target sales channel for this mapping"
+  },
+  {
+   "fieldname": "channel_name",
+   "fieldtype": "Data",
+   "label": "Channel Name",
+   "fetch_from": "channel.channel_name",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_1",
@@ -110,7 +126,7 @@
  "index_web_pages_for_search": 0,
  "istable": 1,
  "links": [],
- "modified": "2026-02-09 18:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Catalog",
  "name": "Channel Field Mapping",

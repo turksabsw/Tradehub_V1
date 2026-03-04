@@ -71,6 +71,7 @@
   "allowed_channels",
   "column_break_marketplace_1",
   "default_export_channel",
+  "export_channel_name",
   "export_on_approval"
  ],
  "fields": [
@@ -474,6 +475,13 @@
    "description": "Default channel for product export"
   },
   {
+   "fieldname": "export_channel_name",
+   "fieldtype": "Data",
+   "label": "Export Channel Name",
+   "fetch_from": "default_export_channel.channel_name",
+   "read_only": 1
+  },
+  {
    "default": "0",
    "fieldname": "export_on_approval",
    "fieldtype": "Check",
@@ -483,7 +491,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-09 18:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Catalog",
  "name": "Product Class",

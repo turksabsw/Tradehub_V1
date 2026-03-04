@@ -13,7 +13,9 @@
   "column_break_basic",
   "status",
   "tenant",
+  "tenant_name",
   "erpnext_customer",
+  "customer_name",
   "tenant_isolation_section",
   "contact_section",
   "primary_contact_name",
@@ -47,6 +49,7 @@
   "verification_status",
   "verified_at",
   "verified_by",
+  "verified_by_name",
   "column_break_verification",
   "documents_verified",
   "tax_documents_verified",
@@ -127,11 +130,25 @@
    "description": "The tenant this organization belongs to (required for tenant isolation)"
   },
   {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "erpnext_customer",
    "fieldtype": "Link",
    "label": "ERPNext Customer",
    "options": "Customer",
    "description": "Linked ERPNext Customer record"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "fetch_from": "erpnext_customer.customer_name",
+   "read_only": 1
   },
   {
    "fieldname": "tenant_isolation_section",
@@ -327,6 +344,13 @@
    "read_only": 1
   },
   {
+   "fieldname": "verified_by_name",
+   "fieldtype": "Data",
+   "label": "Verified By Name",
+   "fetch_from": "verified_by.full_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_verification",
    "fieldtype": "Column Break"
   },
@@ -486,7 +510,7 @@
    "link_fieldname": "parent"
   }
  ],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Core",
  "name": "Organization",

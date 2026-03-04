@@ -15,6 +15,7 @@
   "attributes",
   "settings_section",
   "inherit_from",
+  "inherit_from_name",
   "column_break_2",
   "auto_include_inherited"
  ],
@@ -75,6 +76,13 @@
    "options": "Attribute Set"
   },
   {
+   "fieldname": "inherit_from_name",
+   "fieldtype": "Data",
+   "label": "Inherited From",
+   "fetch_from": "inherit_from.attribute_set_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_2",
    "fieldtype": "Column Break"
   },
@@ -89,7 +97,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Catalog",
  "name": "Attribute Set",

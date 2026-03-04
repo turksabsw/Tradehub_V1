@@ -9,12 +9,16 @@
   "basic_info_section",
   "buyer_name",
   "user",
+  "user_full_name",
   "buyer_type",
   "buyer_category",
+  "buyer_category_name",
   "column_break_basic",
   "status",
   "tenant",
+  "tenant_name",
   "organization",
+  "organization_name",
   "contact_section",
   "display_name",
   "contact_email",
@@ -96,6 +100,13 @@
    "unique": 1
   },
   {
+   "fieldname": "user_full_name",
+   "fieldtype": "Data",
+   "label": "User Full Name",
+   "fetch_from": "user.full_name",
+   "read_only": 1
+  },
+  {
    "default": "Individual",
    "fieldname": "buyer_type",
    "fieldtype": "Select",
@@ -112,6 +123,13 @@
    "label": "Buyer Category",
    "options": "Buyer Category",
    "description": "Classification of buyer (e.g., Retailer, Wholesaler, Distributor)"
+  },
+  {
+   "fieldname": "buyer_category_name",
+   "fieldtype": "Data",
+   "label": "Buyer Category Name",
+   "fetch_from": "buyer_category.category_name",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_basic",
@@ -135,11 +153,25 @@
    "description": "The tenant this buyer belongs to"
   },
   {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "organization",
    "fieldtype": "Link",
    "label": "Organization",
    "options": "Organization",
    "description": "Business organization for this buyer (if applicable)"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "fetch_from": "organization.organization_name",
+   "read_only": 1
   },
   {
    "fieldname": "contact_section",
@@ -586,7 +618,7 @@
    "link_fieldname": "buyer"
   }
  ],
- "modified": "2026-02-12 16:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Core",
  "name": "Buyer Profile",

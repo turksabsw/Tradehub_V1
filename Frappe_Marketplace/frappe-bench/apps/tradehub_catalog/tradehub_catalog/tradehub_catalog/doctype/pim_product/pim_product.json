@@ -14,12 +14,15 @@
   "product_code",
   "column_break_basic_1",
   "product_family",
+  "family_name",
   "product_class",
+  "class_name",
   "status_section",
   "status",
   "is_active",
   "column_break_status_1",
   "brand",
+  "brand_name",
   "manufacturer",
   "identifiers_section",
   "sku",
@@ -59,6 +62,7 @@
   "categories_section",
   "categories",
   "primary_category",
+  "primary_category_name",
   "relations_tab",
   "relations_section",
   "relations",
@@ -301,6 +305,13 @@
    "description": "Product family defining attribute schema and completeness rules"
   },
   {
+   "fieldname": "family_name",
+   "fieldtype": "Data",
+   "label": "Family Name",
+   "fetch_from": "product_family.family_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "product_class",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -310,6 +321,13 @@
    "read_only": 1,
    "fetch_from": "product_family.product_class",
    "description": "Auto-fetched from Product Family - defines structural behavior"
+  },
+  {
+   "fieldname": "class_name",
+   "fieldtype": "Data",
+   "label": "Class Name",
+   "fetch_from": "product_class.class_name",
+   "read_only": 1
   },
   {
    "fieldname": "status_section",
@@ -347,6 +365,13 @@
    "label": "Brand",
    "options": "Brand",
    "description": "Product brand"
+  },
+  {
+   "fieldname": "brand_name",
+   "fieldtype": "Data",
+   "label": "Brand Name",
+   "fetch_from": "brand.brand_name",
+   "read_only": 1
   },
   {
    "fieldname": "manufacturer",
@@ -576,6 +601,13 @@
    "label": "Primary Category",
    "options": "Category",
    "description": "Main category for the product"
+  },
+  {
+   "fieldname": "primary_category_name",
+   "fieldtype": "Data",
+   "label": "Primary Category Name",
+   "fetch_from": "primary_category.category_name",
+   "read_only": 1
   },
   {
    "fieldname": "relations_tab",
@@ -1732,7 +1764,7 @@
    "link_fieldname": "product"
   }
  ],
- "modified": "2026-02-09 18:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Catalog",
  "name": "PIM Product",

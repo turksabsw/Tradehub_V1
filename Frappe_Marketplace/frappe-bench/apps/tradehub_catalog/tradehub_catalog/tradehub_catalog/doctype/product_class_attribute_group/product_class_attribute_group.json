@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "attribute_group",
+  "group_name",
   "column_break_1",
   "sort_order",
   "is_required"
@@ -20,6 +21,14 @@
    "options": "PIM Attribute Group",
    "reqd": 1,
    "description": "Link to the PIM Attribute Group to include in this product class"
+  },
+  {
+   "fieldname": "group_name",
+   "fieldtype": "Data",
+   "label": "Group Name",
+   "fetch_from": "attribute_group.group_name",
+   "read_only": 1,
+   "in_list_view": 1
   },
   {
    "fieldname": "column_break_1",
@@ -45,7 +54,7 @@
  "index_web_pages_for_search": 0,
  "istable": 1,
  "links": [],
- "modified": "2026-02-09 18:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Catalog",
  "name": "Product Class Attribute Group",

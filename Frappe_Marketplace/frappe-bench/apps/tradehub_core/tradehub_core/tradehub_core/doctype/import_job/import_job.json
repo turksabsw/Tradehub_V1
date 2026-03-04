@@ -13,7 +13,9 @@
   "column_break_basic",
   "status",
   "tenant",
+  "tenant_name",
   "seller",
+  "seller_name",
   "file_section",
   "import_file",
   "original_filename",
@@ -25,6 +27,7 @@
   "encoding",
   "configuration_section",
   "category",
+  "category_name",
   "default_status",
   "update_existing",
   "column_break_config",
@@ -136,12 +139,26 @@
    "description": "The tenant this import belongs to"
   },
   {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "seller",
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Seller",
    "options": "Seller Profile",
    "description": "The seller performing this import"
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
   },
   {
    "fieldname": "file_section",
@@ -216,6 +233,13 @@
    "label": "Default Category",
    "options": "Category",
    "description": "Default category if not specified in data"
+  },
+  {
+   "fieldname": "category_name",
+   "fieldtype": "Data",
+   "label": "Category Name",
+   "fetch_from": "category.category_name",
+   "read_only": 1
   },
   {
    "default": "Draft",
@@ -563,7 +587,7 @@
    "link_fieldname": "import_job"
   }
  ],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Core",
  "name": "Import Job",

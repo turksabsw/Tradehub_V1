@@ -11,8 +11,10 @@
   "is_enabled",
   "rule_config_section",
   "target_attribute",
+  "attribute_name",
   "column_break_2",
   "channel",
+  "channel_name",
   "locale",
   "validation_section",
   "min_value",
@@ -69,6 +71,13 @@
    "depends_on": "eval:['Required Attribute', 'Attribute Validation'].includes(doc.rule_type)"
   },
   {
+   "fieldname": "attribute_name",
+   "fieldtype": "Data",
+   "label": "Attribute Name",
+   "fetch_from": "target_attribute.attribute_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_2",
    "fieldtype": "Column Break"
   },
@@ -78,6 +87,13 @@
    "label": "Channel",
    "options": "Sales Channel",
    "description": "Apply rule only for specific channel (leave empty for all channels)"
+  },
+  {
+   "fieldname": "channel_name",
+   "fieldtype": "Data",
+   "label": "Channel Name",
+   "fetch_from": "channel.channel_name",
+   "read_only": 1
   },
   {
    "fieldname": "locale",
@@ -144,7 +160,7 @@
  "index_web_pages_for_search": 0,
  "istable": 1,
  "links": [],
- "modified": "2026-02-09 18:00:00.000000",
+ "modified": "2026-03-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "TradeHub Catalog",
  "name": "Completeness Rule",
