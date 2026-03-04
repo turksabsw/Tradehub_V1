@@ -63,6 +63,7 @@
   "average_commission_rate",
   "total_payout_count",
   "transaction_history_section",
+  "transaction_records",
   "recent_transactions",
   "tax_section",
   "tax_withholding_rate",
@@ -504,10 +505,19 @@
    "label": "Recent Transactions"
   },
   {
-   "description": "JSON array of recent balance transactions",
+   "fieldname": "transaction_records",
+   "fieldtype": "Table",
+   "label": "Transaction Records",
+   "options": "Seller Balance Transaction",
+   "description": "Balance transaction history"
+  },
+  {
+   "description": "Deprecated — use Transaction Records table instead",
    "fieldname": "recent_transactions",
    "fieldtype": "JSON",
-   "label": "Recent Transactions"
+   "label": "Recent Transactions (Deprecated)",
+   "hidden": 1,
+   "read_only": 1
   },
   {
    "collapsible": 1,

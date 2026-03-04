@@ -55,6 +55,7 @@
   "production_capacity",
   "media_section",
   "thumbnail",
+  "product_images",
   "images",
   "seo_section",
   "seo_title",
@@ -394,11 +395,19 @@
    "description": "Main product image for listings"
   },
   {
+   "fieldname": "product_images",
+   "fieldtype": "Table",
+   "label": "Product Images",
+   "options": "SKU Product Image",
+   "description": "Product image gallery"
+  },
+  {
    "fieldname": "images",
    "fieldtype": "JSON",
-   "label": "Images",
+   "label": "Images (Deprecated)",
    "hidden": 1,
-   "description": "Additional product images (managed via UI component)"
+   "read_only": 1,
+   "description": "Deprecated — use Product Images table instead"
   },
   {
    "fieldname": "seo_section",

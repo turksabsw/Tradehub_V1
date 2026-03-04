@@ -46,6 +46,7 @@
   "upc",
   "media_section",
   "primary_image",
+  "variant_images",
   "images",
   "physical_section",
   "weight",
@@ -340,10 +341,19 @@
    "label": "Primary Image"
   },
   {
-   "description": "Additional images for this variant (JSON array of URLs)",
+   "fieldname": "variant_images",
+   "fieldtype": "Table",
+   "label": "Variant Images",
+   "options": "Listing Variant Image",
+   "description": "Variant image gallery"
+  },
+  {
+   "description": "Deprecated — use Variant Images table instead",
    "fieldname": "images",
    "fieldtype": "JSON",
-   "label": "Images"
+   "label": "Images (Deprecated)",
+   "hidden": 1,
+   "read_only": 1
   },
   {
    "collapsible": 1,

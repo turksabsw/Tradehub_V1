@@ -58,6 +58,7 @@
   "promotional_credit_amount",
   "priority_listing_boost",
   "custom_benefits_section",
+  "tier_benefits",
   "custom_benefits",
   "upgrade_section",
   "next_tier",
@@ -425,10 +426,19 @@
    "collapsible": 1
   },
   {
+   "fieldname": "tier_benefits",
+   "fieldtype": "Table",
+   "label": "Tier Benefits",
+   "options": "Seller Tier Benefit",
+   "description": "Custom benefits for this tier"
+  },
+  {
    "fieldname": "custom_benefits",
    "fieldtype": "JSON",
-   "label": "Custom Benefits",
-   "description": "JSON array of additional custom benefits"
+   "label": "Custom Benefits (Deprecated)",
+   "hidden": 1,
+   "read_only": 1,
+   "description": "Deprecated — use Tier Benefits table instead"
   },
   {
    "fieldname": "upgrade_section",
