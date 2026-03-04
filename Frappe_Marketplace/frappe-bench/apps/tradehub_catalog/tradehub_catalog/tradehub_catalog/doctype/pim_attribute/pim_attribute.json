@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "attribute_name",
   "attribute_code",
@@ -30,6 +31,7 @@
   "column_break_local_1",
   "default_locale",
   "default_scope",
+  "configuration_tab",
   "type_config_section",
   "default_value",
   "placeholder",
@@ -59,6 +61,7 @@
   "allowed_extensions",
   "column_break_file_1",
   "max_file_size",
+  "marketplace_tab",
   "marketplace_flags_section",
   "used_by_amazon",
   "amazon_attribute_name",
@@ -77,11 +80,17 @@
   "column_break_hepsi",
   "used_by_n11",
   "n11_attribute_name",
+  "documentation_tab",
   "description_section",
   "description",
   "help_text"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -231,6 +240,11 @@
    "label": "Default Scope",
    "description": "Default scope/channel for scoped values",
    "depends_on": "is_scopable"
+  },
+  {
+   "fieldname": "configuration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Configuration"
   },
   {
    "fieldname": "type_config_section",
@@ -409,6 +423,11 @@
    "description": "Maximum allowed file size in kilobytes"
   },
   {
+   "fieldname": "marketplace_tab",
+   "fieldtype": "Tab Break",
+   "label": "Marketplace"
+  },
+  {
    "fieldname": "marketplace_flags_section",
    "fieldtype": "Section Break",
    "label": "Marketplace Integration",
@@ -519,6 +538,11 @@
    "label": "N11 Attribute Name",
    "description": "Corresponding N11 attribute identifier",
    "depends_on": "used_by_n11"
+  },
+  {
+   "fieldname": "documentation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documentation"
   },
   {
    "fieldname": "description_section",

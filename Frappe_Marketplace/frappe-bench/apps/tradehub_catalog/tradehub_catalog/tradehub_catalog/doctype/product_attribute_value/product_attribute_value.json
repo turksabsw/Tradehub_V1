@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "value_name",
   "value_code",
@@ -23,6 +24,7 @@
   "tenant_name",
   "column_break_tenant",
   "is_global",
+  "display_tab",
   "visual_section",
   "color_code",
   "image",
@@ -33,6 +35,11 @@
   "description"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -150,6 +157,11 @@
    "label": "Is Global",
    "read_only": 1,
    "description": "Auto-filled from Product Attribute"
+  },
+  {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
   },
   {
    "fieldname": "visual_section",

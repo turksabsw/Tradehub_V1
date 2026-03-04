@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "attribute_name",
   "attribute_code",
@@ -23,6 +24,7 @@
   "tenant_name",
   "column_break_tenant",
   "is_global",
+  "settings_tab",
   "description_section",
   "description",
   "help_text",
@@ -43,6 +45,11 @@
   "product_count"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -158,6 +165,11 @@
    "fieldtype": "Check",
    "label": "Is Global",
    "description": "Global attributes are visible to all tenants"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
   },
   {
    "fieldname": "description_section",

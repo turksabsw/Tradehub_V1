@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "config_tab",
   "basic_section",
   "config_name",
   "is_active",
@@ -13,6 +14,7 @@
   "is_default",
   "tenant",
   "category",
+  "weights_tab",
   "performance_section",
   "sales_weight",
   "view_weight",
@@ -30,6 +32,7 @@
   "column_break_quality",
   "recency_weight",
   "stock_weight",
+  "adjustments_tab",
   "boost_section",
   "featured_boost",
   "bestseller_boost",
@@ -42,6 +45,7 @@
   "column_break_penalty",
   "new_listing_boost_days",
   "new_listing_boost_amount",
+  "algorithm_tab",
   "algorithm_section",
   "use_time_decay",
   "decay_half_life_days",
@@ -50,6 +54,11 @@
   "min_orders_for_conversion"
  ],
  "fields": [
+  {
+   "fieldname": "config_tab",
+   "fieldtype": "Tab Break",
+   "label": "Configuration"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -96,6 +105,11 @@
    "fieldtype": "Link",
    "label": "Category",
    "options": "Category"
+  },
+  {
+   "fieldname": "weights_tab",
+   "fieldtype": "Tab Break",
+   "label": "Weights"
   },
   {
    "fieldname": "performance_section",
@@ -213,6 +227,11 @@
    "precision": 2
   },
   {
+   "fieldname": "adjustments_tab",
+   "fieldtype": "Tab Break",
+   "label": "Adjustments"
+  },
+  {
    "fieldname": "boost_section",
    "fieldtype": "Section Break",
    "label": "Boost Settings"
@@ -292,6 +311,11 @@
    "fieldtype": "Float",
    "label": "New Listing Boost Amount",
    "precision": 2
+  },
+  {
+   "fieldname": "algorithm_tab",
+   "fieldtype": "Tab Break",
+   "label": "Algorithm"
   },
   {
    "collapsible": 1,

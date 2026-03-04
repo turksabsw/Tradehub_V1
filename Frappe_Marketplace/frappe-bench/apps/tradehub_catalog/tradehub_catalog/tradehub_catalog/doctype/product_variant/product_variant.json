@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "variant_code",
   "variant_name",
@@ -24,6 +25,7 @@
   "column_break_ownership",
   "tenant",
   "tenant_name",
+  "attributes_tab",
   "variant_attributes_section",
   "color",
   "size",
@@ -36,6 +38,7 @@
   "column_break_custom",
   "attribute_2_label",
   "attribute_2_value",
+  "pricing_tab",
   "pricing_section",
   "variant_price",
   "price_adjustment",
@@ -48,16 +51,19 @@
   "column_break_inventory",
   "is_stock_item",
   "allow_negative_stock",
+  "identifiers_tab",
   "barcode_section",
   "barcode",
   "ean_code",
   "column_break_barcode",
   "gtin",
   "mpn",
+  "media_tab",
   "media_section",
   "variant_thumbnail",
   "variant_image_table",
   "variant_images",
+  "physical_tab",
   "physical_attributes_section",
   "weight",
   "weight_uom",
@@ -71,6 +77,11 @@
   "sync_with_erpnext"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -206,6 +217,11 @@
    "description": "Auto-filled from SKU Product"
   },
   {
+   "fieldname": "attributes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attributes"
+  },
+  {
    "fieldname": "variant_attributes_section",
    "fieldtype": "Section Break",
    "label": "Variant Attributes"
@@ -273,6 +289,11 @@
    "fieldtype": "Data",
    "label": "Attribute 2 Value",
    "description": "Custom attribute value"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
   },
   {
    "fieldname": "pricing_section",
@@ -357,6 +378,11 @@
    "description": "Allow orders when stock is zero"
   },
   {
+   "fieldname": "identifiers_tab",
+   "fieldtype": "Tab Break",
+   "label": "Identifiers"
+  },
+  {
    "fieldname": "barcode_section",
    "fieldtype": "Section Break",
    "label": "Barcodes and Identifiers",
@@ -391,6 +417,11 @@
    "description": "Manufacturer Part Number"
   },
   {
+   "fieldname": "media_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
    "fieldname": "media_section",
    "fieldtype": "Section Break",
    "label": "Media"
@@ -415,6 +446,11 @@
    "hidden": 1,
    "read_only": 1,
    "description": "[DEPRECATED] Additional variant images (JSON) - use Variant Images table instead"
+  },
+  {
+   "fieldname": "physical_tab",
+   "fieldtype": "Tab Break",
+   "label": "Physical"
   },
   {
    "fieldname": "physical_attributes_section",

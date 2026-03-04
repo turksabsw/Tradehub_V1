@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "schema_name",
   "description",
@@ -27,6 +28,7 @@
   "mobile_columns",
   "grid_gap",
   "card_style",
+  "display_tab",
   "display_options_section",
   "show_image",
   "image_position",
@@ -51,6 +53,7 @@
   "show_wishlist",
   "show_compare",
   "show_sku",
+  "filters_tab",
   "filter_settings_section",
   "show_filters",
   "filter_position",
@@ -64,6 +67,7 @@
   "column_break_sort",
   "default_sort_order",
   "available_sort_options",
+  "assignment_tab",
   "category_specific_section",
   "apply_to_all_categories",
   "specific_categories",
@@ -75,6 +79,11 @@
   "custom_js"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -216,6 +225,11 @@
    "fieldtype": "Select",
    "label": "Card Style",
    "options": "Shadow\nBorder\nFlat\nElevated\nMinimal"
+  },
+  {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
   },
   {
    "fieldname": "display_options_section",
@@ -366,6 +380,11 @@
    "label": "Show SKU"
   },
   {
+   "fieldname": "filters_tab",
+   "fieldtype": "Tab Break",
+   "label": "Filters & Sort"
+  },
+  {
    "fieldname": "filter_settings_section",
    "fieldtype": "Section Break",
    "label": "Filter Settings"
@@ -448,6 +467,11 @@
    "fieldname": "available_sort_options",
    "fieldtype": "Small Text",
    "label": "Available Sort Options"
+  },
+  {
+   "fieldname": "assignment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Assignment"
   },
   {
    "collapsible": 1,

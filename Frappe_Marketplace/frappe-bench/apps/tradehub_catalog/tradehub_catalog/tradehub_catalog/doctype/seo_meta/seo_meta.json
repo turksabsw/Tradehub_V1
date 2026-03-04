@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "reference_section",
   "reference_doctype",
   "reference_name",
@@ -21,6 +22,7 @@
   "column_break_meta",
   "meta_keywords",
   "canonical_url",
+  "social_tab",
   "open_graph_section",
   "og_title",
   "og_description",
@@ -33,6 +35,7 @@
   "column_break_twitter",
   "twitter_description",
   "twitter_image",
+  "technical_tab",
   "robots_section",
   "robots_index",
   "robots_follow",
@@ -48,6 +51,11 @@
   "schema_data"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "reference_section",
    "fieldtype": "Section Break",
@@ -148,6 +156,11 @@
    "description": "Preferred URL for this page to avoid duplicate content issues"
   },
   {
+   "fieldname": "social_tab",
+   "fieldtype": "Tab Break",
+   "label": "Social"
+  },
+  {
    "fieldname": "open_graph_section",
    "fieldtype": "Section Break",
    "label": "Open Graph (Social Sharing)",
@@ -218,6 +231,11 @@
    "fieldtype": "Attach Image",
    "label": "Twitter Image",
    "description": "Image for Twitter cards (falls back to OG image)"
+  },
+  {
+   "fieldname": "technical_tab",
+   "fieldtype": "Tab Break",
+   "label": "Technical"
   },
   {
    "fieldname": "robots_section",

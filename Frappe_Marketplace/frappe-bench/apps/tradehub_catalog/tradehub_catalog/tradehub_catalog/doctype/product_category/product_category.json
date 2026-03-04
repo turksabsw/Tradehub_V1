@@ -8,6 +8,7 @@
  "is_tree": 1,
  "nsm_parent_field": "parent_product_category",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "category_name",
   "category_code",
@@ -25,6 +26,7 @@
   "tenant_name",
   "column_break_tenant",
   "is_global",
+  "content_tab",
   "description_section",
   "description",
   "image",
@@ -40,12 +42,18 @@
   "column_break_display",
   "show_in_filters",
   "featured",
+  "system_tab",
   "tree_fields_section",
   "lft",
   "rgt",
   "old_parent"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -160,6 +168,11 @@
    "description": "Global categories are visible to all tenants"
   },
   {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
    "fieldname": "description_section",
    "fieldtype": "Section Break",
    "label": "Description"
@@ -248,6 +261,11 @@
    "fieldtype": "Check",
    "label": "Featured",
    "description": "Highlight category on homepage"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "tree_fields_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "category_name",
   "parent_category",
@@ -20,6 +21,7 @@
   "attribute_set",
   "attribute_set_name",
   "erpnext_item_group",
+  "commerce_tab",
   "tax_section",
   "tax_rate",
   "commission_section",
@@ -28,12 +30,14 @@
   "column_break_3",
   "max_commission",
   "fixed_commission",
+  "seo_tab",
   "seo_section",
   "route",
   "meta_title",
   "meta_description",
   "column_break_4",
   "meta_keywords",
+  "system_tab",
   "tree_section",
   "lft",
   "rgt",
@@ -41,6 +45,11 @@
   "old_parent"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -129,6 +138,11 @@
    "options": "Item Group"
   },
   {
+   "fieldname": "commerce_tab",
+   "fieldtype": "Tab Break",
+   "label": "Commerce"
+  },
+  {
    "fieldname": "tax_section",
    "fieldtype": "Section Break",
    "label": "Tax Settings"
@@ -177,6 +191,11 @@
    "label": "Fixed Commission"
   },
   {
+   "fieldname": "seo_tab",
+   "fieldtype": "Tab Break",
+   "label": "SEO"
+  },
+  {
    "collapsible": 1,
    "fieldname": "seo_section",
    "fieldtype": "Section Break",
@@ -206,6 +225,11 @@
    "fieldname": "meta_keywords",
    "fieldtype": "Small Text",
    "label": "Meta Keywords"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

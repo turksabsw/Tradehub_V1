@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "attribute_name",
   "attribute_label",
@@ -23,6 +24,7 @@
   "column_break_3",
   "icon",
   "description",
+  "values_tab",
   "values_section",
   "attribute_values",
   "numeric_section",
@@ -33,6 +35,11 @@
   "numeric_unit"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -139,6 +146,11 @@
    "fieldname": "description",
    "fieldtype": "Small Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "values_tab",
+   "fieldtype": "Tab Break",
+   "label": "Values"
   },
   {
    "depends_on": "eval:doc.attribute_type=='Select' || doc.attribute_type=='Color'",

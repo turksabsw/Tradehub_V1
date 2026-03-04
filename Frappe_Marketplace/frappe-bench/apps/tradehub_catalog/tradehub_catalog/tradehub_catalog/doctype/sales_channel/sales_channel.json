@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "channel_name",
   "channel_code",
@@ -19,11 +20,13 @@
   "is_default",
   "column_break_status_1",
   "priority",
+  "api_tab",
   "api_credentials_section",
   "api_credentials",
   "column_break_api_1",
   "api_endpoint",
   "api_version",
+  "settings_tab",
   "localization_section",
   "default_locale",
   "column_break_locale_1",
@@ -46,6 +49,11 @@
   "description"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -127,6 +135,11 @@
    "description": "Channel priority for multi-channel exports (higher = more priority)"
   },
   {
+   "fieldname": "api_tab",
+   "fieldtype": "Tab Break",
+   "label": "API"
+  },
+  {
    "fieldname": "api_credentials_section",
    "fieldtype": "Section Break",
    "label": "API Credentials",
@@ -155,6 +168,11 @@
    "fieldtype": "Data",
    "label": "API Version",
    "description": "API version to use (e.g., v1, v2)"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
   },
   {
    "fieldname": "localization_section",

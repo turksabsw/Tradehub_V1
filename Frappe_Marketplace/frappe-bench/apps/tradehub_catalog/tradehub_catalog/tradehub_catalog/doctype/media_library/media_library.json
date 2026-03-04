@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "title",
   "file",
@@ -20,6 +21,7 @@
   "column_break_organization",
   "tags",
   "description",
+  "metadata_tab",
   "metadata_section",
   "file_type",
   "file_size",
@@ -34,11 +36,17 @@
   "column_break_usage",
   "is_public",
   "is_featured",
+  "system_tab",
   "timestamps_section",
   "uploaded_at",
   "modified_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -133,6 +141,11 @@
    "fieldname": "description",
    "fieldtype": "Small Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "metadata_tab",
+   "fieldtype": "Tab Break",
+   "label": "Metadata"
   },
   {
    "fieldname": "metadata_section",
@@ -230,6 +243,11 @@
    "fieldname": "is_featured",
    "fieldtype": "Check",
    "label": "Is Featured"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

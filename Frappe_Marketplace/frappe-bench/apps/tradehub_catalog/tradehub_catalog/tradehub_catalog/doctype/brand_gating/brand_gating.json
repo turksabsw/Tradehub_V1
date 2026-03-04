@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "brand_section",
   "brand",
   "brand_name",
@@ -23,6 +24,7 @@
   "tenant_section",
   "tenant",
   "tenant_name",
+  "authorization_tab",
   "authorization_section",
   "authorization_status",
   "authorization_type",
@@ -35,6 +37,7 @@
   "column_break_validity",
   "is_active",
   "auto_renew",
+  "restrictions_tab",
   "products_section",
   "product_scope",
   "allowed_categories",
@@ -52,6 +55,7 @@
   "buybox_priority_boost",
   "column_break_buybox",
   "suppress_unauthorized",
+  "documents_tab",
   "authorization_details_section",
   "authorized_by",
   "authorized_by_name",
@@ -66,11 +70,17 @@
   "column_break_documents",
   "certificate_number",
   "certificate_expiry",
+  "notes_tab",
   "notes_section",
   "authorization_notes",
   "internal_notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "brand_section",
    "fieldtype": "Section Break",
@@ -199,6 +209,11 @@
    "description": "Auto-filled from Seller"
   },
   {
+   "fieldname": "authorization_tab",
+   "fieldtype": "Tab Break",
+   "label": "Authorization"
+  },
+  {
    "fieldname": "authorization_section",
    "fieldtype": "Section Break",
    "label": "Authorization"
@@ -276,6 +291,11 @@
    "fieldtype": "Check",
    "label": "Auto Renew",
    "description": "Automatically renew authorization on expiry"
+  },
+  {
+   "fieldname": "restrictions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Restrictions"
   },
   {
    "fieldname": "products_section",
@@ -387,6 +407,11 @@
    "description": "Hide unauthorized sellers from Buy Box for this brand-seller"
   },
   {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
    "fieldname": "authorization_details_section",
    "fieldtype": "Section Break",
    "label": "Authorization Details"
@@ -474,6 +499,11 @@
    "fieldtype": "Date",
    "label": "Certificate Expiry",
    "description": "Authorization certificate expiry date"
+  },
+  {
+   "fieldname": "notes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Notes"
   },
   {
    "fieldname": "notes_section",

@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "family_name",
   "family_code",
@@ -17,12 +18,14 @@
   "is_active",
   "description_section",
   "description",
+  "attributes_tab",
   "attributes_section",
   "family_attributes",
   "variant_section",
   "variant_axes",
   "completeness_section",
   "completeness_rules",
+  "media_tab",
   "media_section",
   "min_images",
   "max_images",
@@ -31,6 +34,7 @@
   "allow_video",
   "required_angles_section",
   "required_image_angles",
+  "configuration_tab",
   "default_values_section",
   "default_values",
   "channel_section",
@@ -41,6 +45,11 @@
   "label_overrides"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -108,6 +117,11 @@
    "description": "Internal description of this product family"
   },
   {
+   "fieldname": "attributes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attributes"
+  },
+  {
    "fieldname": "attributes_section",
    "fieldtype": "Section Break",
    "label": "Family Attributes"
@@ -142,6 +156,11 @@
    "label": "Completeness Rules",
    "options": "Completeness Rule",
    "description": "Rules that determine product completeness for this family"
+  },
+  {
+   "fieldname": "media_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media"
   },
   {
    "fieldname": "media_section",
@@ -193,6 +212,11 @@
    "label": "Required Angles",
    "options": "Required Image Angle",
    "description": "Specific image angles required for products in this family"
+  },
+  {
+   "fieldname": "configuration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Configuration"
   },
   {
    "fieldname": "default_values_section",

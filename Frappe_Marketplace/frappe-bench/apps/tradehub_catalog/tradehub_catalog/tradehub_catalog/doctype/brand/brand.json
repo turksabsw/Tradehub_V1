@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "brand_name",
   "brand_code",
@@ -20,6 +21,7 @@
   "tenant_name",
   "column_break_tenant",
   "is_global",
+  "ownership_tab",
   "ownership_section",
   "registered_by",
   "registered_by_name",
@@ -31,6 +33,7 @@
   "column_break_verification",
   "verification_date",
   "verification_notes",
+  "additional_tab",
   "additional_info_section",
   "website",
   "country_of_origin",
@@ -52,6 +55,11 @@
   "product_count"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -147,6 +155,11 @@
    "description": "Global brands are visible to all tenants"
   },
   {
+   "fieldname": "ownership_tab",
+   "fieldtype": "Tab Break",
+   "label": "Ownership"
+  },
+  {
    "fieldname": "ownership_section",
    "fieldtype": "Section Break",
    "label": "Ownership",
@@ -218,6 +231,11 @@
    "fieldtype": "Small Text",
    "label": "Verification Notes",
    "description": "Notes from verification process"
+  },
+  {
+   "fieldname": "additional_tab",
+   "fieldtype": "Tab Break",
+   "label": "Additional"
   },
   {
    "fieldname": "additional_info_section",

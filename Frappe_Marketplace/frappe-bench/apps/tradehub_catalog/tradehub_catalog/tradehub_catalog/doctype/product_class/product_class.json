@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "class_name",
   "class_code",
@@ -16,6 +17,7 @@
   "icon",
   "description_section",
   "description",
+  "attributes_tab",
   "attribute_groups_section",
   "shared_attribute_groups",
   "custom_fields_section",
@@ -26,6 +28,7 @@
   "form_columns",
   "display_section",
   "card_display_fields",
+  "workflow_tab",
   "workflow_section",
   "workflow_template",
   "default_status",
@@ -34,6 +37,7 @@
   "approval_workflow",
   "allowed_statuses_section",
   "allowed_statuses",
+  "commerce_tab",
   "commerce_rules_section",
   "pricing_strategy",
   "allow_variants",
@@ -51,8 +55,10 @@
   "column_break_inv_1",
   "default_uom",
   "track_serial_numbers",
+  "permissions_tab",
   "permissions_section",
   "role_permissions",
+  "seo_tab",
   "url_seo_section",
   "url_pattern",
   "meta_title_template",
@@ -61,6 +67,7 @@
   "canonical_url_pattern",
   "search_config_section",
   "search_configs",
+  "integration_tab",
   "integration_section",
   "sync_to_erpnext",
   "erpnext_item_group",
@@ -75,6 +82,11 @@
   "export_on_approval"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -129,6 +141,11 @@
    "fieldtype": "Small Text",
    "label": "Description",
    "description": "Internal description of this product class"
+  },
+  {
+   "fieldname": "attributes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attributes"
   },
   {
    "fieldname": "attribute_groups_section",
@@ -192,6 +209,11 @@
    "description": "Fields to display in product cards, lists, and detail views"
   },
   {
+   "fieldname": "workflow_tab",
+   "fieldtype": "Tab Break",
+   "label": "Workflow"
+  },
+  {
    "fieldname": "workflow_section",
    "fieldtype": "Section Break",
    "label": "Workflow Settings"
@@ -240,6 +262,11 @@
    "label": "Statuses",
    "options": "Product Class Allowed Status",
    "description": "Status definitions and transitions for products of this class"
+  },
+  {
+   "fieldname": "commerce_tab",
+   "fieldtype": "Tab Break",
+   "label": "Commerce"
   },
   {
    "fieldname": "commerce_rules_section",
@@ -351,6 +378,11 @@
    "description": "Enable serial number tracking"
   },
   {
+   "fieldname": "permissions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Permissions"
+  },
+  {
    "fieldname": "permissions_section",
    "fieldtype": "Section Break",
    "label": "Role Permissions"
@@ -361,6 +393,11 @@
    "label": "Permissions",
    "options": "Product Class Role Permission",
    "description": "Role-based access permissions for products of this class"
+  },
+  {
+   "fieldname": "seo_tab",
+   "fieldtype": "Tab Break",
+   "label": "SEO"
   },
   {
    "fieldname": "url_seo_section",
@@ -409,6 +446,11 @@
    "label": "Search Config",
    "options": "Product Class Search Config",
    "description": "Search, filter, and faceting configuration for products of this class"
+  },
+  {
+   "fieldname": "integration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Integration"
   },
   {
    "fieldname": "integration_section",
