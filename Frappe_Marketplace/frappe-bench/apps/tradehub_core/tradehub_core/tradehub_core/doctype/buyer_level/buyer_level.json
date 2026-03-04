@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "level_name",
   "level_code",
@@ -15,6 +16,7 @@
   "is_default",
   "icon",
   "color",
+  "thresholds_tab",
   "thresholds_section",
   "qualification_type",
   "column_break_thresholds",
@@ -27,6 +29,7 @@
   "column_break_order",
   "min_purchase_frequency",
   "evaluation_period_months",
+  "benefits_tab",
   "benefits_section",
   "benefits",
   "display_section",
@@ -36,6 +39,7 @@
   "column_break_display",
   "public_description",
   "terms_and_conditions",
+  "progression_tab",
   "promotion_section",
   "is_promoted",
   "promotion_message",
@@ -48,6 +52,7 @@
   "column_break_progression",
   "downgrade_grace_period_days",
   "notify_on_level_change",
+  "system_tab",
   "statistics_section",
   "buyer_count",
   "last_calculated_at",
@@ -56,6 +61,11 @@
   "modified_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -119,6 +129,11 @@
    "fieldtype": "Color",
    "label": "Color",
    "description": "Color associated with this level for display"
+  },
+  {
+   "fieldname": "thresholds_tab",
+   "fieldtype": "Tab Break",
+   "label": "Thresholds"
   },
   {
    "fieldname": "thresholds_section",
@@ -199,6 +214,11 @@
    "description": "Number of months to evaluate for qualification"
   },
   {
+   "fieldname": "benefits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Benefits"
+  },
+  {
    "fieldname": "benefits_section",
    "fieldtype": "Section Break",
    "label": "Level Benefits"
@@ -248,6 +268,11 @@
    "fieldtype": "Text Editor",
    "label": "Terms and Conditions",
    "description": "Terms that buyers must accept for this level"
+  },
+  {
+   "fieldname": "progression_tab",
+   "fieldtype": "Tab Break",
+   "label": "Progression"
   },
   {
    "fieldname": "promotion_section",
@@ -323,6 +348,11 @@
    "fieldtype": "Check",
    "label": "Notify on Level Change",
    "description": "Send notification when buyer's level changes"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "statistics_section",

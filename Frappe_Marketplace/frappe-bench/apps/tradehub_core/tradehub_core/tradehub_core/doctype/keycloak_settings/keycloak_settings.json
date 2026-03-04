@@ -6,12 +6,14 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "tenant",
   "tenant_name",
   "column_break_basic",
   "enabled",
   "debug_mode",
+  "server_tab",
   "server_section",
   "server_url",
   "keycloak_version",
@@ -24,6 +26,7 @@
   "column_break_client",
   "public_client",
   "pkce_enabled",
+  "users_tab",
   "token_section",
   "access_token_lifespan",
   "refresh_token_lifespan",
@@ -41,6 +44,7 @@
   "column_break_roles",
   "seller_role_name",
   "buyer_role_name",
+  "mapping_tab",
   "attribute_mapping_section",
   "email_attribute",
   "first_name_attribute",
@@ -49,6 +53,7 @@
   "phone_attribute",
   "tenant_attribute",
   "user_type_attribute",
+  "admin_tab",
   "admin_section",
   "admin_username",
   "admin_password",
@@ -60,18 +65,21 @@
   "post_logout_redirect_uri",
   "column_break_redirect",
   "allowed_redirect_uris",
+  "social_tab",
   "social_login_section",
   "enable_google_login",
   "enable_facebook_login",
   "column_break_social",
   "enable_apple_login",
   "enable_linkedin_login",
+  "advanced_tab",
   "advanced_section",
   "signature_algorithm",
   "token_endpoint_auth_method",
   "column_break_advanced",
   "verify_ssl",
   "connection_timeout",
+  "system_tab",
   "system_section",
   "connection_status",
   "last_connection_test",
@@ -80,6 +88,11 @@
   "total_users_synced"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -123,6 +136,11 @@
    "fieldtype": "Check",
    "label": "Debug Mode",
    "description": "Enable debug mode for SSO operations (logs to console)"
+  },
+  {
+   "fieldname": "server_tab",
+   "fieldtype": "Tab Break",
+   "label": "Server & Client"
   },
   {
    "fieldname": "server_section",
@@ -198,6 +216,11 @@
    "fieldtype": "Check",
    "label": "PKCE Enabled",
    "description": "Enable Proof Key for Code Exchange (recommended for public clients)"
+  },
+  {
+   "fieldname": "users_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tokens & Users"
   },
   {
    "fieldname": "token_section",
@@ -307,6 +330,11 @@
    "description": "Keycloak role name that maps to Buyer in Trade Hub"
   },
   {
+   "fieldname": "mapping_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attribute Mapping"
+  },
+  {
    "fieldname": "attribute_mapping_section",
    "fieldtype": "Section Break",
    "label": "User Attribute Mapping",
@@ -357,6 +385,11 @@
    "fieldtype": "Data",
    "label": "User Type Attribute",
    "description": "Keycloak attribute name for user type (buyer/seller)"
+  },
+  {
+   "fieldname": "admin_tab",
+   "fieldtype": "Tab Break",
+   "label": "Admin & Redirect"
   },
   {
    "fieldname": "admin_section",
@@ -422,6 +455,11 @@
    "description": "Additional allowed redirect URIs (one per line) for multi-domain support"
   },
   {
+   "fieldname": "social_tab",
+   "fieldtype": "Tab Break",
+   "label": "Social Login"
+  },
+  {
    "fieldname": "social_login_section",
    "fieldtype": "Section Break",
    "label": "Social Login Providers",
@@ -458,6 +496,11 @@
    "fieldtype": "Check",
    "label": "Enable LinkedIn Login",
    "description": "Allow users to login via LinkedIn (must be configured in Keycloak)"
+  },
+  {
+   "fieldname": "advanced_tab",
+   "fieldtype": "Tab Break",
+   "label": "Advanced"
   },
   {
    "fieldname": "advanced_section",
@@ -499,6 +542,11 @@
    "fieldtype": "Int",
    "label": "Connection Timeout (seconds)",
    "description": "Timeout for Keycloak API requests"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "system_section",

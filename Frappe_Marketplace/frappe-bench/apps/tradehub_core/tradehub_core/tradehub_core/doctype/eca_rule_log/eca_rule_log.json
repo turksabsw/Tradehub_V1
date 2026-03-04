@@ -7,6 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "eca_rule",
   "rule_name",
@@ -20,6 +21,7 @@
   "trigger_time",
   "column_break_trigger",
   "execution_time_ms",
+  "execution_tab",
   "condition_section",
   "condition_result",
   "condition_details",
@@ -29,11 +31,17 @@
   "column_break_action",
   "actions_failed",
   "action_results",
+  "errors_tab",
   "error_section",
   "error_message",
   "error_traceback"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -117,6 +125,11 @@
    "description": "Total execution time in milliseconds"
   },
   {
+   "fieldname": "execution_tab",
+   "fieldtype": "Tab Break",
+   "label": "Execution"
+  },
+  {
    "fieldname": "condition_section",
    "fieldtype": "Section Break",
    "label": "Condition Evaluation",
@@ -170,6 +183,11 @@
    "label": "Action Results",
    "options": "JSON",
    "description": "JSON details of each action execution"
+  },
+  {
+   "fieldname": "errors_tab",
+   "fieldtype": "Tab Break",
+   "label": "Errors"
   },
   {
    "fieldname": "error_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "organization_name",
   "organization_type",
@@ -17,6 +18,7 @@
   "erpnext_customer",
   "customer_name",
   "tenant_isolation_section",
+  "contact_tab",
   "contact_section",
   "primary_contact_name",
   "primary_contact_designation",
@@ -35,6 +37,7 @@
   "state",
   "country",
   "postal_code",
+  "tax_tab",
   "tax_section",
   "tax_id",
   "tax_office",
@@ -45,6 +48,7 @@
   "e_invoice_registered",
   "e_invoice_alias",
   "e_archive_enabled",
+  "verification_tab",
   "verification_section",
   "verification_status",
   "verified_at",
@@ -55,12 +59,14 @@
   "tax_documents_verified",
   "trade_registry_verified",
   "kyb_notes",
+  "business_tab",
   "business_section",
   "employee_count",
   "annual_revenue",
   "founded_year",
   "column_break_business",
   "description",
+  "settings_tab",
   "settings_section",
   "credit_limit",
   "payment_terms",
@@ -68,14 +74,21 @@
   "is_approved_buyer",
   "is_approved_seller",
   "can_use_credit",
+  "members_tab",
   "members_section",
   "organization_members",
+  "system_tab",
   "timestamps_section",
   "created_by",
   "column_break_timestamps",
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -154,6 +167,11 @@
    "fieldname": "tenant_isolation_section",
    "fieldtype": "Section Break",
    "hidden": 1
+  },
+  {
+   "fieldname": "contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact & Address"
   },
   {
    "fieldname": "contact_section",
@@ -257,6 +275,11 @@
    "label": "Postal Code"
   },
   {
+   "fieldname": "tax_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tax"
+  },
+  {
    "fieldname": "tax_section",
    "fieldtype": "Section Break",
    "label": "Tax Information"
@@ -315,6 +338,11 @@
    "fieldname": "e_archive_enabled",
    "fieldtype": "Check",
    "label": "E-Archive Enabled"
+  },
+  {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
   },
   {
    "fieldname": "verification_section",
@@ -378,6 +406,11 @@
    "label": "KYB Notes"
   },
   {
+   "fieldname": "business_tab",
+   "fieldtype": "Tab Break",
+   "label": "Business"
+  },
+  {
    "fieldname": "business_section",
    "fieldtype": "Section Break",
    "label": "Business Details"
@@ -407,6 +440,11 @@
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Company Description"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
   },
   {
    "fieldname": "settings_section",
@@ -456,6 +494,11 @@
    "label": "Can Use Credit"
   },
   {
+   "fieldname": "members_tab",
+   "fieldtype": "Tab Break",
+   "label": "Members"
+  },
+  {
    "fieldname": "members_section",
    "fieldtype": "Section Break",
    "label": "Organization Members"
@@ -466,6 +509,11 @@
    "fieldtype": "Table",
    "label": "Members",
    "options": "Organization Member"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

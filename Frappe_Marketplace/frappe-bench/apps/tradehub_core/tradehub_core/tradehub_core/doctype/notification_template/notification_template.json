@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "template_code",
   "template_name",
@@ -18,6 +19,7 @@
   "column_break_channel",
   "priority",
   "retry_count",
+  "content_tab",
   "content_section",
   "subject",
   "body",
@@ -25,6 +27,7 @@
   "variables_section",
   "available_variables",
   "example_data",
+  "email_tab",
   "tenant_section",
   "tenant",
   "tenant_name",
@@ -37,6 +40,7 @@
   "reply_to_email",
   "cc_list",
   "bcc_list",
+  "push_sms_tab",
   "push_settings_section",
   "push_icon",
   "push_image",
@@ -47,12 +51,14 @@
   "sms_sender_id",
   "column_break_sms",
   "sms_max_length",
+  "schedule_tab",
   "scheduling_section",
   "schedule_type",
   "delay_minutes",
   "column_break_schedule",
   "active_from",
   "active_to",
+  "statistics_tab",
   "tracking_section",
   "sent_count",
   "delivered_count",
@@ -64,6 +70,11 @@
   "internal_notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -153,6 +164,11 @@
    "description": "Number of times to retry if delivery fails (0 to disable)"
   },
   {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
    "fieldname": "content_section",
    "fieldtype": "Section Break",
    "label": "Template Content"
@@ -193,6 +209,11 @@
    "fieldtype": "JSON",
    "label": "Example Data",
    "description": "Sample data for template preview (JSON object with variable values)"
+  },
+  {
+   "fieldname": "email_tab",
+   "fieldtype": "Tab Break",
+   "label": "Email"
   },
   {
    "fieldname": "tenant_section",
@@ -271,6 +292,11 @@
    "description": "Comma-separated list of BCC email addresses"
   },
   {
+   "fieldname": "push_sms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Push & SMS"
+  },
+  {
    "fieldname": "push_settings_section",
    "fieldtype": "Section Break",
    "label": "Push Notification Settings",
@@ -331,6 +357,11 @@
    "description": "Maximum character length for SMS (default 160)"
   },
   {
+   "fieldname": "schedule_tab",
+   "fieldtype": "Tab Break",
+   "label": "Schedule"
+  },
+  {
    "fieldname": "scheduling_section",
    "fieldtype": "Section Break",
    "label": "Scheduling",
@@ -369,6 +400,11 @@
    "label": "Active To",
    "depends_on": "eval:doc.schedule_type === 'Scheduled Window'",
    "description": "End time of sending window (e.g., 18:00)"
+  },
+  {
+   "fieldname": "statistics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statistics"
   },
   {
    "fieldname": "tracking_section",

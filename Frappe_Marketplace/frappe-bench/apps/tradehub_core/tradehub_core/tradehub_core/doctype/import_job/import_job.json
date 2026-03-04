@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "job_code",
   "job_name",
@@ -16,6 +17,7 @@
   "tenant_name",
   "seller",
   "seller_name",
+  "file_tab",
   "file_section",
   "import_file",
   "original_filename",
@@ -37,6 +39,7 @@
   "column_mapping_section",
   "column_mapping",
   "field_defaults",
+  "progress_tab",
   "progress_section",
   "total_rows",
   "processed_rows",
@@ -52,6 +55,7 @@
   "column_break_timing",
   "estimated_time_remaining",
   "rows_per_second",
+  "results_tab",
   "errors_section",
   "errors",
   "summary_section",
@@ -66,6 +70,7 @@
   "column_break_notify",
   "notification_sent",
   "notification_sent_at",
+  "system_tab",
   "retry_section",
   "is_retry",
   "retry_count",
@@ -82,6 +87,11 @@
   "priority"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -159,6 +169,11 @@
    "label": "Seller Name",
    "fetch_from": "seller.seller_name",
    "read_only": 1
+  },
+  {
+   "fieldname": "file_tab",
+   "fieldtype": "Tab Break",
+   "label": "File & Config"
   },
   {
    "fieldname": "file_section",
@@ -300,6 +315,11 @@
    "label": "Field Defaults"
   },
   {
+   "fieldname": "progress_tab",
+   "fieldtype": "Tab Break",
+   "label": "Progress"
+  },
+  {
    "fieldname": "progress_section",
    "fieldtype": "Section Break",
    "label": "Progress"
@@ -395,6 +415,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "results_tab",
+   "fieldtype": "Tab Break",
+   "label": "Results"
+  },
+  {
    "collapsible": 1,
    "collapsible_depends_on": "eval:doc.failed_rows > 0",
    "fieldname": "errors_section",
@@ -483,6 +508,11 @@
    "fieldtype": "Datetime",
    "label": "Notification Sent At",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

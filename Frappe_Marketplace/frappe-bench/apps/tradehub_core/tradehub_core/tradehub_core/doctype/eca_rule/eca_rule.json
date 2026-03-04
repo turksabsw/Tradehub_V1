@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "rule_name",
   "rule_code",
@@ -20,12 +21,14 @@
   "column_break_event_1",
   "filter_doctype_field",
   "filter_doctype_value",
+  "conditions_tab",
   "conditions_section",
   "condition_logic",
   "conditions",
   "advanced_conditions_section",
   "jinja_condition",
   "python_condition",
+  "actions_tab",
   "actions_section",
   "actions",
   "rate_limiting_section",
@@ -34,6 +37,7 @@
   "column_break_rate",
   "max_daily_executions",
   "rate_limit_scope",
+  "schedule_tab",
   "logging_section",
   "enable_logging",
   "log_level",
@@ -46,6 +50,7 @@
   "column_break_schedule",
   "last_execution",
   "next_execution",
+  "system_tab",
   "metadata_section",
   "description",
   "category",
@@ -54,6 +59,11 @@
   "tags"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -138,6 +148,11 @@
    "description": "Value that filter field must match to trigger rule"
   },
   {
+   "fieldname": "conditions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Conditions"
+  },
+  {
    "fieldname": "conditions_section",
    "fieldtype": "Section Break",
    "label": "Conditions"
@@ -175,6 +190,11 @@
    "label": "Python Condition",
    "options": "Python",
    "description": "Python code that returns True/False. Available: doc, frappe, utils. Example: doc.amount > 1000"
+  },
+  {
+   "fieldname": "actions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Actions"
   },
   {
    "fieldname": "actions_section",
@@ -227,6 +247,11 @@
    "options": "Global\nPer Document\nPer User",
    "default": "Global",
    "description": "How to scope rate limiting"
+  },
+  {
+   "fieldname": "schedule_tab",
+   "fieldtype": "Tab Break",
+   "label": "Schedule"
   },
   {
    "fieldname": "logging_section",
@@ -305,6 +330,11 @@
    "label": "Next Execution",
    "read_only": 1,
    "description": "When the rule will next execute (for Cron rules)"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "metadata_section",

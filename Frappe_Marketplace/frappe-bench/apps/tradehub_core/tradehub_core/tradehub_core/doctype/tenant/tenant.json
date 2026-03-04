@@ -6,12 +6,14 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "tenant_name",
   "company_name",
   "column_break_1",
   "status",
   "subscription_tier",
+  "contact_tab",
   "contact_section",
   "contact_email",
   "contact_phone",
@@ -25,6 +27,7 @@
   "state",
   "country",
   "postal_code",
+  "tax_tab",
   "tax_section",
   "tax_id",
   "tax_office",
@@ -32,12 +35,14 @@
   "default_tax_rate",
   "e_invoice_enabled",
   "e_archive_enabled",
+  "settings_tab",
   "settings_section",
   "max_sellers",
   "max_listings_per_seller",
   "column_break_5",
   "commission_rate",
   "currency",
+  "system_tab",
   "timestamps_section",
   "subscription_start_date",
   "subscription_end_date",
@@ -46,6 +51,11 @@
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -92,6 +102,11 @@
    "options": "Free\nBasic\nProfessional\nEnterprise",
    "permlevel": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact & Address"
   },
   {
    "fieldname": "contact_section",
@@ -163,6 +178,11 @@
    "label": "Postal Code"
   },
   {
+   "fieldname": "tax_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tax"
+  },
+  {
    "fieldname": "tax_section",
    "fieldtype": "Section Break",
    "label": "Tax Information"
@@ -204,6 +224,11 @@
    "label": "E-Archive Enabled"
   },
   {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
    "fieldname": "settings_section",
    "fieldtype": "Section Break",
    "label": "Tenant Settings"
@@ -242,6 +267,11 @@
    "fieldtype": "Link",
    "label": "Default Currency",
    "options": "Currency"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

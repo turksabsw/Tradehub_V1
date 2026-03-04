@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "category_name",
   "category_code",
@@ -21,12 +22,14 @@
   "icon",
   "icon_color",
   "image",
+  "display_tab",
   "display_section",
   "display_name",
   "public_description",
   "column_break_display",
   "badge_text",
   "badge_color",
+  "qualifications_tab",
   "qualification_section",
   "qualification_type",
   "column_break_qualification",
@@ -34,6 +37,7 @@
   "min_order_amount",
   "min_order_count",
   "industry_tags",
+  "benefits_tab",
   "benefits_section",
   "discount_percentage",
   "priority_support",
@@ -47,6 +51,7 @@
   "column_break_visibility",
   "requires_approval",
   "approval_workflow",
+  "system_tab",
   "statistics_section",
   "buyer_count",
   "last_calculated_at",
@@ -57,6 +62,11 @@
   "old_parent"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -156,6 +166,11 @@
    "description": "Image representing this buyer category"
   },
   {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
+  },
+  {
    "fieldname": "display_section",
    "fieldtype": "Section Break",
    "label": "Display Settings"
@@ -188,6 +203,11 @@
    "fieldtype": "Color",
    "label": "Badge Color",
    "description": "Background color for category badges"
+  },
+  {
+   "fieldname": "qualifications_tab",
+   "fieldtype": "Tab Break",
+   "label": "Qualifications"
   },
   {
    "fieldname": "qualification_section",
@@ -236,6 +256,11 @@
    "label": "Industry Tags",
    "description": "Comma-separated industry tags for auto-assignment (if qualification_type is Industry)",
    "depends_on": "eval:doc.qualification_type=='Industry'"
+  },
+  {
+   "fieldname": "benefits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Benefits"
   },
   {
    "fieldname": "benefits_section",
@@ -320,6 +345,11 @@
    "options": "Workflow",
    "description": "Workflow for category membership approval",
    "depends_on": "eval:doc.requires_approval==1"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "statistics_section",

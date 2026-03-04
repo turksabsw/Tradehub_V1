@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "buyer_profile",
   "buyer_name",
@@ -15,6 +16,7 @@
   "tenant",
   "tenant_name",
   "premium_since",
+  "subscription_tab",
   "subscription_section",
   "subscription_plan",
   "subscription_plan_name",
@@ -23,6 +25,7 @@
   "subscription_start_date",
   "subscription_end_date",
   "auto_renew",
+  "business_tab",
   "business_section",
   "company_name",
   "company_registration_number",
@@ -31,6 +34,7 @@
   "industry_sector",
   "employee_count_range",
   "annual_revenue_range",
+  "procurement_tab",
   "procurement_section",
   "annual_procurement_budget",
   "procurement_budget_currency",
@@ -47,6 +51,7 @@
   "certification_requirements",
   "compliance_requirements",
   "sustainability_requirements",
+  "references_tab",
   "references_section",
   "company_website",
   "linkedin_profile",
@@ -55,6 +60,7 @@
   "bank_references",
   "business_license",
   "tax_certificate",
+  "verification_tab",
   "verification_section",
   "verification_level",
   "kyc_verified",
@@ -63,6 +69,7 @@
   "credit_verified",
   "credit_score",
   "credit_limit",
+  "benefits_tab",
   "premium_benefits_section",
   "priority_support",
   "dedicated_account_manager",
@@ -71,6 +78,7 @@
   "bulk_discount_rate",
   "extended_payment_terms",
   "early_access_products",
+  "api_tab",
   "api_access_section",
   "api_access_level",
   "api_key",
@@ -78,6 +86,7 @@
   "column_break_api",
   "api_last_used",
   "api_usage_this_month",
+  "history_tab",
   "purchase_history_section",
   "total_orders",
   "total_purchase_amount",
@@ -86,6 +95,7 @@
   "average_order_frequency_days",
   "last_order_date",
   "favorite_categories",
+  "performance_tab",
   "performance_section",
   "buyer_score",
   "payment_reliability_rate",
@@ -94,6 +104,7 @@
   "return_rate",
   "repeat_purchase_rate",
   "average_response_time_hours",
+  "communication_tab",
   "communication_section",
   "preferred_language",
   "preferred_contact_method",
@@ -102,6 +113,7 @@
   "newsletter_subscribed",
   "marketing_consent",
   "sms_notifications",
+  "system_tab",
   "timestamps_section",
   "created_at",
   "modified_at",
@@ -110,6 +122,11 @@
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -180,6 +197,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "subscription_tab",
+   "fieldtype": "Tab Break",
+   "label": "Subscription"
+  },
+  {
    "fieldname": "subscription_section",
    "fieldtype": "Section Break",
    "label": "Subscription Details"
@@ -226,6 +248,11 @@
    "label": "Auto Renew"
   },
   {
+   "fieldname": "business_tab",
+   "fieldtype": "Tab Break",
+   "label": "Business"
+  },
+  {
    "fieldname": "business_section",
    "fieldtype": "Section Break",
    "label": "Business Information"
@@ -269,6 +296,11 @@
    "fieldtype": "Select",
    "label": "Annual Revenue Range",
    "options": "\nBelow $100K\n$100K - $500K\n$500K - $1M\n$1M - $5M\n$5M - $10M\n$10M - $50M\n$50M - $100M\nAbove $100M"
+  },
+  {
+   "fieldname": "procurement_tab",
+   "fieldtype": "Tab Break",
+   "label": "Procurement"
   },
   {
    "fieldname": "procurement_section",
@@ -365,6 +397,11 @@
    "description": "Requires suppliers with sustainability certifications"
   },
   {
+   "fieldname": "references_tab",
+   "fieldtype": "Tab Break",
+   "label": "References"
+  },
+  {
    "fieldname": "references_section",
    "fieldtype": "Section Break",
    "label": "References & Documents",
@@ -407,6 +444,11 @@
    "fieldname": "tax_certificate",
    "fieldtype": "Attach",
    "label": "Tax Certificate"
+  },
+  {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
   },
   {
    "fieldname": "verification_section",
@@ -464,6 +506,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "benefits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Benefits"
+  },
+  {
    "fieldname": "premium_benefits_section",
    "fieldtype": "Section Break",
    "label": "Premium Benefits"
@@ -519,6 +566,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "api_tab",
+   "fieldtype": "Tab Break",
+   "label": "API Access"
+  },
+  {
    "fieldname": "api_access_section",
    "fieldtype": "Section Break",
    "label": "API Access",
@@ -564,6 +616,11 @@
    "fieldtype": "Int",
    "label": "API Usage This Month",
    "read_only": 1
+  },
+  {
+   "fieldname": "history_tab",
+   "fieldtype": "Tab Break",
+   "label": "Purchase History"
   },
   {
    "fieldname": "purchase_history_section",
@@ -615,6 +672,11 @@
    "label": "Favorite Categories",
    "description": "Most purchased product categories",
    "read_only": 1
+  },
+  {
+   "fieldname": "performance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Performance"
   },
   {
    "fieldname": "performance_section",
@@ -674,6 +736,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "communication_tab",
+   "fieldtype": "Tab Break",
+   "label": "Communication"
+  },
+  {
    "fieldname": "communication_section",
    "fieldtype": "Section Break",
    "label": "Communication Preferences",
@@ -721,6 +788,11 @@
    "fieldtype": "Check",
    "label": "SMS Notifications",
    "description": "Receive SMS notifications for orders"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

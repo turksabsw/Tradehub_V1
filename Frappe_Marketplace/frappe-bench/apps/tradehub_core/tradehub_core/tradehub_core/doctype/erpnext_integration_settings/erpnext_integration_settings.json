@@ -6,18 +6,21 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "tenant",
   "tenant_name",
   "column_break_basic",
   "enabled",
   "debug_mode",
+  "connection_tab",
   "connection_section",
   "erpnext_site_url",
   "erpnext_api_key",
   "column_break_connection",
   "erpnext_api_secret",
   "connection_status",
+  "sync_tab",
   "sync_toggles_section",
   "sync_products",
   "sync_sellers_to_suppliers",
@@ -26,6 +29,7 @@
   "sync_orders_to_sales_orders",
   "sync_rfq_to_supplier_quotation",
   "sync_inventory",
+  "product_sync_tab",
   "product_sync_section",
   "auto_create_items",
   "auto_update_items",
@@ -34,18 +38,21 @@
   "default_item_group",
   "sync_product_images",
   "sync_product_variants",
+  "order_sync_tab",
   "order_sync_section",
   "auto_create_sales_orders",
   "auto_update_order_status",
   "column_break_order",
   "auto_create_delivery_notes",
   "auto_create_sales_invoices",
+  "inventory_tab",
   "inventory_sync_section",
   "sync_stock_levels",
   "sync_warehouse",
   "column_break_inventory",
   "default_warehouse",
   "sync_interval_minutes",
+  "webhooks_tab",
   "webhook_section",
   "enable_webhooks",
   "webhook_secret",
@@ -58,6 +65,7 @@
   "column_break_schedule",
   "last_sync_time",
   "next_scheduled_sync",
+  "system_tab",
   "field_mapping_section",
   "custom_field_mappings",
   "error_handling_section",
@@ -74,6 +82,11 @@
   "sync_error_count"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -119,6 +132,11 @@
    "description": "Enable debug mode for integration operations (logs to console)"
   },
   {
+   "fieldname": "connection_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connection"
+  },
+  {
    "fieldname": "connection_section",
    "fieldtype": "Section Break",
    "label": "ERPNext Connection Settings"
@@ -153,6 +171,11 @@
    "options": "Not Tested\nConnected\nFailed",
    "read_only": 1,
    "description": "Current connection status to ERPNext"
+  },
+  {
+   "fieldname": "sync_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sync Toggles"
   },
   {
    "fieldname": "sync_toggles_section",
@@ -207,6 +230,11 @@
    "description": "Synchronize stock levels between Trade Hub and ERPNext"
   },
   {
+   "fieldname": "product_sync_tab",
+   "fieldtype": "Tab Break",
+   "label": "Product Sync"
+  },
+  {
    "fieldname": "product_sync_section",
    "fieldtype": "Section Break",
    "label": "Product Sync Settings",
@@ -259,6 +287,11 @@
    "description": "Synchronize product variants as separate ERPNext Items"
   },
   {
+   "fieldname": "order_sync_tab",
+   "fieldtype": "Tab Break",
+   "label": "Order Sync"
+  },
+  {
    "fieldname": "order_sync_section",
    "fieldtype": "Section Break",
    "label": "Order Sync Settings",
@@ -298,6 +331,11 @@
    "description": "Automatically create Sales Invoices from completed orders"
   },
   {
+   "fieldname": "inventory_tab",
+   "fieldtype": "Tab Break",
+   "label": "Inventory"
+  },
+  {
    "fieldname": "inventory_sync_section",
    "fieldtype": "Section Break",
    "label": "Inventory Sync Settings",
@@ -335,6 +373,11 @@
    "fieldtype": "Int",
    "label": "Sync Interval (minutes)",
    "description": "Interval for inventory sync in minutes (minimum: 5)"
+  },
+  {
+   "fieldname": "webhooks_tab",
+   "fieldtype": "Tab Break",
+   "label": "Webhooks"
   },
   {
    "fieldname": "webhook_section",
@@ -414,6 +457,11 @@
    "label": "Next Scheduled Sync",
    "read_only": 1,
    "description": "Timestamp of the next scheduled synchronization"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "field_mapping_section",

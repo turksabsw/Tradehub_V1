@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "buyer_name",
   "user",
@@ -19,6 +20,7 @@
   "tenant_name",
   "organization",
   "organization_name",
+  "contact_tab",
   "contact_section",
   "display_name",
   "contact_email",
@@ -37,6 +39,7 @@
   "state",
   "country",
   "postal_code",
+  "tax_tab",
   "tax_section",
   "tax_id",
   "tax_id_type",
@@ -49,6 +52,7 @@
   "column_break_verification",
   "kyc_profile",
   "identity_verified",
+  "statistics_tab",
   "statistics_section",
   "total_orders",
   "total_spent",
@@ -61,6 +65,7 @@
   "column_break_gb",
   "total_commitment_amount",
   "successful_group_buys",
+  "preferences_tab",
   "preferences_section",
   "preferred_payment_method",
   "preferred_language",
@@ -69,6 +74,7 @@
   "receives_notifications",
   "interest_section",
   "interest_categories",
+  "system_tab",
   "timestamps_section",
   "joined_at",
   "last_active_at",
@@ -76,6 +82,11 @@
   "created_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -172,6 +183,11 @@
    "label": "Organization Name",
    "fetch_from": "organization.organization_name",
    "read_only": 1
+  },
+  {
+   "fieldname": "contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact"
   },
   {
    "fieldname": "contact_section",
@@ -299,6 +315,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "tax_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tax & Verification"
+  },
+  {
    "collapsible": 1,
    "fieldname": "tax_section",
    "fieldtype": "Section Break",
@@ -367,6 +388,11 @@
    "fieldname": "identity_verified",
    "fieldtype": "Check",
    "label": "Identity Verified"
+  },
+  {
+   "fieldname": "statistics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statistics"
   },
   {
    "collapsible": 1,
@@ -446,6 +472,11 @@
    "description": "Group buys that reached target"
   },
   {
+   "fieldname": "preferences_tab",
+   "fieldtype": "Tab Break",
+   "label": "Preferences"
+  },
+  {
    "collapsible": 1,
    "fieldname": "preferences_section",
    "fieldtype": "Section Break",
@@ -493,6 +524,11 @@
    "label": "Interest Categories",
    "options": "Buyer Interest Category",
    "description": "Product categories the buyer is interested in"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

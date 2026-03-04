@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "user",
   "user_full_name",
@@ -16,6 +17,7 @@
   "tenant",
   "tenant_name",
   "risk_level",
+  "personal_tab",
   "personal_info_section",
   "first_name",
   "middle_name",
@@ -28,6 +30,7 @@
   "place_of_birth",
   "mother_maiden_name",
   "father_name",
+  "identity_tab",
   "identity_section",
   "id_type",
   "id_number",
@@ -40,6 +43,7 @@
   "id_front_image",
   "id_back_image",
   "selfie_image",
+  "contact_tab",
   "contact_section",
   "email",
   "phone",
@@ -58,6 +62,7 @@
   "country",
   "address_proof_type",
   "address_proof_document",
+  "verification_tab",
   "verification_section",
   "verification_status",
   "verification_method",
@@ -71,6 +76,7 @@
   "id_verified",
   "address_verified",
   "liveness_verified",
+  "aml_tab",
   "aml_section",
   "aml_check_status",
   "aml_check_date",
@@ -86,6 +92,7 @@
   "column_break_risk",
   "last_risk_assessment",
   "next_review_date",
+  "kvkk_tab",
   "kvkk_section",
   "kvkk_consent_given",
   "kvkk_consent_date",
@@ -101,6 +108,7 @@
   "column_break_rejection",
   "can_reapply",
   "reapply_after",
+  "system_tab",
   "audit_section",
   "created_by",
   "column_break_audit",
@@ -109,6 +117,11 @@
   "internal_notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -190,6 +203,11 @@
    "description": "KYC risk classification"
   },
   {
+   "fieldname": "personal_tab",
+   "fieldtype": "Tab Break",
+   "label": "Personal Info"
+  },
+  {
    "fieldname": "personal_info_section",
    "fieldtype": "Section Break",
    "label": "Personal Information"
@@ -256,6 +274,11 @@
    "fieldtype": "Data",
    "label": "Father's Name",
    "description": "Required for Turkish ID verification"
+  },
+  {
+   "fieldname": "identity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Identity"
   },
   {
    "fieldname": "identity_section",
@@ -325,6 +348,11 @@
    "fieldtype": "Attach Image",
    "label": "Selfie with ID",
    "description": "Photo holding ID next to face for verification"
+  },
+  {
+   "fieldname": "contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact & Address"
   },
   {
    "fieldname": "contact_section",
@@ -430,6 +458,11 @@
    "description": "Document proving current address (not older than 3 months)"
   },
   {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
+  },
+  {
    "fieldname": "verification_section",
    "fieldtype": "Section Break",
    "label": "Verification Details"
@@ -512,6 +545,11 @@
    "label": "Liveness Verified",
    "description": "Selfie verification passed",
    "read_only": 1
+  },
+  {
+   "fieldname": "aml_tab",
+   "fieldtype": "Tab Break",
+   "label": "AML & Risk"
   },
   {
    "fieldname": "aml_section",
@@ -610,6 +648,11 @@
    "description": "When KYC should be reviewed again"
   },
   {
+   "fieldname": "kvkk_tab",
+   "fieldtype": "Tab Break",
+   "label": "KVKK"
+  },
+  {
    "fieldname": "kvkk_section",
    "fieldtype": "Section Break",
    "label": "KVKK Compliance"
@@ -693,6 +736,11 @@
    "fieldtype": "Date",
    "label": "Reapply After",
    "description": "Date after which user can submit new application"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "audit_section",
