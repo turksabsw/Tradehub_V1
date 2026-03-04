@@ -13,6 +13,7 @@
   "status",
   "column_break_basic",
   "tenant",
+  "tenant_name",
   "created_by_user",
   "creation_date",
   "content_section",
@@ -165,6 +166,13 @@
    "label": "Tenant",
    "options": "Tenant",
    "description": "The tenant this case belongs to"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   },
   {
    "fieldname": "created_by_user",

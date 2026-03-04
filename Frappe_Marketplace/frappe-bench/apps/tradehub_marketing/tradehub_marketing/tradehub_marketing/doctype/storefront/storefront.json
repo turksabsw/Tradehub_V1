@@ -9,10 +9,12 @@
   "basic_info_section",
   "store_name",
   "seller",
+  "seller_name",
   "slug",
   "column_break_basic",
   "status",
   "tenant",
+  "tenant_name",
   "is_published",
   "branding_section",
   "logo",
@@ -120,6 +122,13 @@
    "description": "The seller who owns this storefront"
   },
   {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "slug",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -147,7 +156,16 @@
    "in_standard_filter": 1,
    "label": "Tenant",
    "options": "Tenant",
-   "description": "The tenant this storefront belongs to"
+   "description": "The tenant this storefront belongs to",
+   "fetch_from": "seller.tenant",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   },
   {
    "default": "0",

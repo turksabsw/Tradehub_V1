@@ -12,7 +12,9 @@
   "is_active",
   "column_break_basic",
   "seller",
+  "seller_name",
   "tenant",
+  "tenant_name",
   "priority",
   "description_section",
   "description",
@@ -111,11 +113,25 @@
    "options": "Seller Profile"
   },
   {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "tenant",
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Tenant",
    "options": "Tenant"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   },
   {
    "default": "10",

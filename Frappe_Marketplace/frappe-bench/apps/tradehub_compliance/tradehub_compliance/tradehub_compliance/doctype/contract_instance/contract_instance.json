@@ -9,6 +9,8 @@
   "basic_info_section",
   "naming_series",
   "template",
+  "template_name",
+  "contract_type",
   "title",
   "column_break_basic",
   "status",
@@ -39,6 +41,7 @@
   "rejection_reason",
   "tenant_section",
   "tenant",
+  "tenant_name",
   "company",
   "notes_section",
   "notes"
@@ -67,6 +70,20 @@
    "options": "Contract Template",
    "reqd": 1,
    "description": "Contract template this instance is based on"
+  },
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "label": "Template Name",
+   "fetch_from": "template.template_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "contract_type",
+   "fieldtype": "Data",
+   "label": "Contract Type",
+   "fetch_from": "template.contract_type",
+   "read_only": 1
   },
   {
    "fieldname": "title",
@@ -257,6 +274,13 @@
    "fieldtype": "Link",
    "label": "Tenant",
    "options": "Tenant"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   },
   {
    "fieldname": "company",

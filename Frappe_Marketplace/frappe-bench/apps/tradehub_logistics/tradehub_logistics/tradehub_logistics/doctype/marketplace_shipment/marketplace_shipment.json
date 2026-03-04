@@ -9,11 +9,15 @@
   "basic_info_section",
   "shipment_id",
   "sub_order",
+  "sub_order_number",
   "seller",
+  "seller_name",
+  "seller_company",
   "column_break_basic",
   "status",
   "shipment_type",
   "tenant",
+  "tenant_name",
   "carrier_section",
   "carrier",
   "carrier_account",
@@ -141,12 +145,33 @@
    "reqd": 1
   },
   {
+   "fieldname": "sub_order_number",
+   "fieldtype": "Data",
+   "label": "Sub Order Number",
+   "fetch_from": "sub_order.sub_order_id",
+   "read_only": 1
+  },
+  {
    "fieldname": "seller",
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Seller",
    "options": "Seller Profile"
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller_company",
+   "fieldtype": "Data",
+   "label": "Seller Company",
+   "fetch_from": "seller.company_name",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_basic",
@@ -175,6 +200,13 @@
    "in_standard_filter": 1,
    "label": "Tenant",
    "options": "Tenant"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   },
   {
    "fieldname": "carrier_section",

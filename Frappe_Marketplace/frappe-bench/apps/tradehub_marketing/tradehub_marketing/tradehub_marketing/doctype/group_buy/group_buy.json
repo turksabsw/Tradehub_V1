@@ -9,11 +9,14 @@
   "basic_info_section",
   "title",
   "seller",
+  "seller_name",
   "listing",
+  "listing_title",
   "column_break_basic",
   "status",
   "group_buy_type",
   "tenant",
+  "tenant_name",
   "description_section",
   "description",
   "short_description",
@@ -96,11 +99,25 @@
    "description": "Seller offering this group buy"
   },
   {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "listing",
    "fieldtype": "Link",
    "label": "Listing",
    "options": "Listing",
    "description": "Optional linked product listing"
+  },
+  {
+   "fieldname": "listing_title",
+   "fieldtype": "Data",
+   "label": "Listing Title",
+   "fetch_from": "listing.title",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_basic",
@@ -132,7 +149,16 @@
    "fieldtype": "Link",
    "label": "Tenant",
    "options": "Tenant",
-   "description": "The tenant this group buy belongs to"
+   "description": "The tenant this group buy belongs to",
+   "fetch_from": "seller.tenant",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   },
   {
    "fieldname": "description_section",

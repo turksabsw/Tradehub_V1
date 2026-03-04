@@ -8,7 +8,11 @@
  "field_order": [
   "basic_info_section",
   "group_buy",
+  "group_buy_title",
   "buyer",
+  "buyer_name",
+  "seller",
+  "tenant",
   "column_break_basic",
   "status",
   "commitment_date",
@@ -57,6 +61,13 @@
    "description": "The group buy this commitment is for"
   },
   {
+   "fieldname": "group_buy_title",
+   "fieldtype": "Data",
+   "label": "Group Buy Title",
+   "fetch_from": "group_buy.title",
+   "read_only": 1
+  },
+  {
    "fieldname": "buyer",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -65,6 +76,29 @@
    "options": "Buyer Profile",
    "reqd": 1,
    "description": "The buyer making this commitment"
+  },
+  {
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "fetch_from": "buyer.buyer_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "label": "Seller",
+   "options": "Seller Profile",
+   "fetch_from": "group_buy.seller",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant",
+   "fetch_from": "group_buy.tenant",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_basic",

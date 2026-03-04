@@ -9,6 +9,7 @@
   "basic_info_section",
   "naming_series",
   "consent_record",
+  "consent_topic",
   "action",
   "column_break_basic",
   "action_by",
@@ -50,6 +51,14 @@
    "reqd": 1,
    "read_only": 0,
    "description": "The consent record this log entry relates to"
+  },
+  {
+   "fieldname": "consent_topic",
+   "fieldtype": "Link",
+   "label": "Consent Topic",
+   "options": "Consent Topic",
+   "fetch_from": "consent_record.consent_topic",
+   "read_only": 1
   },
   {
    "fieldname": "action",

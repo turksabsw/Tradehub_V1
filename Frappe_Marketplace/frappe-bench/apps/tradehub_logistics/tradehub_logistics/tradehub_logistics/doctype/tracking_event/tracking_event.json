@@ -8,6 +8,7 @@
  "field_order": [
   "event_info_section",
   "shipment",
+  "shipment_tracking_number",
   "tracking_number",
   "carrier",
   "column_break_event",
@@ -67,9 +68,11 @@
   "marketplace_order",
   "sub_order",
   "seller",
+  "seller_name",
   "column_break_order_ref",
   "buyer",
   "tenant",
+  "tenant_name",
   "notification_section",
   "notification_sent",
   "notification_type",
@@ -100,6 +103,13 @@
    "label": "Shipment",
    "options": "Marketplace Shipment",
    "reqd": 1
+  },
+  {
+   "fieldname": "shipment_tracking_number",
+   "fieldtype": "Data",
+   "label": "Shipment Tracking Number",
+   "fetch_from": "shipment.tracking_number",
+   "read_only": 1
   },
   {
    "description": "Carrier tracking number",
@@ -455,6 +465,13 @@
    "options": "Seller Profile"
   },
   {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_order_ref",
    "fieldtype": "Column Break"
   },
@@ -469,6 +486,13 @@
    "fieldtype": "Link",
    "label": "Tenant",
    "options": "Tenant"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   },
   {
    "collapsible": 1,

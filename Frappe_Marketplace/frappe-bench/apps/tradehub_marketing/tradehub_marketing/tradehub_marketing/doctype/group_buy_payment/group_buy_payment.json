@@ -8,8 +8,11 @@
  "field_order": [
   "basic_info_section",
   "group_buy",
+  "group_buy_title",
   "commitment",
   "buyer",
+  "buyer_name",
+  "seller",
   "column_break_basic",
   "status",
   "payment_date",
@@ -60,6 +63,13 @@
    "reqd": 1
   },
   {
+   "fieldname": "group_buy_title",
+   "fieldtype": "Data",
+   "label": "Group Buy Title",
+   "fetch_from": "group_buy.title",
+   "read_only": 1
+  },
+  {
    "fieldname": "commitment",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -76,6 +86,21 @@
    "label": "Buyer",
    "options": "Buyer Profile",
    "reqd": 1
+  },
+  {
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "fetch_from": "buyer.buyer_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "label": "Seller",
+   "options": "Seller Profile",
+   "fetch_from": "group_buy.seller",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_basic",
