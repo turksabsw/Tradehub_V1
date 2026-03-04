@@ -123,7 +123,7 @@
   },
   {
    "fieldname": "filter_criteria",
-   "fieldtype": "Small Text",
+   "fieldtype": "JSON",
    "label": "Filter Criteria",
    "description": "JSON filter criteria for data selection (e.g., {\"status\": \"Completed\"})"
   },

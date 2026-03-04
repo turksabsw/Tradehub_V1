@@ -229,7 +229,7 @@
   },
   {
    "fieldname": "item_group_mapping",
-   "fieldtype": "Small Text",
+   "fieldtype": "JSON",
    "label": "Item Group Mapping",
    "description": "JSON mapping from Trade Hub categories to ERPNext Item Groups"
   },
