@@ -13,6 +13,7 @@
   "column_break_basic",
   "status",
   "tenant",
+  "tenant_name",
   "priority",
   "is_default",
   "description_section",
@@ -23,6 +24,7 @@
   "apply_to_operator",
   "column_break_conditions",
   "category",
+  "category_name",
   "seller_tier",
   "seller_type",
   "product_type",
@@ -655,6 +657,20 @@
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "category_name",
+   "fieldtype": "Data",
+   "label": "Category Name",
+   "fetch_from": "category.category_name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -665,7 +681,7 @@
    "link_fieldname": "commission_plan"
   }
  ],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "Commission Rule",

@@ -11,6 +11,9 @@
   "rfq_code",
   "title",
   "buyer",
+  "buyer_name",
+  "buyer_company",
+  "buyer_email",
   "column_break_basic",
   "status",
   "category",
@@ -42,7 +45,8 @@
   "accepted_quote",
   "column_break_outcome",
   "closed_at",
-  "closed_reason"
+  "closed_reason",
+  "tenant_name"
  ],
  "fields": [
   {
@@ -360,6 +364,34 @@
    "label": "UOM",
    "in_list_view": 0,
    "options": "UOM"
+  },
+  {
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "fetch_from": "buyer.buyer_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "buyer_company",
+   "fieldtype": "Data",
+   "label": "Buyer Company",
+   "fetch_from": "buyer.company_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "buyer_email",
+   "fieldtype": "Data",
+   "label": "Buyer Email",
+   "fetch_from": "buyer.email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -380,7 +412,7 @@
    "link_fieldname": "rfq"
   }
  ],
- "modified": "2026-02-12 16:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "RFQ",

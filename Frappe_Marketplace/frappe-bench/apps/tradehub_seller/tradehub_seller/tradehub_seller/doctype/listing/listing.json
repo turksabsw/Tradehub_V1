@@ -10,13 +10,17 @@
   "listing_code",
   "title",
   "seller",
+  "seller_name",
+  "seller_company",
   "column_break_basic",
   "status",
   "listing_type",
   "tenant",
+  "tenant_name",
   "erpnext_item",
   "category_section",
   "category",
+  "category_name",
   "subcategory",
   "column_break_category",
   "attribute_set",
@@ -1063,6 +1067,34 @@
    "hidden": 1,
    "label": "Naming Series",
    "options": "LST-.#####"
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller_company",
+   "fieldtype": "Data",
+   "label": "Seller Company",
+   "fetch_from": "seller.company_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "category_name",
+   "fieldtype": "Data",
+   "label": "Category Name",
+   "fetch_from": "category.category_name",
+   "read_only": 1
   }
  ],
  "has_web_view": 1,
@@ -1085,7 +1117,7 @@
    "link_fieldname": "listing"
   }
  ],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Seller",
  "name": "Listing",

@@ -14,7 +14,9 @@
   "buyer",
   "buyer_type",
   "organization",
+  "organization_name",
   "tenant",
+  "tenant_name",
   "buyer_details_section",
   "buyer_name",
   "buyer_email",
@@ -231,13 +233,17 @@
   {
    "fieldname": "buyer_name",
    "fieldtype": "Data",
-   "label": "Buyer Name"
+   "label": "Buyer Name",
+   "fetch_from": "buyer.full_name",
+   "read_only": 1
   },
   {
    "fieldname": "buyer_email",
    "fieldtype": "Data",
    "label": "Buyer Email",
-   "options": "Email"
+   "options": "Email",
+   "fetch_from": "buyer.email",
+   "read_only": 1
   },
   {
    "fieldname": "buyer_phone",
@@ -1122,6 +1128,20 @@
    "label": "Seller Payout",
    "in_list_view": 0,
    "options": "currency"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "fetch_from": "organization.organization_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   }
  ],
  "has_web_view": 0,
@@ -1149,7 +1169,7 @@
    "link_fieldname": "marketplace_order"
   }
  ],
- "modified": "2026-02-12 16:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "Marketplace Order",

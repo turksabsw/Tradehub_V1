@@ -22,6 +22,7 @@
   "order_id",
   "sub_order_id",
   "tenant",
+  "tenant_name",
   "status_change_section",
   "previous_status",
   "new_status",
@@ -507,6 +508,13 @@
    "hidden": 1,
    "label": "Naming Series",
    "options": "OE-.YYYY.-.######\nORDEVT-.#####"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   }
  ],
  "has_web_view": 0,
@@ -524,7 +532,7 @@
    "link_fieldname": "sub_order"
   }
  ],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "Order Event",

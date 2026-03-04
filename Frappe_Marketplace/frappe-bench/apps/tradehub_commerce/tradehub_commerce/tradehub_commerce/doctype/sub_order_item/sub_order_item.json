@@ -11,6 +11,8 @@
   "listing_variant",
   "column_break_product",
   "title",
+  "seller",
+  "seller_name",
   "sku",
   "primary_image",
   "quantity_section",
@@ -80,7 +82,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Title",
-   "read_only": 1
+   "read_only": 1,
+   "fetch_from": "listing.title"
   },
   {
    "fieldname": "sku",
@@ -332,12 +335,27 @@
    "fieldname": "item_notes",
    "fieldtype": "Small Text",
    "label": "Item Notes"
+  },
+  {
+   "fieldname": "seller",
+   "fieldtype": "Link",
+   "label": "Seller",
+   "options": "Seller Profile",
+   "fetch_from": "listing.seller",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "listing.seller_name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
  "istable": 1,
  "links": [],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "Sub Order Item",

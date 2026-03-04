@@ -11,9 +11,12 @@
   "status",
   "column_break_basic",
   "buyer",
+  "buyer_name",
   "buyer_type",
   "organization",
+  "organization_name",
   "tenant",
+  "tenant_name",
   "items_section",
   "items",
   "seller_summary_section",
@@ -448,6 +451,27 @@
    "label": "Tax Total",
    "in_list_view": 0,
    "options": "currency"
+  },
+  {
+   "fieldname": "buyer_name",
+   "fieldtype": "Data",
+   "label": "Buyer Name",
+   "fetch_from": "buyer.full_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "label": "Organization Name",
+   "fetch_from": "organization.organization_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
@@ -458,7 +482,7 @@
    "link_fieldname": "cart"
   }
  ],
- "modified": "2026-02-12 16:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "Cart",

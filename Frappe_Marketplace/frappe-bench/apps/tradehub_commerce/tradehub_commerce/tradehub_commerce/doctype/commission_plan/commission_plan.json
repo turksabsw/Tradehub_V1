@@ -13,6 +13,7 @@
   "column_break_basic",
   "status",
   "tenant",
+  "tenant_name",
   "is_default",
   "description_section",
   "short_description",
@@ -578,11 +579,18 @@
    "fieldtype": "Datetime",
    "label": "Modified At",
    "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "Commission Plan",

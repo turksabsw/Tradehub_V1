@@ -9,11 +9,15 @@
   "basic_info_section",
   "sub_order_id",
   "marketplace_order",
+  "marketplace_order_number",
   "order_date",
   "column_break_basic",
   "seller",
+  "seller_name",
+  "seller_company",
   "status",
   "tenant",
+  "tenant_name",
   "buyer_section",
   "buyer",
   "buyer_name",
@@ -187,7 +191,9 @@
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Tenant",
-   "options": "Tenant"
+   "options": "Tenant",
+   "fetch_from": "seller.tenant",
+   "read_only": 1
   },
   {
    "collapsible": 1,
@@ -206,7 +212,8 @@
    "fieldname": "buyer_name",
    "fieldtype": "Data",
    "label": "Buyer Name",
-   "read_only": 1
+   "read_only": 1,
+   "fetch_from": "buyer.full_name"
   },
   {
    "fieldname": "buyer_email",
@@ -884,6 +891,34 @@
    "fieldtype": "Data",
    "label": "Parent Order ID",
    "in_list_view": 0
+  },
+  {
+   "fieldname": "marketplace_order_number",
+   "fieldtype": "Data",
+   "label": "Marketplace Order Number",
+   "fetch_from": "marketplace_order.order_number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller_name",
+   "fieldtype": "Data",
+   "label": "Seller Name",
+   "fetch_from": "seller.seller_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seller_company",
+   "fieldtype": "Data",
+   "label": "Seller Company",
+   "fetch_from": "seller.company_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name",
+   "fetch_from": "tenant.tenant_name",
+   "read_only": 1
   }
  ],
  "has_web_view": 0,
@@ -901,7 +936,7 @@
    "link_fieldname": "sub_order"
   }
  ],
- "modified": "2026-02-12 16:00:00.000000",
+ "modified": "2026-03-04 12:55:54.321726",
  "modified_by": "Administrator",
  "module": "TradeHub Commerce",
  "name": "Sub Order",
