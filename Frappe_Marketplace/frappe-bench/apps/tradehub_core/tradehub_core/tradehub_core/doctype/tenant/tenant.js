@@ -43,6 +43,15 @@ frappe.ui.form.on('Tenant', {
                 }
             };
         });
+
+        // Set up query filter for default tax rate to show only active rates
+        frm.set_query('default_tax_rate', function() {
+            return {
+                filters: {
+                    'is_active': 1
+                }
+            };
+        });
     },
 
     setup: function(frm) {
@@ -63,6 +72,15 @@ frappe.ui.form.on('Tenant', {
             return {
                 filters: {
                     'enabled': 1
+                }
+            };
+        });
+
+        // Default tax rate filter
+        frm.set_query('default_tax_rate', function() {
+            return {
+                filters: {
+                    'is_active': 1
                 }
             };
         });

@@ -59,13 +59,48 @@ frappe.ui.form.on('Buyer Profile', {
     // =========================================================================
 
     tenant: function(frm) {
-        // Refresh fetch_from fields when tenant changes
-        frm.trigger('refresh_fetch_from_fields');
+        // Clear fetch_from fields when tenant is cleared
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
+            // Tenant was cleared, also clear organization for consistency
+            if (frm.doc.organization) {
+                frm.set_value('organization', null);
+                frm.set_value('organization_name', '');
+            }
+        } else if (frm.doc.organization) {
+            // Validate that current organization belongs to new tenant
+            frappe.db.get_value('Organization', frm.doc.organization, 'tenant', function(r) {
+                if (r && r.tenant !== frm.doc.tenant) {
+                    frm.set_value('organization', null);
+                    frm.set_value('organization_name', '');
+                    frappe.show_alert({
+                        message: __('Organization cleared because it does not belong to the selected Tenant'),
+                        indicator: 'orange'
+                    });
+                }
+            });
+        }
     },
 
     user: function(frm) {
-        // Refresh fetch_from fields when user changes
-        frm.trigger('refresh_fetch_from_fields');
+        // Clear fetch_from fields when user is cleared
+        if (!frm.doc.user) {
+            frm.set_value('user_full_name', '');
+        }
+    },
+
+    buyer_category: function(frm) {
+        // Clear fetch_from fields when buyer_category is cleared
+        if (!frm.doc.buyer_category) {
+            frm.set_value('buyer_category_name', '');
+        }
+    },
+
+    organization: function(frm) {
+        // Clear fetch_from fields when organization is cleared
+        if (!frm.doc.organization) {
+            frm.set_value('organization_name', '');
+        }
     },
 
     verified_by: function(frm) {
@@ -204,19 +239,48 @@ frappe.ui.form.on('Buyer Profile', {
     },
 
     set_field_filters: function(frm) {
-        // Filter user by tenant if tenant is set
-        if (frm.doc.tenant) {
-            frm.set_query('user', function() {
+        // =====================================================
+        // Organization Field - Filter by Tenant (P1 Tenant Isolation)
+        // =====================================================
+        frm.set_query('organization', function() {
+            if (frm.doc.tenant) {
                 return {
                     filters: {
-                        tenant: frm.doc.tenant
+                        'tenant': frm.doc.tenant
                     }
                 };
-            });
-        }
+            }
+            return {};
+        });
 
-        // Filter interest_categories category field to exclude already selected categories
-        // and show only active categories
+        // =====================================================
+        // KYC Profile Field - Filter by Tenant (P1 Tenant Isolation)
+        // =====================================================
+        frm.set_query('kyc_profile', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
+        // Buyer Category Field - Filter Active Categories
+        // =====================================================
+        frm.set_query('buyer_category', function() {
+            return {
+                filters: {
+                    'enabled': 1
+                }
+            };
+        });
+
+        // =====================================================
+        // Interest Categories Child Table - Category Filter
+        // =====================================================
         frm.set_query('category', 'interest_categories', function(doc, cdt, cdn) {
             // Get already selected categories from the child table
             var selected_categories = (doc.interest_categories || [])
@@ -227,6 +291,41 @@ frappe.ui.form.on('Buyer Profile', {
                 filters: {
                     name: ['not in', selected_categories],
                     enabled: 1
+                }
+            };
+        });
+
+        // =====================================================
+        // Address Item Child Table - Cascading Dropdown Filters
+        // =====================================================
+
+        // City filter - show only active cities
+        frm.set_query('city', 'addresses', function(doc, cdt, cdn) {
+            return {
+                filters: {
+                    is_active: 1
+                }
+            };
+        });
+
+        // District filter - show only districts belonging to selected city
+        frm.set_query('district', 'addresses', function(doc, cdt, cdn) {
+            var row = locals[cdt][cdn];
+            return {
+                filters: {
+                    city: row.city || '',
+                    is_active: 1
+                }
+            };
+        });
+
+        // Neighborhood filter - show only neighborhoods belonging to selected district
+        frm.set_query('neighborhood', 'addresses', function(doc, cdt, cdn) {
+            var row = locals[cdt][cdn];
+            return {
+                filters: {
+                    district: row.district || '',
+                    is_active: 1
                 }
             };
         });
@@ -535,5 +634,47 @@ frappe.ui.form.on('Buyer Profile', {
                 });
             }
         }, __('Change Segment'), __('Update'));
+    }
+});
+
+// =====================================================
+// Address Item Child Table - Cascading Clear on Change
+// =====================================================
+
+frappe.ui.form.on('Address Item', {
+    city: function(frm, cdt, cdn) {
+        // When city changes, clear district and neighborhood
+        // because they may not belong to the new city
+        var row = locals[cdt][cdn];
+        if (row.district || row.neighborhood) {
+            frappe.model.set_value(cdt, cdn, 'district', '');
+            frappe.model.set_value(cdt, cdn, 'district_name', '');
+            frappe.model.set_value(cdt, cdn, 'neighborhood', '');
+            frappe.model.set_value(cdt, cdn, 'neighborhood_name', '');
+
+            if (row.city) {
+                frappe.show_alert({
+                    message: __('District and Neighborhood cleared due to city change'),
+                    indicator: 'blue'
+                });
+            }
+        }
+    },
+
+    district: function(frm, cdt, cdn) {
+        // When district changes, clear neighborhood
+        // because it may not belong to the new district
+        var row = locals[cdt][cdn];
+        if (row.neighborhood) {
+            frappe.model.set_value(cdt, cdn, 'neighborhood', '');
+            frappe.model.set_value(cdt, cdn, 'neighborhood_name', '');
+
+            if (row.district) {
+                frappe.show_alert({
+                    message: __('Neighborhood cleared due to district change'),
+                    indicator: 'blue'
+                });
+            }
+        }
     }
 });

@@ -12,6 +12,54 @@ frappe.ui.form.on('KYC Profile', {
         if (frm.doc.tenant) {
             frm.set_df_property('tenant', 'read_only', 1);
         }
+
+        // =====================================================
+        // Seller Profile Field - Filter by Tenant (P1 Tenant Isolation)
+        // =====================================================
+        frm.set_query('seller_profile', function() {
+            var filters = {
+                'status': 'Active'
+            };
+            if (frm.doc.tenant) {
+                filters['tenant'] = frm.doc.tenant;
+            }
+            return {
+                filters: filters
+            };
+        });
+
+        // =====================================================
+        // Buyer Profile Field - Filter by Tenant (P1 Tenant Isolation)
+        // =====================================================
+        frm.set_query('buyer_profile', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+    },
+
+    // =========================================================================
+    // FIELD CHANGE HANDLERS - Clear-on-Change for fetch_from Fields
+    // =========================================================================
+
+    user: function(frm) {
+        // Clear fetch_from fields when user is cleared
+        if (!frm.doc.user) {
+            frm.set_value('user_full_name', '');
+        }
+    },
+
+    tenant: function(frm) {
+        // Clear fetch_from fields when tenant is cleared
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
+            frm.set_df_property('tenant', 'read_only', 0);
+        }
     },
 
     profile_type: function(frm) {
@@ -26,52 +74,61 @@ frappe.ui.form.on('KYC Profile', {
     },
 
     seller_profile: function(frm) {
+        // Clear fetch_from fields when seller_profile is cleared
+        if (!frm.doc.seller_profile) {
+            frm.set_value('seller_name', '');
+            frm.set_df_property('tenant', 'read_only', 0);
+            return;
+        }
+
         // Auto-populate tenant from seller profile
-        if (frm.doc.seller_profile) {
-            frappe.db.get_value('Seller Profile', frm.doc.seller_profile, ['tenant', 'seller_name', 'contact_email', 'contact_phone', 'tax_id', 'tax_id_type'], (r) => {
-                if (r) {
-                    if (r.tenant) {
-                        frm.set_value('tenant', r.tenant);
-                        frm.set_df_property('tenant', 'read_only', 1);
-                    }
-                    // Pre-fill some fields if empty
-                    if (!frm.doc.full_name && r.seller_name) {
-                        frm.set_value('full_name', r.seller_name);
-                    }
-                    if (!frm.doc.email && r.contact_email) {
-                        frm.set_value('email', r.contact_email);
-                    }
-                    if (!frm.doc.phone && r.contact_phone) {
-                        frm.set_value('phone', r.contact_phone);
-                    }
-                    if (!frm.doc.tax_id && r.tax_id) {
-                        frm.set_value('tax_id', r.tax_id);
-                        if (r.tax_id_type) {
-                            frm.set_value('tax_id_type', r.tax_id_type);
-                        }
+        frappe.db.get_value('Seller Profile', frm.doc.seller_profile, ['tenant', 'seller_name', 'contact_email', 'contact_phone', 'tax_id', 'tax_id_type'], (r) => {
+            if (r) {
+                if (r.tenant) {
+                    frm.set_value('tenant', r.tenant);
+                    frm.set_df_property('tenant', 'read_only', 1);
+                }
+                // Pre-fill some fields if empty
+                if (!frm.doc.full_name && r.seller_name) {
+                    frm.set_value('full_name', r.seller_name);
+                }
+                if (!frm.doc.email && r.contact_email) {
+                    frm.set_value('email', r.contact_email);
+                }
+                if (!frm.doc.phone && r.contact_phone) {
+                    frm.set_value('phone', r.contact_phone);
+                }
+                if (!frm.doc.tax_id && r.tax_id) {
+                    frm.set_value('tax_id', r.tax_id);
+                    if (r.tax_id_type) {
+                        frm.set_value('tax_id_type', r.tax_id_type);
                     }
                 }
-            });
-        }
+            }
+        });
     },
 
     buyer_profile: function(frm) {
-        // Auto-populate fields from buyer user profile
-        if (frm.doc.buyer_profile) {
-            frappe.db.get_value('User', frm.doc.buyer_profile, ['full_name', 'email', 'mobile_no'], (r) => {
-                if (r) {
-                    if (!frm.doc.full_name && r.full_name) {
-                        frm.set_value('full_name', r.full_name);
-                    }
-                    if (!frm.doc.email && r.email) {
-                        frm.set_value('email', r.email);
-                    }
-                    if (!frm.doc.phone && r.mobile_no) {
-                        frm.set_value('phone', r.mobile_no);
-                    }
-                }
-            });
+        // Clear fetch_from fields when buyer_profile is cleared
+        if (!frm.doc.buyer_profile) {
+            frm.set_value('buyer_name', '');
+            return;
         }
+
+        // Auto-populate fields from buyer user profile
+        frappe.db.get_value('User', frm.doc.buyer_profile, ['full_name', 'email', 'mobile_no'], (r) => {
+            if (r) {
+                if (!frm.doc.full_name && r.full_name) {
+                    frm.set_value('full_name', r.full_name);
+                }
+                if (!frm.doc.email && r.email) {
+                    frm.set_value('email', r.email);
+                }
+                if (!frm.doc.phone && r.mobile_no) {
+                    frm.set_value('phone', r.mobile_no);
+                }
+            }
+        });
     },
 
     tax_id: function(frm) {

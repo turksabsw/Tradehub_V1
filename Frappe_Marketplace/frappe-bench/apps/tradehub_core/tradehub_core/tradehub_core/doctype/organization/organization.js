@@ -31,6 +31,11 @@ frappe.ui.form.on('Organization', {
     },
 
     tenant: function(frm) {
+        // Clear fetch_from fields when tenant is cleared
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
+        }
+
         // When tenant changes on an existing organization, warn the user
         // The server-side validation in organization.py will prevent invalid changes
         if (!frm.is_new() && frm.doc.__onload && frm.doc.__onload.original_tenant) {
@@ -47,6 +52,13 @@ frappe.ui.form.on('Organization', {
                     }
                 });
             }
+        }
+    },
+
+    erpnext_customer: function(frm) {
+        // Clear fetch_from fields when erpnext_customer is cleared
+        if (!frm.doc.erpnext_customer) {
+            frm.set_value('customer_name', '');
         }
     },
 
