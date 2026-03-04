@@ -56,6 +56,7 @@
   "mpn",
   "media_section",
   "variant_thumbnail",
+  "variant_image_table",
   "variant_images",
   "physical_attributes_section",
   "weight",
@@ -401,11 +402,19 @@
    "description": "Main image for this variant"
   },
   {
+   "fieldname": "variant_image_table",
+   "fieldtype": "Table",
+   "label": "Variant Images",
+   "options": "Product Variant Image",
+   "description": "Variant images as structured child table"
+  },
+  {
    "fieldname": "variant_images",
    "fieldtype": "JSON",
-   "label": "Variant Images",
+   "label": "Variant Images (Legacy)",
    "hidden": 1,
-   "description": "Additional variant images (managed via UI component)"
+   "read_only": 1,
+   "description": "[DEPRECATED] Additional variant images (JSON) - use Variant Images table instead"
   },
   {
    "fieldname": "physical_attributes_section",
