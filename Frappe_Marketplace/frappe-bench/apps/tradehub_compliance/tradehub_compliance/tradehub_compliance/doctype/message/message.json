@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "message_section",
   "message_thread",
   "thread_subject",
@@ -21,13 +22,31 @@
   "buyer_name",
   "seller",
   "seller_name",
+  "content_tab",
   "content_section",
   "content",
   "plain_text_content",
+  "attachments_tab",
   "attachments_section",
   "has_attachments",
   "attachments",
   "attachments_table",
+  "delivery_tab",
+  "delivery_section",
+  "is_delivered",
+  "delivered_at",
+  "column_break_delivery",
+  "delivery_error",
+  "notification_sent",
+  "moderation_tab",
+  "flags_section",
+  "is_flagged",
+  "flag_reason",
+  "column_break_flags",
+  "is_deleted",
+  "deleted_at",
+  "deleted_by",
+  "system_tab",
   "tenant_section",
   "tenant",
   "tenant_name",
@@ -36,26 +55,13 @@
   "column_break_timestamps",
   "read_at",
   "is_read",
-  "delivery_section",
-  "is_delivered",
-  "delivered_at",
-  "column_break_delivery",
-  "delivery_error",
-  "notification_sent",
   "metadata_section",
   "reply_to",
   "reply_to_preview",
   "column_break_metadata",
   "is_system_message",
   "is_edited",
-  "edited_at",
-  "flags_section",
-  "is_flagged",
-  "flag_reason",
-  "column_break_flags",
-  "is_deleted",
-  "deleted_at",
-  "deleted_by"
+  "edited_at"
  ],
  "fields": [
   {
@@ -405,6 +411,36 @@
    "read_only": 1,
    "depends_on": "is_deleted",
    "description": "Who deleted the message"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "attachments_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "delivery_tab",
+   "fieldtype": "Tab Break",
+   "label": "Delivery"
+  },
+  {
+   "fieldname": "moderation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Moderation"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

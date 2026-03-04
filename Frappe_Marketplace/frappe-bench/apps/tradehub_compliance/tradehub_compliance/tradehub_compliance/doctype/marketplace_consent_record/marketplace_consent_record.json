@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "user",
   "user_full_name",
@@ -22,6 +23,7 @@
   "data_categories",
   "processing_description",
   "retention_period",
+  "consent_tab",
   "consent_version_section",
   "consent_version",
   "consent_text",
@@ -36,6 +38,7 @@
   "given_ip_address",
   "given_user_agent",
   "given_source",
+  "withdrawal_tab",
   "withdrawal_section",
   "is_withdrawn",
   "withdrawn_at",
@@ -44,6 +47,7 @@
   "withdrawn_ip_address",
   "withdrawal_reason",
   "data_deletion_requested",
+  "sharing_tab",
   "third_party_section",
   "involves_third_party",
   "third_party_name",
@@ -51,12 +55,14 @@
   "column_break_third_party",
   "transfer_safeguards",
   "third_party_purpose",
+  "expiry_tab",
   "expiry_section",
   "has_expiry",
   "expiry_date",
   "column_break_expiry",
   "auto_renew",
   "renewal_reminder_sent",
+  "verification_tab",
   "verification_section",
   "is_verified",
   "verified_at",
@@ -65,6 +71,7 @@
   "verified_by",
   "verification_reference",
   "double_opt_in_completed",
+  "system_tab",
   "audit_section",
   "created_by",
   "column_break_audit",
@@ -510,6 +517,41 @@
    "fieldtype": "Text Editor",
    "label": "Internal Notes",
    "description": "Notes visible only to administrators"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "consent_tab",
+   "fieldtype": "Tab Break",
+   "label": "Consent"
+  },
+  {
+   "fieldname": "withdrawal_tab",
+   "fieldtype": "Tab Break",
+   "label": "Withdrawal"
+  },
+  {
+   "fieldname": "sharing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Third Party"
+  },
+  {
+   "fieldname": "expiry_tab",
+   "fieldtype": "Tab Break",
+   "label": "Expiry"
+  },
+  {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "type_name",
   "type_code",
@@ -18,21 +19,19 @@
   "column_break_category",
   "standards_body",
   "issuing_authority",
+  "branding_tab",
   "branding_section",
   "icon",
   "description",
   "requirements",
+  "validity_tab",
   "validity_section",
   "default_validity_months",
   "renewal_reminder_days",
   "column_break_validity",
   "requires_physical_audit",
   "requires_renewal",
-  "tenant_section",
-  "tenant",
-  "tenant_name",
-  "column_break_tenant",
-  "is_global",
+  "settings_tab",
   "additional_info_section",
   "website",
   "reference_standard",
@@ -44,7 +43,13 @@
   "show_in_filters",
   "column_break_display",
   "featured",
-  "certificate_count"
+  "certificate_count",
+  "system_tab",
+  "tenant_section",
+  "tenant",
+  "tenant_name",
+  "column_break_tenant",
+  "is_global"
  ],
  "fields": [
   {
@@ -298,6 +303,31 @@
    "label": "Certificate Count",
    "read_only": 1,
    "description": "Number of active certificates of this type"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "branding_tab",
+   "fieldtype": "Tab Break",
+   "label": "Branding"
+  },
+  {
+   "fieldname": "validity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

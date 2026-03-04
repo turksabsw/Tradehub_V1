@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "thread_info_section",
   "subject",
   "status",
@@ -14,6 +15,7 @@
   "priority",
   "is_starred",
   "unread_count",
+  "participants_tab",
   "participants_section",
   "initiator_type",
   "column_break_participants",
@@ -30,9 +32,11 @@
   "seller_company",
   "column_break_seller",
   "seller_email",
+  "tenant_tab",
   "tenant_section",
   "tenant",
   "tenant_name",
+  "documents_tab",
   "related_documents_section",
   "reference_doctype",
   "reference_name",
@@ -43,18 +47,21 @@
   "order_status",
   "sample_request",
   "quotation",
+  "activity_tab",
   "activity_section",
   "message_count",
   "last_message_date",
   "column_break_activity",
   "last_message_by",
   "last_message_preview",
+  "settings_tab",
   "settings_section",
   "allow_attachments",
   "auto_close_days",
   "column_break_settings",
   "notification_enabled",
   "email_notifications",
+  "system_tab",
   "dates_section",
   "created_date",
   "column_break_dates",
@@ -449,6 +456,41 @@
    "fieldtype": "Text",
    "label": "Internal Notes",
    "description": "Internal notes (not visible to participants)"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "participants_tab",
+   "fieldtype": "Tab Break",
+   "label": "Participants"
+  },
+  {
+   "fieldname": "tenant_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tenant"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "activity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Activity"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

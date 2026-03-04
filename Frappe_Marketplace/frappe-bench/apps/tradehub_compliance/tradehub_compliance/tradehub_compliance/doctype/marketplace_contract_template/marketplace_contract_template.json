@@ -6,29 +6,34 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "template_code",
   "template_name",
   "column_break_basic",
   "enabled",
   "is_default",
+  "content_tab",
   "content_section",
   "description",
   "content",
+  "settings_tab",
   "settings_section",
   "contract_type",
   "validity_days",
   "column_break_settings",
   "requires_signature",
   "auto_expire",
+  "tracking_tab",
+  "tracking_section",
+  "usage_count",
+  "last_used_at",
+  "system_tab",
   "tenant_section",
   "tenant",
   "tenant_name",
   "column_break_tenant",
-  "is_global",
-  "tracking_section",
-  "usage_count",
-  "last_used_at"
+  "is_global"
  ],
  "fields": [
   {
@@ -184,6 +189,31 @@
    "label": "Last Used At",
    "read_only": 1,
    "description": "Timestamp of the last contract instance created"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "tracking_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tracking"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

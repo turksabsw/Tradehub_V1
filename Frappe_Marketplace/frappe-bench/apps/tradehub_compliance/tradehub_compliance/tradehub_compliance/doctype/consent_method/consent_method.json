@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "method_name",
   "method_code",
@@ -18,12 +19,14 @@
   "column_break_details",
   "icon",
   "color",
+  "validation_tab",
   "validation_section",
   "requires_validation",
   "validation_field",
   "column_break_validation",
   "validation_regex",
   "validation_error_message",
+  "system_tab",
   "tenant_section",
   "tenant",
   "company"
@@ -161,6 +164,21 @@
    "fieldtype": "Link",
    "label": "Company",
    "options": "Company"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "validation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Validation"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

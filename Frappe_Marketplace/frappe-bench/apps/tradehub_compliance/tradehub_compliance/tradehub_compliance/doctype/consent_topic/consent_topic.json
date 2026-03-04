@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "topic_name",
   "topic_code",
@@ -18,18 +19,21 @@
   "column_break_details",
   "icon",
   "color",
+  "legal_tab",
   "legal_section",
   "legal_basis",
   "requires_explicit_consent",
   "column_break_legal",
   "data_categories",
   "processing_purposes",
+  "settings_tab",
   "settings_section",
   "mandatory",
   "default_enabled",
   "column_break_settings",
   "allow_partial_consent",
   "requires_separate_consent",
+  "system_tab",
   "tenant_section",
   "tenant",
   "company"
@@ -201,6 +205,26 @@
    "fieldtype": "Link",
    "label": "Company",
    "options": "Company"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "legal_tab",
+   "fieldtype": "Tab Break",
+   "label": "Legal"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

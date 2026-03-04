@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "naming_series",
   "title",
@@ -14,9 +15,11 @@
   "status",
   "language",
   "effective_date",
+  "content_tab",
   "content_section",
   "content",
   "content_summary",
+  "version_tab",
   "version_section",
   "version",
   "content_hash",
@@ -29,6 +32,7 @@
   "column_break_legal",
   "processing_purposes",
   "third_party_disclosures",
+  "system_tab",
   "metadata_section",
   "created_by",
   "approved_by",
@@ -254,6 +258,26 @@
    "fieldtype": "Link",
    "label": "Company",
    "options": "Company"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "version_tab",
+   "fieldtype": "Tab Break",
+   "label": "Version"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "naming_series",
   "contract_template",
@@ -13,6 +14,7 @@
   "column_break_basic",
   "status",
   "contract_type",
+  "parties_tab",
   "parties_section",
   "buyer",
   "buyer_name",
@@ -21,14 +23,17 @@
   "seller",
   "seller_name",
   "seller_company",
+  "context_tab",
   "context_section",
   "rfq",
   "rfq_title",
   "column_break_context",
   "related_doctype",
   "related_document",
+  "content_tab",
   "content_section",
   "rendered_content",
+  "signature_tab",
   "signature_section",
   "signed_by_buyer",
   "buyer_signature_date",
@@ -37,12 +42,14 @@
   "signed_by_seller",
   "seller_signature_date",
   "seller_ip_address",
+  "validity_tab",
   "validity_section",
   "effective_date",
   "expiry_date",
   "column_break_validity",
   "is_expired",
   "auto_renewed",
+  "system_tab",
   "notes_section",
   "internal_notes"
  ],
@@ -308,6 +315,41 @@
    "fieldtype": "Text",
    "label": "Internal Notes",
    "description": "Internal notes for administrators"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "parties_tab",
+   "fieldtype": "Tab Break",
+   "label": "Parties"
+  },
+  {
+   "fieldname": "context_tab",
+   "fieldtype": "Tab Break",
+   "label": "Context"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "signature_tab",
+   "fieldtype": "Tab Break",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "validity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

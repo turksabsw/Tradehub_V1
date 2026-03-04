@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "naming_series",
   "title",
@@ -14,21 +15,25 @@
   "status",
   "language",
   "contract_type",
+  "content_tab",
   "content_section",
   "content",
   "content_summary",
+  "version_tab",
   "version_section",
   "version",
   "content_hash",
   "column_break_version",
   "published_at",
   "published_by",
+  "settings_tab",
   "settings_section",
   "requires_signature",
   "signature_method",
   "column_break_settings",
   "valid_days",
   "auto_expire",
+  "system_tab",
   "tenant_section",
   "tenant",
   "company"
@@ -205,6 +210,31 @@
    "fieldtype": "Link",
    "label": "Company",
    "options": "Company"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "version_tab",
+   "fieldtype": "Tab Break",
+   "label": "Version"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

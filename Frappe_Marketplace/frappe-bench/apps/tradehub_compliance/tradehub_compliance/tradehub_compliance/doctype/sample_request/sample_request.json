@@ -6,18 +6,21 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "request_info_section",
   "request_date",
   "status",
   "column_break_request",
   "sample_type",
   "priority",
+  "product_tab",
   "product_section",
   "sku_product",
   "product_name",
   "column_break_product",
   "product_sku_code",
   "product_status",
+  "parties_tab",
   "ownership_section",
   "seller",
   "seller_name",
@@ -31,6 +34,7 @@
   "column_break_buyer",
   "buyer_email",
   "buyer_phone",
+  "sample_tab",
   "sample_details_section",
   "quantity",
   "variant",
@@ -38,6 +42,7 @@
   "column_break_sample_details",
   "specifications",
   "customization_notes",
+  "pricing_tab",
   "pricing_section",
   "sample_price",
   "currency",
@@ -50,6 +55,7 @@
   "column_break_payment",
   "payment_reference",
   "payment_method",
+  "shipping_tab",
   "shipping_section",
   "shipping_address",
   "shipping_city",
@@ -58,24 +64,28 @@
   "shipping_method",
   "tracking_number",
   "carrier",
+  "dates_tab",
   "dates_section",
   "approved_date",
   "production_start_date",
   "column_break_dates",
   "shipped_date",
   "delivered_date",
+  "credit_tab",
   "credit_section",
   "credit_to_order",
   "credit_percentage",
   "column_break_credit",
   "credited_amount",
   "credited_order",
+  "feedback_tab",
   "feedback_section",
   "buyer_feedback",
   "quality_rating",
   "column_break_feedback",
   "approval_decision",
   "rejection_reason",
+  "system_tab",
   "notes_section",
   "internal_notes",
   "column_break_notes",
@@ -575,6 +585,56 @@
    "fieldtype": "Text",
    "label": "Seller Notes",
    "description": "Notes from seller about the sample request"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "product_tab",
+   "fieldtype": "Tab Break",
+   "label": "Product"
+  },
+  {
+   "fieldname": "parties_tab",
+   "fieldtype": "Tab Break",
+   "label": "Parties"
+  },
+  {
+   "fieldname": "sample_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sample"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "shipping_tab",
+   "fieldtype": "Tab Break",
+   "label": "Shipping"
+  },
+  {
+   "fieldname": "dates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "credit_tab",
+   "fieldtype": "Tab Break",
+   "label": "Credit"
+  },
+  {
+   "fieldname": "feedback_tab",
+   "fieldtype": "Tab Break",
+   "label": "Feedback"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

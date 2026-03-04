@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "profile_type",
   "seller_profile",
@@ -17,6 +18,7 @@
   "tenant",
   "tenant_name",
   "kyc_profile_link",
+  "score_tab",
   "score_section",
   "risk_score",
   "risk_level",
@@ -27,6 +29,7 @@
   "score_trend",
   "factors_section",
   "scoring_factors",
+  "summary_tab",
   "score_summary_section",
   "total_weight",
   "weighted_average",
@@ -35,6 +38,7 @@
   "negative_factors_count",
   "critical_factors_count",
   "confidence_level",
+  "decision_tab",
   "credit_decision_section",
   "credit_decision",
   "credit_decision_reason",
@@ -51,6 +55,7 @@
   "column_break_decision_details",
   "override_reason",
   "override_expiry",
+  "validity_tab",
   "validity_section",
   "effective_from",
   "effective_until",
@@ -59,14 +64,17 @@
   "review_frequency",
   "auto_recalculate",
   "last_calculated_at",
+  "history_tab",
   "history_section",
   "calculation_history",
+  "alerts_tab",
   "alerts_section",
   "has_alerts",
   "alert_count",
   "column_break_alerts",
   "last_alert_at",
   "alert_summary",
+  "system_tab",
   "notes_section",
   "internal_notes",
   "external_notes",
@@ -556,6 +564,46 @@
    "label": "Modified By",
    "options": "User",
    "read_only": 1
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "score_tab",
+   "fieldtype": "Tab Break",
+   "label": "Score"
+  },
+  {
+   "fieldname": "summary_tab",
+   "fieldtype": "Tab Break",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "decision_tab",
+   "fieldtype": "Tab Break",
+   "label": "Decision"
+  },
+  {
+   "fieldname": "validity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "history_tab",
+   "fieldtype": "Tab Break",
+   "label": "History"
+  },
+  {
+   "fieldname": "alerts_tab",
+   "fieldtype": "Tab Break",
+   "label": "Alerts"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "naming_series",
   "provider",
@@ -13,23 +14,27 @@
   "column_break_basic",
   "status",
   "external_id",
+  "signer_tab",
   "signer_section",
   "signer_name",
   "signer_email",
   "column_break_signer",
   "signer_phone",
   "signer_tckn",
+  "document_tab",
   "document_section",
   "document_hash",
   "signing_url",
   "column_break_doc",
   "signed_pdf",
   "signed_at",
+  "timestamps_tab",
   "timestamps_section",
   "initiated_at",
   "expires_at",
   "column_break_time",
   "completed_at",
+  "system_tab",
   "error_section",
   "error_message",
   "error_code"
@@ -199,6 +204,31 @@
    "fieldtype": "Data",
    "label": "Error Code",
    "read_only": 1
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "signer_tab",
+   "fieldtype": "Tab Break",
+   "label": "Signer"
+  },
+  {
+   "fieldname": "document_tab",
+   "fieldtype": "Tab Break",
+   "label": "Document"
+  },
+  {
+   "fieldname": "timestamps_tab",
+   "fieldtype": "Tab Break",
+   "label": "Timestamps"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

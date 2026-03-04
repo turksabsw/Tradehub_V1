@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "naming_series",
   "template",
@@ -17,16 +18,19 @@
   "party_type",
   "party",
   "party_name",
+  "template_tab",
   "template_snapshot_section",
   "template_version_snapshot",
   "template_content_snapshot",
   "content_hash_snapshot",
+  "dates_tab",
   "dates_section",
   "created_at",
   "sent_at",
   "column_break_dates",
   "expiry_date",
   "valid_until",
+  "signature_tab",
   "signature_section",
   "signature_method",
   "esign_provider",
@@ -39,6 +43,7 @@
   "rejected_at",
   "rejected_by",
   "rejection_reason",
+  "system_tab",
   "tenant_section",
   "tenant",
   "tenant_name",
@@ -298,6 +303,31 @@
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "template_tab",
+   "fieldtype": "Tab Break",
+   "label": "Template"
+  },
+  {
+   "fieldname": "dates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "signature_tab",
+   "fieldtype": "Tab Break",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

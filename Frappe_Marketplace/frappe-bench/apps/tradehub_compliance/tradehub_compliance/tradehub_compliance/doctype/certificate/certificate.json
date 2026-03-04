@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "certificate_type",
   "type_name",
@@ -23,12 +24,14 @@
   "tenant_section",
   "tenant",
   "tenant_name",
+  "certificate_tab",
   "certificate_details_section",
   "certificate_number",
   "issuing_authority",
   "column_break_cert_details",
   "issuing_body",
   "certificate_scope",
+  "dates_tab",
   "dates_section",
   "issue_date",
   "expiry_date",
@@ -41,6 +44,7 @@
   "column_break_validity",
   "renewal_reminder_days",
   "renewal_reminder_sent",
+  "verification_tab",
   "verification_section",
   "verification_status",
   "verification_date",
@@ -48,6 +52,7 @@
   "verified_by",
   "verified_by_name",
   "verification_notes",
+  "documents_tab",
   "document_section",
   "certificate_document",
   "document_filename",
@@ -55,12 +60,14 @@
   "verification_url",
   "additional_documents",
   "additional_documents_table",
+  "history_tab",
   "renewal_section",
   "previous_certificate",
   "previous_certificate_number",
   "column_break_renewal",
   "renewed_from",
   "renewed_to",
+  "system_tab",
   "notes_section",
   "description",
   "internal_notes"
@@ -460,6 +467,41 @@
    "fieldtype": "Text",
    "label": "Internal Notes",
    "description": "Internal notes (not visible to certificate owner)"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "certificate_tab",
+   "fieldtype": "Tab Break",
+   "label": "Certificate"
+  },
+  {
+   "fieldname": "dates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dates & Validity"
+  },
+  {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "history_tab",
+   "fieldtype": "Tab Break",
+   "label": "History"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 1,

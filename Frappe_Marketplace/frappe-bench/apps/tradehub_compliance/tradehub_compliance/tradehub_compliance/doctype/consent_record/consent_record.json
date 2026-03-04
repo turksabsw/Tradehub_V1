@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "naming_series",
   "party_type",
@@ -25,18 +26,21 @@
   "ip_address",
   "user_agent",
   "source_url",
+  "grant_tab",
   "grant_section",
   "granted_at",
   "granted_by",
   "column_break_grant",
   "expiry_date",
   "retention_until",
+  "revoke_tab",
   "revoke_section",
   "revoked_at",
   "revoked_by",
   "column_break_revoke",
   "revocation_reason",
   "revocation_ip_address",
+  "verification_tab",
   "verification_section",
   "is_verified",
   "verified_at",
@@ -44,6 +48,7 @@
   "column_break_verify",
   "verification_token",
   "double_opt_in_completed",
+  "system_tab",
   "tenant_section",
   "tenant",
   "tenant_name",
@@ -337,6 +342,31 @@
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "grant_tab",
+   "fieldtype": "Tab Break",
+   "label": "Grant"
+  },
+  {
+   "fieldname": "revoke_tab",
+   "fieldtype": "Tab Break",
+   "label": "Revocation"
+  },
+  {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

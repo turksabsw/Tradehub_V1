@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "case_id",
   "case_type",
@@ -16,6 +17,7 @@
   "tenant_name",
   "created_by_user",
   "creation_date",
+  "content_tab",
   "content_section",
   "content_type",
   "content_id",
@@ -25,6 +27,7 @@
   "content_owner_type",
   "content_created_at",
   "content_snapshot",
+  "report_tab",
   "report_info_section",
   "report_source",
   "reporter",
@@ -35,6 +38,7 @@
   "report_subcategory",
   "report_description",
   "report_evidence",
+  "violation_tab",
   "violation_section",
   "violation_type",
   "violation_severity",
@@ -51,6 +55,7 @@
   "column_break_detection",
   "detection_flags",
   "ai_analysis_result",
+  "review_tab",
   "review_section",
   "assigned_to",
   "assigned_at",
@@ -59,6 +64,7 @@
   "review_completed_at",
   "reviewed_by",
   "review_time_seconds",
+  "decision_tab",
   "decision_section",
   "decision",
   "decision_reason",
@@ -68,6 +74,7 @@
   "content_action",
   "account_action_link",
   "warning_issued",
+  "appeal_tab",
   "appeal_section",
   "is_appealable",
   "appeal_status",
@@ -79,6 +86,7 @@
   "appeal_decided_by",
   "appeal_decided_at",
   "appeal_response",
+  "escalation_tab",
   "escalation_section",
   "is_escalated",
   "escalation_level",
@@ -87,13 +95,7 @@
   "escalation_reason",
   "escalated_at",
   "escalated_by",
-  "notifications_section",
-  "owner_notified",
-  "owner_notified_at",
-  "reporter_notified",
-  "column_break_notifications",
-  "reporter_notified_at",
-  "decision_notification_sent",
+  "metrics_tab",
   "metrics_section",
   "queue_position",
   "wait_time_hours",
@@ -104,7 +106,15 @@
   "audit_section",
   "internal_notes",
   "moderation_history",
-  "moderation_history_table"
+  "moderation_history_table",
+  "system_tab",
+  "notifications_section",
+  "owner_notified",
+  "owner_notified_at",
+  "reporter_notified",
+  "column_break_notifications",
+  "reporter_notified_at",
+  "decision_notification_sent"
  ],
  "fields": [
   {
@@ -793,6 +803,56 @@
    "label": "Moderation History",
    "options": "Moderation Action Log",
    "description": "Full history of actions taken on this case"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "report_tab",
+   "fieldtype": "Tab Break",
+   "label": "Report"
+  },
+  {
+   "fieldname": "violation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Violation"
+  },
+  {
+   "fieldname": "review_tab",
+   "fieldtype": "Tab Break",
+   "label": "Review"
+  },
+  {
+   "fieldname": "decision_tab",
+   "fieldtype": "Tab Break",
+   "label": "Decision"
+  },
+  {
+   "fieldname": "appeal_tab",
+   "fieldtype": "Tab Break",
+   "label": "Appeal"
+  },
+  {
+   "fieldname": "escalation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Escalation"
+  },
+  {
+   "fieldname": "metrics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Metrics"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,

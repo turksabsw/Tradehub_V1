@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "rule_name",
   "contract_template",
@@ -13,12 +14,14 @@
   "status",
   "priority",
   "tenant",
+  "trigger_tab",
   "trigger_section",
   "trigger_point",
   "trigger_doctype",
   "column_break_trigger",
   "trigger_event",
   "blocking_action",
+  "conditions_tab",
   "conditions_section",
   "match_type",
   "conditions",
@@ -28,24 +31,28 @@
   "column_break_target",
   "target_seller_level",
   "target_buyer_level",
+  "validity_tab",
   "validity_section",
   "valid_from",
   "valid_until",
   "column_break_validity",
   "auto_expire",
   "expire_after_days",
+  "notification_tab",
   "notification_section",
   "send_notification",
   "notification_template",
   "column_break_notification",
   "reminder_days_before",
   "escalation_days",
+  "execution_tab",
   "execution_section",
   "last_triggered_at",
   "trigger_count",
   "column_break_execution",
   "acceptance_count",
   "rejection_count",
+  "system_tab",
   "system_section",
   "naming_series",
   "description",
@@ -343,6 +350,41 @@
    "fieldname": "notes",
    "fieldtype": "Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "trigger_tab",
+   "fieldtype": "Tab Break",
+   "label": "Trigger"
+  },
+  {
+   "fieldname": "conditions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Conditions"
+  },
+  {
+   "fieldname": "validity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "notification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Notifications"
+  },
+  {
+   "fieldname": "execution_tab",
+   "fieldtype": "Tab Break",
+   "label": "Execution"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   }
  ],
  "index_web_pages_for_search": 0,
