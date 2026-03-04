@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "seller_name",
   "user",
@@ -15,6 +16,7 @@
   "tenant",
   "organization",
   "erpnext_supplier",
+  "contact_tab",
   "contact_section",
   "display_name",
   "contact_email",
@@ -34,6 +36,7 @@
   "addresses",
   "locations_section",
   "locations",
+  "tax_tab",
   "tax_section",
   "tax_id",
   "tax_office",
@@ -43,6 +46,7 @@
   "mersis_number",
   "e_invoice_registered",
   "e_invoice_alias",
+  "verification_tab",
   "verification_section",
   "verification_status",
   "kyc_profile",
@@ -53,6 +57,7 @@
   "business_verified",
   "bank_verified",
   "verification_notes",
+  "banking_tab",
   "banking_section",
   "bank_accounts",
   "payout_method",
@@ -63,6 +68,7 @@
   "column_break_banking",
   "account_holder_name",
   "swift_code",
+  "performance_tab",
   "performance_section",
   "seller_tier",
   "seller_score",
@@ -81,9 +87,11 @@
   "complaint_rate",
   "positive_feedback_rate",
   "last_metrics_update",
+  "badges_tab",
   "badges_section",
   "seller_badges",
   "badges",
+  "settings_tab",
   "settings_section",
   "commission_plan",
   "default_shipping_rule",
@@ -93,6 +101,7 @@
   "auto_accept_orders",
   "accepts_returns",
   "vacation_mode",
+  "restrictions_tab",
   "restrictions_section",
   "is_restricted",
   "restriction_reason",
@@ -108,6 +117,7 @@
   "column_break_featured",
   "is_top_seller",
   "is_premium_seller",
+  "system_tab",
   "timestamps_section",
   "joined_at",
   "last_active_at",
@@ -116,6 +126,11 @@
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -187,6 +202,11 @@
    "label": "ERPNext Supplier",
    "options": "Supplier",
    "description": "Linked ERPNext Supplier record for ERP integration"
+  },
+  {
+   "fieldname": "contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact & Address"
   },
   {
    "fieldname": "contact_section",
@@ -299,6 +319,11 @@
    "options": "Location Item"
   },
   {
+   "fieldname": "tax_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tax"
+  },
+  {
    "fieldname": "tax_section",
    "fieldtype": "Section Break",
    "label": "Tax Information"
@@ -350,6 +375,11 @@
    "fieldname": "e_invoice_alias",
    "fieldtype": "Data",
    "label": "E-Invoice Alias"
+  },
+  {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
   },
   {
    "fieldname": "verification_section",
@@ -411,6 +441,11 @@
    "fieldname": "verification_notes",
    "fieldtype": "Small Text",
    "label": "Verification Notes"
+  },
+  {
+   "fieldname": "banking_tab",
+   "fieldtype": "Tab Break",
+   "label": "Banking"
   },
   {
    "fieldname": "banking_section",
@@ -479,6 +514,11 @@
    "label": "SWIFT/BIC Code (Legacy)",
    "hidden": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "performance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Performance"
   },
   {
    "fieldname": "performance_section",
@@ -610,6 +650,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "badges_tab",
+   "fieldtype": "Tab Break",
+   "label": "Badges"
+  },
+  {
    "fieldname": "badges_section",
    "fieldtype": "Section Break",
    "label": "Badges & Achievements",
@@ -629,6 +674,11 @@
    "label": "Badges (Legacy)",
    "hidden": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
   },
   {
    "fieldname": "settings_section",
@@ -684,6 +734,11 @@
    "fieldname": "vacation_mode",
    "fieldtype": "Check",
    "label": "Vacation Mode"
+  },
+  {
+   "fieldname": "restrictions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Restrictions"
   },
   {
    "fieldname": "restrictions_section",
@@ -778,6 +833,11 @@
    "fieldtype": "Check",
    "label": "Premium Seller",
    "permlevel": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

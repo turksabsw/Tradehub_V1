@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "level_name",
   "level_code",
@@ -15,6 +16,7 @@
   "is_default",
   "icon",
   "color",
+  "thresholds_tab",
   "thresholds_section",
   "qualification_type",
   "column_break_thresholds",
@@ -29,6 +31,7 @@
   "max_return_rate",
   "min_response_rate",
   "evaluation_period_months",
+  "benefits_tab",
   "benefits_section",
   "benefits",
   "commission_section",
@@ -37,6 +40,7 @@
   "column_break_commission",
   "max_product_limit",
   "max_sku_per_product",
+  "display_tab",
   "display_section",
   "display_name",
   "description",
@@ -44,6 +48,7 @@
   "column_break_display",
   "public_description",
   "terms_and_conditions",
+  "progression_tab",
   "promotion_section",
   "is_promoted",
   "promotion_message",
@@ -56,6 +61,7 @@
   "column_break_progression",
   "downgrade_grace_period_days",
   "notify_on_level_change",
+  "system_tab",
   "statistics_section",
   "seller_count",
   "last_calculated_at",
@@ -64,6 +70,11 @@
   "modified_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -127,6 +138,11 @@
    "fieldtype": "Color",
    "label": "Color",
    "description": "Color associated with this level for display"
+  },
+  {
+   "fieldname": "thresholds_tab",
+   "fieldtype": "Tab Break",
+   "label": "Thresholds"
   },
   {
    "fieldname": "thresholds_section",
@@ -222,6 +238,11 @@
    "description": "Number of months to evaluate for qualification"
   },
   {
+   "fieldname": "benefits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Benefits"
+  },
+  {
    "fieldname": "benefits_section",
    "fieldtype": "Section Break",
    "label": "Level Benefits"
@@ -271,6 +292,11 @@
    "description": "Maximum SKU variants per product (0=unlimited)"
   },
   {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
+  },
+  {
    "fieldname": "display_section",
    "fieldtype": "Section Break",
    "label": "Display Settings"
@@ -308,6 +334,11 @@
    "fieldtype": "Text Editor",
    "label": "Terms and Conditions",
    "description": "Terms that sellers must accept for this level"
+  },
+  {
+   "fieldname": "progression_tab",
+   "fieldtype": "Tab Break",
+   "label": "Progression"
   },
   {
    "fieldname": "promotion_section",
@@ -383,6 +414,11 @@
    "fieldtype": "Check",
    "label": "Notify on Level Change",
    "description": "Send notification when seller's level changes"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "statistics_section",

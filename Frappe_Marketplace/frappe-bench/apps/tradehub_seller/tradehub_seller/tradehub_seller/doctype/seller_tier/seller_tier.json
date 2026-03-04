@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "tier_name",
   "tier_code",
@@ -17,6 +18,7 @@
   "description_section",
   "short_description",
   "full_description",
+  "badge_tab",
   "badge_section",
   "badge_icon",
   "badge_color",
@@ -25,6 +27,7 @@
   "display_order",
   "show_in_marketplace",
   "show_badge_on_listings",
+  "requirements_tab",
   "requirements_section",
   "min_seller_score",
   "min_total_sales_count",
@@ -41,6 +44,7 @@
   "column_break_metrics_req",
   "max_complaint_rate",
   "max_response_time_hours",
+  "benefits_tab",
   "benefits_section",
   "commission_discount_percent",
   "reduced_payout_hold_days",
@@ -57,9 +61,11 @@
   "promotional_credits",
   "promotional_credit_amount",
   "priority_listing_boost",
+  "custom_tab",
   "custom_benefits_section",
   "tier_benefits",
   "custom_benefits",
+  "progression_tab",
   "upgrade_section",
   "next_tier",
   "previous_tier",
@@ -68,12 +74,14 @@
   "auto_downgrade",
   "downgrade_grace_days",
   "upgrade_notification_days",
+  "statistics_tab",
   "stats_section",
   "total_sellers",
   "active_sellers",
   "avg_seller_performance",
   "column_break_stats",
   "last_stats_update",
+  "system_tab",
   "timestamps_section",
   "created_by",
   "created_at",
@@ -82,6 +90,11 @@
   "modified_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -160,6 +173,11 @@
    "description": "Detailed description of tier benefits and requirements"
   },
   {
+   "fieldname": "badge_tab",
+   "fieldtype": "Tab Break",
+   "label": "Badge & Display"
+  },
+  {
    "fieldname": "badge_section",
    "fieldtype": "Section Break",
    "label": "Badge & Display"
@@ -207,6 +225,11 @@
    "fieldtype": "Check",
    "label": "Show Badge on Listings",
    "description": "Display tier badge on product listings"
+  },
+  {
+   "fieldname": "requirements_tab",
+   "fieldtype": "Tab Break",
+   "label": "Requirements"
   },
   {
    "fieldname": "requirements_section",
@@ -315,6 +338,11 @@
    "description": "Maximum average response time in hours"
   },
   {
+   "fieldname": "benefits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Benefits"
+  },
+  {
    "fieldname": "benefits_section",
    "fieldtype": "Section Break",
    "label": "Tier Benefits"
@@ -420,6 +448,11 @@
    "description": "Listings get priority in search results"
   },
   {
+   "fieldname": "custom_tab",
+   "fieldtype": "Tab Break",
+   "label": "Custom Benefits"
+  },
+  {
    "fieldname": "custom_benefits_section",
    "fieldtype": "Section Break",
    "label": "Custom Benefits",
@@ -439,6 +472,11 @@
    "hidden": 1,
    "read_only": 1,
    "description": "Deprecated — use Tier Benefits table instead"
+  },
+  {
+   "fieldname": "progression_tab",
+   "fieldtype": "Tab Break",
+   "label": "Progression"
   },
   {
    "fieldname": "upgrade_section",
@@ -493,6 +531,11 @@
    "description": "Days before upgrade to notify seller"
   },
   {
+   "fieldname": "statistics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statistics"
+  },
+  {
    "fieldname": "stats_section",
    "fieldtype": "Section Break",
    "label": "Statistics",
@@ -532,6 +575,11 @@
    "fieldtype": "Datetime",
    "label": "Last Stats Update",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

@@ -6,12 +6,14 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "seller_section",
   "seller",
   "seller_name",
   "tenant",
   "tenant_name",
   "calculation_date",
+  "metrics_tab",
   "order_metrics_section",
   "total_orders",
   "total_sales_amount",
@@ -23,6 +25,7 @@
   "listing_metrics_section",
   "listing_count",
   "active_listing_count",
+  "review_tab",
   "review_metrics_section",
   "avg_rating",
   "total_reviews",
@@ -34,11 +37,17 @@
   "avg_response_time_hours",
   "column_break_activity",
   "repeat_customer_rate",
+  "system_tab",
   "status_section",
   "verification_status",
   "premium_seller"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "seller_section",
    "fieldtype": "Section Break",
@@ -59,6 +68,11 @@
    "in_list_view": 1,
    "label": "Calculation Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "metrics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Order Metrics"
   },
   {
    "fieldname": "order_metrics_section",
@@ -123,6 +137,11 @@
    "label": "Active Listings"
   },
   {
+   "fieldname": "review_tab",
+   "fieldtype": "Tab Break",
+   "label": "Review & Activity"
+  },
+  {
    "fieldname": "review_metrics_section",
    "fieldtype": "Section Break",
    "label": "Review Metrics"
@@ -185,6 +204,11 @@
    "fieldname": "repeat_customer_rate",
    "fieldtype": "Percent",
    "label": "Repeat Customer Rate"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "status_section",

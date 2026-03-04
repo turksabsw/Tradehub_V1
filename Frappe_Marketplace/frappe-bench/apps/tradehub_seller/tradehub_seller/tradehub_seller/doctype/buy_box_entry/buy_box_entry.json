@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "product_section",
   "sku_product",
   "product_name",
@@ -25,6 +26,7 @@
   "tenant_section",
   "tenant",
   "tenant_name",
+  "pricing_tab",
   "pricing_section",
   "offer_price",
   "currency",
@@ -32,6 +34,7 @@
   "min_order_quantity",
   "max_order_quantity",
   "price_includes_shipping",
+  "stock_tab",
   "delivery_section",
   "delivery_days",
   "delivery_location",
@@ -44,6 +47,7 @@
   "column_break_stock",
   "is_stock_guaranteed",
   "last_stock_update",
+  "metrics_tab",
   "seller_metrics_section",
   "seller_average_rating",
   "seller_total_reviews",
@@ -52,6 +56,7 @@
   "seller_response_rate",
   "seller_refund_rate",
   "seller_buy_box_win_rate",
+  "scoring_tab",
   "scoring_section",
   "buy_box_score",
   "price_score",
@@ -60,6 +65,7 @@
   "rating_score",
   "stock_score",
   "is_winner",
+  "system_tab",
   "status_section",
   "status",
   "is_active",
@@ -70,6 +76,11 @@
   "internal_notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "product_section",
    "fieldtype": "Section Break",
@@ -216,6 +227,11 @@
    "description": "Auto-filled from Seller"
   },
   {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
+  },
+  {
    "fieldname": "pricing_section",
    "fieldtype": "Section Break",
    "label": "Pricing"
@@ -260,6 +276,11 @@
    "fieldtype": "Check",
    "label": "Price Includes Shipping",
    "description": "Whether the offer price includes shipping costs"
+  },
+  {
+   "fieldname": "stock_tab",
+   "fieldtype": "Tab Break",
+   "label": "Stock & Delivery"
   },
   {
    "fieldname": "delivery_section",
@@ -339,6 +360,11 @@
    "description": "When stock was last updated"
   },
   {
+   "fieldname": "metrics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Metrics"
+  },
+  {
    "fieldname": "seller_metrics_section",
    "fieldtype": "Section Break",
    "label": "Seller Performance Metrics",
@@ -394,6 +420,11 @@
    "label": "Buy Box Win Rate",
    "read_only": 1,
    "description": "Buy Box win rate metric (computed, not fetched from Seller Profile)"
+  },
+  {
+   "fieldname": "scoring_tab",
+   "fieldtype": "Tab Break",
+   "label": "Scoring"
   },
   {
    "fieldname": "scoring_section",
@@ -458,6 +489,11 @@
    "label": "Buy Box Winner",
    "read_only": 1,
    "description": "Whether this entry currently wins the Buy Box"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "status_section",

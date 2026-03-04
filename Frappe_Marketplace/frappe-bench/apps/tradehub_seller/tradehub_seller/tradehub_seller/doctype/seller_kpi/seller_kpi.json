@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "seller",
   "kpi_type",
@@ -15,6 +16,7 @@
   "tenant",
   "tenant_name",
   "evaluation_period",
+  "period_tab",
   "period_section",
   "period_type",
   "period_start",
@@ -23,6 +25,7 @@
   "period_label",
   "is_current_period",
   "auto_calculated",
+  "targets_tab",
   "targets_section",
   "target_value",
   "target_type",
@@ -32,6 +35,7 @@
   "warning_threshold",
   "critical_threshold",
   "improvement_target",
+  "actual_tab",
   "actual_values_section",
   "actual_value",
   "previous_value",
@@ -41,6 +45,7 @@
   "percentage_of_target",
   "deviation_from_target",
   "last_calculated_at",
+  "evaluation_tab",
   "evaluation_section",
   "evaluation_status",
   "performance_grade",
@@ -49,6 +54,7 @@
   "days_below_target",
   "days_at_risk",
   "consecutive_periods_below",
+  "statistics_tab",
   "metrics_section",
   "sample_size",
   "data_points_count",
@@ -57,8 +63,10 @@
   "standard_deviation",
   "variance",
   "coefficient_of_variation",
+  "breakdown_tab",
   "breakdown_section",
   "breakdown_data",
+  "comparison_tab",
   "comparison_section",
   "peer_average",
   "peer_rank",
@@ -67,6 +75,7 @@
   "tier_average",
   "category_average",
   "platform_average",
+  "alerts_tab",
   "alerts_section",
   "alerts_enabled",
   "alert_on_warning",
@@ -75,6 +84,7 @@
   "alert_recipients",
   "last_alert_sent",
   "alert_count",
+  "actions_tab",
   "actions_section",
   "action_required",
   "recommended_action",
@@ -87,6 +97,7 @@
   "calculation_method",
   "data_source",
   "notes",
+  "system_tab",
   "timestamps_section",
   "created_at",
   "created_by",
@@ -95,6 +106,11 @@
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -162,6 +178,11 @@
    "description": "Period identifier (e.g., 2024-01, 2024-Q1, 2024-W05)"
   },
   {
+   "fieldname": "period_tab",
+   "fieldtype": "Tab Break",
+   "label": "Period"
+  },
+  {
    "fieldname": "period_section",
    "fieldtype": "Section Break",
    "label": "Period Settings"
@@ -213,6 +234,11 @@
    "fieldtype": "Check",
    "label": "Auto-Calculated",
    "description": "Whether KPI value is automatically calculated from data"
+  },
+  {
+   "fieldname": "targets_tab",
+   "fieldtype": "Tab Break",
+   "label": "Targets"
   },
   {
    "fieldname": "targets_section",
@@ -278,6 +304,11 @@
    "label": "Improvement Target",
    "precision": 2,
    "description": "Expected improvement from previous period"
+  },
+  {
+   "fieldname": "actual_tab",
+   "fieldtype": "Tab Break",
+   "label": "Actual"
   },
   {
    "fieldname": "actual_values_section",
@@ -348,6 +379,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "evaluation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Evaluation"
+  },
+  {
    "fieldname": "evaluation_section",
    "fieldtype": "Section Break",
    "label": "Performance Evaluation"
@@ -405,6 +441,11 @@
    "label": "Consecutive Periods Below Target",
    "read_only": 1,
    "description": "Number of consecutive periods below target"
+  },
+  {
+   "fieldname": "statistics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statistics"
   },
   {
    "fieldname": "metrics_section",
@@ -466,6 +507,11 @@
    "description": "CV = Standard Deviation / Mean"
   },
   {
+   "fieldname": "breakdown_tab",
+   "fieldtype": "Tab Break",
+   "label": "Breakdown"
+  },
+  {
    "fieldname": "breakdown_section",
    "fieldtype": "Section Break",
    "label": "Value Breakdown",
@@ -476,6 +522,11 @@
    "fieldtype": "JSON",
    "label": "Breakdown Data",
    "description": "JSON object with detailed breakdown of KPI calculation"
+  },
+  {
+   "fieldname": "comparison_tab",
+   "fieldtype": "Tab Break",
+   "label": "Comparison"
   },
   {
    "fieldname": "comparison_section",
@@ -541,6 +592,11 @@
    "description": "Platform-wide average for this KPI"
   },
   {
+   "fieldname": "alerts_tab",
+   "fieldtype": "Tab Break",
+   "label": "Alerts"
+  },
+  {
    "fieldname": "alerts_section",
    "fieldtype": "Section Break",
    "label": "Alert Settings",
@@ -590,6 +646,11 @@
    "label": "Alert Count",
    "read_only": 1,
    "description": "Number of alerts sent this period"
+  },
+  {
+   "fieldname": "actions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Actions"
   },
   {
    "fieldname": "actions_section",
@@ -662,6 +723,11 @@
    "fieldtype": "Text",
    "label": "Notes",
    "description": "Additional notes about this KPI record"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

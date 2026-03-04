@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "naming_series",
   "rule_name",
@@ -14,20 +15,28 @@
   "enabled",
   "priority",
   "evaluation_schedule",
+  "definition_tab",
   "rule_section",
   "rule_json",
   "rule_description",
+  "evaluation_tab",
   "evaluation_section",
   "last_evaluated",
   "last_evaluation_result",
   "column_break_eval",
   "total_assignments",
   "last_assignment_change",
+  "system_tab",
   "timestamps_section",
   "created_by",
   "created_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -89,6 +98,11 @@
    "description": "How often to evaluate this rule"
   },
   {
+   "fieldname": "definition_tab",
+   "fieldtype": "Tab Break",
+   "label": "Definition"
+  },
+  {
    "fieldname": "rule_section",
    "fieldtype": "Section Break",
    "label": "Rule Definition"
@@ -105,6 +119,11 @@
    "fieldtype": "Small Text",
    "label": "Rule Description",
    "description": "Human-readable description of what this rule does"
+  },
+  {
+   "fieldname": "evaluation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Evaluation"
   },
   {
    "fieldname": "evaluation_section",
@@ -142,6 +161,11 @@
    "fieldtype": "Datetime",
    "label": "Last Assignment Change",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

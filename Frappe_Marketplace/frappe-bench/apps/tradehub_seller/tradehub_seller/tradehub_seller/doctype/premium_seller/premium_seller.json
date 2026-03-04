@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "seller_profile",
   "seller_name",
@@ -15,6 +16,7 @@
   "tenant",
   "tenant_name",
   "premium_since",
+  "subscription_tab",
   "subscription_section",
   "subscription_plan",
   "subscription_plan_name",
@@ -23,6 +25,7 @@
   "subscription_start_date",
   "subscription_end_date",
   "auto_renew",
+  "business_tab",
   "business_section",
   "company_legal_name",
   "company_registration_number",
@@ -31,6 +34,7 @@
   "annual_revenue_range",
   "employee_count_range",
   "business_type",
+  "factory_tab",
   "factory_section",
   "has_factory",
   "factory_name",
@@ -49,8 +53,10 @@
   "odm_service",
   "custom_manufacturing",
   "minimum_order_quantity",
+  "certs_tab",
   "certifications_section",
   "certifications",
+  "quality_tab",
   "quality_section",
   "quality_management_system",
   "quality_certifications",
@@ -66,6 +72,7 @@
   "column_break_export",
   "trade_terms_accepted",
   "payment_terms_offered",
+  "references_tab",
   "references_section",
   "key_customers",
   "customer_testimonials",
@@ -73,6 +80,7 @@
   "column_break_references",
   "case_studies",
   "sample_projects",
+  "verification_tab",
   "verification_section",
   "verification_level",
   "verified_by_platform",
@@ -81,6 +89,7 @@
   "on_site_verified",
   "on_site_verification_date",
   "verification_report",
+  "documents_tab",
   "documents_section",
   "business_license",
   "tax_registration_certificate",
@@ -89,6 +98,7 @@
   "product_certifications",
   "environmental_certificates",
   "other_documents",
+  "benefits_tab",
   "premium_benefits_section",
   "priority_listing",
   "featured_placement",
@@ -97,6 +107,7 @@
   "reduced_commission_rate",
   "advanced_analytics",
   "api_access_level",
+  "showcase_tab",
   "showcase_section",
   "company_video",
   "virtual_tour_url",
@@ -112,6 +123,7 @@
   "made_in_china_url",
   "indiamart_url",
   "other_marketplace_url",
+  "performance_tab",
   "performance_section",
   "premium_score",
   "response_rate",
@@ -120,6 +132,7 @@
   "repeat_buyer_rate",
   "inquiry_conversion_rate",
   "average_response_time_hours",
+  "system_tab",
   "timestamps_section",
   "created_at",
   "modified_at",
@@ -128,6 +141,11 @@
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -197,6 +215,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "subscription_tab",
+   "fieldtype": "Tab Break",
+   "label": "Subscription"
+  },
+  {
    "fieldname": "subscription_section",
    "fieldtype": "Section Break",
    "label": "Subscription Details"
@@ -243,6 +266,11 @@
    "label": "Auto Renew"
   },
   {
+   "fieldname": "business_tab",
+   "fieldtype": "Tab Break",
+   "label": "Business"
+  },
+  {
    "fieldname": "business_section",
    "fieldtype": "Section Break",
    "label": "Business Information"
@@ -286,6 +314,11 @@
    "fieldtype": "Select",
    "label": "Business Type",
    "options": "\nManufacturer\nTrading Company\nManufacturer & Trading Company\nDistributor/Wholesaler\nAgent\nBuying Office\nService Provider"
+  },
+  {
+   "fieldname": "factory_tab",
+   "fieldtype": "Tab Break",
+   "label": "Factory"
   },
   {
    "fieldname": "factory_section",
@@ -394,6 +427,11 @@
    "description": "Default MOQ for products"
   },
   {
+   "fieldname": "certs_tab",
+   "fieldtype": "Tab Break",
+   "label": "Certifications"
+  },
+  {
    "fieldname": "certifications_section",
    "fieldtype": "Section Break",
    "label": "Certifications & Compliance"
@@ -404,6 +442,11 @@
    "fieldtype": "Table",
    "label": "Certifications",
    "options": "Seller Certification"
+  },
+  {
+   "fieldname": "quality_tab",
+   "fieldtype": "Tab Break",
+   "label": "Quality & Export"
   },
   {
    "fieldname": "quality_section",
@@ -495,6 +538,11 @@
    "description": "T/T, L/C, Western Union, etc."
   },
   {
+   "fieldname": "references_tab",
+   "fieldtype": "Tab Break",
+   "label": "References"
+  },
+  {
    "fieldname": "references_section",
    "fieldtype": "Section Break",
    "label": "References & Testimonials",
@@ -531,6 +579,11 @@
    "fieldtype": "Small Text",
    "label": "Sample Projects",
    "description": "Notable projects completed"
+  },
+  {
+   "fieldname": "verification_tab",
+   "fieldtype": "Tab Break",
+   "label": "Verification"
   },
   {
    "fieldname": "verification_section",
@@ -582,6 +635,11 @@
    "label": "Verification Report"
   },
   {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
    "fieldname": "documents_section",
    "fieldtype": "Section Break",
    "label": "Documents",
@@ -620,6 +678,11 @@
    "fieldname": "other_documents",
    "fieldtype": "Attach",
    "label": "Other Documents"
+  },
+  {
+   "fieldname": "benefits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Benefits"
   },
   {
    "fieldname": "premium_benefits_section",
@@ -676,6 +739,11 @@
    "label": "API Access Level",
    "options": "None\nBasic\nStandard\nAdvanced\nEnterprise",
    "read_only": 1
+  },
+  {
+   "fieldname": "showcase_tab",
+   "fieldtype": "Tab Break",
+   "label": "Showcase"
   },
   {
    "fieldname": "showcase_section",
@@ -761,6 +829,11 @@
    "options": "URL"
   },
   {
+   "fieldname": "performance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Performance"
+  },
+  {
    "fieldname": "performance_section",
    "fieldtype": "Section Break",
    "label": "Performance Metrics"
@@ -813,6 +886,11 @@
    "label": "Avg Response Time (hrs)",
    "precision": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

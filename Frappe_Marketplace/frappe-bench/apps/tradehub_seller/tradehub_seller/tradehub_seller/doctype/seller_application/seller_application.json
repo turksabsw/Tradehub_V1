@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "applicant_user",
   "applicant_name",
@@ -16,6 +17,7 @@
   "tenant",
   "tenant_name",
   "priority",
+  "contact_tab",
   "contact_section",
   "contact_name",
   "contact_email",
@@ -32,6 +34,7 @@
   "state",
   "country",
   "postal_code",
+  "tax_tab",
   "tax_section",
   "tax_id",
   "tax_id_type",
@@ -48,6 +51,7 @@
   "column_break_banking",
   "account_holder_name",
   "swift_code",
+  "documents_tab",
   "documents_section",
   "identity_document",
   "identity_document_type",
@@ -63,6 +67,7 @@
   "activity_certificate_attachment",
   "bank_statement_attachment",
   "additional_documents",
+  "preferences_tab",
   "preferences_section",
   "preferred_categories",
   "expected_monthly_products",
@@ -71,6 +76,7 @@
   "business_description",
   "selling_experience",
   "other_marketplaces",
+  "terms_tab",
   "agreements_section",
   "terms_accepted",
   "privacy_accepted",
@@ -79,6 +85,7 @@
   "commission_accepted",
   "return_policy_accepted",
   "acceptance_date",
+  "workflow_tab",
   "workflow_section",
   "workflow_state",
   "submitted_at",
@@ -87,6 +94,7 @@
   "assigned_to",
   "review_started_at",
   "review_deadline",
+  "review_tab",
   "review_section",
   "review_status",
   "review_notes",
@@ -96,6 +104,7 @@
   "reviewed_by",
   "revision_requested",
   "revision_notes",
+  "approval_tab",
   "approval_section",
   "approved_at",
   "approved_by",
@@ -104,10 +113,16 @@
   "commission_plan",
   "initial_tier",
   "welcome_email_sent",
+  "system_tab",
   "history_section",
   "application_history"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -174,6 +189,11 @@
    "label": "Priority",
    "options": "Low\nNormal\nHigh\nUrgent",
    "description": "Processing priority for the application"
+  },
+  {
+   "fieldname": "contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact & Address"
   },
   {
    "fieldname": "contact_section",
@@ -267,6 +287,11 @@
    "fieldname": "postal_code",
    "fieldtype": "Data",
    "label": "Postal Code"
+  },
+  {
+   "fieldname": "tax_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tax & Banking"
   },
   {
    "fieldname": "tax_section",
@@ -364,6 +389,11 @@
    "label": "SWIFT/BIC Code"
   },
   {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
    "fieldname": "documents_section",
    "fieldtype": "Section Break",
    "label": "Identity Documents"
@@ -455,6 +485,11 @@
    "description": "Any additional documents to support your application"
   },
   {
+   "fieldname": "preferences_tab",
+   "fieldtype": "Tab Break",
+   "label": "Preferences"
+  },
+  {
    "fieldname": "preferences_section",
    "fieldtype": "Section Break",
    "label": "Selling Preferences"
@@ -504,6 +539,11 @@
    "fieldtype": "Small Text",
    "label": "Other Marketplaces",
    "description": "List any other marketplaces you currently sell on"
+  },
+  {
+   "fieldname": "terms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Terms"
   },
   {
    "fieldname": "agreements_section",
@@ -562,6 +602,11 @@
    "description": "Date and time when terms were accepted"
   },
   {
+   "fieldname": "workflow_tab",
+   "fieldtype": "Tab Break",
+   "label": "Workflow"
+  },
+  {
    "fieldname": "workflow_section",
    "fieldtype": "Section Break",
    "label": "Workflow Information"
@@ -609,6 +654,11 @@
    "fieldtype": "Date",
    "label": "Review Deadline",
    "description": "Target date for completing the review"
+  },
+  {
+   "fieldname": "review_tab",
+   "fieldtype": "Tab Break",
+   "label": "Review"
   },
   {
    "fieldname": "review_section",
@@ -667,6 +717,11 @@
    "description": "What needs to be revised or updated"
   },
   {
+   "fieldname": "approval_tab",
+   "fieldtype": "Tab Break",
+   "label": "Approval"
+  },
+  {
    "fieldname": "approval_section",
    "fieldtype": "Section Break",
    "label": "Approval Details",
@@ -717,6 +772,11 @@
    "fieldtype": "Check",
    "label": "Welcome Email Sent",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "history_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "sku_code",
   "sku_name",
@@ -16,6 +17,7 @@
   "tenant",
   "tenant_name",
   "is_active",
+  "product_tab",
   "product_reference_section",
   "product_type",
   "listing",
@@ -26,6 +28,7 @@
   "category_name",
   "brand",
   "manufacturer",
+  "inventory_tab",
   "inventory_section",
   "warehouse",
   "stock_qty",
@@ -42,6 +45,7 @@
   "reorder_level",
   "reorder_qty",
   "max_stock_level",
+  "identifiers_tab",
   "identifiers_section",
   "barcode",
   "barcode_type",
@@ -50,6 +54,7 @@
   "upc",
   "ean",
   "mpn",
+  "pricing_tab",
   "pricing_section",
   "currency",
   "cost_price",
@@ -58,6 +63,7 @@
   "compare_at_price",
   "profit_margin",
   "last_purchase_price",
+  "physical_tab",
   "physical_section",
   "weight",
   "weight_uom",
@@ -73,18 +79,21 @@
   "shelf_life_days",
   "expiry_date",
   "is_perishable",
+  "supplier_tab",
   "supplier_section",
   "default_supplier",
   "supplier_sku",
   "column_break_supplier",
   "lead_time_days",
   "minimum_order_qty",
+  "erpnext_tab",
   "erpnext_section",
   "erpnext_item",
   "erpnext_warehouse",
   "column_break_erp",
   "sync_inventory",
   "last_synced_at",
+  "system_tab",
   "statistics_section",
   "total_sold",
   "total_received",
@@ -100,6 +109,11 @@
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -162,6 +176,11 @@
    "label": "Is Active"
   },
   {
+   "fieldname": "product_tab",
+   "fieldtype": "Tab Break",
+   "label": "Product Reference"
+  },
+  {
    "fieldname": "product_reference_section",
    "fieldtype": "Section Break",
    "label": "Product Reference"
@@ -212,6 +231,11 @@
    "fieldname": "manufacturer",
    "fieldtype": "Data",
    "label": "Manufacturer"
+  },
+  {
+   "fieldname": "inventory_tab",
+   "fieldtype": "Tab Break",
+   "label": "Inventory"
   },
   {
    "fieldname": "inventory_section",
@@ -329,6 +353,11 @@
    "precision": 3
   },
   {
+   "fieldname": "identifiers_tab",
+   "fieldtype": "Tab Break",
+   "label": "Identifiers"
+  },
+  {
    "collapsible": 1,
    "fieldname": "identifiers_section",
    "fieldtype": "Section Break",
@@ -373,6 +402,11 @@
    "fieldname": "mpn",
    "fieldtype": "Data",
    "label": "MPN"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
   },
   {
    "collapsible": 1,
@@ -423,6 +457,11 @@
    "label": "Last Purchase Price",
    "options": "currency",
    "read_only": 1
+  },
+  {
+   "fieldname": "physical_tab",
+   "fieldtype": "Tab Break",
+   "label": "Physical"
   },
   {
    "collapsible": 1,
@@ -512,6 +551,11 @@
    "label": "Is Perishable"
   },
   {
+   "fieldname": "supplier_tab",
+   "fieldtype": "Tab Break",
+   "label": "Supplier"
+  },
+  {
    "collapsible": 1,
    "fieldname": "supplier_section",
    "fieldtype": "Section Break",
@@ -545,6 +589,11 @@
    "fieldtype": "Float",
    "label": "Minimum Order Qty",
    "precision": 3
+  },
+  {
+   "fieldname": "erpnext_tab",
+   "fieldtype": "Tab Break",
+   "label": "ERPNext"
   },
   {
    "collapsible": 1,
@@ -582,6 +631,11 @@
    "fieldtype": "Datetime",
    "label": "Last Synced At",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "tag_name",
   "tag_code",
@@ -14,23 +15,31 @@
   "tag_type",
   "description_section",
   "description",
+  "badge_tab",
   "badge_section",
   "badge_icon",
   "badge_color",
   "column_break_badge",
   "badge_image",
   "display_priority",
+  "display_tab",
   "display_section",
   "show_on_profile",
   "show_on_listings",
   "column_break_display",
   "show_on_storefront",
   "show_in_search_filters",
+  "system_tab",
   "timestamps_section",
   "created_by",
   "created_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -90,6 +99,11 @@
    "description": "Brief description of what this tag represents"
   },
   {
+   "fieldname": "badge_tab",
+   "fieldtype": "Tab Break",
+   "label": "Badge"
+  },
+  {
    "fieldname": "badge_section",
    "fieldtype": "Section Break",
    "label": "Badge Display"
@@ -124,6 +138,11 @@
    "fieldtype": "Int",
    "label": "Display Priority",
    "description": "Lower number = higher priority in display order"
+  },
+  {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
   },
   {
    "fieldname": "display_section",
@@ -161,6 +180,11 @@
    "fieldtype": "Check",
    "label": "Show in Search Filters",
    "description": "Allow filtering by this tag in search"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "timestamps_section",

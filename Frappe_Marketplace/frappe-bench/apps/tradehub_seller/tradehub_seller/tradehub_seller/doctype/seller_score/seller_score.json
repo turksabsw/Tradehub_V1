@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "seller",
   "seller_name",
@@ -16,6 +17,7 @@
   "tenant",
   "tenant_name",
   "calculation_date",
+  "overall_tab",
   "overall_score_section",
   "overall_score",
   "previous_score",
@@ -24,6 +26,7 @@
   "score_trend",
   "percentile_rank",
   "tier_at_calculation",
+  "components_tab",
   "component_scores_section",
   "fulfillment_score",
   "delivery_score",
@@ -32,6 +35,7 @@
   "service_score",
   "compliance_score",
   "engagement_score",
+  "performance_tab",
   "metrics_section",
   "orders_evaluated",
   "reviews_evaluated",
@@ -42,6 +46,7 @@
   "cancellation_rate",
   "complaint_rate",
   "response_time_avg",
+  "ratings_tab",
   "rating_metrics_section",
   "average_rating",
   "rating_count",
@@ -58,6 +63,7 @@
   "conversion_rate",
   "repeat_customer_rate",
   "avg_order_value",
+  "penalties_tab",
   "penalties_section",
   "policy_violations",
   "late_shipments",
@@ -72,6 +78,7 @@
   "column_break_bonuses",
   "achievements",
   "special_achievements",
+  "weights_tab",
   "weights_section",
   "fulfillment_weight",
   "delivery_weight",
@@ -80,6 +87,7 @@
   "service_weight",
   "compliance_weight",
   "engagement_weight",
+  "system_tab",
   "notes_section",
   "calculation_notes",
   "manual_adjustments",
@@ -92,6 +100,11 @@
   "finalized_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -157,6 +170,11 @@
    "description": "Date when score was calculated"
   },
   {
+   "fieldname": "overall_tab",
+   "fieldtype": "Tab Break",
+   "label": "Overall Score"
+  },
+  {
    "fieldname": "overall_score_section",
    "fieldtype": "Section Break",
    "label": "Overall Score"
@@ -220,6 +238,11 @@
    "description": "Seller's tier when this score was calculated"
   },
   {
+   "fieldname": "components_tab",
+   "fieldtype": "Tab Break",
+   "label": "Components"
+  },
+  {
    "fieldname": "component_scores_section",
    "fieldtype": "Section Break",
    "label": "Component Scores"
@@ -275,6 +298,11 @@
    "label": "Engagement Score",
    "precision": 2,
    "description": "Score for platform engagement (0-100)"
+  },
+  {
+   "fieldname": "performance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Performance"
   },
   {
    "fieldname": "metrics_section",
@@ -343,6 +371,11 @@
    "label": "Avg Response Time (hrs)",
    "precision": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "ratings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Ratings & Sales"
   },
   {
    "fieldname": "rating_metrics_section",
@@ -456,6 +489,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "penalties_tab",
+   "fieldtype": "Tab Break",
+   "label": "Penalties & Bonuses"
+  },
+  {
    "fieldname": "penalties_section",
    "fieldtype": "Section Break",
    "label": "Penalties",
@@ -549,6 +587,11 @@
    "description": "Deprecated — use Achievements table instead"
   },
   {
+   "fieldname": "weights_tab",
+   "fieldtype": "Tab Break",
+   "label": "Weights"
+  },
+  {
    "fieldname": "weights_section",
    "fieldtype": "Section Break",
    "label": "Score Weights",
@@ -605,6 +648,11 @@
    "label": "Engagement Weight (%)",
    "precision": 1,
    "description": "Weight of engagement score in calculation"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "notes_section",

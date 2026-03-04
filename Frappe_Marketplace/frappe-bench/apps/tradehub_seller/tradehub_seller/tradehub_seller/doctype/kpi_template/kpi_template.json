@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "template_name",
   "template_code",
@@ -14,6 +15,7 @@
   "status",
   "is_default",
   "version",
+  "config_tab",
   "target_settings_section",
   "applicable_levels",
   "applicable_categories",
@@ -26,6 +28,7 @@
   "column_break_evaluation",
   "evaluation_frequency",
   "auto_evaluate",
+  "metrics_tab",
   "items_section",
   "items",
   "scoring_section",
@@ -34,6 +37,7 @@
   "column_break_scoring",
   "scoring_curve",
   "normalize_scores",
+  "display_tab",
   "display_section",
   "display_name",
   "description",
@@ -41,12 +45,14 @@
   "public_description",
   "icon",
   "color",
+  "notifications_tab",
   "notifications_section",
   "notify_on_evaluation",
   "notify_on_threshold_breach",
   "column_break_notifications",
   "notification_recipients",
   "escalation_template",
+  "system_tab",
   "statistics_section",
   "usage_count",
   "last_evaluated_at",
@@ -56,6 +62,11 @@
   "modified_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -115,6 +126,11 @@
    "label": "Version",
    "default": "1.0",
    "description": "Version number of this template"
+  },
+  {
+   "fieldname": "config_tab",
+   "fieldtype": "Tab Break",
+   "label": "Configuration"
   },
   {
    "fieldname": "target_settings_section",
@@ -191,6 +207,11 @@
    "description": "Automatically run evaluations on schedule"
   },
   {
+   "fieldname": "metrics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Metrics"
+  },
+  {
    "fieldname": "items_section",
    "fieldtype": "Section Break",
    "label": "KPI Metrics"
@@ -244,6 +265,11 @@
    "description": "Normalize final score to 0-100 scale"
   },
   {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
+  },
+  {
    "fieldname": "display_section",
    "fieldtype": "Section Break",
    "label": "Display Settings"
@@ -284,6 +310,11 @@
    "description": "Color associated with this template"
   },
   {
+   "fieldname": "notifications_tab",
+   "fieldtype": "Tab Break",
+   "label": "Notifications"
+  },
+  {
    "fieldname": "notifications_section",
    "fieldtype": "Section Break",
    "label": "Notifications",
@@ -319,6 +350,11 @@
    "label": "Escalation Template",
    "options": "Email Template",
    "description": "Email template for escalation notifications"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "statistics_section",

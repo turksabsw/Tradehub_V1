@@ -6,12 +6,14 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "sku_code",
   "product_name",
   "column_break_basic",
   "status",
   "is_published",
+  "ownership_tab",
   "ownership_section",
   "seller",
   "seller_name",
@@ -24,6 +26,7 @@
   "column_break_categorization",
   "brand",
   "brand_name",
+  "pricing_tab",
   "description_section",
   "short_description",
   "description",
@@ -39,6 +42,7 @@
   "column_break_inventory",
   "is_stock_item",
   "allow_negative_stock",
+  "physical_tab",
   "physical_attributes_section",
   "weight",
   "weight_uom",
@@ -53,6 +57,7 @@
   "column_break_trade",
   "lead_time_days",
   "production_capacity",
+  "media_tab",
   "media_section",
   "thumbnail",
   "product_images",
@@ -63,6 +68,7 @@
   "column_break_seo",
   "seo_keywords",
   "url_slug",
+  "system_tab",
   "additional_section",
   "tags",
   "internal_notes",
@@ -71,6 +77,11 @@
   "sync_with_erpnext"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -116,6 +127,11 @@
    "fieldtype": "Check",
    "label": "Is Published",
    "description": "Whether product is visible on marketplace"
+  },
+  {
+   "fieldname": "ownership_tab",
+   "fieldtype": "Tab Break",
+   "label": "Ownership"
   },
   {
    "fieldname": "ownership_section",
@@ -200,6 +216,11 @@
    "label": "Brand Name",
    "read_only": 1,
    "description": "Auto-filled from Brand"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing & Inventory"
   },
   {
    "fieldname": "description_section",
@@ -297,6 +318,11 @@
    "description": "Allow orders when stock is zero"
   },
   {
+   "fieldname": "physical_tab",
+   "fieldtype": "Tab Break",
+   "label": "Physical & Trade"
+  },
+  {
    "fieldname": "physical_attributes_section",
    "fieldtype": "Section Break",
    "label": "Physical Attributes",
@@ -384,6 +410,11 @@
    "description": "Units that can be produced per month"
   },
   {
+   "fieldname": "media_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media & SEO"
+  },
+  {
    "fieldname": "media_section",
    "fieldtype": "Section Break",
    "label": "Media"
@@ -443,6 +474,11 @@
    "label": "URL Slug",
    "unique": 1,
    "description": "SEO-friendly URL path (auto-generated from product name)"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "additional_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "variant_code",
   "listing",
@@ -14,11 +15,13 @@
   "status",
   "is_default",
   "tenant",
+  "attributes_tab",
   "attributes_section",
   "variant_name",
   "variant_title",
   "column_break_attrs",
   "variant_attributes",
+  "pricing_tab",
   "pricing_section",
   "currency",
   "base_price",
@@ -38,16 +41,19 @@
   "track_inventory",
   "allow_backorders",
   "low_stock_threshold",
+  "identifiers_tab",
   "identifiers_section",
   "mpn",
   "gtin",
   "column_break_ids",
   "ean",
   "upc",
+  "media_tab",
   "media_section",
   "primary_image",
   "variant_images",
   "images",
+  "physical_tab",
   "physical_section",
   "weight",
   "weight_uom",
@@ -56,6 +62,7 @@
   "width",
   "height",
   "dimension_uom",
+  "system_tab",
   "erpnext_section",
   "erpnext_item",
   "column_break_erp",
@@ -69,6 +76,11 @@
   "naming_series"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -134,6 +146,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "attributes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Attributes"
+  },
+  {
    "fieldname": "attributes_section",
    "fieldtype": "Section Break",
    "label": "Variant Attributes"
@@ -164,6 +181,11 @@
    "label": "Variant Attributes",
    "options": "Listing Variant Attribute",
    "reqd": 1
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing & Inventory"
   },
   {
    "fieldname": "pricing_section",
@@ -297,6 +319,11 @@
    "precision": 3
   },
   {
+   "fieldname": "identifiers_tab",
+   "fieldtype": "Tab Break",
+   "label": "Identifiers"
+  },
+  {
    "collapsible": 1,
    "fieldname": "identifiers_section",
    "fieldtype": "Section Break",
@@ -331,6 +358,11 @@
    "label": "UPC"
   },
   {
+   "fieldname": "media_tab",
+   "fieldtype": "Tab Break",
+   "label": "Media"
+  },
+  {
    "collapsible": 1,
    "fieldname": "media_section",
    "fieldtype": "Section Break",
@@ -356,6 +388,11 @@
    "label": "Images (Deprecated)",
    "hidden": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "physical_tab",
+   "fieldtype": "Tab Break",
+   "label": "Physical"
   },
   {
    "collapsible": 1,
@@ -405,6 +442,11 @@
    "fieldtype": "Link",
    "label": "Dimension UOM",
    "options": "UOM"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

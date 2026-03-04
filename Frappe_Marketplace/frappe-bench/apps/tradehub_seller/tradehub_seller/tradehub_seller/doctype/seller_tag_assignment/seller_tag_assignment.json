@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "seller",
   "seller_name",
@@ -14,12 +15,14 @@
   "column_break_basic",
   "source",
   "override_state",
+  "assignment_tab",
   "assignment_section",
   "assigned_at",
   "assigned_by",
   "column_break_assign",
   "expires_at",
   "rule",
+  "evaluation_tab",
   "evaluation_section",
   "last_evaluated",
   "evaluation_passed",
@@ -27,6 +30,11 @@
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -76,6 +84,11 @@
    "description": "Manual override for rule-based assignments"
   },
   {
+   "fieldname": "assignment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Assignment"
+  },
+  {
    "fieldname": "assignment_section",
    "fieldtype": "Section Break",
    "label": "Assignment Details"
@@ -111,6 +124,11 @@
    "options": "Seller Tag Rule",
    "depends_on": "eval:doc.source=='Rule'",
    "description": "Rule that assigned this tag"
+  },
+  {
+   "fieldname": "evaluation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Evaluation"
   },
   {
    "fieldname": "evaluation_section",
