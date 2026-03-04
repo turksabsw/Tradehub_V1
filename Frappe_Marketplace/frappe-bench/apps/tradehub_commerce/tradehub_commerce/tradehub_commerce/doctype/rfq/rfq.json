@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "naming_series",
   "rfq_code",
@@ -20,12 +21,14 @@
   "published_at",
   "description_section",
   "description",
+  "items_tab",
   "items_section",
   "items",
   "targeting_section",
   "target_type",
   "target_sellers",
   "target_categories",
+  "requirements_tab",
   "requirements_section",
   "deadline",
   "quantity",
@@ -36,11 +39,13 @@
   "delivery_section",
   "delivery_date",
   "delivery_location",
+  "documents_tab",
   "nda_section",
   "requires_nda",
   "nda_template",
   "attachments_section",
   "attachments",
+  "outcome_tab",
   "outcome_section",
   "accepted_quote",
   "column_break_outcome",
@@ -49,6 +54,11 @@
   "tenant_name"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -126,6 +136,11 @@
    "label": "Description"
   },
   {
+   "fieldname": "items_tab",
+   "fieldtype": "Tab Break",
+   "label": "Items"
+  },
+  {
    "fieldname": "items_section",
    "fieldtype": "Section Break",
    "label": "Requested Items"
@@ -162,6 +177,11 @@
    "fieldtype": "Table",
    "label": "Target Categories",
    "options": "RFQ Target Category"
+  },
+  {
+   "fieldname": "requirements_tab",
+   "fieldtype": "Tab Break",
+   "label": "Requirements"
   },
   {
    "fieldname": "requirements_section",
@@ -218,6 +238,11 @@
    "label": "Delivery Location"
   },
   {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
    "fieldname": "nda_section",
    "fieldtype": "Section Break",
    "label": "NDA Requirements"
@@ -247,6 +272,11 @@
    "fieldtype": "Table",
    "label": "Attachments",
    "options": "RFQ Attachment"
+  },
+  {
+   "fieldname": "outcome_tab",
+   "fieldtype": "Tab Break",
+   "label": "Outcome"
   },
   {
    "fieldname": "outcome_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "escrow_account",
   "escrow_status",
@@ -22,6 +23,7 @@
   "new_status",
   "column_break_status",
   "status_reason",
+  "amounts_tab",
   "amount_section",
   "amount",
   "amount_type",
@@ -35,6 +37,7 @@
   "seller",
   "seller_name",
   "buyer",
+  "references_tab",
   "order_section",
   "marketplace_order",
   "sub_order",
@@ -47,6 +50,7 @@
   "column_break_payout",
   "payout_status",
   "payout_error",
+  "metadata_tab",
   "request_section",
   "ip_address",
   "user_agent",
@@ -60,6 +64,7 @@
   "internal_notes",
   "related_events_table",
   "related_events",
+  "system_tab",
   "notification_section",
   "notification_sent",
   "notification_type",
@@ -70,6 +75,11 @@
   "naming_series"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -166,6 +176,11 @@
    "label": "Status Change Reason"
   },
   {
+   "fieldname": "amounts_tab",
+   "fieldtype": "Tab Break",
+   "label": "Amounts"
+  },
+  {
    "fieldname": "amount_section",
    "fieldtype": "Section Break",
    "label": "Amount Details"
@@ -240,6 +255,11 @@
    "options": "User"
   },
   {
+   "fieldname": "references_tab",
+   "fieldtype": "Tab Break",
+   "label": "References"
+  },
+  {
    "collapsible": 1,
    "fieldname": "order_section",
    "fieldtype": "Section Break",
@@ -303,6 +323,11 @@
    "fieldname": "payout_error",
    "fieldtype": "Small Text",
    "label": "Payout Error"
+  },
+  {
+   "fieldname": "metadata_tab",
+   "fieldtype": "Tab Break",
+   "label": "Metadata"
   },
   {
    "collapsible": 1,
@@ -378,6 +403,11 @@
    "hidden": 1,
    "label": "Related Events (Legacy)",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "escrow_id",
   "status",
@@ -25,6 +26,7 @@
   "seller_name",
   "buyer",
   "buyer_name",
+  "amounts_tab",
   "amount_section",
   "currency",
   "total_amount",
@@ -40,6 +42,7 @@
   "column_break_fee",
   "total_fees",
   "net_amount_to_seller",
+  "release_tab",
   "release_section",
   "release_condition",
   "release_trigger",
@@ -54,6 +57,7 @@
   "allow_partial_release",
   "partial_releases_table",
   "partial_releases",
+  "payout_tab",
   "payout_section",
   "payout_status",
   "payout_reference",
@@ -73,6 +77,7 @@
   "dispute_resolved_at",
   "dispute_amount_to_buyer",
   "dispute_amount_to_seller",
+  "extensions_tab",
   "hold_extensions_section",
   "hold_extended",
   "hold_extension_count",
@@ -81,6 +86,7 @@
   "original_release_date",
   "extended_release_date",
   "max_extensions_allowed",
+  "integration_tab",
   "erpnext_section",
   "erpnext_journal_entry",
   "erpnext_payment_entry",
@@ -91,11 +97,17 @@
   "notes",
   "internal_notes",
   "metadata",
+  "system_tab",
   "system_section",
   "naming_series",
   "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -201,6 +213,11 @@
    "label": "Buyer",
    "options": "User",
    "reqd": 1
+  },
+  {
+   "fieldname": "amounts_tab",
+   "fieldtype": "Tab Break",
+   "label": "Amounts"
   },
   {
    "fieldname": "amount_section",
@@ -317,6 +334,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "release_tab",
+   "fieldtype": "Tab Break",
+   "label": "Release"
+  },
+  {
    "fieldname": "release_section",
    "fieldtype": "Section Break",
    "label": "Release Settings"
@@ -405,6 +427,11 @@
    "hidden": 1,
    "label": "Partial Releases (Legacy)",
    "read_only": 1
+  },
+  {
+   "fieldname": "payout_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payout"
   },
   {
    "fieldname": "payout_section",
@@ -523,6 +550,11 @@
    "options": "currency"
   },
   {
+   "fieldname": "extensions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Extensions"
+  },
+  {
    "collapsible": 1,
    "fieldname": "hold_extensions_section",
    "fieldtype": "Section Break",
@@ -569,6 +601,11 @@
    "fieldname": "max_extensions_allowed",
    "fieldtype": "Int",
    "label": "Max Extensions Allowed"
+  },
+  {
+   "fieldname": "integration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Integration"
   },
   {
    "collapsible": 1,
@@ -629,6 +666,11 @@
    "fieldname": "metadata",
    "fieldtype": "JSON",
    "label": "Metadata"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "event_info_section",
   "event_type",
   "event_category",
@@ -30,6 +31,7 @@
   "previous_value",
   "new_value",
   "field_changed",
+  "actor_tab",
   "actor_section",
   "actor_type",
   "actor",
@@ -46,6 +48,7 @@
   "request_id",
   "source_channel",
   "device_type",
+  "location_tab",
   "location_section",
   "location",
   "city",
@@ -57,6 +60,7 @@
   "data_json",
   "notes",
   "internal_notes",
+  "references_tab",
   "related_events_section",
   "parent_event",
   "related_events_table",
@@ -67,6 +71,7 @@
   "error_message",
   "column_break_error",
   "stack_trace",
+  "system_tab",
   "notification_section",
   "notification_sent",
   "notification_type",
@@ -78,6 +83,11 @@
   "naming_series"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "event_info_section",
    "fieldtype": "Section Break",
@@ -231,6 +241,11 @@
    "label": "Field Changed"
   },
   {
+   "fieldname": "actor_tab",
+   "fieldtype": "Tab Break",
+   "label": "Actor"
+  },
+  {
    "fieldname": "actor_section",
    "fieldtype": "Section Break",
    "label": "Actor"
@@ -327,6 +342,11 @@
    "options": "\nDesktop\nMobile\nTablet\nAPI Client\nUnknown"
   },
   {
+   "fieldname": "location_tab",
+   "fieldtype": "Tab Break",
+   "label": "Location"
+  },
+  {
    "collapsible": 1,
    "fieldname": "location_section",
    "fieldtype": "Section Break",
@@ -387,6 +407,11 @@
    "fieldname": "internal_notes",
    "fieldtype": "Small Text",
    "label": "Internal Notes"
+  },
+  {
+   "fieldname": "references_tab",
+   "fieldtype": "Tab Break",
+   "label": "References"
   },
   {
    "collapsible": 1,
@@ -451,6 +476,11 @@
    "fieldtype": "Code",
    "label": "Stack Trace",
    "options": "Python"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

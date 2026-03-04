@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "order_id",
   "order_date",
@@ -24,12 +25,14 @@
   "column_break_buyer_details",
   "buyer_tax_id",
   "buyer_company_name",
+  "items_tab",
   "items_section",
   "items",
   "seller_summary_section",
   "seller_count",
   "seller_summary_table",
   "seller_summary",
+  "totals_tab",
   "totals_section",
   "currency",
   "subtotal",
@@ -45,6 +48,7 @@
   "promotion_code",
   "promotion_discount",
   "store_credit_used",
+  "payment_tab",
   "payment_section",
   "payment_status",
   "payment_method",
@@ -61,6 +65,7 @@
   "column_break_escrow",
   "escrow_release_date",
   "escrow_released_at",
+  "address_tab",
   "shipping_address_section",
   "shipping_address_name",
   "shipping_address_line1",
@@ -81,6 +86,7 @@
   "billing_state",
   "billing_postal_code",
   "billing_country",
+  "fulfillment_tab",
   "fulfillment_section",
   "fulfillment_status",
   "items_packed",
@@ -97,6 +103,7 @@
   "requires_invoice",
   "invoice_type",
   "auto_confirm",
+  "invoice_tab",
   "invoice_section",
   "e_invoice_enabled",
   "e_invoice_status",
@@ -118,6 +125,7 @@
   "column_break_commission",
   "commission_status",
   "commission_collected_at",
+  "cancellation_tab",
   "cancellation_section",
   "cancellation_requested",
   "cancellation_reason",
@@ -134,6 +142,7 @@
   "refund_status",
   "refund_reference",
   "refunded_at",
+  "system_tab",
   "notes_section",
   "order_notes",
   "internal_notes",
@@ -156,6 +165,11 @@
   "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -268,6 +282,11 @@
    "label": "Company Name"
   },
   {
+   "fieldname": "items_tab",
+   "fieldtype": "Tab Break",
+   "label": "Items"
+  },
+  {
    "fieldname": "items_section",
    "fieldtype": "Section Break",
    "label": "Order Items"
@@ -307,6 +326,11 @@
    "hidden": 1,
    "label": "Seller Summary (Legacy)",
    "read_only": 1
+  },
+  {
+   "fieldname": "totals_tab",
+   "fieldtype": "Tab Break",
+   "label": "Totals"
   },
   {
    "fieldname": "totals_section",
@@ -408,6 +432,11 @@
    "options": "currency"
   },
   {
+   "fieldname": "payment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment"
+  },
+  {
    "fieldname": "payment_section",
    "fieldtype": "Section Break",
    "label": "Payment"
@@ -505,6 +534,11 @@
    "fieldtype": "Datetime",
    "label": "Escrow Released At",
    "read_only": 1
+  },
+  {
+   "fieldname": "address_tab",
+   "fieldtype": "Tab Break",
+   "label": "Addresses"
   },
   {
    "fieldname": "shipping_address_section",
@@ -622,6 +656,11 @@
    "options": "Country"
   },
   {
+   "fieldname": "fulfillment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Fulfillment"
+  },
+  {
    "fieldname": "fulfillment_section",
    "fieldtype": "Section Break",
    "label": "Fulfillment"
@@ -720,6 +759,11 @@
    "fieldname": "auto_confirm",
    "fieldtype": "Check",
    "label": "Auto Confirm"
+  },
+  {
+   "fieldname": "invoice_tab",
+   "fieldtype": "Tab Break",
+   "label": "Invoice"
   },
   {
    "collapsible": 1,
@@ -860,6 +904,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "cancellation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Cancellation"
+  },
+  {
    "collapsible": 1,
    "fieldname": "cancellation_section",
    "fieldtype": "Section Break",
@@ -959,6 +1008,11 @@
    "fieldtype": "Datetime",
    "label": "Refunded At",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

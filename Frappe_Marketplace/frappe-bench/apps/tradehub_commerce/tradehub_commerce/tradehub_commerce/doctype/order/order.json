@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "order_info_section",
   "order_number",
   "status",
@@ -32,6 +33,7 @@
   "tenant_section",
   "tenant",
   "tenant_name",
+  "items_tab",
   "source_section",
   "source_type",
   "rfq",
@@ -42,6 +44,7 @@
   "sample_request",
   "items_section",
   "items",
+  "pricing_tab",
   "pricing_section",
   "currency",
   "subtotal",
@@ -54,6 +57,7 @@
   "column_break_total",
   "shipping_cost",
   "total_amount",
+  "payment_tab",
   "payment_section",
   "payment_status",
   "payment_terms",
@@ -68,6 +72,7 @@
   "column_break_payment_amounts",
   "last_payment_date",
   "payment_method",
+  "delivery_tab",
   "delivery_section",
   "incoterm",
   "delivery_days",
@@ -84,6 +89,7 @@
   "delivery_country",
   "delivery_postal_code",
   "delivery_contact_person",
+  "system_tab",
   "dates_section",
   "confirmed_date",
   "processing_start_date",
@@ -111,6 +117,11 @@
   "refund_amount"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "order_info_section",
    "fieldtype": "Section Break",
@@ -309,6 +320,11 @@
    "description": "Auto-filled from Buyer Profile"
   },
   {
+   "fieldname": "items_tab",
+   "fieldtype": "Tab Break",
+   "label": "Items"
+  },
+  {
    "fieldname": "source_section",
    "fieldtype": "Section Break",
    "label": "Order Source",
@@ -380,6 +396,11 @@
    "options": "Order Item",
    "reqd": 1,
    "description": "Line items for this order"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
   },
   {
    "fieldname": "pricing_section",
@@ -460,6 +481,11 @@
    "label": "Total Amount",
    "read_only": 1,
    "description": "Final total amount (subtotal - discount + tax + shipping)"
+  },
+  {
+   "fieldname": "payment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment"
   },
   {
    "fieldname": "payment_section",
@@ -554,6 +580,11 @@
    "description": "Method of payment"
   },
   {
+   "fieldname": "delivery_tab",
+   "fieldtype": "Tab Break",
+   "label": "Delivery"
+  },
+  {
    "fieldname": "delivery_section",
    "fieldtype": "Section Break",
    "label": "Delivery Information"
@@ -646,6 +677,11 @@
    "fieldtype": "Data",
    "label": "Contact Person",
    "description": "Contact person at delivery address"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "dates_section",

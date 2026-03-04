@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "plan_name",
   "plan_code",
@@ -18,6 +19,7 @@
   "description_section",
   "short_description",
   "full_description",
+  "rates_tab",
   "commission_rates_section",
   "base_commission_rate",
   "minimum_commission",
@@ -40,6 +42,7 @@
   "volume_tier_2_rate",
   "volume_tier_3_threshold",
   "volume_tier_3_rate",
+  "terms_tab",
   "payment_terms_section",
   "payment_frequency",
   "payment_day",
@@ -56,6 +59,7 @@
   "auto_renew",
   "renewal_period_months",
   "notice_period_days",
+  "restrictions_tab",
   "restrictions_section",
   "seller_type_restriction",
   "min_seller_tier",
@@ -68,6 +72,7 @@
   "special_terms",
   "contract_template",
   "requires_signature",
+  "system_tab",
   "stats_section",
   "total_sellers",
   "total_gmv_processed",
@@ -83,6 +88,11 @@
   "modified_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -161,6 +171,11 @@
    "fieldtype": "Text Editor",
    "label": "Full Description",
    "description": "Detailed description of the plan with terms and conditions"
+  },
+  {
+   "fieldname": "rates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Rates"
   },
   {
    "fieldname": "commission_rates_section",
@@ -315,6 +330,11 @@
    "description": "Commission rate after reaching Tier 3"
   },
   {
+   "fieldname": "terms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Terms"
+  },
+  {
    "fieldname": "payment_terms_section",
    "fieldtype": "Section Break",
    "label": "Payment Terms"
@@ -419,6 +439,11 @@
    "description": "Days notice required to cancel or change plan"
   },
   {
+   "fieldname": "restrictions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Restrictions"
+  },
+  {
    "fieldname": "restrictions_section",
    "fieldtype": "Section Break",
    "label": "Eligibility Restrictions",
@@ -496,6 +521,11 @@
    "fieldtype": "Check",
    "label": "Requires Signature",
    "description": "Seller must sign agreement to enroll"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "stats_section",

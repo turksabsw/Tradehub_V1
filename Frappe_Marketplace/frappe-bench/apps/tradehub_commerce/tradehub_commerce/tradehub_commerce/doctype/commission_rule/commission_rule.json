@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "rule_name",
   "rule_code",
@@ -18,6 +19,7 @@
   "is_default",
   "description_section",
   "description",
+  "conditions_tab",
   "conditions_section",
   "apply_to",
   "apply_to_value",
@@ -36,6 +38,7 @@
   "min_quantity",
   "max_quantity",
   "custom_condition",
+  "commission_tab",
   "commission_section",
   "commission_type",
   "commission_rate",
@@ -51,6 +54,7 @@
   "column_break_calc_base",
   "exclude_discounts",
   "include_seller_discounts",
+  "restrictions_tab",
   "validity_section",
   "effective_from",
   "effective_until",
@@ -69,6 +73,7 @@
   "restricted_categories",
   "excluded_categories_table",
   "excluded_categories",
+  "overrides_tab",
   "override_section",
   "can_be_overridden",
   "override_priority",
@@ -77,6 +82,7 @@
   "column_break_override",
   "stacking_allowed",
   "stack_limit",
+  "system_tab",
   "usage_section",
   "usage_count",
   "total_commission_generated",
@@ -94,6 +100,11 @@
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -175,6 +186,11 @@
    "fieldname": "description",
    "fieldtype": "Small Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "conditions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Conditions"
   },
   {
    "fieldname": "conditions_section",
@@ -289,6 +305,11 @@
    "options": "Python"
   },
   {
+   "fieldname": "commission_tab",
+   "fieldtype": "Tab Break",
+   "label": "Commission"
+  },
+  {
    "fieldname": "commission_section",
    "fieldtype": "Section Break",
    "label": "Commission Configuration"
@@ -388,6 +409,11 @@
    "fieldname": "include_seller_discounts",
    "fieldtype": "Check",
    "label": "Include Seller Discounts"
+  },
+  {
+   "fieldname": "restrictions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Restrictions"
   },
   {
    "fieldname": "validity_section",
@@ -507,6 +533,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "overrides_tab",
+   "fieldtype": "Tab Break",
+   "label": "Overrides"
+  },
+  {
    "collapsible": 1,
    "fieldname": "override_section",
    "fieldtype": "Section Break",
@@ -558,6 +589,11 @@
    "fieldname": "stack_limit",
    "fieldtype": "Int",
    "label": "Stack Limit"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

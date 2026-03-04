@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "method_name",
   "method_code",
@@ -23,6 +24,7 @@
   "method_image",
   "show_in_checkout",
   "show_in_seller_panel",
+  "gateway_tab",
   "gateway_section",
   "payment_gateway",
   "gateway_config",
@@ -39,6 +41,7 @@
   "required_buyer_levels",
   "excluded_buyer_levels",
   "tenant_restrictions",
+  "risk_tab",
   "risk_section",
   "max_risk_level",
   "excluded_risk_levels",
@@ -54,6 +57,7 @@
   "column_break_regional",
   "excluded_regions",
   "regional_restrictions_mode",
+  "limits_tab",
   "currency_section",
   "available_currencies",
   "default_currency",
@@ -78,6 +82,7 @@
   "fee_paid_by",
   "minimum_fee",
   "maximum_fee",
+  "installment_tab",
   "installment_section",
   "supports_installments",
   "max_installments",
@@ -93,6 +98,7 @@
   "credit_limit_type",
   "default_credit_limit",
   "requires_approval_above",
+  "processing_tab",
   "cod_section",
   "cod_fee_type",
   "cod_fee_percentage",
@@ -117,6 +123,7 @@
   "auto_void_hours",
   "retry_on_failure",
   "max_retry_attempts",
+  "integration_tab",
   "notification_section",
   "send_payment_notification",
   "send_refund_notification",
@@ -129,6 +136,7 @@
   "column_break_integration",
   "cron_bi_sync_enabled",
   "webhook_url",
+  "system_tab",
   "statistics_section",
   "total_transactions",
   "total_amount_processed",
@@ -141,6 +149,11 @@
   "terms_and_conditions"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -254,6 +267,11 @@
    "label": "Show in Seller Panel"
   },
   {
+   "fieldname": "gateway_tab",
+   "fieldtype": "Tab Break",
+   "label": "Gateway"
+  },
+  {
    "fieldname": "gateway_section",
    "fieldtype": "Section Break",
    "label": "Payment Gateway"
@@ -354,6 +372,11 @@
    "label": "Tenant Restrictions"
   },
   {
+   "fieldname": "risk_tab",
+   "fieldtype": "Tab Break",
+   "label": "Risk"
+  },
+  {
    "fieldname": "risk_section",
    "fieldtype": "Section Break",
    "label": "Risk Management"
@@ -445,6 +468,11 @@
    "fieldtype": "Select",
    "label": "Restrictions Mode",
    "options": "Include\nExclude"
+  },
+  {
+   "fieldname": "limits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Limits"
   },
   {
    "fieldname": "currency_section",
@@ -607,6 +635,11 @@
    "options": "fee_currency"
   },
   {
+   "fieldname": "installment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Installments"
+  },
+  {
    "collapsible": 1,
    "depends_on": "eval:doc.method_type === 'Card'",
    "fieldname": "installment_section",
@@ -709,6 +742,11 @@
    "fieldtype": "Currency",
    "label": "Requires Approval Above",
    "options": "minimum_amount_currency"
+  },
+  {
+   "fieldname": "processing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Processing"
   },
   {
    "collapsible": 1,
@@ -864,6 +902,11 @@
    "label": "Max Retry Attempts"
   },
   {
+   "fieldname": "integration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Integration"
+  },
+  {
    "collapsible": 1,
    "fieldname": "notification_section",
    "fieldtype": "Section Break",
@@ -934,6 +977,11 @@
    "fieldname": "webhook_url",
    "fieldtype": "Data",
    "label": "Webhook URL"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

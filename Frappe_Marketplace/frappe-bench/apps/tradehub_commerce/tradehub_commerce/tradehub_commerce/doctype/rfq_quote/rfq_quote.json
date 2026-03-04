@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "naming_series",
   "rfq",
@@ -22,12 +23,14 @@
   "column_break_pricing",
   "valid_until",
   "delivery_days",
+  "terms_tab",
   "terms_section",
   "terms",
   "notes",
   "revision_section",
   "revision_count",
   "last_revised_at",
+  "outcome_tab",
   "outcome_section",
   "accepted_at",
   "rejected_at",
@@ -35,6 +38,11 @@
   "tenant_name"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",
@@ -123,6 +131,11 @@
    "description": "Estimated delivery in days"
   },
   {
+   "fieldname": "terms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Terms"
+  },
+  {
    "fieldname": "terms_section",
    "fieldtype": "Section Break",
    "label": "Terms"
@@ -155,6 +168,11 @@
    "fieldtype": "Datetime",
    "label": "Last Revised At",
    "read_only": 1
+  },
+  {
+   "fieldname": "outcome_tab",
+   "fieldtype": "Tab Break",
+   "label": "Outcome"
   },
   {
    "fieldname": "outcome_section",

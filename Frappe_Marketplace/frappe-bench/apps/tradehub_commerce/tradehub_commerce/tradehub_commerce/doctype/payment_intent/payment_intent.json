@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "intent_id",
   "status",
@@ -36,6 +37,7 @@
   "exchange_rate",
   "base_currency",
   "base_amount",
+  "method_tab",
   "payment_method_section",
   "payment_method",
   "payment_gateway",
@@ -55,6 +57,7 @@
   "installment_total",
   "installment_plan",
   "installment_plan_table",
+  "gateway_tab",
   "gateway_section",
   "gateway_intent_id",
   "gateway_payment_id",
@@ -72,6 +75,7 @@
   "three_d_html",
   "three_d_flow_completed",
   "three_d_version",
+  "authorization_tab",
   "authorization_section",
   "authorized_at",
   "authorization_code",
@@ -89,6 +93,7 @@
   "refund_gateway_id",
   "partial_refunds",
   "partial_refunds_table",
+  "escrow_tab",
   "escrow_section",
   "escrow_enabled",
   "escrow_account",
@@ -109,6 +114,7 @@
   "billing_postal_code",
   "billing_country",
   "billing_tax_id",
+  "risk_tab",
   "metadata_section",
   "description",
   "statement_descriptor",
@@ -126,6 +132,7 @@
   "fraud_check_status",
   "fraud_check_response",
   "is_flagged",
+  "integration_tab",
   "webhook_section",
   "last_webhook_at",
   "webhook_count",
@@ -139,6 +146,7 @@
   "column_break_erpnext",
   "erpnext_sync_status",
   "erpnext_sync_error",
+  "system_tab",
   "timestamps_section",
   "processing_started_at",
   "completed_at",
@@ -154,6 +162,11 @@
   "amended_from"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -340,6 +353,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "method_tab",
+   "fieldtype": "Tab Break",
+   "label": "Method"
+  },
+  {
    "fieldname": "payment_method_section",
    "fieldtype": "Section Break",
    "label": "Payment Method"
@@ -463,6 +481,11 @@
    "options": "Payment Intent Installment"
   },
   {
+   "fieldname": "gateway_tab",
+   "fieldtype": "Tab Break",
+   "label": "Gateway"
+  },
+  {
    "fieldname": "gateway_section",
    "fieldtype": "Section Break",
    "label": "Gateway Details"
@@ -561,6 +584,11 @@
    "fieldtype": "Select",
    "label": "3D Secure Version",
    "options": "\n1.0\n2.0\n2.1\n2.2"
+  },
+  {
+   "fieldname": "authorization_tab",
+   "fieldtype": "Tab Break",
+   "label": "Authorization"
   },
   {
    "collapsible": 1,
@@ -668,6 +696,11 @@
    "fieldtype": "Table",
    "label": "Partial Refunds",
    "options": "Payment Refund"
+  },
+  {
+   "fieldname": "escrow_tab",
+   "fieldtype": "Tab Break",
+   "label": "Escrow"
   },
   {
    "collapsible": 1,
@@ -783,6 +816,11 @@
    "label": "Tax ID"
   },
   {
+   "fieldname": "risk_tab",
+   "fieldtype": "Tab Break",
+   "label": "Risk"
+  },
+  {
    "collapsible": 1,
    "fieldname": "metadata_section",
    "fieldtype": "Section Break",
@@ -885,6 +923,11 @@
    "label": "Is Flagged for Review"
   },
   {
+   "fieldname": "integration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Integration"
+  },
+  {
    "collapsible": 1,
    "fieldname": "webhook_section",
    "fieldtype": "Section Break",
@@ -958,6 +1001,11 @@
    "fieldname": "erpnext_sync_error",
    "fieldtype": "Small Text",
    "label": "ERPNext Sync Error"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

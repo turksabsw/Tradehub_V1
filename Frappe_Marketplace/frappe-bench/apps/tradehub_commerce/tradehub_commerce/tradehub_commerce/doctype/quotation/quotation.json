@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "quotation_info_section",
   "quotation_number",
   "status",
@@ -30,6 +31,7 @@
   "tenant_section",
   "tenant",
   "tenant_name",
+  "items_tab",
   "items_section",
   "items",
   "pricing_section",
@@ -43,6 +45,7 @@
   "shipping_cost",
   "column_break_total",
   "total_amount",
+  "delivery_tab",
   "delivery_section",
   "delivery_days",
   "estimated_delivery_date",
@@ -62,6 +65,7 @@
   "column_break_production",
   "minimum_order_quantity",
   "capacity_per_month",
+  "documents_tab",
   "certifications_section",
   "available_certifications",
   "certification_notes",
@@ -71,6 +75,7 @@
   "terms_and_conditions",
   "attachments_section",
   "attachments",
+  "evaluation_tab",
   "evaluation_section",
   "buyer_evaluation_score",
   "buyer_evaluation_notes",
@@ -88,6 +93,11 @@
   "linked_sales_order"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "quotation_info_section",
    "fieldtype": "Section Break",
@@ -268,6 +278,11 @@
    "description": "Auto-filled from Seller Profile"
   },
   {
+   "fieldname": "items_tab",
+   "fieldtype": "Tab Break",
+   "label": "Items"
+  },
+  {
    "fieldname": "items_section",
    "fieldtype": "Section Break",
    "label": "Quotation Items"
@@ -352,6 +367,11 @@
    "label": "Total Amount",
    "read_only": 1,
    "description": "Final total amount (subtotal - discount + tax + shipping)"
+  },
+  {
+   "fieldname": "delivery_tab",
+   "fieldtype": "Tab Break",
+   "label": "Delivery"
   },
   {
    "fieldname": "delivery_section",
@@ -468,6 +488,11 @@
    "description": "Maximum production capacity per month"
   },
   {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
    "fieldname": "certifications_section",
    "fieldtype": "Section Break",
    "label": "Certifications",
@@ -518,6 +543,11 @@
    "label": "Attachments",
    "options": "File Attachment",
    "description": "Supporting documents, catalogs, certificates"
+  },
+  {
+   "fieldname": "evaluation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Evaluation"
   },
   {
    "fieldname": "evaluation_section",

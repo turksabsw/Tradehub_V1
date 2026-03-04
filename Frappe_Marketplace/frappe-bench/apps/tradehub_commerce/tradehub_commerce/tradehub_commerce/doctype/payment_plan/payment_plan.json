@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "plan_info_section",
   "plan_code",
   "status",
@@ -37,6 +38,7 @@
   "tenant_section",
   "tenant",
   "tenant_name",
+  "plan_tab",
   "plan_details_section",
   "total_amount",
   "currency",
@@ -45,6 +47,7 @@
   "installment_frequency",
   "installments_section",
   "installments",
+  "summary_tab",
   "payment_summary_section",
   "paid_amount",
   "pending_amount",
@@ -58,6 +61,7 @@
   "column_break_dates",
   "next_due_date",
   "last_payment_date",
+  "terms_tab",
   "terms_section",
   "late_fee_percentage",
   "late_fee_flat",
@@ -71,6 +75,11 @@
   "internal_notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "plan_info_section",
    "fieldtype": "Section Break",
@@ -302,6 +311,11 @@
    "description": "Auto-filled from Order"
   },
   {
+   "fieldname": "plan_tab",
+   "fieldtype": "Tab Break",
+   "label": "Plan"
+  },
+  {
    "fieldname": "plan_details_section",
    "fieldtype": "Section Break",
    "label": "Plan Details"
@@ -356,6 +370,11 @@
    "options": "Payment Installment",
    "reqd": 1,
    "description": "Individual installment payment schedule"
+  },
+  {
+   "fieldname": "summary_tab",
+   "fieldtype": "Tab Break",
+   "label": "Summary"
   },
   {
    "fieldname": "payment_summary_section",
@@ -442,6 +461,11 @@
    "label": "Last Payment Date",
    "read_only": 1,
    "description": "Date of the last payment received"
+  },
+  {
+   "fieldname": "terms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Terms"
   },
   {
    "fieldname": "terms_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "action_type",
   "severity",
@@ -31,6 +32,7 @@
   "violation_count",
   "related_content_type",
   "related_content",
+  "duration_tab",
   "duration_section",
   "is_permanent",
   "start_date",
@@ -49,6 +51,7 @@
   "restrict_listing_create",
   "restrict_withdrawal",
   "restrict_all_activity",
+  "escalation_tab",
   "escalation_section",
   "previous_action",
   "escalation_level",
@@ -59,6 +62,7 @@
   "evidence",
   "evidence_attachments",
   "investigation_notes",
+  "appeal_tab",
   "appeal_section",
   "is_appealable",
   "appeal_status",
@@ -77,6 +81,7 @@
   "column_break_notifications",
   "reminder_sent",
   "expiry_warning_sent",
+  "system_tab",
   "audit_section",
   "reviewed_by",
   "reviewed_at",
@@ -87,6 +92,11 @@
   "internal_notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -260,6 +270,11 @@
    "description": "The specific content that triggered this action"
   },
   {
+   "fieldname": "duration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Duration"
+  },
+  {
    "fieldname": "duration_section",
    "fieldtype": "Section Break",
    "label": "Duration & Lifting"
@@ -383,6 +398,11 @@
    "description": "Full account freeze - prevents all activity"
   },
   {
+   "fieldname": "escalation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Escalation"
+  },
+  {
    "fieldname": "escalation_section",
    "fieldtype": "Section Break",
    "label": "Escalation",
@@ -441,6 +461,11 @@
    "fieldtype": "Text Editor",
    "label": "Investigation Notes",
    "description": "Internal investigation notes (not shared with user)"
+  },
+  {
+   "fieldname": "appeal_tab",
+   "fieldtype": "Tab Break",
+   "label": "Appeal"
   },
   {
    "fieldname": "appeal_section",
@@ -568,6 +593,11 @@
    "label": "Expiry Warning Sent",
    "read_only": 1,
    "description": "Whether an expiry warning was sent"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "audit_section",

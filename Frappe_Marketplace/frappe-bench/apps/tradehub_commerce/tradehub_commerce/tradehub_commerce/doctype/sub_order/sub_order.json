@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "sub_order_id",
   "marketplace_order",
@@ -25,6 +26,7 @@
   "column_break_buyer",
   "buyer_phone",
   "buyer_tax_id",
+  "items_tab",
   "items_section",
   "items",
   "totals_section",
@@ -35,6 +37,7 @@
   "shipping_amount",
   "tax_amount",
   "grand_total",
+  "commission_tab",
   "commission_section",
   "commission_rate",
   "commission_amount",
@@ -49,6 +52,7 @@
   "escrow_status",
   "escrow_release_date",
   "escrow_released_at",
+  "fulfillment_tab",
   "fulfillment_section",
   "fulfillment_status",
   "items_packed",
@@ -76,6 +80,7 @@
   "shipped_at",
   "estimated_delivery_date",
   "actual_delivery_date",
+  "invoice_tab",
   "invoice_section",
   "requires_invoice",
   "invoice_type",
@@ -92,6 +97,7 @@
   "column_break_erpnext",
   "erpnext_sales_invoice",
   "erpnext_payment_entry",
+  "cancellation_tab",
   "cancellation_section",
   "cancellation_requested",
   "cancellation_reason",
@@ -116,6 +122,7 @@
   "return_status",
   "return_tracking_number",
   "return_received_at",
+  "system_tab",
   "notes_section",
   "seller_notes",
   "buyer_notes",
@@ -131,6 +138,11 @@
   "naming_series"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -241,6 +253,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "items_tab",
+   "fieldtype": "Tab Break",
+   "label": "Items"
+  },
+  {
    "fieldname": "items_section",
    "fieldtype": "Section Break",
    "label": "Order Items"
@@ -308,6 +325,11 @@
    "label": "Grand Total",
    "options": "currency",
    "read_only": 1
+  },
+  {
+   "fieldname": "commission_tab",
+   "fieldtype": "Tab Break",
+   "label": "Commission"
   },
   {
    "fieldname": "commission_section",
@@ -397,6 +419,11 @@
    "fieldtype": "Datetime",
    "label": "Escrow Released At",
    "read_only": 1
+  },
+  {
+   "fieldname": "fulfillment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Fulfillment"
   },
   {
    "fieldname": "fulfillment_section",
@@ -554,6 +581,11 @@
    "label": "Actual Delivery Date"
   },
   {
+   "fieldname": "invoice_tab",
+   "fieldtype": "Tab Break",
+   "label": "Invoice"
+  },
+  {
    "collapsible": 1,
    "fieldname": "invoice_section",
    "fieldtype": "Section Break",
@@ -656,6 +688,11 @@
    "label": "ERPNext Payment Entry",
    "options": "Payment Entry",
    "read_only": 1
+  },
+  {
+   "fieldname": "cancellation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Cancellation"
   },
   {
    "collapsible": 1,
@@ -807,6 +844,11 @@
    "fieldtype": "Datetime",
    "label": "Return Received At",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

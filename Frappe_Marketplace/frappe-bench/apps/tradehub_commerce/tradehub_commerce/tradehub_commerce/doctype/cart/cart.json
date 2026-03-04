@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "cart_id",
   "status",
@@ -22,6 +23,7 @@
   "seller_summary_section",
   "seller_summary_table",
   "seller_summary",
+  "totals_tab",
   "totals_section",
   "currency",
   "subtotal",
@@ -36,6 +38,7 @@
   "column_break_savings",
   "coupon_discount",
   "promotion_discount",
+  "settings_tab",
   "cart_settings_section",
   "is_b2b_cart",
   "buyer_organization_type",
@@ -48,6 +51,7 @@
   "column_break_expiry",
   "abandoned_at",
   "recovery_email_sent",
+  "conversion_tab",
   "conversion_section",
   "converted_to_order",
   "marketplace_order",
@@ -60,11 +64,17 @@
   "column_break_session",
   "user_agent",
   "last_activity",
+  "system_tab",
   "system_section",
   "naming_series",
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -158,6 +168,11 @@
    "hidden": 1,
    "label": "Seller Summary (Legacy)",
    "read_only": 1
+  },
+  {
+   "fieldname": "totals_tab",
+   "fieldtype": "Tab Break",
+   "label": "Totals"
   },
   {
    "fieldname": "totals_section",
@@ -262,6 +277,11 @@
    "read_only": 1
   },
   {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
    "collapsible": 1,
    "fieldname": "cart_settings_section",
    "fieldtype": "Section Break",
@@ -335,6 +355,11 @@
    "label": "Recovery Email Sent"
   },
   {
+   "fieldname": "conversion_tab",
+   "fieldtype": "Tab Break",
+   "label": "Conversion"
+  },
+  {
    "collapsible": 1,
    "fieldname": "conversion_section",
    "fieldtype": "Section Break",
@@ -400,6 +425,11 @@
    "fieldname": "last_activity",
    "fieldtype": "Datetime",
    "label": "Last Activity"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,
