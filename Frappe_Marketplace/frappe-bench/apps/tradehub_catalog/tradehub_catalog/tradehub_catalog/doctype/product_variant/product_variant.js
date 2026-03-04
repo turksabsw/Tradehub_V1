@@ -295,15 +295,21 @@ frappe.ui.form.on('Product Variant', {
     },
 
     /**
-     * Setup field filters
+     * Setup field filters (set_query in refresh)
      */
     setup_filters: function(frm) {
-        // Filter SKU products by tenant if tenant context exists
+        // =====================================================
+        // SKU Product - P1 Tenant Isolation + Status Filter
+        // =====================================================
         frm.set_query('sku_product', function() {
+            let filters = {
+                'status': ['!=', 'Archive']
+            };
+            if (frm.doc.tenant) {
+                filters['tenant'] = frm.doc.tenant;
+            }
             return {
-                filters: {
-                    'status': ['!=', 'Archive']
-                }
+                filters: filters
             };
         });
     },

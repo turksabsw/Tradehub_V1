@@ -2,46 +2,52 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Category', {
-    setup: function(frm) {
-        // Set up query filters in setup for proper initialization
-        // This is critical - frm.set_query MUST be in setup or onload
+    refresh: function(frm) {
+        // =====================================================
+        // Dynamic Link Filters (set_query in refresh)
+        // =====================================================
 
-        // Parent category filter - exclude self and children to prevent circular references
+        // Parent Category - P6 self-exclude + active filter
         frm.set_query('parent_category', function() {
             let filters = {
                 'is_active': 1
             };
-
-            // Exclude self from parent selection
+            // Exclude self from parent selection to prevent circular references
             if (frm.doc.name) {
                 filters['name'] = ['!=', frm.doc.name];
             }
-
             return {
                 filters: filters
             };
         });
 
-        // Attribute set filter
+        // Attribute Set - show all
         frm.set_query('attribute_set', function() {
-            return {
-                filters: {
-                    // Show all attribute sets, or filter by category if needed
-                }
-            };
+            return {};
         });
 
-        // ERPNext Item Group filter
+        // ERPNext Item Group - only leaf item groups
         frm.set_query('erpnext_item_group', function() {
             return {
                 filters: {
-                    'is_group': 0  // Only leaf item groups
+                    'is_group': 0
                 }
             };
         });
-    },
 
-    refresh: function(frm) {
+        // Tax Rate - show active tax rates
+        frm.set_query('tax_rate', function() {
+            return {
+                filters: {
+                    'is_active': 1
+                }
+            };
+        });
+
+        // =====================================================
+        // Dashboard & Buttons
+        // =====================================================
+
         // Display category path
         if (!frm.is_new() && frm.doc.route) {
             frm.dashboard.set_headline(

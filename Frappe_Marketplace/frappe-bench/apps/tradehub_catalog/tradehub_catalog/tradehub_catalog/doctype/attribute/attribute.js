@@ -2,11 +2,6 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Attribute', {
-    setup: function(frm) {
-        // Set up child table query filters in setup for proper initialization
-        // This is critical - set_query MUST be in setup or onload
-    },
-
     refresh: function(frm) {
         // Show/hide sections based on attribute type
         toggle_type_specific_sections(frm);
