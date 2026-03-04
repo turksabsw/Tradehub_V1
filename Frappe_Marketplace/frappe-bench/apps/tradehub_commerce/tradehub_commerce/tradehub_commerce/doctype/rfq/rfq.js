@@ -3,6 +3,85 @@
 
 frappe.ui.form.on('RFQ', {
     refresh: function(frm) {
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Buyer - filter by tenant
+        frm.set_query('buyer', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Organization - filter by tenant
+        frm.set_query('organization', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
+        // Commerce Filters
+        // =====================================================
+        // Category - filter active categories
+        frm.set_query('category', function() {
+            return {
+                filters: {
+                    'is_active': 1
+                }
+            };
+        });
+
+        // NDA Template - filter by active templates
+        frm.set_query('nda_template', function() {
+            return {
+                filters: {
+                    'is_active': 1
+                }
+            };
+        });
+
+        // Accepted Quote - filter by this RFQ
+        frm.set_query('accepted_quote', function() {
+            if (frm.doc.name) {
+                return {
+                    filters: {
+                        'rfq': frm.doc.name
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
+        // Child Table Filters
+        // =====================================================
+        // RFQ Item - listing filter by tenant
+        frm.set_query('listing', 'items', function(doc, cdt, cdn) {
+            let filters = {
+                'status': 'Active'
+            };
+            if (doc.tenant) {
+                filters['tenant'] = doc.tenant;
+            }
+            return {
+                filters: filters
+            };
+        });
+
+        // Make tenant field read-only when organization is set
+        frm.set_df_property('tenant', 'read_only', frm.doc.organization ? 1 : 0);
+
         // Update views remaining display
         frm.trigger('calculate_views_remaining');
 
@@ -117,6 +196,15 @@ frappe.ui.form.on('RFQ', {
         }
     },
 
+    buyer: function(frm) {
+        // Clear all fetch_from fields dependent on buyer
+        if (!frm.doc.buyer) {
+            frm.set_value('buyer_name', '');
+            frm.set_value('buyer_company', '');
+            frm.set_value('buyer_email', '');
+        }
+    },
+
     organization: function(frm) {
         // Auto-populate tenant from organization
         if (frm.doc.organization) {
@@ -128,7 +216,15 @@ frappe.ui.form.on('RFQ', {
             });
         } else {
             frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
             frm.set_df_property('tenant', 'read_only', 0);
+        }
+    },
+
+    tenant: function(frm) {
+        // Clear fetch_from field dependent on tenant
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
         }
     },
 

@@ -12,6 +12,33 @@ frappe.ui.form.on('RFQ Quote', {
         // Re-apply filter on refresh
         setup_rfq_item_filter(frm);
 
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // RFQ - filter by tenant
+        frm.set_query('rfq', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Seller - filter by tenant
+        frm.set_query('seller', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
         // Show status indicator
         update_status_indicator(frm);
 
@@ -24,9 +51,7 @@ frappe.ui.form.on('RFQ Quote', {
         }
 
         // Make tenant read-only when seller is set
-        if (frm.doc.seller) {
-            frm.set_df_property('tenant', 'read_only', 1);
-        }
+        frm.set_df_property('tenant', 'read_only', frm.doc.seller ? 1 : 0);
     },
 
     rfq: function(frm) {
@@ -61,6 +86,10 @@ frappe.ui.form.on('RFQ Quote', {
                     frm.set_value('currency', r.currency);
                 }
             });
+        } else {
+            // Clear all fetch_from fields dependent on rfq
+            frm.set_value('rfq_title', '');
+            frm.set_value('rfq_buyer', '');
         }
     },
 
@@ -76,8 +105,18 @@ frappe.ui.form.on('RFQ Quote', {
                 }
             });
         } else {
+            // Clear all fetch_from fields dependent on seller
+            frm.set_value('seller_name', '');
             frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
             frm.set_df_property('tenant', 'read_only', 0);
+        }
+    },
+
+    tenant: function(frm) {
+        // Clear fetch_from field dependent on tenant
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
         }
     },
 

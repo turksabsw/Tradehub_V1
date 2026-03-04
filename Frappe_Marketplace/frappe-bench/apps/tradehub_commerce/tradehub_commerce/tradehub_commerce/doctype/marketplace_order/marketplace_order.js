@@ -3,6 +3,59 @@
 
 frappe.ui.form.on('Marketplace Order', {
     refresh: function(frm) {
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Organization - filter by tenant
+        frm.set_query('organization', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Cart - filter by tenant and buyer
+        frm.set_query('cart', function() {
+            let filters = {};
+            if (frm.doc.tenant) {
+                filters['tenant'] = frm.doc.tenant;
+            }
+            if (frm.doc.buyer) {
+                filters['buyer'] = frm.doc.buyer;
+            }
+            return {
+                filters: filters
+            };
+        });
+
+        // Payment Intent - filter by tenant
+        frm.set_query('payment_intent', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Escrow Account - filter by tenant
+        frm.set_query('escrow_account', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
         // Ensure buyer detail fields are read-only when buyer is set
         if (frm.doc.buyer) {
             frm.set_df_property('buyer_name', 'read_only', 1);
@@ -90,13 +143,22 @@ frappe.ui.form.on('Marketplace Order', {
                 }
             });
         } else {
-            // Clear organization details when organization is cleared
+            // Clear organization details and fetch_from fields when organization is cleared
             frm.set_value('buyer_company_name', '');
             frm.set_value('buyer_tax_id', '');
+            frm.set_value('organization_name', '');
             frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
             frm.set_df_property('buyer_company_name', 'read_only', 0);
             frm.set_df_property('buyer_tax_id', 'read_only', 0);
             frm.set_df_property('tenant', 'read_only', 0);
+        }
+    },
+
+    tenant: function(frm) {
+        // Clear fetch_from field dependent on tenant
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
         }
     },
 
@@ -104,9 +166,11 @@ frappe.ui.form.on('Marketplace Order', {
         // Clear organization-related fields when buyer type changes from Organization
         if (frm.doc.buyer_type !== 'Organization') {
             frm.set_value('organization', '');
+            frm.set_value('organization_name', '');
             frm.set_value('buyer_company_name', '');
             frm.set_value('buyer_tax_id', '');
             frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
             frm.set_df_property('buyer_company_name', 'read_only', 0);
             frm.set_df_property('buyer_tax_id', 'read_only', 0);
             frm.set_df_property('tenant', 'read_only', 0);

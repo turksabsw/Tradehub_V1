@@ -110,6 +110,11 @@ frappe.ui.form.on('Cart', {
     },
 
     tenant: function(frm) {
+        // Clear fetch_from field dependent on tenant
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
+        }
+
         // When tenant changes, validate organization still belongs to new tenant
         if (frm.doc.organization) {
             if (frm.doc.tenant) {
@@ -206,6 +211,8 @@ frappe.ui.form.on('Cart', {
             }
         } else {
             // If organization is cleared, allow tenant to be edited again
+            // and clear fetch_from field
+            frm.set_value('organization_name', '');
             frm.set_df_property('tenant', 'read_only', 0);
         }
     },
@@ -227,6 +234,11 @@ frappe.ui.form.on('Cart', {
     },
 
     buyer: function(frm) {
+        // Clear fetch_from field dependent on buyer when buyer is cleared
+        if (!frm.doc.buyer) {
+            frm.set_value('buyer_name', '');
+        }
+
         // When buyer changes, optionally auto-populate tenant from buyer's Buyer Profile
         if (frm.doc.buyer && !frm.doc.tenant) {
             frappe.call({

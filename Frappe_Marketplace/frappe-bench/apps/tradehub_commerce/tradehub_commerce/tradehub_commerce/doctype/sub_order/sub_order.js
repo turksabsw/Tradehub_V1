@@ -3,15 +3,40 @@
 
 frappe.ui.form.on('Sub Order', {
     refresh: function(frm) {
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Seller - filter by tenant
+        frm.set_query('seller', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Marketplace Order - filter by tenant
+        frm.set_query('marketplace_order', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
         // Ensure read-only fields when marketplace_order is set
         if (frm.doc.marketplace_order) {
             set_parent_order_fields_readonly(frm, true);
         }
 
         // Ensure tenant field is read-only when seller is set
-        if (frm.doc.seller) {
-            frm.set_df_property('tenant', 'read_only', 1);
-        }
+        frm.set_df_property('tenant', 'read_only', frm.doc.seller ? 1 : 0);
 
         // Add custom buttons for saved records
         if (!frm.is_new() && frm.doc.docstatus === 0) {
@@ -75,9 +100,19 @@ frappe.ui.form.on('Sub Order', {
                 }
             });
         } else {
-            // Clear tenant when seller is cleared
+            // Clear all fetch_from fields dependent on seller
+            frm.set_value('seller_name', '');
+            frm.set_value('seller_company', '');
             frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
             frm.set_df_property('tenant', 'read_only', 0);
+        }
+    },
+
+    tenant: function(frm) {
+        // Clear fetch_from field dependent on tenant
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
         }
     }
 });

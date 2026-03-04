@@ -31,8 +31,75 @@ frappe.ui.form.on('Order', {
             show_order_summary(frm);
         }
 
-        // Set filters for Link fields based on tenant
-        set_tenant_filters(frm);
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Buyer - filter by tenant
+        frm.set_query('buyer', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Seller - filter by tenant
+        frm.set_query('seller', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
+        // Commerce Link Filters
+        // =====================================================
+        // RFQ - filter by tenant
+        frm.set_query('rfq', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Quotation - filter by tenant
+        frm.set_query('quotation', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Sample Request - filter by tenant
+        frm.set_query('sample_request', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Make tenant field read-only when buyer is selected
+        // (since tenant is auto-populated from buyer via fetch_from)
+        frm.set_df_property('tenant', 'read_only', frm.doc.buyer ? 1 : 0);
     },
 
     /**
@@ -74,6 +141,15 @@ frappe.ui.form.on('Order', {
                     }
                 });
             }
+        } else {
+            // Clear all fetch_from fields dependent on buyer
+            frm.set_value('buyer_name', '');
+            frm.set_value('buyer_company', '');
+            frm.set_value('buyer_email', '');
+            frm.set_value('buyer_phone', '');
+            frm.set_value('buyer_segment', '');
+            frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
         }
     },
 
@@ -92,6 +168,13 @@ frappe.ui.form.on('Order', {
             // Refresh form to trigger fetch_from
             frm.refresh_fields(['seller_name', 'seller_company', 'seller_email',
                                'seller_phone', 'seller_tier']);
+        } else {
+            // Clear all fetch_from fields dependent on seller
+            frm.set_value('seller_name', '');
+            frm.set_value('seller_company', '');
+            frm.set_value('seller_email', '');
+            frm.set_value('seller_phone', '');
+            frm.set_value('seller_tier', '');
         }
     },
 
@@ -101,6 +184,9 @@ frappe.ui.form.on('Order', {
     rfq: function(frm) {
         if (frm.doc.rfq) {
             frm.refresh_field('rfq_title');
+        } else {
+            // Clear fetch_from field dependent on rfq
+            frm.set_value('rfq_title', '');
         }
     },
 
@@ -139,6 +225,9 @@ frappe.ui.form.on('Order', {
                     }
                 }
             });
+        } else {
+            // Clear fetch_from field dependent on quotation
+            frm.set_value('quotation_amount', 0);
         }
     },
 
@@ -813,30 +902,3 @@ function show_order_summary(frm) {
     );
 }
 
-/**
- * Set tenant-based filters for Link fields
- * @param {object} frm - Form object
- */
-function set_tenant_filters(frm) {
-    if (frm.doc.tenant) {
-        // Filter buyer by tenant
-        frm.set_query('buyer', function() {
-            return {
-                filters: {
-                    tenant: frm.doc.tenant,
-                    status: ['in', ['Active', 'Verified']]
-                }
-            };
-        });
-
-        // Filter seller by tenant
-        frm.set_query('seller', function() {
-            return {
-                filters: {
-                    tenant: frm.doc.tenant,
-                    status: ['in', ['Active', 'Verified']]
-                }
-            };
-        });
-    }
-}
