@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "shipment_info_section",
   "shipment_number",
   "status",
@@ -26,6 +27,7 @@
   "column_break_sub_order",
   "sub_order_status",
   "sub_order_total",
+  "parties_tab",
   "buyer_section",
   "buyer",
   "buyer_name",
@@ -43,6 +45,7 @@
   "tenant_section",
   "tenant",
   "tenant_name",
+  "carrier_tab",
   "carrier_section",
   "carrier",
   "carrier_name",
@@ -65,6 +68,7 @@
   "column_break_label",
   "label_data",
   "carrier_shipment_id",
+  "addresses_tab",
   "origin_section",
   "origin_address",
   "origin_city",
@@ -83,6 +87,7 @@
   "destination_postal_code",
   "destination_contact_person",
   "destination_phone",
+  "package_tab",
   "package_section",
   "package_count",
   "total_weight",
@@ -98,6 +103,7 @@
   "column_break_dimensions",
   "dimension_uom",
   "dimensional_weight",
+  "customs_tab",
   "customs_section",
   "requires_customs",
   "customs_status",
@@ -118,6 +124,7 @@
   "customs_duty_amount",
   "customs_tax_amount",
   "customs_clearance_date",
+  "insurance_tab",
   "insurance_section",
   "is_insured",
   "insurance_value",
@@ -131,6 +138,7 @@
   "freight_cost",
   "insurance_cost",
   "total_shipping_cost",
+  "dates_tab",
   "dates_section",
   "pickup_date",
   "pickup_time",
@@ -144,12 +152,14 @@
   "column_break_milestones",
   "out_for_delivery_date",
   "exception_date",
+  "delivery_tab",
   "proof_of_delivery_section",
   "pod_received",
   "pod_signature",
   "column_break_pod",
   "pod_image",
   "pod_notes",
+  "system_tab",
   "special_instructions_section",
   "special_handling",
   "delivery_instructions",
@@ -176,6 +186,11 @@
   "exception_resolution_date"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "shipment_info_section",
    "fieldtype": "Section Break",
@@ -325,6 +340,11 @@
    "description": "Auto-filled from Sub Order"
   },
   {
+   "fieldname": "parties_tab",
+   "fieldtype": "Tab Break",
+   "label": "Parties"
+  },
+  {
    "fieldname": "buyer_section",
    "fieldtype": "Section Break",
    "label": "Buyer Information"
@@ -449,6 +469,11 @@
    "label": "Tenant Name",
    "read_only": 1,
    "description": "Auto-filled from Order"
+  },
+  {
+   "fieldname": "carrier_tab",
+   "fieldtype": "Tab Break",
+   "label": "Carrier"
   },
   {
    "fieldname": "carrier_section",
@@ -592,6 +617,11 @@
    "description": "Carrier's internal shipment/tracking ID"
   },
   {
+   "fieldname": "addresses_tab",
+   "fieldtype": "Tab Break",
+   "label": "Addresses"
+  },
+  {
    "fieldname": "origin_section",
    "fieldtype": "Section Break",
    "label": "Origin Address"
@@ -696,6 +726,11 @@
    "description": "Contact phone at destination"
   },
   {
+   "fieldname": "package_tab",
+   "fieldtype": "Tab Break",
+   "label": "Package"
+  },
+  {
    "fieldname": "package_section",
    "fieldtype": "Section Break",
    "label": "Package Information"
@@ -798,6 +833,11 @@
    "precision": 3,
    "read_only": 1,
    "description": "Calculated dimensional weight (L x W x H / divisor)"
+  },
+  {
+   "fieldname": "customs_tab",
+   "fieldtype": "Tab Break",
+   "label": "Customs"
   },
   {
    "fieldname": "customs_section",
@@ -927,6 +967,11 @@
    "description": "Date when customs clearance was completed"
   },
   {
+   "fieldname": "insurance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Insurance & Terms"
+  },
+  {
    "fieldname": "insurance_section",
    "fieldtype": "Section Break",
    "label": "Insurance",
@@ -1012,6 +1057,11 @@
    "description": "Total cost (freight + insurance + customs duties)"
   },
   {
+   "fieldname": "dates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dates"
+  },
+  {
    "fieldname": "dates_section",
    "fieldtype": "Section Break",
    "label": "Shipping Dates"
@@ -1091,6 +1141,11 @@
    "description": "When an exception was reported"
   },
   {
+   "fieldname": "delivery_tab",
+   "fieldtype": "Tab Break",
+   "label": "Delivery"
+  },
+  {
    "fieldname": "proof_of_delivery_section",
    "fieldtype": "Section Break",
    "label": "Proof of Delivery",
@@ -1127,6 +1182,11 @@
    "label": "POD Notes",
    "depends_on": "pod_received",
    "description": "Additional notes about the delivery"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "special_instructions_section",

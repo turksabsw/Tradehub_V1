@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "rule_name",
   "rule_type",
@@ -18,8 +19,10 @@
   "priority",
   "description_section",
   "description",
+  "zones_tab",
   "zones_section",
   "zones",
+  "rates_tab",
   "rate_calculation_section",
   "calculation_method",
   "base_rate",
@@ -31,6 +34,7 @@
   "tax_rate",
   "weight_based_rates_section",
   "rate_tiers",
+  "shipping_tab",
   "free_shipping_section",
   "free_shipping_enabled",
   "free_shipping_threshold",
@@ -43,6 +47,7 @@
   "column_break_conditions",
   "min_weight",
   "max_weight",
+  "handling_tab",
   "handling_section",
   "handling_fee",
   "handling_fee_type",
@@ -56,6 +61,7 @@
   "express_available",
   "express_surcharge",
   "express_days",
+  "restrictions_tab",
   "category_restrictions_section",
   "apply_to_all_categories",
   "allowed_categories",
@@ -63,11 +69,17 @@
   "carriers_section",
   "default_carrier",
   "allowed_carriers",
+  "system_tab",
   "timestamps_section",
   "valid_from",
   "valid_to"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -152,6 +164,11 @@
    "label": "Description"
   },
   {
+   "fieldname": "zones_tab",
+   "fieldtype": "Tab Break",
+   "label": "Zones"
+  },
+  {
    "fieldname": "zones_section",
    "fieldtype": "Section Break",
    "label": "Shipping Zones"
@@ -162,6 +179,11 @@
    "fieldtype": "Table",
    "label": "Zones",
    "options": "Shipping Zone"
+  },
+  {
+   "fieldname": "rates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Rates"
   },
   {
    "fieldname": "rate_calculation_section",
@@ -244,6 +266,11 @@
    "options": "Shipping Rate Tier"
   },
   {
+   "fieldname": "shipping_tab",
+   "fieldtype": "Tab Break",
+   "label": "Shipping Options"
+  },
+  {
    "fieldname": "free_shipping_section",
    "fieldtype": "Section Break",
    "label": "Free Shipping"
@@ -319,6 +346,11 @@
    "fieldname": "max_weight",
    "fieldtype": "Float",
    "label": "Maximum Weight (kg)"
+  },
+  {
+   "fieldname": "handling_tab",
+   "fieldtype": "Tab Break",
+   "label": "Handling"
   },
   {
    "collapsible": 1,
@@ -405,6 +437,11 @@
    "label": "Express Days"
   },
   {
+   "fieldname": "restrictions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Restrictions"
+  },
+  {
    "collapsible": 1,
    "fieldname": "category_restrictions_section",
    "fieldtype": "Section Break",
@@ -447,6 +484,11 @@
    "fieldname": "allowed_carriers",
    "fieldtype": "Small Text",
    "label": "Allowed Carriers"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

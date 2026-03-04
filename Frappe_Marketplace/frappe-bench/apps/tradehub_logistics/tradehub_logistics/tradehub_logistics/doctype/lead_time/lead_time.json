@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "sku_product",
   "product_name",
@@ -18,6 +19,7 @@
   "column_break_ownership",
   "tenant",
   "tenant_name",
+  "config_tab",
   "lead_time_section",
   "lead_time_type",
   "lead_time_days",
@@ -30,6 +32,7 @@
   "column_break_quantity",
   "production_capacity",
   "capacity_period",
+  "system_tab",
   "validity_section",
   "valid_from",
   "valid_until",
@@ -40,6 +43,11 @@
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -129,6 +137,11 @@
    "description": "Auto-filled from SKU Product"
   },
   {
+   "fieldname": "config_tab",
+   "fieldtype": "Tab Break",
+   "label": "Configuration"
+  },
+  {
    "fieldname": "lead_time_section",
    "fieldtype": "Section Break",
    "label": "Lead Time Configuration"
@@ -210,6 +223,11 @@
    "label": "Capacity Period",
    "options": "Day\nWeek\nMonth",
    "description": "Time period for production capacity measurement"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "validity_section",

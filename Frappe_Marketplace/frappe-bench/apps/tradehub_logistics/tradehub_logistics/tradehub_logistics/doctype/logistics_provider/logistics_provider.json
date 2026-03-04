@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "provider_name",
   "provider_code",
@@ -23,6 +24,7 @@
   "support_email",
   "support_phone",
   "support_hours",
+  "api_tab",
   "api_configuration_section",
   "api_enabled",
   "api_endpoint",
@@ -38,6 +40,7 @@
   "column_break_api_settings",
   "sandbox_mode",
   "sandbox_endpoint",
+  "tracking_tab",
   "tracking_section",
   "supports_tracking",
   "tracking_url_template",
@@ -46,6 +49,7 @@
   "supports_webhooks",
   "webhook_url",
   "webhook_secret",
+  "services_tab",
   "service_area_section",
   "service_type",
   "domestic_coverage",
@@ -61,6 +65,7 @@
   "supports_same_day",
   "supports_cod",
   "supports_insurance",
+  "rates_tab",
   "rate_section",
   "rate_calculation_method",
   "base_rate",
@@ -78,6 +83,7 @@
   "max_volume_cm3",
   "max_declared_value",
   "currency",
+  "integration_tab",
   "integration_section",
   "label_format",
   "label_size",
@@ -85,6 +91,7 @@
   "supports_pickup",
   "supports_dropoff",
   "supports_return_label",
+  "performance_tab",
   "performance_section",
   "average_delivery_days",
   "on_time_delivery_rate",
@@ -93,6 +100,7 @@
   "total_shipments",
   "total_issues",
   "last_used_at",
+  "system_tab",
   "settings_section",
   "is_default",
   "priority",
@@ -103,6 +111,11 @@
   "requires_contract"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -215,6 +228,11 @@
    "description": "e.g., Mon-Fri 09:00-18:00"
   },
   {
+   "fieldname": "api_tab",
+   "fieldtype": "Tab Break",
+   "label": "API"
+  },
+  {
    "fieldname": "api_configuration_section",
    "fieldtype": "Section Break",
    "label": "API Configuration",
@@ -313,6 +331,11 @@
    "description": "Sandbox API endpoint for testing"
   },
   {
+   "fieldname": "tracking_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tracking"
+  },
+  {
    "fieldname": "tracking_section",
    "fieldtype": "Section Break",
    "label": "Tracking Configuration"
@@ -364,6 +387,11 @@
    "fieldtype": "Password",
    "label": "Webhook Secret",
    "description": "Secret key for verifying webhook signatures"
+  },
+  {
+   "fieldname": "services_tab",
+   "fieldtype": "Tab Break",
+   "label": "Services"
   },
   {
    "fieldname": "service_area_section",
@@ -456,6 +484,11 @@
    "fieldname": "supports_insurance",
    "fieldtype": "Check",
    "label": "Supports Shipping Insurance"
+  },
+  {
+   "fieldname": "rates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Rates"
   },
   {
    "fieldname": "rate_section",
@@ -569,6 +602,11 @@
    "options": "Currency"
   },
   {
+   "fieldname": "integration_tab",
+   "fieldtype": "Tab Break",
+   "label": "Integration"
+  },
+  {
    "fieldname": "integration_section",
    "fieldtype": "Section Break",
    "label": "Integration Features",
@@ -612,6 +650,11 @@
    "fieldtype": "Check",
    "label": "Supports Return Labels",
    "description": "Can generate prepaid return labels"
+  },
+  {
+   "fieldname": "performance_tab",
+   "fieldtype": "Tab Break",
+   "label": "Performance"
   },
   {
    "fieldname": "performance_section",
@@ -667,6 +710,11 @@
    "fieldtype": "Datetime",
    "label": "Last Used At",
    "read_only": 1
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "settings_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "carrier_name",
   "carrier_code",
@@ -19,6 +20,7 @@
   "supports_tracking",
   "supports_cod",
   "supports_insurance",
+  "contact_tab",
   "contact_section",
   "contact_person",
   "email",
@@ -36,12 +38,14 @@
   "tenant_name",
   "column_break_tenant",
   "is_global",
+  "service_tab",
   "service_areas_section",
   "domestic_only",
   "service_countries",
   "column_break_service_areas",
   "excluded_countries",
   "service_regions",
+  "api_tab",
   "api_integration_section",
   "has_api_integration",
   "api_provider",
@@ -66,11 +70,13 @@
   "column_break_webhook",
   "webhook_secret",
   "webhook_events",
+  "tracking_tab",
   "tracking_section",
   "tracking_url_template",
   "tracking_api_enabled",
   "column_break_tracking",
   "tracking_update_frequency",
+  "rates_tab",
   "rate_settings_section",
   "default_transit_days",
   "min_weight",
@@ -85,6 +91,7 @@
   "column_break_pricing",
   "currency",
   "pricing_notes",
+  "display_tab",
   "branding_section",
   "logo",
   "description",
@@ -94,10 +101,16 @@
   "column_break_display",
   "featured",
   "shipment_count",
+  "system_tab",
   "notes_section",
   "internal_notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -186,6 +199,11 @@
    "fieldtype": "Check",
    "label": "Supports Insurance",
    "description": "Whether this carrier offers shipping insurance"
+  },
+  {
+   "fieldname": "contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact"
   },
   {
    "fieldname": "contact_section",
@@ -291,6 +309,11 @@
    "description": "Global carriers are visible to all tenants"
   },
   {
+   "fieldname": "service_tab",
+   "fieldtype": "Tab Break",
+   "label": "Service Areas"
+  },
+  {
    "fieldname": "service_areas_section",
    "fieldtype": "Section Break",
    "label": "Service Areas"
@@ -323,6 +346,11 @@
    "fieldtype": "Small Text",
    "label": "Service Regions",
    "description": "Specific regions or zones serviced (e.g., Europe, North America, Asia-Pacific)"
+  },
+  {
+   "fieldname": "api_tab",
+   "fieldtype": "Tab Break",
+   "label": "API Integration"
   },
   {
    "fieldname": "api_integration_section",
@@ -494,6 +522,11 @@
    "description": "Events to receive (one per line: tracking_update, delivered, exception, etc.)"
   },
   {
+   "fieldname": "tracking_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tracking"
+  },
+  {
    "fieldname": "tracking_section",
    "fieldtype": "Section Break",
    "label": "Tracking Configuration"
@@ -523,6 +556,11 @@
    "label": "Tracking Update Frequency (min)",
    "depends_on": "tracking_api_enabled",
    "description": "How often to poll for tracking updates (in minutes)"
+  },
+  {
+   "fieldname": "rates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Rates & Pricing"
   },
   {
    "fieldname": "rate_settings_section",
@@ -617,6 +655,11 @@
    "description": "Additional notes about pricing (zones, surcharges, etc.)"
   },
   {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Branding"
+  },
+  {
    "fieldname": "branding_section",
    "fieldtype": "Section Break",
    "label": "Branding"
@@ -670,6 +713,11 @@
    "label": "Shipment Count",
    "read_only": 1,
    "description": "Number of shipments using this carrier"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "fieldname": "notes_section",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "shipment_id",
   "sub_order",
@@ -26,6 +27,7 @@
   "tracking_number",
   "tracking_url",
   "awb_number",
+  "addresses_tab",
   "origin_section",
   "sender_name",
   "sender_phone",
@@ -46,6 +48,7 @@
   "destination_state",
   "destination_postal_code",
   "destination_country",
+  "package_tab",
   "package_section",
   "package_count",
   "total_weight",
@@ -64,6 +67,7 @@
   "contains_fragile",
   "contains_hazmat",
   "requires_signature",
+  "cost_tab",
   "cost_section",
   "shipping_cost",
   "insurance_cost",
@@ -72,6 +76,7 @@
   "additional_charges",
   "total_cost",
   "cost_currency",
+  "delivery_tab",
   "schedule_section",
   "pickup_date",
   "pickup_time_from",
@@ -88,6 +93,7 @@
   "delivery_signature",
   "proof_of_delivery",
   "delivery_notes",
+  "tracking_tab",
   "timestamps_section",
   "created_at",
   "picked_up_at",
@@ -96,6 +102,7 @@
   "out_for_delivery_at",
   "delivered_at",
   "exception_at",
+  "return_tab",
   "return_section",
   "is_return",
   "return_reason",
@@ -110,6 +117,7 @@
   "column_break_label",
   "manifest_id",
   "batch_id",
+  "system_tab",
   "notes_section",
   "seller_notes",
   "internal_notes",
@@ -120,6 +128,11 @@
   "last_sync_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
@@ -257,6 +270,11 @@
    "label": "AWB Number"
   },
   {
+   "fieldname": "addresses_tab",
+   "fieldtype": "Tab Break",
+   "label": "Addresses"
+  },
+  {
    "fieldname": "origin_section",
    "fieldtype": "Section Break",
    "label": "Origin Address"
@@ -369,6 +387,11 @@
    "reqd": 1
   },
   {
+   "fieldname": "package_tab",
+   "fieldtype": "Tab Break",
+   "label": "Package"
+  },
+  {
    "fieldname": "package_section",
    "fieldtype": "Section Break",
    "label": "Package Details"
@@ -479,6 +502,11 @@
    "label": "Requires Signature"
   },
   {
+   "fieldname": "cost_tab",
+   "fieldtype": "Tab Break",
+   "label": "Cost"
+  },
+  {
    "collapsible": 1,
    "fieldname": "cost_section",
    "fieldtype": "Section Break",
@@ -531,6 +559,11 @@
    "fieldtype": "Link",
    "label": "Cost Currency",
    "options": "Currency"
+  },
+  {
+   "fieldname": "delivery_tab",
+   "fieldtype": "Tab Break",
+   "label": "Delivery"
   },
   {
    "fieldname": "schedule_section",
@@ -621,6 +654,11 @@
    "label": "Delivery Notes"
   },
   {
+   "fieldname": "tracking_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tracking"
+  },
+  {
    "collapsible": 1,
    "fieldname": "timestamps_section",
    "fieldtype": "Section Break",
@@ -665,6 +703,11 @@
    "fieldtype": "Datetime",
    "label": "Exception At",
    "read_only": 1
+  },
+  {
+   "fieldname": "return_tab",
+   "fieldtype": "Tab Break",
+   "label": "Return"
   },
   {
    "collapsible": 1,
@@ -751,6 +794,11 @@
    "fieldname": "batch_id",
    "fieldtype": "Data",
    "label": "Batch ID"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,

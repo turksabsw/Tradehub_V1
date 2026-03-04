@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "event_tab",
   "event_info_section",
   "shipment",
   "shipment_tracking_number",
@@ -23,6 +24,7 @@
   "severity",
   "is_exception",
   "exception_type",
+  "location_tab",
   "location_section",
   "location_name",
   "facility_name",
@@ -40,6 +42,7 @@
   "is_origin",
   "is_destination",
   "address_line",
+  "delivery_tab",
   "delivery_section",
   "signed_by",
   "signature_image",
@@ -55,6 +58,7 @@
   "column_break_attempt",
   "reschedule_date",
   "next_action",
+  "data_tab",
   "additional_data_section",
   "carrier_event_code",
   "carrier_event_description",
@@ -64,6 +68,7 @@
   "estimated_delivery_date",
   "estimated_delivery_time",
   "weight_at_event",
+  "references_tab",
   "order_reference_section",
   "marketplace_order",
   "sub_order",
@@ -73,6 +78,7 @@
   "buyer",
   "tenant",
   "tenant_name",
+  "notifications_tab",
   "notification_section",
   "notification_sent",
   "notification_type",
@@ -83,6 +89,7 @@
   "sms_sent",
   "email_sent",
   "push_sent",
+  "system_tab",
   "system_section",
   "naming_series",
   "source",
@@ -90,6 +97,11 @@
   "sync_id"
  ],
  "fields": [
+  {
+   "fieldname": "event_tab",
+   "fieldtype": "Tab Break",
+   "label": "Event"
+  },
   {
    "fieldname": "event_info_section",
    "fieldtype": "Section Break",
@@ -210,6 +222,11 @@
    "options": "\nAddress Issue\nRecipient Not Available\nBusiness Closed\nRefused by Recipient\nPackage Damaged\nPackage Lost\nCustoms Issue\nWeather Delay\nNatural Disaster\nSecurity Issue\nPayment Required\nIncomplete Address\nWrong Address\nAccess Issue\nNo Safe Location\nPackage Too Large\nPackage Held\nDelivery Attempt Failed\nOther"
   },
   {
+   "fieldname": "location_tab",
+   "fieldtype": "Tab Break",
+   "label": "Location"
+  },
+  {
    "fieldname": "location_section",
    "fieldtype": "Section Break",
    "label": "Location"
@@ -304,6 +321,11 @@
    "label": "Address Line"
   },
   {
+   "fieldname": "delivery_tab",
+   "fieldtype": "Tab Break",
+   "label": "Delivery"
+  },
+  {
    "collapsible": 1,
    "collapsible_depends_on": "eval:doc.event_type=='Delivered' || doc.event_type=='Signed For'",
    "fieldname": "delivery_section",
@@ -388,6 +410,11 @@
    "options": "\nReattempt Delivery\nHold at Location\nReturn to Sender\nRedirect\nContact Recipient\nAwait Instructions\nNo Action Required"
   },
   {
+   "fieldname": "data_tab",
+   "fieldtype": "Tab Break",
+   "label": "Additional Data"
+  },
+  {
    "collapsible": 1,
    "fieldname": "additional_data_section",
    "fieldtype": "Section Break",
@@ -436,6 +463,11 @@
    "fieldname": "weight_at_event",
    "fieldtype": "Float",
    "label": "Weight at Event"
+  },
+  {
+   "fieldname": "references_tab",
+   "fieldtype": "Tab Break",
+   "label": "References"
   },
   {
    "collapsible": 1,
@@ -493,6 +525,11 @@
    "label": "Tenant Name",
    "fetch_from": "tenant.tenant_name",
    "read_only": 1
+  },
+  {
+   "fieldname": "notifications_tab",
+   "fieldtype": "Tab Break",
+   "label": "Notifications"
   },
   {
    "collapsible": 1,
@@ -554,6 +591,11 @@
    "fieldname": "push_sent",
    "fieldtype": "Check",
    "label": "Push Notification Sent"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
   },
   {
    "collapsible": 1,
