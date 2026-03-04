@@ -13,6 +13,63 @@ frappe.ui.form.on('Marketplace Shipment', {
 
         // Show delivery status indicators
         update_status_indicator(frm);
+
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Seller - filter by tenant
+        frm.set_query('seller', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
+        // Commerce Link Filters
+        // =====================================================
+        // Sub Order - filter by seller and tenant
+        frm.set_query('sub_order', function() {
+            let filters = {};
+            if (frm.doc.seller) {
+                filters['seller'] = frm.doc.seller;
+            }
+            if (frm.doc.tenant) {
+                filters['tenant'] = frm.doc.tenant;
+            }
+            return {
+                filters: filters
+            };
+        });
+
+        // Logistics Provider - show all
+        frm.set_query('logistics_provider', function() {
+            return {};
+        });
+
+        // Currency fields - filter enabled
+        frm.set_query('currency', function() {
+            return {
+                filters: {
+                    'enabled': 1
+                }
+            };
+        });
+
+        frm.set_query('cost_currency', function() {
+            return {
+                filters: {
+                    'enabled': 1
+                }
+            };
+        });
+
+        // Make tenant field read-only when seller is selected
+        frm.set_df_property('tenant', 'read_only', frm.doc.seller ? 1 : 0);
     },
 
     onload: function(frm) {
@@ -52,6 +109,25 @@ frappe.ui.form.on('Marketplace Shipment', {
         }
     },
 
+    tenant: function(frm) {
+        // When tenant changes, check if current seller belongs to new tenant
+        if (frm.doc.seller) {
+            if (frm.doc.tenant) {
+                frappe.db.get_value('Seller Profile', frm.doc.seller, 'tenant', function(r) {
+                    if (r && r.tenant !== frm.doc.tenant) {
+                        frm.set_value('seller', null);
+                        frappe.show_alert({
+                            message: __('Seller cleared because it does not belong to the selected Tenant'),
+                            indicator: 'orange'
+                        });
+                    }
+                });
+            } else {
+                frm.set_value('seller', null);
+            }
+        }
+    },
+
     seller: function(frm) {
         // Auto-populate tenant when seller is selected
         if (frm.doc.seller) {
@@ -63,6 +139,9 @@ frappe.ui.form.on('Marketplace Shipment', {
                     frm.set_df_property('tenant', 'read_only', 1);
                 }
             });
+        } else {
+            // Seller cleared, allow tenant editing
+            frm.set_df_property('tenant', 'read_only', 0);
         }
     },
 

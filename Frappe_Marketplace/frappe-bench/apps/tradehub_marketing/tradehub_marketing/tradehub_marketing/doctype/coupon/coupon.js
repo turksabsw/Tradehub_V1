@@ -17,6 +17,43 @@ frappe.ui.form.on('Coupon', {
                 }
             });
         }
+
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Seller - filter by tenant and active status
+        frm.set_query('seller', function() {
+            let filters = {
+                'status': 'Active'
+            };
+            if (frm.doc.tenant) {
+                filters['tenant'] = frm.doc.tenant;
+            }
+            return {
+                filters: filters
+            };
+        });
+
+        // =====================================================
+        // Campaign - filter by seller/tenant and active status
+        // =====================================================
+        frm.set_query('campaign', function() {
+            let filters = {
+                'status': ['in', ['Active', 'Scheduled']]
+            };
+            if (frm.doc.seller) {
+                filters['seller'] = frm.doc.seller;
+            }
+            if (frm.doc.tenant) {
+                filters['tenant'] = frm.doc.tenant;
+            }
+            return {
+                filters: filters
+            };
+        });
+
+        // Make tenant field read-only when seller is selected
+        frm.set_df_property('tenant', 'read_only', frm.doc.seller ? 1 : 0);
     },
 
     discount_type: function(frm) {
@@ -26,23 +63,6 @@ frappe.ui.form.on('Coupon', {
     },
 
     onload: function(frm) {
-        // Set up query filters for related fields
-        frm.set_query('seller', function() {
-            return {
-                filters: {
-                    'status': 'Active'
-                }
-            };
-        });
-
-        frm.set_query('campaign', function() {
-            return {
-                filters: {
-                    'status': ['in', ['Active', 'Scheduled']]
-                }
-            };
-        });
-
         // Initial setup
         frm.trigger('update_discount_labels');
         frm.trigger('toggle_bogo_sections');
@@ -217,7 +237,29 @@ frappe.ui.form.on('Coupon', {
         frm.trigger('setup_bogo_preview');
     },
 
-    // Auto-populate seller fields
+    tenant: function(frm) {
+        // When tenant changes, check if current seller belongs to new tenant
+        if (frm.doc.seller) {
+            if (frm.doc.tenant) {
+                frappe.db.get_value('Seller Profile', frm.doc.seller, 'tenant', function(r) {
+                    if (r && r.tenant !== frm.doc.tenant) {
+                        frm.set_value('seller', null);
+                        frappe.show_alert({
+                            message: __('Seller cleared because it does not belong to the selected Tenant'),
+                            indicator: 'orange'
+                        });
+                    }
+                });
+            } else {
+                frm.set_value('seller', null);
+            }
+        }
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
+        }
+    },
+
+    // Auto-populate seller fields and clear on change
     seller: function(frm) {
         if (frm.doc.seller) {
             frappe.db.get_value('Seller Profile', frm.doc.seller, ['seller_name', 'tenant'], function(r) {
@@ -226,9 +268,20 @@ frappe.ui.form.on('Coupon', {
                     frm.set_value('tenant', r.tenant);
                 }
             });
+            frm.set_df_property('tenant', 'read_only', 1);
         } else {
+            // Clear fetch_from fields dependent on seller
             frm.set_value('seller_name', '');
             frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
+            frm.set_df_property('tenant', 'read_only', 0);
+        }
+    },
+
+    campaign: function(frm) {
+        if (!frm.doc.campaign) {
+            // Clear fetch_from field dependent on campaign
+            frm.set_value('campaign_name', '');
         }
     },
 
