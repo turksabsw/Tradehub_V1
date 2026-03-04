@@ -28,6 +28,25 @@ frappe.ui.form.on('SKU Product', {
 
         // Show stock indicator
         frm.events.show_stock_indicator(frm);
+
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Seller - filter by tenant
+        frm.set_query('seller', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Make tenant field read-only when seller is selected
+        // (since tenant is auto-populated from seller via fetch_from)
+        frm.set_df_property('tenant', 'read_only', frm.doc.seller ? 1 : 0);
     },
 
     /**
@@ -49,11 +68,47 @@ frappe.ui.form.on('SKU Product', {
      * Called when seller field changes
      */
     seller: function(frm) {
-        // Refresh fetch_from fields
-        frm.events.refresh_seller_fields(frm);
+        // Update read-only state of tenant field
+        frm.set_df_property('tenant', 'read_only', frm.doc.seller ? 1 : 0);
 
-        // Filter categories and brands by tenant
-        frm.events.setup_tenant_filters(frm);
+        if (frm.doc.seller) {
+            // Auto-populate tenant from seller
+            frappe.db.get_value('Seller Profile', frm.doc.seller, 'tenant', function(r) {
+                if (r && r.tenant) {
+                    if (!frm.doc.tenant || frm.doc.tenant !== r.tenant) {
+                        frm.set_value('tenant', r.tenant);
+                    }
+                }
+            });
+        } else {
+            // Seller cleared - allow tenant to be edited again
+            frm.set_df_property('tenant', 'read_only', 0);
+
+            // Clear all fetch_from fields dependent on seller
+            frm.set_value('seller_name', '');
+            frm.set_value('tenant', '');
+            frm.set_value('tenant_name', '');
+        }
+    },
+
+    /**
+     * Called when category field changes
+     */
+    category: function(frm) {
+        // Clear fetch_from fields dependent on category
+        if (!frm.doc.category) {
+            frm.set_value('category_name', '');
+        }
+    },
+
+    /**
+     * Called when brand field changes
+     */
+    brand: function(frm) {
+        // Clear fetch_from fields dependent on brand
+        if (!frm.doc.brand) {
+            frm.set_value('brand_name', '');
+        }
     },
 
     /**
@@ -260,75 +315,6 @@ frappe.ui.form.on('SKU Product', {
         }
 
         frm.dashboard.add_indicator(message, indicator);
-    },
-
-    /**
-     * Refresh seller-related fetch_from fields
-     */
-    refresh_seller_fields: function(frm) {
-        if (!frm.doc.seller) {
-            frm.set_value('seller_name', '');
-            frm.set_value('tenant', '');
-            frm.set_value('tenant_name', '');
-            return;
-        }
-
-        // Fetch seller data to populate fetch_from fields
-        frappe.call({
-            method: 'frappe.client.get_value',
-            args: {
-                doctype: 'Seller Profile',
-                filters: { name: frm.doc.seller },
-                fieldname: ['seller_name', 'tenant', 'tenant_name']
-            },
-            callback: function(r) {
-                if (r.message) {
-                    frm.set_value('seller_name', r.message.seller_name || '');
-                    frm.set_value('tenant', r.message.tenant || '');
-                    frm.set_value('tenant_name', r.message.tenant_name || '');
-
-                    // Setup filters after tenant is set
-                    frm.events.setup_tenant_filters(frm);
-                }
-            }
-        });
-    },
-
-    /**
-     * Setup tenant-based filters for Link fields
-     */
-    setup_tenant_filters: function(frm) {
-        var tenant = frm.doc.tenant;
-
-        // Filter categories by tenant (if categories are tenant-specific)
-        frm.set_query('category', function() {
-            return {
-                filters: {
-                    // Categories might be global or tenant-specific
-                    // Adjust filter as needed
-                }
-            };
-        });
-
-        // Filter brands by tenant (if brands are tenant-specific)
-        frm.set_query('brand', function() {
-            return {
-                filters: {
-                    // Brands might be global or tenant-specific
-                    // Adjust filter as needed
-                }
-            };
-        });
-
-        // Ensure seller filter includes tenant
-        frm.set_query('seller', function() {
-            if (tenant) {
-                return {
-                    filters: { tenant: tenant }
-                };
-            }
-            return {};
-        });
     },
 
     /**

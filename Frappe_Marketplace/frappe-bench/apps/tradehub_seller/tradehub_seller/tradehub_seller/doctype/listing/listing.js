@@ -112,6 +112,11 @@ frappe.ui.form.on('Listing', {
                 frm.set_value('seller', null);
             }
         }
+
+        // Clear fetch_from fields dependent on tenant
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
+        }
     },
 
     seller: function(frm) {
@@ -130,6 +135,10 @@ frappe.ui.form.on('Listing', {
         } else {
             // If seller is cleared, allow tenant to be edited again
             frm.set_df_property('tenant', 'read_only', 0);
+
+            // Clear fetch_from fields dependent on seller
+            frm.set_value('seller_name', '');
+            frm.set_value('seller_company', '');
         }
     },
 
@@ -188,6 +197,8 @@ frappe.ui.form.on('Listing', {
             // Category was cleared, clear dependent fields
             frm.set_value('subcategory', null);
             frm.set_value('attribute_set', null);
+            // Clear fetch_from fields dependent on category
+            frm.set_value('category_name', '');
         }
     },
 

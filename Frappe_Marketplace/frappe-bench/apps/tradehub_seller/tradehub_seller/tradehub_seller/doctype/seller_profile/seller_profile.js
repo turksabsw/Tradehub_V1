@@ -23,6 +23,36 @@ frappe.ui.form.on('Seller Profile', {
         frm.set_df_property('tenant', 'read_only', frm.doc.organization ? 1 : 0);
 
         // =====================================================
+        // Seller Tier Field - Filter by Tenant
+        // =====================================================
+        // Only show seller tiers belonging to the selected tenant
+        frm.set_query('seller_tier', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
+        // KYC Profile Field - Filter by Tenant
+        // =====================================================
+        // Only show KYC profiles belonging to the selected tenant
+        frm.set_query('kyc_profile', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
         // Address Item Child Table - Cascading Dropdown Filters
         // =====================================================
 
@@ -112,6 +142,40 @@ frappe.ui.form.on('Seller Profile', {
             } else {
                 // Tenant was cleared, also clear organization
                 frm.set_value('organization', null);
+            }
+        }
+
+        // When tenant changes, check if seller_tier belongs to new tenant
+        if (frm.doc.seller_tier) {
+            if (frm.doc.tenant) {
+                frappe.db.get_value('Seller Tier', frm.doc.seller_tier, 'tenant', function(r) {
+                    if (r && r.tenant !== frm.doc.tenant) {
+                        frm.set_value('seller_tier', null);
+                        frappe.show_alert({
+                            message: __('Seller Tier cleared because it does not belong to the selected Tenant'),
+                            indicator: 'blue'
+                        });
+                    }
+                });
+            } else {
+                frm.set_value('seller_tier', null);
+            }
+        }
+
+        // When tenant changes, check if kyc_profile belongs to new tenant
+        if (frm.doc.kyc_profile) {
+            if (frm.doc.tenant) {
+                frappe.db.get_value('KYC Profile', frm.doc.kyc_profile, 'tenant', function(r) {
+                    if (r && r.tenant !== frm.doc.tenant) {
+                        frm.set_value('kyc_profile', null);
+                        frappe.show_alert({
+                            message: __('KYC Profile cleared because it does not belong to the selected Tenant'),
+                            indicator: 'blue'
+                        });
+                    }
+                });
+            } else {
+                frm.set_value('kyc_profile', null);
             }
         }
     },
