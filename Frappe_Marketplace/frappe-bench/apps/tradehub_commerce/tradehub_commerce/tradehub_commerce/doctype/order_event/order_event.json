@@ -58,6 +58,7 @@
   "internal_notes",
   "related_events_section",
   "parent_event",
+  "related_events_table",
   "related_events",
   "error_section",
   "is_error",
@@ -400,10 +401,19 @@
    "options": "Order Event"
   },
   {
-   "description": "JSON array of related event names",
+   "fieldname": "related_events_table",
+   "fieldtype": "Table",
+   "label": "Related Events",
+   "options": "Order Event Link",
+   "description": "Structured links to related order events"
+  },
+  {
+   "description": "JSON array of related event names (deprecated — use child table)",
    "fieldname": "related_events",
    "fieldtype": "JSON",
-   "label": "Related Events"
+   "hidden": 1,
+   "label": "Related Events (Legacy)",
+   "read_only": 1
   },
   {
    "collapsible": 1,

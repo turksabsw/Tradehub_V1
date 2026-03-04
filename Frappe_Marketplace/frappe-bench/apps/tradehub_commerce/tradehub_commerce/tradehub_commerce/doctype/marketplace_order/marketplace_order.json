@@ -26,6 +26,7 @@
   "items",
   "seller_summary_section",
   "seller_count",
+  "seller_summary_table",
   "seller_summary",
   "totals_section",
   "currency",
@@ -287,10 +288,19 @@
    "read_only": 1
   },
   {
-   "description": "JSON with seller-wise subtotals and item counts",
+   "fieldname": "seller_summary_table",
+   "fieldtype": "Table",
+   "label": "Seller Summary",
+   "options": "Order Seller Summary",
+   "description": "Structured seller-wise subtotals and item counts"
+  },
+  {
+   "description": "JSON with seller-wise subtotals and item counts (deprecated — use child table)",
    "fieldname": "seller_summary",
    "fieldtype": "JSON",
-   "label": "Seller Summary"
+   "hidden": 1,
+   "label": "Seller Summary (Legacy)",
+   "read_only": 1
   },
   {
    "fieldname": "totals_section",

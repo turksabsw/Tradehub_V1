@@ -48,6 +48,7 @@
   "release_approved_at",
   "partial_release_section",
   "allow_partial_release",
+  "partial_releases_table",
   "partial_releases",
   "payout_section",
   "payout_status",
@@ -387,10 +388,19 @@
    "label": "Allow Partial Release"
   },
   {
-   "description": "JSON array of partial release records",
+   "fieldname": "partial_releases_table",
+   "fieldtype": "Table",
+   "label": "Partial Releases",
+   "options": "Escrow Partial Release",
+   "description": "Structured partial release records"
+  },
+  {
+   "description": "JSON array of partial release records (deprecated — use child table)",
    "fieldname": "partial_releases",
    "fieldtype": "JSON",
-   "label": "Partial Releases"
+   "hidden": 1,
+   "label": "Partial Releases (Legacy)",
+   "read_only": 1
   },
   {
    "fieldname": "payout_section",
