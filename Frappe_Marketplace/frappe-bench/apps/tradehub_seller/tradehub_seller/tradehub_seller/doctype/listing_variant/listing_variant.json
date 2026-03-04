@@ -177,6 +177,7 @@
    "fieldtype": "Link",
    "label": "Currency",
    "options": "Currency",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -217,7 +218,8 @@
    "fetch_from": "listing.price_includes_tax",
    "fieldname": "price_includes_tax",
    "fieldtype": "Check",
-   "label": "Price Includes Tax"
+   "label": "Price Includes Tax",
+   "read_only": 1
   },
   {
    "fieldname": "inventory_section",

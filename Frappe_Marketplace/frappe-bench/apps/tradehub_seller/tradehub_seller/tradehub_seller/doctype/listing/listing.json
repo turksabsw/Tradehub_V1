@@ -214,7 +214,7 @@
    "description": "The tenant this listing belongs to",
    "fetch_from": "seller.tenant",
    "fetch_if_empty": 1,
-   "read_only_depends_on": "eval:doc.seller"
+   "read_only": 1
   },
   {
    "description": "Linked ERPNext Item for inventory sync",

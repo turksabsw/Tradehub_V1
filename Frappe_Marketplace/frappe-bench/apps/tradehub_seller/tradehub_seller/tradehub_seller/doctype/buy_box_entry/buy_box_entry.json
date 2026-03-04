@@ -374,12 +374,11 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "",
    "fieldname": "seller_response_rate",
    "fieldtype": "Percent",
    "label": "Response Rate",
    "read_only": 1,
-   "description": "Auto-filled from Seller Profile"
+   "description": "Seller response rate metric (computed, not fetched from Seller Profile)"
   },
   {
    "fetch_from": "seller.return_rate",
@@ -390,12 +389,11 @@
    "description": "Auto-filled from Seller Profile"
   },
   {
-   "fetch_from": "",
    "fieldname": "seller_buy_box_win_rate",
    "fieldtype": "Percent",
    "label": "Buy Box Win Rate",
    "read_only": 1,
-   "description": "Auto-filled from Seller Profile"
+   "description": "Buy Box win rate metric (computed, not fetched from Seller Profile)"
   },
   {
    "fieldname": "scoring_section",

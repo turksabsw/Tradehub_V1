@@ -45,7 +45,8 @@
    "fieldname": "is_variant",
    "fieldtype": "Check",
    "in_list_view": 1,
-   "label": "Is Variant"
+   "label": "Is Variant",
+   "read_only": 1
   },
   {
    "default": "1",
@@ -53,7 +54,8 @@
    "fetch_from": "attribute.is_filterable",
    "fieldname": "is_filterable",
    "fieldtype": "Check",
-   "label": "Is Filterable"
+   "label": "Is Filterable",
+   "read_only": 1
   },
   {
    "default": "0",

@@ -171,7 +171,7 @@
    "in_standard_filter": 1,
    "label": "Tenant",
    "options": "Tenant",
-   "read_only_depends_on": "eval:doc.organization",
+   "read_only": 1,
    "reqd": 1
   },
   {
