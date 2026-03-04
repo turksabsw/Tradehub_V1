@@ -50,6 +50,7 @@
   "installment_fee",
   "installment_total",
   "installment_plan",
+  "installment_plan_table",
   "gateway_section",
   "gateway_intent_id",
   "gateway_payment_id",
@@ -83,6 +84,7 @@
   "refunded_at",
   "refund_gateway_id",
   "partial_refunds",
+  "partial_refunds_table",
   "escrow_section",
   "escrow_enabled",
   "escrow_account",
@@ -115,6 +117,7 @@
   "risk_score",
   "risk_level",
   "fraud_flags",
+  "fraud_flags_table",
   "column_break_risk",
   "fraud_check_status",
   "fraud_check_response",
@@ -440,10 +443,20 @@
   },
   {
    "depends_on": "eval:doc.has_installments",
-   "description": "JSON object with installment breakdown",
+   "description": "JSON object with installment breakdown (deprecated — use Installment Plan Table)",
    "fieldname": "installment_plan",
    "fieldtype": "JSON",
-   "label": "Installment Plan"
+   "hidden": 1,
+   "label": "Installment Plan",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.has_installments",
+   "description": "Structured installment breakdown for this payment intent",
+   "fieldname": "installment_plan_table",
+   "fieldtype": "Table",
+   "label": "Installment Plan",
+   "options": "Payment Intent Installment"
   },
   {
    "fieldname": "gateway_section",
@@ -638,10 +651,19 @@
    "label": "Refund Gateway ID"
   },
   {
-   "description": "JSON array of partial refunds",
+   "description": "JSON array of partial refunds (deprecated — use Partial Refunds Table)",
    "fieldname": "partial_refunds",
    "fieldtype": "JSON",
-   "label": "Partial Refunds"
+   "hidden": 1,
+   "label": "Partial Refunds",
+   "read_only": 1
+  },
+  {
+   "description": "Structured partial refund records for this payment intent",
+   "fieldname": "partial_refunds_table",
+   "fieldtype": "Table",
+   "label": "Partial Refunds",
+   "options": "Payment Refund"
   },
   {
    "collapsible": 1,
@@ -822,10 +844,19 @@
    "options": "Low\nMedium\nHigh\nCritical"
   },
   {
-   "description": "JSON array of triggered fraud flags",
+   "description": "JSON array of triggered fraud flags (deprecated — use Fraud Flags Table)",
    "fieldname": "fraud_flags",
    "fieldtype": "JSON",
-   "label": "Fraud Flags"
+   "hidden": 1,
+   "label": "Fraud Flags",
+   "read_only": 1
+  },
+  {
+   "description": "Structured fraud flag records for this payment intent",
+   "fieldname": "fraud_flags_table",
+   "fieldtype": "Table",
+   "label": "Fraud Flags",
+   "options": "Payment Fraud Flag"
   },
   {
    "fieldname": "column_break_risk",
