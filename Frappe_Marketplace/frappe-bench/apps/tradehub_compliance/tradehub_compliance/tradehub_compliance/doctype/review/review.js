@@ -9,6 +9,86 @@ frappe.ui.form.on('Review', {
         frm.set_df_property('tenant', 'read_only', 1);
         frm.set_df_property('tenant_name', 'read_only', 1);
 
+        // =====================================================
+        // P1: Tenant Isolation Filters
+        // =====================================================
+        // Listing - filter by tenant
+        frm.set_query('listing', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Seller - filter by tenant
+        frm.set_query('seller', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Marketplace Order - filter by tenant
+        frm.set_query('marketplace_order', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // =====================================================
+        // Cascade Filters
+        // =====================================================
+        // Sub Order - filter by marketplace_order and seller
+        frm.set_query('sub_order', function() {
+            let filters = {};
+            if (frm.doc.marketplace_order) {
+                filters['marketplace_order'] = frm.doc.marketplace_order;
+            }
+            if (frm.doc.seller) {
+                filters['seller'] = frm.doc.seller;
+            }
+            if (frm.doc.tenant) {
+                filters['tenant'] = frm.doc.tenant;
+            }
+            return {
+                filters: filters
+            };
+        });
+
+        // Organization - filter by tenant
+        frm.set_query('organization', function() {
+            if (frm.doc.tenant) {
+                return {
+                    filters: {
+                        'tenant': frm.doc.tenant
+                    }
+                };
+            }
+            return {};
+        });
+
+        // Category - filter active categories
+        frm.set_query('category', function() {
+            return {
+                filters: {
+                    'is_active': 1
+                }
+            };
+        });
+
         // Add moderation buttons for System Manager
         if (frappe.user.has_role('System Manager') && frm.doc.name && !frm.is_new()) {
             if (frm.doc.status === 'Pending' || frm.doc.status === 'Flagged') {
@@ -100,6 +180,37 @@ frappe.ui.form.on('Review', {
         }
     },
 
+    // =====================================================
+    // Clear-on-change Handlers
+    // =====================================================
+    tenant: function(frm) {
+        // Clear fetch_from fields dependent on tenant
+        if (!frm.doc.tenant) {
+            frm.set_value('tenant_name', '');
+        }
+    },
+
+    reviewer: function(frm) {
+        // Clear fetch_from fields dependent on reviewer
+        if (!frm.doc.reviewer) {
+            frm.set_value('reviewer_name', '');
+        }
+    },
+
+    seller: function(frm) {
+        // Clear fetch_from fields dependent on seller
+        if (!frm.doc.seller) {
+            frm.set_value('seller_name', '');
+        }
+    },
+
+    category: function(frm) {
+        // Clear fetch_from fields dependent on category
+        if (!frm.doc.category) {
+            frm.set_value('category_name', '');
+        }
+    },
+
     listing: function(frm) {
         // When product/listing is selected, auto-populate seller details
         if (frm.doc.listing) {
@@ -151,36 +262,41 @@ frappe.ui.form.on('Review', {
 
     marketplace_order: function(frm) {
         // When order is selected, try to get seller from order items
-        if (frm.doc.marketplace_order && !frm.doc.listing) {
-            frappe.call({
-                method: 'tr_tradehub.tr_tradehub.doctype.review.review.get_seller_from_order',
-                args: {
-                    marketplace_order: frm.doc.marketplace_order
-                },
-                callback: function(r) {
-                    if (r.message && r.message.seller) {
-                        let data = r.message;
+        if (frm.doc.marketplace_order) {
+            if (!frm.doc.listing) {
+                frappe.call({
+                    method: 'tr_tradehub.tr_tradehub.doctype.review.review.get_seller_from_order',
+                    args: {
+                        marketplace_order: frm.doc.marketplace_order
+                    },
+                    callback: function(r) {
+                        if (r.message && r.message.seller) {
+                            let data = r.message;
 
-                        // Auto-populate seller fields from order
-                        if (data.seller) {
-                            frm.set_value('seller', data.seller);
-                        }
-                        if (data.seller_name) {
-                            frm.set_value('seller_name', data.seller_name);
-                        }
-                        if (data.tenant) {
-                            frm.set_value('tenant', data.tenant);
-                        }
-                        if (data.tenant_name) {
-                            frm.set_value('tenant_name', data.tenant_name);
-                        }
+                            // Auto-populate seller fields from order
+                            if (data.seller) {
+                                frm.set_value('seller', data.seller);
+                            }
+                            if (data.seller_name) {
+                                frm.set_value('seller_name', data.seller_name);
+                            }
+                            if (data.tenant) {
+                                frm.set_value('tenant', data.tenant);
+                            }
+                            if (data.tenant_name) {
+                                frm.set_value('tenant_name', data.tenant_name);
+                            }
 
-                        // Make seller fields read-only
-                        frm.set_df_property('seller', 'read_only', 1);
-                        frm.set_df_property('tenant', 'read_only', 1);
+                            // Make seller fields read-only
+                            frm.set_df_property('seller', 'read_only', 1);
+                            frm.set_df_property('tenant', 'read_only', 1);
+                        }
                     }
-                }
-            });
+                });
+            }
+        } else {
+            // Clear dependent fields when marketplace_order is cleared
+            frm.set_value('sub_order', '');
         }
     },
 
