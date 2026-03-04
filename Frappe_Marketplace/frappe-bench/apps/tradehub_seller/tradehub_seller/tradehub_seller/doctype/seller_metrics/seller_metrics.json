@@ -133,7 +133,8 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Average Rating",
-   "precision": 2
+   "precision": 2,
+   "read_only": 1
   },
   {
    "default": "0",

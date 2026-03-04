@@ -368,14 +368,14 @@
    "default": "0",
    "description": "Quality of the product (1-5)",
    "fieldname": "product_quality_rating",
-   "fieldtype": "Int",
+   "fieldtype": "Rating",
    "label": "Product Quality"
   },
   {
    "default": "0",
    "description": "Value compared to price (1-5)",
    "fieldname": "value_for_money_rating",
-   "fieldtype": "Int",
+   "fieldtype": "Rating",
    "label": "Value for Money"
   },
   {
@@ -386,21 +386,21 @@
    "default": "0",
    "description": "Shipping speed and quality (1-5)",
    "fieldname": "shipping_rating",
-   "fieldtype": "Int",
+   "fieldtype": "Rating",
    "label": "Shipping"
   },
   {
    "default": "0",
    "description": "Seller responsiveness (1-5)",
    "fieldname": "seller_communication_rating",
-   "fieldtype": "Int",
+   "fieldtype": "Rating",
    "label": "Seller Communication"
   },
   {
    "default": "0",
    "description": "Product matches description (1-5)",
    "fieldname": "accuracy_rating",
-   "fieldtype": "Int",
+   "fieldtype": "Rating",
    "label": "Accuracy"
   },
   {
