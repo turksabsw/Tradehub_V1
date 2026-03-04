@@ -6,24 +6,28 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "coupon_code",
   "title",
   "column_break_basic",
   "is_active",
   "status",
+  "seller_tab",
   "seller_section",
   "seller",
   "seller_name",
   "column_break_seller",
   "tenant",
   "tenant_name",
+  "discount_tab",
   "discount_section",
   "discount_type",
   "discount_value",
   "column_break_discount",
   "max_discount_amount",
   "min_order_amount",
+  "bogo_tab",
   "bogo_section",
   "buy_quantity",
   "get_quantity",
@@ -34,6 +38,7 @@
   "bogo_buy_products",
   "bogo_get_products",
   "bogo_categories",
+  "validity_tab",
   "validity_section",
   "valid_from",
   "valid_until",
@@ -41,6 +46,7 @@
   "usage_limit",
   "used_count",
   "usage_per_customer",
+  "applicability_tab",
   "applicability_section",
   "applies_to",
   "applicable_categories",
@@ -48,6 +54,7 @@
   "exclusions_section",
   "excluded_categories",
   "excluded_products",
+  "restrictions_tab",
   "restrictions_section",
   "new_customers_only",
   "requires_minimum_items",
@@ -59,11 +66,52 @@
   "campaign_section",
   "campaign",
   "campaign_name",
+  "system_tab",
   "notes_section",
   "description",
   "terms_and_conditions"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "seller_tab",
+   "fieldtype": "Tab Break",
+   "label": "Seller"
+  },
+  {
+   "fieldname": "discount_tab",
+   "fieldtype": "Tab Break",
+   "label": "Discount"
+  },
+  {
+   "fieldname": "bogo_tab",
+   "fieldtype": "Tab Break",
+   "label": "BOGO"
+  },
+  {
+   "fieldname": "validity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "applicability_tab",
+   "fieldtype": "Tab Break",
+   "label": "Applicability"
+  },
+  {
+   "fieldname": "restrictions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Restrictions"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",

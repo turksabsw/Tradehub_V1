@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "campaign_name",
   "campaign_type",
@@ -16,6 +17,7 @@
   "description_section",
   "description",
   "banner_image",
+  "validity_tab",
   "validity_section",
   "start_date",
   "end_date",
@@ -23,12 +25,14 @@
   "timezone",
   "auto_activate",
   "auto_deactivate",
+  "discount_tab",
   "discount_section",
   "discount_type",
   "discount_value",
   "column_break_discount",
   "max_discount_amount",
   "min_order_amount",
+  "applicability_tab",
   "applicability_section",
   "applies_to",
   "applicable_categories",
@@ -42,6 +46,7 @@
   "coupon_quantity",
   "column_break_coupon",
   "linked_coupons",
+  "budget_tab",
   "budget_section",
   "budget_enabled",
   "total_budget",
@@ -54,6 +59,7 @@
   "column_break_usage",
   "total_usage",
   "unique_users",
+  "targeting_tab",
   "targeting_section",
   "target_audience",
   "buyer_levels",
@@ -62,6 +68,7 @@
   "min_previous_orders",
   "max_previous_orders",
   "geographic_regions",
+  "display_tab",
   "display_section",
   "show_on_homepage",
   "show_in_category",
@@ -76,17 +83,64 @@
   "column_break_tenant",
   "tenant",
   "tenant_name",
+  "analytics_tab",
   "analytics_section",
   "views_count",
   "clicks_count",
   "column_break_analytics",
   "orders_count",
   "revenue_generated",
+  "system_tab",
   "notes_section",
   "internal_notes",
   "terms_and_conditions"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "validity_tab",
+   "fieldtype": "Tab Break",
+   "label": "Validity"
+  },
+  {
+   "fieldname": "discount_tab",
+   "fieldtype": "Tab Break",
+   "label": "Discount"
+  },
+  {
+   "fieldname": "applicability_tab",
+   "fieldtype": "Tab Break",
+   "label": "Applicability"
+  },
+  {
+   "fieldname": "budget_tab",
+   "fieldtype": "Tab Break",
+   "label": "Budget & Limits"
+  },
+  {
+   "fieldname": "targeting_tab",
+   "fieldtype": "Tab Break",
+   "label": "Targeting"
+  },
+  {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
+  },
+  {
+   "fieldname": "analytics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Analytics"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "store_name",
   "seller",
@@ -16,6 +17,7 @@
   "tenant",
   "tenant_name",
   "is_published",
+  "branding_tab",
   "branding_section",
   "logo",
   "banner",
@@ -24,6 +26,7 @@
   "tagline",
   "short_description",
   "about_html",
+  "theme_tab",
   "theme_section",
   "theme",
   "primary_color",
@@ -42,6 +45,7 @@
   "show_reviews",
   "show_contact_info",
   "products_per_page",
+  "seo_tab",
   "seo_section",
   "route",
   "meta_title",
@@ -50,6 +54,7 @@
   "meta_keywords",
   "og_image",
   "canonical_url",
+  "social_tab",
   "contact_section",
   "public_email",
   "public_phone",
@@ -65,11 +70,13 @@
   "linkedin_url",
   "youtube_url",
   "tiktok_url",
+  "policies_tab",
   "policies_section",
   "shipping_policy",
   "return_policy",
   "privacy_policy",
   "terms_of_service",
+  "statistics_tab",
   "stats_section",
   "total_products",
   "total_views",
@@ -78,6 +85,7 @@
   "average_rating",
   "total_reviews",
   "total_sales",
+  "code_tab",
   "custom_section",
   "custom_css",
   "custom_header_html",
@@ -88,6 +96,7 @@
   "featured_until",
   "column_break_featured",
   "featured_priority",
+  "system_tab",
   "timestamps_section",
   "published_at",
   "last_updated_at",
@@ -96,6 +105,51 @@
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "branding_tab",
+   "fieldtype": "Tab Break",
+   "label": "Branding"
+  },
+  {
+   "fieldname": "theme_tab",
+   "fieldtype": "Tab Break",
+   "label": "Theme & Layout"
+  },
+  {
+   "fieldname": "seo_tab",
+   "fieldtype": "Tab Break",
+   "label": "SEO"
+  },
+  {
+   "fieldname": "social_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact & Social"
+  },
+  {
+   "fieldname": "policies_tab",
+   "fieldtype": "Tab Break",
+   "label": "Policies"
+  },
+  {
+   "fieldname": "statistics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statistics"
+  },
+  {
+   "fieldname": "code_tab",
+   "fieldtype": "Tab Break",
+   "label": "Custom Code"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",

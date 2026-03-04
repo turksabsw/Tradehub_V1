@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "subscription_package",
   "package_name",
@@ -14,6 +15,7 @@
   "status",
   "is_active",
   "api_access_enabled",
+  "subscriber_tab",
   "subscriber_section",
   "subscriber_type",
   "seller_profile",
@@ -23,6 +25,7 @@
   "organization",
   "tenant",
   "tenant_name",
+  "dates_tab",
   "subscription_dates_section",
   "start_date",
   "end_date",
@@ -39,6 +42,7 @@
   "total_billed",
   "total_paid",
   "outstanding_amount",
+  "grace_tab",
   "grace_period_section",
   "grace_period_days",
   "grace_period_start_date",
@@ -60,6 +64,7 @@
   "reactivation_count",
   "column_break_reactivation",
   "reactivation_notes",
+  "renewal_tab",
   "renewal_section",
   "auto_renew",
   "renewal_reminder_sent",
@@ -68,6 +73,7 @@
   "failed_renewal_attempts",
   "last_renewal_attempt",
   "renewal_failure_reason",
+  "limits_tab",
   "package_limits_section",
   "max_products",
   "max_orders_per_month",
@@ -76,6 +82,7 @@
   "current_product_count",
   "current_month_orders",
   "current_day_api_calls",
+  "features_tab",
   "features_section",
   "has_analytics",
   "has_priority_support",
@@ -84,6 +91,7 @@
   "has_bulk_import",
   "has_advanced_reporting",
   "commission_rate",
+  "payment_tab",
   "payment_history_section",
   "last_payment_date",
   "last_payment_amount",
@@ -91,6 +99,7 @@
   "column_break_payment",
   "payment_reference",
   "next_payment_amount",
+  "changes_tab",
   "upgrade_downgrade_section",
   "previous_package",
   "upgrade_date",
@@ -98,6 +107,7 @@
   "column_break_upgrade",
   "prorate_amount",
   "package_change_reason",
+  "system_tab",
   "notes_section",
   "internal_notes",
   "subscriber_notes",
@@ -109,6 +119,56 @@
   "modified_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "subscriber_tab",
+   "fieldtype": "Tab Break",
+   "label": "Subscriber"
+  },
+  {
+   "fieldname": "dates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Dates & Billing"
+  },
+  {
+   "fieldname": "grace_tab",
+   "fieldtype": "Tab Break",
+   "label": "Grace & Suspension"
+  },
+  {
+   "fieldname": "renewal_tab",
+   "fieldtype": "Tab Break",
+   "label": "Renewal"
+  },
+  {
+   "fieldname": "limits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Package Limits"
+  },
+  {
+   "fieldname": "features_tab",
+   "fieldtype": "Tab Break",
+   "label": "Features"
+  },
+  {
+   "fieldname": "payment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "changes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Changes"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",

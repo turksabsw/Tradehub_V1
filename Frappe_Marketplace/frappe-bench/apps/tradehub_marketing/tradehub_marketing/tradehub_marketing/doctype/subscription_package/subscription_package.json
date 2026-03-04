@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "package_name",
   "package_code",
@@ -15,6 +16,7 @@
   "is_default",
   "icon",
   "color",
+  "pricing_tab",
   "pricing_section",
   "billing_period",
   "price",
@@ -28,6 +30,7 @@
   "column_break_discount",
   "promotional_price",
   "promotion_valid_until",
+  "limits_tab",
   "limits_section",
   "max_products",
   "max_skus_per_product",
@@ -46,18 +49,21 @@
   "has_advanced_reporting",
   "has_multi_warehouse",
   "has_white_label",
+  "commission_tab",
   "commission_section",
   "commission_rate",
   "transaction_fee_percent",
   "column_break_commission",
   "minimum_transaction_fee",
   "fee_cap_per_transaction",
+  "grace_tab",
   "grace_period_section",
   "grace_period_days",
   "suspension_warning_days",
   "column_break_grace",
   "auto_suspend_on_overdue",
   "suspend_after_days",
+  "display_tab",
   "display_section",
   "display_name",
   "short_description",
@@ -71,6 +77,7 @@
   "column_break_visibility",
   "target_audience",
   "display_order",
+  "upgrade_tab",
   "upgrade_section",
   "upgrade_path",
   "downgrade_path",
@@ -78,17 +85,64 @@
   "allow_upgrade",
   "allow_downgrade",
   "prorate_on_change",
+  "statistics_tab",
   "statistics_section",
   "subscriber_count",
   "active_subscriber_count",
   "column_break_statistics",
   "total_revenue",
   "last_calculated_at",
+  "system_tab",
   "timestamps_section",
   "created_at",
   "modified_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "limits_tab",
+   "fieldtype": "Tab Break",
+   "label": "Limits & Features"
+  },
+  {
+   "fieldname": "commission_tab",
+   "fieldtype": "Tab Break",
+   "label": "Commission"
+  },
+  {
+   "fieldname": "grace_tab",
+   "fieldtype": "Tab Break",
+   "label": "Grace"
+  },
+  {
+   "fieldname": "display_tab",
+   "fieldtype": "Tab Break",
+   "label": "Display"
+  },
+  {
+   "fieldname": "upgrade_tab",
+   "fieldtype": "Tab Break",
+   "label": "Upgrade"
+  },
+  {
+   "fieldname": "statistics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statistics"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",

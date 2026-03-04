@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "title",
   "seller",
@@ -21,6 +22,7 @@
   "description",
   "short_description",
   "primary_image",
+  "campaign_tab",
   "period_section",
   "period_type",
   "start_date",
@@ -35,6 +37,7 @@
   "min_quantity",
   "max_quantity_per_buyer",
   "participant_count",
+  "pricing_tab",
   "pricing_section",
   "currency",
   "max_price",
@@ -46,6 +49,7 @@
   "profitability_floor",
   "tiers_section",
   "tiers",
+  "shipping_tab",
   "shipping_section",
   "shipping_type",
   "flat_shipping_rate",
@@ -53,6 +57,7 @@
   "free_shipping_threshold",
   "ships_from",
   "estimated_delivery_days",
+  "settings_tab",
   "settings_section",
   "requires_approval",
   "allow_cancel_commitment",
@@ -61,6 +66,7 @@
   "is_featured",
   "is_verified",
   "visibility",
+  "statistics_tab",
   "statistics_section",
   "total_commitment_amount",
   "average_price",
@@ -68,12 +74,48 @@
   "view_count",
   "funded_at",
   "completed_at",
+  "system_tab",
   "system_section",
   "naming_series",
   "created_by",
   "created_at"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "campaign_tab",
+   "fieldtype": "Tab Break",
+   "label": "Campaign"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "shipping_tab",
+   "fieldtype": "Tab Break",
+   "label": "Shipping"
+  },
+  {
+   "fieldname": "settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Settings"
+  },
+  {
+   "fieldname": "statistics_tab",
+   "fieldtype": "Tab Break",
+   "label": "Statistics"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",

@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "group_buy",
   "group_buy_title",
@@ -16,6 +17,7 @@
   "column_break_basic",
   "status",
   "commitment_date",
+  "pricing_tab",
   "quantity_section",
   "quantity",
   "unit_price",
@@ -28,6 +30,7 @@
   "column_break_pricing",
   "contribution_factor",
   "discount_percent",
+  "shipping_tab",
   "contact_section",
   "contact_name",
   "contact_phone",
@@ -35,6 +38,7 @@
   "column_break_contact",
   "shipping_address",
   "notes",
+  "cancellation_tab",
   "cancellation_section",
   "cancelled_at",
   "cancellation_reason",
@@ -45,6 +49,26 @@
   "modified_count"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "pricing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "shipping_tab",
+   "fieldtype": "Tab Break",
+   "label": "Contact & Shipping"
+  },
+  {
+   "fieldname": "cancellation_tab",
+   "fieldtype": "Tab Break",
+   "label": "Cancellation"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",

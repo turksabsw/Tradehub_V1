@@ -6,20 +6,23 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_section",
   "title",
   "offer_code",
   "column_break_basic",
   "status",
   "is_active",
+  "description_section",
+  "description",
+  "seller_tab",
   "seller_section",
   "seller",
   "seller_name",
   "column_break_seller",
   "tenant",
   "tenant_name",
-  "description_section",
-  "description",
+  "products_tab",
   "products_section",
   "products",
   "totals_section",
@@ -28,6 +31,12 @@
   "column_break_totals",
   "total_value",
   "currency",
+  "pricing_section",
+  "pricing_type",
+  "discount_percentage",
+  "column_break_pricing",
+  "fixed_discount_amount",
+  "requirements_tab",
   "requirements_section",
   "minimum_quantity",
   "minimum_order_value",
@@ -40,20 +49,47 @@
   "column_break_validity",
   "usage_limit",
   "current_usage",
-  "pricing_section",
-  "pricing_type",
-  "discount_percentage",
-  "column_break_pricing",
-  "fixed_discount_amount",
+  "terms_tab",
   "terms_section",
   "terms_and_conditions",
   "notes",
+  "system_tab",
   "system_section",
   "naming_series",
   "published_at",
   "created_by"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "seller_tab",
+   "fieldtype": "Tab Break",
+   "label": "Seller"
+  },
+  {
+   "fieldname": "products_tab",
+   "fieldtype": "Tab Break",
+   "label": "Products & Pricing"
+  },
+  {
+   "fieldname": "requirements_tab",
+   "fieldtype": "Tab Break",
+   "label": "Requirements"
+  },
+  {
+   "fieldname": "terms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Terms"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_section",
    "fieldtype": "Section Break",

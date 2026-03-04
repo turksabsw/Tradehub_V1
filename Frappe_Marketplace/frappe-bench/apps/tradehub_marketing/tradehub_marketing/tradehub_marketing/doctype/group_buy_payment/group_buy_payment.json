@@ -6,6 +6,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "basic_info_section",
   "group_buy",
   "group_buy_title",
@@ -16,6 +17,7 @@
   "column_break_basic",
   "status",
   "payment_date",
+  "amount_tab",
   "amount_section",
   "currency",
   "amount",
@@ -23,6 +25,7 @@
   "column_break_amount",
   "net_amount",
   "exchange_rate",
+  "method_tab",
   "payment_method_section",
   "payment_method",
   "payment_gateway",
@@ -30,12 +33,14 @@
   "column_break_payment",
   "payment_reference",
   "payment_proof",
+  "processing_tab",
   "processing_section",
   "processed_by",
   "processed_at",
   "column_break_processing",
   "settlement_reference",
   "settled_at",
+  "refund_tab",
   "refund_section",
   "refund_status",
   "refund_amount",
@@ -43,11 +48,42 @@
   "column_break_refund",
   "refunded_at",
   "refund_reference",
+  "system_tab",
   "system_section",
   "naming_series",
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "amount_tab",
+   "fieldtype": "Tab Break",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "method_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment Method"
+  },
+  {
+   "fieldname": "processing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Processing"
+  },
+  {
+   "fieldname": "refund_tab",
+   "fieldtype": "Tab Break",
+   "label": "Refund"
+  },
+  {
+   "fieldname": "system_tab",
+   "fieldtype": "Tab Break",
+   "label": "System"
+  },
   {
    "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
