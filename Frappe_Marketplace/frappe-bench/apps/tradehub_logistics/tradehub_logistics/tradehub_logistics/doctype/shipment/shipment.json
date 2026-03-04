@@ -58,6 +58,7 @@
   "tracking_status",
   "last_tracking_update",
   "tracking_events",
+  "tracking_events_table",
   "label_section",
   "label_generated",
   "label_url",
@@ -540,9 +541,17 @@
   {
    "fieldname": "tracking_events",
    "fieldtype": "Text",
-   "label": "Tracking Events",
+   "hidden": 1,
+   "label": "Tracking Events (Deprecated)",
    "read_only": 1,
-   "description": "JSON array of tracking events (managed via UI component)"
+   "description": "Deprecated — use Tracking Events Table below. JSON array kept for migration."
+  },
+  {
+   "fieldname": "tracking_events_table",
+   "fieldtype": "Table",
+   "label": "Tracking Events",
+   "options": "Shipment Tracking Event",
+   "description": "Structured tracking event records for this shipment"
   },
   {
    "fieldname": "label_section",
