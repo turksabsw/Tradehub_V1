@@ -417,11 +417,11 @@
     "report_path": ".auto-claude/specs/058-field-validasyon/qa_report.md",
     "tests_passed": "All verification checks passed: 5/5 documents exist with substantial content, 0 code files modified, all acceptance criteria checklists present, formulas mathematically verified, 73 JSON fields count exact match, 311 fetch_from fields verified, cascading discount calculations verified, cross-document consistency confirmed, dual-layer JS+Python documented (46 occurrences), multi-tenant awareness present (21 occurrences), edge cases documented (60 occurrences)."
   },
-  "status": "approved",
-  "planStatus": "approved",
-  "xstateState": "approved",
+  "status": "done",
+  "planStatus": "completed",
+  "xstateState": "done",
   "executionPhase": "complete",
-  "updated_at": "2026-03-02T13:15:00.000Z",
+  "updated_at": "2026-03-05T07:45:27.258Z",
   "lastEvent": {
     "eventId": "qa-approved-058",
     "sequence": 2,
